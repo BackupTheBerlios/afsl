@@ -6,18 +6,25 @@
 
 package transport.client;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
+import javax.swing.UIManager;
+import java.awt.Image;
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author  ola
  */
 public class MainFrame extends javax.swing.JFrame {
-	
+
 	/** Creates new form MainFrame */
 	public MainFrame() {
 		initComponents();
 		this.setSize(800,600);
 	}
-	
+        Image logo = new ImageIcon(this.getClass().getResource(
+            "../pics/miniAF.png")).getImage();
 	/** This method is called from within the constructor to
 	 * initialize the form.
 	 * WARNING: Do NOT modify this code. The content of this method is
@@ -50,6 +57,7 @@ public class MainFrame extends javax.swing.JFrame {
 
                 setTitle("Arvikafestivalen Booking System");
                 setName("MainFrame");
+                this.setIconImage(logo);
                 addWindowListener(new java.awt.event.WindowAdapter() {
                         public void windowClosing(java.awt.event.WindowEvent evt) {
                                 exitForm(evt);
@@ -321,19 +329,41 @@ public class MainFrame extends javax.swing.JFrame {
 	private void displayArtistFrame(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_displayArtistFrame
 		//desktopPane.add(new ArtistFrame());
 	}//GEN-LAST:event_displayArtistFrame
-	
+
 	/** Exit the Application */
 	private void exitForm(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_exitForm
 		System.exit(0);
 	}//GEN-LAST:event_exitForm
-	
+
 	/**
 	 * @param args the command line arguments
 	 */
 	public static void main(String args[]) {
-		new MainFrame().show();
+          try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+          }
+          catch (Exception e) {
+            e.printStackTrace();
+          }
+
+          MainFrame frame = new MainFrame();
+      //Validate frames that have preset sizes
+            frame.validate();
+
+      //Center the window
+          Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+          Dimension frameSize = frame.getSize();
+          if (frameSize.height > screenSize.height) {
+            frameSize.height = screenSize.height;
+          }
+          if (frameSize.width > screenSize.width) {
+            frameSize.width = screenSize.width;
+          }
+          frame.setLocation( (screenSize.width - frameSize.width) / 2,
+                            (screenSize.height - frameSize.height) / 2);
+          frame.setVisible(true);
 	}
-	
+
         // Variables declaration - do not modify//GEN-BEGIN:variables
         private javax.swing.JMenu AddThingsMenu;
         private javax.swing.JMenuItem ArtistAddMenuItem;
@@ -359,5 +389,5 @@ public class MainFrame extends javax.swing.JFrame {
         private javax.swing.JMenu ViewMenu;
         private javax.swing.JDesktopPane desktopPane;
         // End of variables declaration//GEN-END:variables
-	
+
 }
