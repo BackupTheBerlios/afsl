@@ -104,5 +104,6 @@ public class ArtistTableModel extends GenericTableModel {
 	 */
 	public void remove(int row) {
 		(new ArtistFactory()).deleteArtist((Artist)getRowData(row));
+		fireTableDataChanged();
 	}
 }

@@ -247,7 +247,7 @@ public class TransportFactory {
 		try {
 			Connection conn=ConnectionFactory.getConnection();
 			PreparedStatement st=conn.prepareStatement(
-				"delete from artists where id = ?");
+						 "delete from transports where id = ?");
 			st.executeUpdate();
 			conn.close();
 		} catch (SQLException e) {

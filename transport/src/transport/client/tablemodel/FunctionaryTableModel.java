@@ -77,5 +77,6 @@ public class FunctionaryTableModel extends GenericTableModel {
 	 */
 	public void remove(int row) {
 		(new FunctionaryFactory()).deleteFunctionary((Functionary)getRowData(row));
+		fireTableDataChanged();
 	}
 }

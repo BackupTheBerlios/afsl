@@ -30,7 +30,6 @@ public class ConnectionFactory {
 			initFactory();
 		}
 
-		return DriverManager.getConnection(
-			"jdbc:postgresql://localhost/transport", "ola", "passwd");
+		return DriverManager.getConnection("jdbc:postgresql://10.0.0.6/transport","ola","passwd");
 	}
 }

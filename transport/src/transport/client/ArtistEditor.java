@@ -199,7 +199,7 @@ public class ArtistEditor extends GenericEditor {
 	   artist.setDeparture((Place)departureCombo.getSelectedItem());
 	   artist.setDepartureTime(departureTimeCombo.getDate());
 	   artist.setExtraInfo(extraInfoText.getText());
-
+	   artist.setHotel((Place)hotelCombo.getSelectedItem());
 
 		if (artist.getId() == -1) {
 			af.newArtist(artist);

@@ -149,6 +149,7 @@ public class GenericListFrame extends javax.swing.JInternalFrame {
 	}
 
 	void removeButton_actionPerformed(ActionEvent e) {
+
 		removeCurrent();
 	}
 }

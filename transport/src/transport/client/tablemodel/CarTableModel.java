@@ -76,5 +76,6 @@ public class CarTableModel extends GenericTableModel {
 	 */
 	public void remove(int row) {
 		(new CarFactory()).deleteCar((Car)getRowData(row));
+		fireTableDataChanged();
 	}
 }

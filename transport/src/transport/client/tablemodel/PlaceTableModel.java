@@ -64,5 +64,6 @@ public class PlaceTableModel extends GenericTableModel {
 	 */
 	public void remove(int row) {
 		(new PlaceFactory()).deletePlace((Place)getRowData(row));
+		fireTableDataChanged();
 	}
 }

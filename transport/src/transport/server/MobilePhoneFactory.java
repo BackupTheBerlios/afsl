@@ -19,6 +19,7 @@ public class MobilePhoneFactory {
 
 		try {
 			Connection conn=ConnectionFactory.getConnection();
+			// TODO: fix, cars???
 			PreparedStatement st=conn.prepareStatement("select * from cars where cars.id not in (select car_id from car_transport, transports where transports.return_time <= ? and transports.start_time>= ? and car_transport.transport_id=transports.id)");
 
 			java.sql.Date d1=new java.sql.Date(from.getTime());

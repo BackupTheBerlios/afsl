@@ -64,5 +64,6 @@ public class MobilePhoneTableModel extends GenericTableModel {
 	 */
 	public void remove(int row) {
 		(new MobilePhoneFactory()).deleteMobilePhone((MobilePhone)getRowData(row));
+		fireTableDataChanged();
 	}
 }

@@ -68,5 +68,6 @@ public class RoleTableModel extends GenericTableModel {
 	 */
 	public void remove(int row) {
 		(new RoleFactory()).deleteRole((Role)getRowData(row));
+		fireTableDataChanged();
 	}
 }

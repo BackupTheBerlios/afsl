@@ -126,5 +126,6 @@ public class TransportTableModel extends GenericTableModel {
 	 */
 	public void remove(int row) {
 		(new TransportFactory()).deleteTransport((Transport)getRowData(row));
+		fireTableDataChanged();
 	}
 }
