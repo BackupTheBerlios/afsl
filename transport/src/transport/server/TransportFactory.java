@@ -359,7 +359,7 @@ public class TransportFactory {
     try {
       Connection conn = ConnectionFactory.getConnection();
       PreparedStatement st = conn.prepareStatement(
-          "select * from transports as t, functionary_transport as f where t.id=f.transport_id and functionary_id=? and (start_time<=now()) and (return_time>=now())");
+          "select * from transports as t, functionary_transport as f where t.id=f.transport_id and functionary_id=? and ((t.start_time<=now()) and (t.return_time=>now()))");
 
       st.setInt(1, id);
       ResultSet rs = st.executeQuery();
@@ -413,7 +413,7 @@ public class TransportFactory {
       try {
         Connection conn = ConnectionFactory.getConnection();
         PreparedStatement st = conn.prepareStatement(
-            "select * from transports as t, functionary_transport as f where t.id=f.transport_id and functionary_id=? and (start_time>now()");
+            "select * from transports as t, functionary_transport as f where t.id=f.transport_id and functionary_id=? and (start_time>now())");
         st.setInt(1, id);
         ResultSet rs = st.executeQuery();
         while (rs.next()) {

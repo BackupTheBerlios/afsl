@@ -25,10 +25,20 @@ public class ViewFunctionarySchedule
   afslComboBox comboSelectFunctionary = new afslComboBox();
   JButton buttonClose = new JButton();
   GridLayout gridLayout1 = new GridLayout();
-  ViewTransportByFunctionaryTableModel tableModel;
-private javax.swing.JScrollPane jScrollPane1;
+  ViewTransportByFunctionaryTableModel tableModelAll;
+  ViewTransportByFunctionaryTableModel tableModelCurrent;
+  ViewTransportByFunctionaryTableModel tableModelFuture;
+  ViewTransportByFunctionaryTableModel tableModelFinished;
   /** Creates new form ViewFunctionarySchedule */
-  private JTable objectTable;
+  JTabbedPane jTabbedPane1 = new JTabbedPane();
+  JTable objectTableAll;
+  JTable objectTableCurrent;
+  JTable objectTableFuture;
+  JTable objectTableFinished;
+  JScrollPane paneShowAll= new JScrollPane();
+  JScrollPane panelShowCurrent = new JScrollPane();
+  JScrollPane oaneShowFuture = new JScrollPane();
+  JScrollPane paneShowFinished = new JScrollPane();
   public ViewFunctionarySchedule() {
     af = new FunctionaryFactory();
     rowData = af.getAllFunctionaries();
@@ -44,23 +54,39 @@ private javax.swing.JScrollPane jScrollPane1;
   private void jbInit() { //GEN-BEGIN:jbInit
     ImageIcon frameIcon = new ImageIcon(this.getClass().getResource(
         "../pics/miniAF.png"));
+    objectTableAll = new javax.swing.JTable();
+    objectTableCurrent = new javax.swing.JTable();
+    objectTableFinished = new javax.swing.JTable();
+    objectTableFuture = new javax.swing.JTable();
+    paneShowAll = new javax.swing.JScrollPane();
     this.setFrameIcon(frameIcon);
     this.setResizable(true);
     this.setPreferredSize(new Dimension(400, 400));
 
     pack();
-    jScrollPane1=new javax.swing.JScrollPane();
     buttonClose.setText("Close");
     buttonClose.addActionListener(new
         ViewFunctionarySchedule_buttonClose_actionAdapter(this));
     jPanel1.setLayout(gridLayout1);
     comboSelectFunctionary.addActionListener(new ViewFunctionarySchedule_comboSelectFunctionary_actionAdapter(this));
-    this.getContentPane().add(jPanel1, BorderLayout.NORTH);
+
+    this.getContentPane().add(jPanel1,  BorderLayout.NORTH);
     jPanel1.add(comboSelectFunctionary, null);
     this.getContentPane().add(buttonClose, BorderLayout.SOUTH);
     comboSelectFunctionary.fillCombo(rowData);
-    initTable();
-    getContentPane().add(jScrollPane1, java.awt.BorderLayout.CENTER);
+    initTableAll();
+    initTableCurrent();
+    initTableFuture();
+    initTableFinished();
+    paneShowAll.setViewportView(objectTableAll);
+    panelShowCurrent.setViewportView(objectTableCurrent);
+    paneShowFinished.setViewportView(objectTableFinished);
+    oaneShowFuture.setViewportView(objectTableFuture);
+    jTabbedPane1.add(panelShowCurrent, "Current");
+    jTabbedPane1.add(oaneShowFuture,  "Future");
+    jTabbedPane1.add(paneShowFinished,  "Finished");
+    jTabbedPane1.add(paneShowAll, "All");
+
   }
 
   void buttonClose_actionPerformed(ActionEvent e) {
@@ -69,24 +95,84 @@ private javax.swing.JScrollPane jScrollPane1;
 
   // Variables declaration - do not modify//GEN-BEGIN:variables
   // End of variables declaration//GEN-END:variables
-  private void initTable() {
-    objectTable = new javax.swing.JTable();
-
-    objectTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-    objectTable.setRowSelectionAllowed(true);
-    objectTable.setCellSelectionEnabled(false);
-    objectTable.setColumnSelectionAllowed(false);
-
+  private void initTableAll() {
+    objectTableAll = new javax.swing.JTable();
+    objectTableAll.setRowSelectionAllowed(true);
+    objectTableAll.setCellSelectionEnabled(false);
+    objectTableAll.setColumnSelectionAllowed(false);
+    tableModelAll=new ViewTransportByFunctionaryTableModel(getCurrentFunctionaryID());
+    objectTableAll.setModel(tableModelAll);
+    objectTableAll.setCellSelectionEnabled(true);
+    objectTableAll.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+    objectTableAll.setCellSelectionEnabled(false);
     setClosable(true);
     this.setMaximizable(true);
     setResizable(true);
 
     setAutoscrolls(true);
-    tableModel=new ViewTransportByFunctionaryTableModel(getCurrentFunctionaryID());
-    objectTable.setModel(tableModel);
-    objectTable.setCellSelectionEnabled(true);
-    jScrollPane1.setViewportView(objectTable);
+
+    this.getContentPane().add(jTabbedPane1, BorderLayout.CENTER);
   }
+  private void initTableCurrent() {
+    objectTableCurrent = new javax.swing.JTable();
+    objectTableCurrent.setRowSelectionAllowed(true);
+    objectTableCurrent.setCellSelectionEnabled(false);
+    objectTableCurrent.setColumnSelectionAllowed(false);
+    tableModelCurrent=new ViewTransportByFunctionaryTableModel();
+    tableModelCurrent.setRowDataCurrent(getCurrentFunctionaryID());
+    objectTableCurrent.setModel(tableModelAll);
+    objectTableCurrent.setCellSelectionEnabled(true);
+    objectTableCurrent.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+    objectTableCurrent.setCellSelectionEnabled(false);
+    setClosable(true);
+    this.setMaximizable(true);
+    setResizable(true);
+
+    setAutoscrolls(true);
+
+    this.getContentPane().add(jTabbedPane1, BorderLayout.CENTER);
+  }
+
+  private void initTableFuture() {
+      objectTableFuture = new javax.swing.JTable();
+      objectTableFuture.setRowSelectionAllowed(true);
+      objectTableFuture.setCellSelectionEnabled(false);
+      objectTableFuture.setColumnSelectionAllowed(false);
+      tableModelFuture=new ViewTransportByFunctionaryTableModel();
+      tableModelFuture.setRowDataFuture(getCurrentFunctionaryID());
+      objectTableFuture.setModel(tableModelFuture);
+      objectTableFuture.setCellSelectionEnabled(true);
+      objectTableFuture.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+      objectTableFuture.setCellSelectionEnabled(false);
+      setClosable(true);
+      this.setMaximizable(true);
+      setResizable(true);
+
+      setAutoscrolls(true);
+
+      this.getContentPane().add(jTabbedPane1, BorderLayout.CENTER);
+    }
+
+    private void initTableFinished() {
+        objectTableFinished = new javax.swing.JTable();
+        objectTableFinished.setRowSelectionAllowed(true);
+        objectTableFinished.setCellSelectionEnabled(false);
+        objectTableFinished.setColumnSelectionAllowed(false);
+        tableModelFinished=new ViewTransportByFunctionaryTableModel();
+        tableModelFinished.setRowDataFinished(getCurrentFunctionaryID());
+        objectTableFinished.setModel(tableModelFinished);
+        objectTableFinished.setCellSelectionEnabled(true);
+        objectTableFinished.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        objectTableFinished.setCellSelectionEnabled(false);
+        setClosable(true);
+        this.setMaximizable(true);
+        setResizable(true);
+
+        setAutoscrolls(true);
+
+        this.getContentPane().add(jTabbedPane1, BorderLayout.CENTER);
+      }
+
   private int getCurrentFunctionaryID() {
 
        return ( (Functionary) comboSelectFunctionary.
@@ -94,7 +180,10 @@ private javax.swing.JScrollPane jScrollPane1;
    }
 
   void comboSelectFunctionary_actionPerformed(ActionEvent e) {
-    initTable();
+    initTableAll();
+    initTableCurrent();
+    initTableFinished();
+    initTableFuture();
   }
 
 }
