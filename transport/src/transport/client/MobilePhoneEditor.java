@@ -77,6 +77,12 @@ public class MobilePhoneEditor extends GenericEditor {
 	public void edit(Object o) {
 	}
 
+	/**
+	 * editNew
+	 */
+	public void editNew() {
+	}
+
 	// End of variables declaration//GEN-END:variables
 
 }

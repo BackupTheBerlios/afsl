@@ -23,8 +23,8 @@ public class CarEditor extends GenericEditor {
 
 	/** Creates new form AddCar */
 	public CarEditor(Car car) {
-		this.car=car;
 		jbInit();
+		edit(car);
 	}
 
 	/** This method is called from within the constructor to
@@ -147,6 +147,25 @@ public class CarEditor extends GenericEditor {
 	 * @param o Object
 	 */
 	public void edit(Object o) {
+		this.car=(Car)o;
+
+		if (car.getId() == -1) {
+			this.setTitle("Add a car");
+			okButton.setText("New");
+			okButton.setMnemonic('N');
+		} else {
+			this.setTitle("Update an artist");
+			okButton.setText("Update");
+			okButton.setMnemonic('U');
+			carTypeText.setText(car.getCarType());
+			seatNoText.setText("" + car.getNumberOfSeats());
+			miscInfoText.setText(car.getMiscInfo());
+			regNoText.setText(car.getRegNo());
+		}
+	}
+
+	public void editNew() {
+		edit(new Car());
 	}
 
 	// End of variables declaration//GEN-END:variables

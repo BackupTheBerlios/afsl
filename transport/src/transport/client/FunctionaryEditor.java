@@ -29,23 +29,7 @@ public class FunctionaryEditor extends GenericEditor {
 
 	/** Creates new form AddFunctionary */
 	public FunctionaryEditor(Functionary functionary) {
-		this.functionary=functionary;
 		jbInit();
-		RoleFactory rf=new RoleFactory();
-		Role[] roles=rf.getAllRoles();
-
-		for (int i=0; i < roles.length; i++) {
-			roleCombo.addItem(roles[i]);
-		}
-		if (functionary.getId() == -1) {
-			this.setTitle("Add a functionary");
-			okButton.setText("New");
-			okButton.setMnemonic('N');
-		} else {
-			this.setTitle("Update a functionary");
-			okButton.setText("Update");
-			okButton.setMnemonic('U');
-		}
 	}
 
 	/** This method is called from within the constructor to
@@ -125,6 +109,28 @@ public class FunctionaryEditor extends GenericEditor {
 	 * @param o Object
 	 */
 	public void edit(Object o) {
+		this.functionary=functionary;
+		RoleFactory rf=new RoleFactory();
+		Role[] roles=rf.getAllRoles();
+
+		for (int i=0; i < roles.length; i++) {
+			roleCombo.addItem(roles[i]);
+		}
+		if (functionary.getId() == -1) {
+			this.setTitle("Add a functionary");
+			okButton.setText("New");
+			okButton.setMnemonic('N');
+		} else {
+			this.setTitle("Update a functionary");
+			okButton.setText("Update");
+			okButton.setMnemonic('U');
+		}
+
+	}
+
+
+	public void editNew() {
+		edit(new Functionary());
 	}
 
 	void okButton_actionPerformed(ActionEvent e) {

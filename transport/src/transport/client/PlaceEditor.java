@@ -75,6 +75,25 @@ public class PlaceEditor extends GenericEditor {
 	 * @param o Object
 	 */
 	public void edit(Object o) {
+		place=(Place)o;
+
+		if (place.getId() == -1) {
+			this.setTitle("Add a place");
+			okButton.setText("New");
+			okButton.setMnemonic('N');
+		} else {
+			this.setTitle("Update a place");
+			okButton.setText("Update");
+			okButton.setMnemonic('U');
+			nameText.setText(place.getName());
+		}
+	}
+
+	/**
+	 * editNew
+	 */
+	public void editNew() {
+		edit(new Place());
 	}
 
 	// End of variables declaration//GEN-END:variables

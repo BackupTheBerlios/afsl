@@ -15,6 +15,7 @@ import transport.server.*;
  * @author  ola
  */
 public class ArtistEditor extends GenericEditor {
+//public class ArtistEditor extends JInternalFrame {
 	private Artist artist;
 
 	public ArtistEditor() {
@@ -23,20 +24,7 @@ public class ArtistEditor extends GenericEditor {
 
 	/** Creates new form AddArtist */
 	public ArtistEditor(Artist artist) {
-		this.artist=artist;
 		jbInit();
-
-		fixCombos();
-
-		if (artist.getId() == -1) {
-			this.setTitle("Add an artist");
-			okButton.setText("New");
-			okButton.setMnemonic('N');
-		} else {
-			this.setTitle("Update an artist");
-			okButton.setText("Update");
-			okButton.setMnemonic('U');
-		}
 	}
 
 	private void fixCombos() {
@@ -257,8 +245,28 @@ public class ArtistEditor extends GenericEditor {
 	 * @param o Object
 	 */
 	public void edit(Object o) {
+		artist=(Artist)o;
+
+		fixCombos();
+
+		if (artist.getId() == -1) {
+			this.setTitle("Add an artist");
+			okButton.setText("New");
+			okButton.setMnemonic('N');
+		} else {
+			this.setTitle("Update an artist");
+			okButton.setText("Update");
+			okButton.setMnemonic('U');
+			nameText.setText(artist.getName());
+			contactNameText.setText(artist.getContactName());
+			phoneNumberText.setText(artist.getTelephoneNo());
+		}
 	}
 
-	// End of variables declaration//GEN-END:variables
+	public void editNew() {
+		edit(new Artist());
+	}
+
+
 
 }

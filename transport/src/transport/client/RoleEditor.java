@@ -8,11 +8,14 @@ package transport.client;
 
 import transport.logic.Role;
 import transport.server.RoleFactory;
+import java.awt.event.*;
+
 /**
  *
  * @author  ola
  */
 public class RoleEditor extends GenericEditor {
+//public class RoleEditor extends javax.swing.JInternalFrame {
 	Role role;
 
 	public RoleEditor() {
@@ -21,8 +24,8 @@ public class RoleEditor extends GenericEditor {
 
 	/** Creates new form RoleEditor */
 	public RoleEditor(Role role) {
-		this.role=role;
 		jbInit();
+		edit(role);
 	}
 
 	/** This method is called from within the constructor to
@@ -44,7 +47,9 @@ public class RoleEditor extends GenericEditor {
                 jPanel1.setLayout(new java.awt.GridLayout(2, 2));
 
                 jLabel1.setText("Short description");
-                jPanel1.add(jLabel1);
+                okButton.addActionListener(new RoleEditor_okButton_actionAdapter(this));
+    cancelButton.addActionListener(new RoleEditor_cancelButton_actionAdapter(this));
+    jPanel1.add(jLabel1);
 
                 shortDescrText.setText("jTextField1");
                 jPanel1.add(shortDescrText);
@@ -84,8 +89,66 @@ public class RoleEditor extends GenericEditor {
 	 * @param o Object
 	 */
 	public void edit(Object o) {
+		this.role=(Role)o;
+
+		if (role.getId() == -1) {
+			this.setTitle("Add a role");
+			okButton.setText("New");
+			okButton.setMnemonic('N');
+		} else {
+			this.setTitle("Update a role");
+			okButton.setText("Update");
+			okButton.setMnemonic('U');
+			shortDescrText.setText(role.getShortDescr());
+			longDescrText.setText(role.getLongDescr());
+		}
 	}
+
+	public void editNew() {
+		edit(null);
+	}
+
+	void okButton_actionPerformed(ActionEvent e) {
+		role.setShortDescr(shortDescrText.getText());
+		role.setLongDescr(longDescrText.getText());
+
+		RoleFactory rf=new RoleFactory();
+
+		if (role.getId()==-1) {
+			rf.newRole(role);
+		} else {
+			rf.updateRole(role);
+		}
+		this.dispose();
+	}
+
+	void cancelButton_actionPerformed(ActionEvent e) {
+		this.dispose();
+	}
+
 
 	// End of variables declaration//GEN-END:variables
 
+}
+
+class RoleEditor_okButton_actionAdapter implements java.awt.event.ActionListener {
+  RoleEditor adaptee;
+
+  RoleEditor_okButton_actionAdapter(RoleEditor adaptee) {
+    this.adaptee = adaptee;
+  }
+  public void actionPerformed(ActionEvent e) {
+    adaptee.okButton_actionPerformed(e);
+  }
+}
+
+class RoleEditor_cancelButton_actionAdapter implements java.awt.event.ActionListener {
+  RoleEditor adaptee;
+
+  RoleEditor_cancelButton_actionAdapter(RoleEditor adaptee) {
+    this.adaptee = adaptee;
+  }
+  public void actionPerformed(ActionEvent e) {
+    adaptee.cancelButton_actionPerformed(e);
+  }
 }

@@ -128,6 +128,26 @@ public class TransportEditor extends GenericEditor {
 	 * @param o Object
 	 */
 	public void edit(Object o) {
+/*if (artist.getId() == -1) {
+	this.setTitle("Add an artist");
+	okButton.setText("New");
+	okButton.setMnemonic('N');
+} else {
+	this.setTitle("Update an artist");
+	okButton.setText("Update");
+	okButton.setMnemonic('U');
+	nameText.setText(artist.getName());
+	contactNameText.setText(artist.getContactName());
+	phoneNumberText.setText(artist.getTelephoneNo());
+}*/
+
+	}
+
+	/**
+	 * editNew
+	 */
+	public void editNew() {
+		edit(null);
 	}
 
 	// End of variables declaration//GEN-END:variables

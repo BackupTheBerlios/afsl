@@ -84,9 +84,17 @@ public class GenericListFrame extends javax.swing.JInternalFrame {
 
 		removeButton.setMnemonic('R');
 		removeButton.setText("Remove");
-        getContentPane().add(jScrollPane1, java.awt.BorderLayout.CENTER);
+        addButton.setMnemonic('A');
+    editButton.setText("Add");
+    addButton.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(ActionEvent e) {
+        addButton_actionPerformed(e);
+      }
+    });
+    getContentPane().add(jScrollPane1, java.awt.BorderLayout.CENTER);
 		this.getContentPane().add(jPanel1, BorderLayout.SOUTH);
 		jPanel1.add(editButton, null);
+    jPanel1.add(editButton, null);
 		jPanel1.add(removeButton, null);
 		jPanel1.add(cancelButton, null);
 
@@ -108,6 +116,7 @@ public class GenericListFrame extends javax.swing.JInternalFrame {
 	JButton editButton=new JButton();
 	JButton cancelButton=new JButton();
 	JButton removeButton=new JButton();
+  JButton addButton = new JButton();
 
 	void editButton_actionPerformed(ActionEvent e) {
 		editCurrent();
@@ -119,6 +128,10 @@ public class GenericListFrame extends javax.swing.JInternalFrame {
 		} else if (e.getKeyCode() == KeyEvent.VK_ENTER) {
 			editCurrent();
 		}
+	}
+
+	void addButton_actionPerformed(ActionEvent e) {
+tableModel.getEditor().editNew();
 	}
 }
 
