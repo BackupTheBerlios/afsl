@@ -5,6 +5,7 @@ import transport.client.GenericEditor;
 import transport.server.TransportFactory;
 import transport.logic.Transport;
 import transport.client.TransportEditor;
+import transport.logic.LogicItem;
 
 /**
  * <p>Title: Festival Logistics System</p>
@@ -178,4 +179,29 @@ public class ViewTransportByFunctionaryTableModel
     fireTableDataChanged();
   }
 
+	/**
+	 * resizeArray
+	 *
+	 * @param len int
+	 * @return LogicItem[]
+	 */
+	protected LogicItem[] resizeArray(int len) {
+		return new Transport[len];
+	}
+
+	/**
+	 * remove
+	 *
+	 * @param o LogicItem
+	 */
+	protected void remove(LogicItem o) {
+	}
+
+	/**
+	 * insert
+	 *
+	 * @param o LogicItem
+	 */
+	protected void insert(LogicItem o) {
+	}
 }
