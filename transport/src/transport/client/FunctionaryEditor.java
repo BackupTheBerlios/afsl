@@ -123,6 +123,8 @@ public class FunctionaryEditor extends GenericEditor {
 		RoleFactory rf=new RoleFactory();
 		Role[] roles=rf.getAllRoles();
 
+                roleCombo.removeAllItems();
+
 		for (int i=0; i < roles.length; i++) {
 			roleCombo.addItem(roles[i]);
 		}
