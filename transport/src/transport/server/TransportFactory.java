@@ -93,7 +93,7 @@ public class TransportFactory {
     try {
       Connection conn = ConnectionFactory.getConnection();
       PreparedStatement st = conn.prepareStatement(
-          "select * from transports");
+          "select * from transports order by start_time");
       ResultSet rs = st.executeQuery();
       while (rs.next()) {
         a.add(newTransport(rs.getInt(1), rs.getTimestamp(2), rs.getTimestamp(3),
