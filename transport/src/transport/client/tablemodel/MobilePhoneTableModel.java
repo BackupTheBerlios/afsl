@@ -4,6 +4,7 @@ import transport.logic.MobilePhone;
 import transport.server.MobilePhoneFactory;
 import javax.swing.JInternalFrame;
 import transport.client.MobilePhoneEditor;
+import transport.client.GenericEditor;
 
 public class MobilePhoneTableModel extends GenericTableModel {
 	private MobilePhoneFactory af;
@@ -14,8 +15,8 @@ public class MobilePhoneTableModel extends GenericTableModel {
 		rowData=af.getAllMobilePhones();
 	}
 
-	public JInternalFrame getEditor() {
-		return (JInternalFrame)new MobilePhoneEditor();
+	public GenericEditor getEditor() {
+		return new MobilePhoneEditor();
 	}
 
 	public MobilePhone getRowData(int row) {

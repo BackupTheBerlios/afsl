@@ -6,17 +6,24 @@
 
 package transport.client;
 
+import transport.logic.Functionary;
+import transport.server.FunctionaryFactory;
+
 /**
  *
  * @author  ola
  */
-public class FunctionaryEditor extends javax.swing.JInternalFrame {
-	
-	/** Creates new form AddFunctionary */
+public class FunctionaryEditor extends GenericEditor {
+
 	public FunctionaryEditor() {
+		this (new Functionary());
+	}
+
+	/** Creates new form AddFunctionary */
+	public FunctionaryEditor(Functionary functionary) {
 		jbInit();
 	}
-	
+
 	/** This method is called from within the constructor to
 	 * initialize the form.
 	 * WARNING: Do NOT modify this code. The content of this method is
@@ -67,8 +74,8 @@ public class FunctionaryEditor extends javax.swing.JInternalFrame {
 
                 pack();
         }//GEN-END:jbInit
-	
-	
+
+
         // Variables declaration - do not modify//GEN-BEGIN:variables
         private javax.swing.JButton jButton1;
         private javax.swing.JButton jButton2;
@@ -80,6 +87,15 @@ public class FunctionaryEditor extends javax.swing.JInternalFrame {
         private javax.swing.JPanel jPanel1;
         private javax.swing.JPanel jPanel2;
         private javax.swing.JTextField jTextField1;
-        // End of variables declaration//GEN-END:variables
-	
+
+	/**
+	 * edit
+	 *
+	 * @param o Object
+	 */
+	public void edit(Object o) {
+	}
+
+	// End of variables declaration//GEN-END:variables
+
 }

@@ -4,6 +4,7 @@ import transport.logic.*;
 import transport.server.TransportFactory;
 import javax.swing.JInternalFrame;
 import transport.client.TransportEditor;
+import transport.client.GenericEditor;
 
 public class TransportTableModel extends GenericTableModel {
 	private TransportFactory tf;
@@ -14,8 +15,8 @@ public class TransportTableModel extends GenericTableModel {
 		rowData=tf.getAllTransports();
 	}
 
-	public JInternalFrame getEditor() {
-		return (JInternalFrame)new TransportEditor();
+	public GenericEditor getEditor() {
+		return new TransportEditor();
 	}
 
 	public Transport getRowData(int row) {

@@ -7,7 +7,6 @@
 package transport.client;
 
 import javax.swing.*;
-
 import transport.logic.*;
 import transport.server.*;
 
@@ -15,7 +14,7 @@ import transport.server.*;
  *
  * @author  ola
  */
-public class ArtistEditor extends javax.swing.JInternalFrame {
+public class ArtistEditor extends GenericEditor {
 	private Artist artist;
 
 	public ArtistEditor() {
@@ -251,6 +250,15 @@ public class ArtistEditor extends javax.swing.JInternalFrame {
 	private javax.swing.JTextField nameText;
 	private javax.swing.JButton okButton;
 	private javax.swing.JFormattedTextField phoneNumberText;
+
+	/**
+	 * edit
+	 *
+	 * @param o Object
+	 */
+	public void edit(Object o) {
+	}
+
 	// End of variables declaration//GEN-END:variables
 
 }

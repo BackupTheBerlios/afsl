@@ -4,6 +4,7 @@ import transport.logic.Functionary;
 import transport.server.FunctionaryFactory;
 import javax.swing.JInternalFrame;
 import transport.client.FunctionaryEditor;
+import transport.client.GenericEditor;
 
 public class FunctionaryTableModel extends GenericTableModel {
 	private FunctionaryFactory af;
@@ -14,8 +15,8 @@ public class FunctionaryTableModel extends GenericTableModel {
 		rowData=af.getAllFunctionaries();
 	}
 
-	public JInternalFrame getEditor() {
-		return (JInternalFrame)new FunctionaryEditor();
+	public GenericEditor getEditor() {
+		return new FunctionaryEditor();
 	}
 
 	public Functionary getRowData(int row) {

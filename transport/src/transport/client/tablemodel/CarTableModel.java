@@ -4,6 +4,7 @@ import transport.logic.Car;
 import transport.server.CarFactory;
 import javax.swing.JInternalFrame;
 import transport.client.CarEditor;
+import transport.client.GenericEditor;
 
 public class CarTableModel extends GenericTableModel {
 	private CarFactory af;
@@ -14,8 +15,8 @@ public class CarTableModel extends GenericTableModel {
 		rowData=af.getAllCars();
 	}
 
-	public JInternalFrame getEditor() {
-		return (JInternalFrame)new CarEditor();
+	public GenericEditor getEditor() {
+		return new CarEditor();
 	}
 
 	public Car getRowData(int row) {

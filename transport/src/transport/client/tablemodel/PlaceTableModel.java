@@ -4,6 +4,7 @@ import transport.client.PlaceEditor;
 import transport.logic.Place;
 import transport.server.PlaceFactory;
 import javax.swing.JInternalFrame;
+import transport.client.GenericEditor;
 
 public class PlaceTableModel extends GenericTableModel {
 	private PlaceFactory af;
@@ -14,8 +15,8 @@ public class PlaceTableModel extends GenericTableModel {
 		rowData=af.getAllPlaces();
 	}
 
-	public JInternalFrame getEditor() {
-		return (JInternalFrame)new PlaceEditor();
+	public GenericEditor getEditor() {
+		return new PlaceEditor();
 	}
 
 	public Place getRowData(int row) {

@@ -6,17 +6,25 @@
 
 package transport.client;
 
+import transport.logic.Role;
+import transport.server.RoleFactory;
 /**
  *
  * @author  ola
  */
-public class RoleEditor extends javax.swing.JInternalFrame {
-	
-	/** Creates new form RoleEditor */
+public class RoleEditor extends GenericEditor {
+	Role role;
+
 	public RoleEditor() {
+		this(new Role());
+	}
+
+	/** Creates new form RoleEditor */
+	public RoleEditor(Role role) {
+		this.role=role;
 		jbInit();
 	}
-	
+
 	/** This method is called from within the constructor to
 	 * initialize the form.
 	 * WARNING: Do NOT modify this code. The content of this method is
@@ -58,8 +66,8 @@ public class RoleEditor extends javax.swing.JInternalFrame {
 
                 pack();
         }//GEN-END:jbInit
-	
-	
+
+
         // Variables declaration - do not modify//GEN-BEGIN:variables
         private javax.swing.JButton cancelButton;
         private javax.swing.JLabel jLabel1;
@@ -69,6 +77,15 @@ public class RoleEditor extends javax.swing.JInternalFrame {
         private javax.swing.JTextArea longDescrText;
         private javax.swing.JButton okButton;
         private javax.swing.JTextField shortDescrText;
-        // End of variables declaration//GEN-END:variables
-	
+
+	/**
+	 * edit
+	 *
+	 * @param o Object
+	 */
+	public void edit(Object o) {
+	}
+
+	// End of variables declaration//GEN-END:variables
+
 }

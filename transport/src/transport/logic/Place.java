@@ -12,7 +12,7 @@ public class Place {
 	public String toString() {
 		return name;
 	}
-	
+
 	/**
 	 * Get id.
 	 *
@@ -21,7 +21,7 @@ public class Place {
 	public int getId() {
 		return id;
 	}
-	
+
 	/**
 	 * Set id.
 	 *
@@ -30,7 +30,7 @@ public class Place {
 	public void setId(int id) {
 		this.id = id;
 	}
-	
+
 	/**
 	 * Get name.
 	 *
@@ -39,7 +39,7 @@ public class Place {
 	public String getName() {
 		return name;
 	}
-	
+
 	/**
 	 * Set name.
 	 *
@@ -47,5 +47,12 @@ public class Place {
 	 */
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	/**
+	 * Place
+	 */
+	public Place() {
+		this.id=-1;
 	}
 }

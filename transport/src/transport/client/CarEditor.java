@@ -14,7 +14,7 @@ import javax.swing.*;
  *
  * @author  ola
  */
-public class CarEditor extends javax.swing.JInternalFrame {
+public class CarEditor extends GenericEditor {
 	private Car car;
 
 	public CarEditor() {
@@ -141,6 +141,14 @@ public class CarEditor extends javax.swing.JInternalFrame {
         private javax.swing.JButton okButton;
         private javax.swing.JFormattedTextField seatNoText;
   JTextField regNoText = new JTextField();
-        // End of variables declaration//GEN-END:variables
+	/**
+	 * edit
+	 *
+	 * @param o Object
+	 */
+	public void edit(Object o) {
+	}
+
+	// End of variables declaration//GEN-END:variables
 
 }

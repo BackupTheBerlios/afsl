@@ -14,7 +14,7 @@ public class Role {
 	public String toString() {
 		return shortDescr;
 	}
-	
+
 	/**
 	 * Get id.
 	 *
@@ -23,7 +23,7 @@ public class Role {
 	public int getId() {
 		return id;
 	}
-	
+
 	/**
 	 * Set id.
 	 *
@@ -32,7 +32,7 @@ public class Role {
 	public void setId(int id) {
 		this.id = id;
 	}
-	
+
 	/**
 	 * Get shortDescr.
 	 *
@@ -41,7 +41,7 @@ public class Role {
 	public String getShortDescr() {
 		return shortDescr;
 	}
-	
+
 	/**
 	 * Set shortDescr.
 	 *
@@ -50,7 +50,7 @@ public class Role {
 	public void setShortDescr(String shortDescr) {
 		this.shortDescr = shortDescr;
 	}
-	
+
 	/**
 	 * Get longDescr.
 	 *
@@ -59,7 +59,7 @@ public class Role {
 	public String getLongDescr() {
 		return longDescr;
 	}
-	
+
 	/**
 	 * Set longDescr.
 	 *
@@ -67,6 +67,13 @@ public class Role {
 	 */
 	public void setLongDescr(String longDescr) {
 		this.longDescr = longDescr;
+	}
+
+	/**
+	 * Role
+	 */
+	public Role() {
+		this.id=-1;
 	}
 }
 

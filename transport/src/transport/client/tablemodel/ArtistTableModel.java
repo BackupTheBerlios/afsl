@@ -4,6 +4,7 @@ import transport.logic.Artist;
 import transport.server.ArtistFactory;
 import javax.swing.JInternalFrame;
 import transport.client.ArtistEditor;
+import transport.client.GenericEditor;
 
 public class ArtistTableModel extends GenericTableModel {
 	private ArtistFactory af;
@@ -14,8 +15,8 @@ public class ArtistTableModel extends GenericTableModel {
 		rowData=af.getAllArtists();
 	}
 
-	public JInternalFrame getEditor() {
-		return (JInternalFrame)new ArtistEditor();
+	public GenericEditor getEditor() {
+		return new ArtistEditor();
 	}
 
 	public Artist getRowData(int row) {

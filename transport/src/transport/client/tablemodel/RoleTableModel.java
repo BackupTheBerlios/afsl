@@ -4,6 +4,7 @@ import transport.logic.Role;
 import transport.server.RoleFactory;
 import javax.swing.JInternalFrame;
 import transport.client.RoleEditor;
+import transport.client.GenericEditor;
 
 public class RoleTableModel extends GenericTableModel {
 	private RoleFactory af;
@@ -14,8 +15,8 @@ public class RoleTableModel extends GenericTableModel {
 		rowData=af.getAllRoles();
 	}
 
-	public JInternalFrame getEditor() {
-		return (JInternalFrame)new RoleEditor();
+	public GenericEditor getEditor() {
+		return new RoleEditor();
 	}
 
 	public Role getRowData(int row) {

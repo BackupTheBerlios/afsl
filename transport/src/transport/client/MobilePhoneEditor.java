@@ -6,17 +6,25 @@
 
 package transport.client;
 
+import transport.logic.MobilePhone;
+import transport.server.MobilePhoneFactory;
+
 /**
  *
  * @author  ola
  */
-public class MobilePhoneEditor extends javax.swing.JInternalFrame {
-	
-	/** Creates new form MobilePhoneEditor */
+public class MobilePhoneEditor extends GenericEditor {
+	MobilePhone mobilePhone;
+
 	public MobilePhoneEditor() {
+		this(new MobilePhone());
+	}
+
+	/** Creates new form MobilePhoneEditor */
+	public MobilePhoneEditor(MobilePhone mobilePhone) {
 		jbInit();
 	}
-	
+
 	/** This method is called from within the constructor to
 	 * initialize the form.
 	 * WARNING: Do NOT modify this code. The content of this method is
@@ -51,8 +59,8 @@ public class MobilePhoneEditor extends javax.swing.JInternalFrame {
 
                 pack();
         }//GEN-END:jbInit
-	
-	
+
+
         // Variables declaration - do not modify//GEN-BEGIN:variables
         private javax.swing.JButton cancelButton;
         private javax.swing.JFormattedTextField jFormattedTextField1;
@@ -60,6 +68,15 @@ public class MobilePhoneEditor extends javax.swing.JInternalFrame {
         private javax.swing.JPanel jPanel1;
         private javax.swing.JPanel jPanel2;
         private javax.swing.JButton okButton;
-        // End of variables declaration//GEN-END:variables
-	
+
+	/**
+	 * edit
+	 *
+	 * @param o Object
+	 */
+	public void edit(Object o) {
+	}
+
+	// End of variables declaration//GEN-END:variables
+
 }

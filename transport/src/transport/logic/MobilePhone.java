@@ -12,7 +12,7 @@ public class MobilePhone {
 	public String toString() {
 		return number;
 	}
-	
+
 	/**
 	 * Get id.
 	 *
@@ -21,7 +21,7 @@ public class MobilePhone {
 	public int getId() {
 		return id;
 	}
-	
+
 	/**
 	 * Set id.
 	 *
@@ -30,7 +30,7 @@ public class MobilePhone {
 	public void setId(int id) {
 		this.id = id;
 	}
-	
+
 	/**
 	 * Get number.
 	 *
@@ -39,7 +39,7 @@ public class MobilePhone {
 	public String getNumber() {
 		return number;
 	}
-	
+
 	/**
 	 * Set number.
 	 *
@@ -47,6 +47,13 @@ public class MobilePhone {
 	 */
 	public void setNumber(String number) {
 		this.number = number;
+	}
+
+	/**
+	 * MobilePhone
+	 */
+	public MobilePhone() {
+		this.id=-1;
 	}
 }
 

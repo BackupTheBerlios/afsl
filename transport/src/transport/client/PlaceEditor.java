@@ -6,17 +6,26 @@
 
 package transport.client;
 
+import transport.logic.Place;
+import transport.server.PlaceFactory;
+
 /**
  *
  * @author  ola
  */
-public class PlaceEditor extends javax.swing.JInternalFrame {
-	
-	/** Creates new form PlaceEditor */
+public class PlaceEditor extends GenericEditor {
+	Place place;
+
 	public PlaceEditor() {
+		this(new Place());
+	}
+
+	/** Creates new form PlaceEditor */
+	public PlaceEditor(Place place) {
+		this.place=place;
 		jbInit();
 	}
-	
+
 	/** This method is called from within the constructor to
 	 * initialize the form.
 	 * WARNING: Do NOT modify this code. The content of this method is
@@ -50,8 +59,8 @@ public class PlaceEditor extends javax.swing.JInternalFrame {
 
                 pack();
         }//GEN-END:jbInit
-	
-	
+
+
         // Variables declaration - do not modify//GEN-BEGIN:variables
         private javax.swing.JButton cancelButton;
         private javax.swing.JLabel jLabel1;
@@ -59,6 +68,15 @@ public class PlaceEditor extends javax.swing.JInternalFrame {
         private javax.swing.JPanel jPanel2;
         private javax.swing.JTextArea nameText;
         private javax.swing.JButton okButton;
-        // End of variables declaration//GEN-END:variables
-	
+
+	/**
+	 * edit
+	 *
+	 * @param o Object
+	 */
+	public void edit(Object o) {
+	}
+
+	// End of variables declaration//GEN-END:variables
+
 }
