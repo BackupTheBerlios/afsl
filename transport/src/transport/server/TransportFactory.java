@@ -25,7 +25,6 @@ public class TransportFactory {
 								   java.util.Date returnTime,
 								   java.util.Date actualReturnTime,
 								   boolean internal,
-								   int mobilePhoneId,
 								   String miscInfo,
 								   Connection conn) throws SQLException {
 		Transport t;
@@ -72,8 +71,7 @@ public class TransportFactory {
 						   rs.getDate(3),
 						   rs.getDate(4),
 						   rs.getBoolean(5),
-						   rs.getInt(6),
-						   rs.getString(7),
+						   rs.getString(6),
 						   conn);
 
 		} catch (SQLException e) {
@@ -98,7 +96,7 @@ public class TransportFactory {
 			while (rs.next()) {
 				newTransport(rs.getInt(1), rs.getDate(2), rs.getDate(3),
 							 rs.getDate(4),
-							 rs.getBoolean(5), rs.getInt(6), rs.getString(7),
+							 rs.getBoolean(5), rs.getString(6),
 							 conn);
 			}
 		} catch (SQLException e) {

@@ -9,6 +9,7 @@ package transport.client;
 import transport.logic.*;
 import java.awt.*;
 import javax.swing.*;
+import java.awt.event.*;
 
 /**
  *
@@ -52,16 +53,20 @@ public class TransportEditor extends GenericEditor {
 
 		okButton.setMnemonic('O');
 		okButton.setText("OK");
+    okButton.addActionListener(new TransportEditor_okButton_actionAdapter(this));
 		gridLayout1.setColumns(2);
-    gridLayout1.setRows(11);
-    internalBox.setActionCommand("internalBox");
-    internalBox.setHorizontalAlignment(SwingConstants.CENTER);
-    internalBox.setText("");
-    distanceText.setEnabled(false);
-    distanceText.setText("");
-    distanceText.setHorizontalAlignment(SwingConstants.TRAILING);
-    miscInfoText.setRequestFocusEnabled(true);
-    this.setResizable(true);
+		gridLayout1.setRows(11);
+		internalBox.setActionCommand("internalBox");
+		internalBox.setHorizontalAlignment(SwingConstants.CENTER);
+		internalBox.setText("");
+		distanceText.setEnabled(false);
+		distanceText.setEditable(false);
+		distanceText.setText("");
+		distanceText.setHorizontalAlignment(SwingConstants.TRAILING);
+		miscInfoText.setRequestFocusEnabled(true);
+		this.setClosable(true);
+		this.setResizable(true);
+		cancelButton.addActionListener(new TransportEditor_cancelButton_actionAdapter(this));
     jPanel2.add(okButton);
 
 		cancelButton.setMnemonic('C');
@@ -72,14 +77,13 @@ public class TransportEditor extends GenericEditor {
 
 		jPanel3.setLayout(gridLayout1);
 
-
 		jLabel1.setText("Artists");
 
 		jLabel2.setText("Cars");
-    jPanel3.add(jLabel1, null);
-    jPanel3.add(artistsChooser, null);
-    jPanel3.add(jLabel2, null);
-    jPanel3.add(carsChooser, null);
+		jPanel3.add(jLabel1, null);
+		jPanel3.add(artistsChooser, null);
+		jPanel3.add(jLabel2, null);
+		jPanel3.add(carsChooser, null);
 
 		jLabel3.setText("Functionaries");
 
@@ -110,13 +114,13 @@ public class TransportEditor extends GenericEditor {
 		jPanel3.add(jLabel6, null);
 		jPanel3.add(mobilePhonesChooser, null);
 		jPanel3.add(jLabel7, null);
-		jPanel3.add(pickDateTimeCombo1, null);
+		jPanel3.add(startTimeCombo, null);
 		jPanel3.add(jLabel9, null);
-		jPanel3.add(pickDateTimeCombo2, null);
+		jPanel3.add(returnTimeCombo, null);
 		jPanel3.add(jLabel8, null);
 		jPanel3.add(distanceText, null);
 		jPanel3.add(jLabel10, null);
-		jPanel3.add(pickDateTimeCombo3, null);
+		jPanel3.add(actualReturnTimeCombo, null);
 		jPanel3.add(jLabel11, null);
 		jPanel3.add(jScrollPane1, null);
 		jScrollPane1.getViewport().add(miscInfoText, null);
@@ -140,37 +144,46 @@ public class TransportEditor extends GenericEditor {
 	private javax.swing.JPanel jPanel2;
 	private javax.swing.JPanel jPanel3;
 	private javax.swing.JButton okButton;
-  GridLayout gridLayout1 = new GridLayout();
-  MultipleChooser artistsChooser = new MultipleChooser(new Artist());
-  MultipleChooser carsChooser = new MultipleChooser(new Car());
-  MultipleChooser functionariesChooser = new MultipleChooser(new Functionary());
-  JCheckBox internalBox = new JCheckBox();
-  MultipleChooser waypointsChooser = new MultipleChooser(new TransportWaypoint());
-  MultipleChooser mobilePhonesChooser = new MultipleChooser(new MobilePhone());
-  PickDateTimeCombo pickDateTimeCombo1 = new PickDateTimeCombo();
-  PickDateTimeCombo pickDateTimeCombo2 = new PickDateTimeCombo();
-  JTextField distanceText = new JTextField();
-  PickDateTimeCombo pickDateTimeCombo3 = new PickDateTimeCombo();
-  JScrollPane jScrollPane1 = new JScrollPane();
-  JTextArea miscInfoText = new JTextArea();
+	GridLayout gridLayout1=new GridLayout();
+	MultipleChooser artistsChooser=new MultipleChooser(new Artist());
+	MultipleChooser carsChooser=new MultipleChooser(new Car());
+	MultipleChooser functionariesChooser=new MultipleChooser(new Functionary());
+	JCheckBox internalBox=new JCheckBox();
+	MultipleChooser waypointsChooser=new MultipleChooser(new TransportWaypoint());
+	MultipleChooser mobilePhonesChooser=new MultipleChooser(new MobilePhone());
+	PickDateTimeCombo startTimeCombo=new PickDateTimeCombo();
+	PickDateTimeCombo returnTimeCombo=new PickDateTimeCombo();
+	JTextField distanceText=new JTextField();
+	PickDateTimeCombo actualReturnTimeCombo=new PickDateTimeCombo();
+	JScrollPane jScrollPane1=new JScrollPane();
+	JTextArea miscInfoText=new JTextArea();
 
-	/**
+/**
 	 * edit
 	 *
 	 * @param o Object
 	 */
 	public void edit(Object o) {
-		/*if (artist.getId() == -1) {
-		 this.setTitle("Add an artist");
-		 okButton.setText("New");
-		 okButton.setMnemonic('N');
-		 } else {
-		 this.setTitle("Update an artist");
-		 okButton.setText("Update");
-		 okButton.setMnemonic('U');
+		if (transport.getId() == -1) {
+			this.setTitle("Add a transport");
+			okButton.setText("New");
+			okButton.setMnemonic('N');
+		} else {
+			this.setTitle("Update a transport");
+			okButton.setText("Update");
+			okButton.setMnemonic('U');
 
-
-		 }*/
+			artistsChooser.addObjects(transport.getArtists());
+			carsChooser.addObjects(transport.getCars());
+			functionariesChooser.addObjects(transport.getFunctionaries());
+			internalBox.setSelected(transport.getInternal());
+			waypointsChooser.addObjects(transport.getWaypoints());
+			mobilePhonesChooser.addObjects(transport.getMobilePhones());
+			startTimeCombo.setDate(transport.getStartTime());
+			returnTimeCombo.setDate(transport.getReturnTime());
+			actualReturnTimeCombo.setDate(transport.getActualReturnTime());
+			miscInfoText.setText(transport.getMiscInfo());
+		}
 
 	}
 
@@ -181,6 +194,47 @@ public class TransportEditor extends GenericEditor {
 		edit(null);
 	}
 
+  void cancelButton_actionPerformed(ActionEvent e) {
+	  this.dispose();
+  }
+
+  void okButton_actionPerformed(ActionEvent e) {
+	  transport.setArtists((Artist[])artistsChooser.getObjects());
+	  transport.setCars((Car[])carsChooser.getObjects());
+	  transport.setFunctionaries((Functionary[])functionariesChooser.getObjects());
+	  transport.setInternal(internalBox.isSelected());
+	  transport.setWaypoints((TransportWaypoint[])waypointsChooser.getObjects());
+	  transport.setMobilePhones((MobilePhone[])mobilePhonesChooser.getObjects());
+	  transport.setStartTime(startTimeCombo.getDate());
+	  transport.setReturnTime(returnTimeCombo.getDate());
+	  transport.setActualReturnTime(actualReturnTimeCombo.getDate());
+	  transport.setMiscInfo(miscInfoText.getText());
+
+	  this.dispose();
+  }
+
 	// End of variables declaration//GEN-END:variables
 
+}
+
+class TransportEditor_cancelButton_actionAdapter implements java.awt.event.ActionListener {
+  TransportEditor adaptee;
+
+  TransportEditor_cancelButton_actionAdapter(TransportEditor adaptee) {
+    this.adaptee = adaptee;
+  }
+  public void actionPerformed(ActionEvent e) {
+    adaptee.cancelButton_actionPerformed(e);
+  }
+}
+
+class TransportEditor_okButton_actionAdapter implements java.awt.event.ActionListener {
+  TransportEditor adaptee;
+
+  TransportEditor_okButton_actionAdapter(TransportEditor adaptee) {
+    this.adaptee = adaptee;
+  }
+  public void actionPerformed(ActionEvent e) {
+    adaptee.okButton_actionPerformed(e);
+  }
 }

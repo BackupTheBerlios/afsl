@@ -154,16 +154,13 @@ public class GenericListFrame extends javax.swing.JInternalFrame {
 	}
 
 	void removeButton_actionPerformed(ActionEvent e) {
-		/*
-		javax.swing.JOptionPane.showOptionDialog(
-			  (Component)this.getTopLevelAncestor(),
-			  "Are you sure?",
-			  "Deleting...",
-			  JOptionPane.WARNING_MESSAGE,
-			  JOptionPane.YES_NO_OPTION,
-			  null,
-			  null);
-*/
+		int returnValue = JOptionPane.showConfirmDialog(
+			  this.getTopLevelAncestor(), "Are you sure?",
+			  "Deletion", JOptionPane.YES_NO_OPTION );
+
+		if (returnValue == 1) {
+			return;
+		}
 
 		removeCurrent();
 		tableModel.fireTableDataChanged();

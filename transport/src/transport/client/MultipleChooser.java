@@ -6,8 +6,6 @@
 
 package transport.client;
 
-import java.util.*;
-
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -135,6 +133,17 @@ public class MultipleChooser extends javax.swing.JPanel {
 
 	public Object[] getObjects() {
 		return listModel.toArray();
+	}
+
+	/**
+	 * addObjects
+	 *
+	 * @param objects Object[]
+	 */
+	public void addObjects(Object[] objects) {
+		for (int i=0; i < objects.length; i++) {
+			add(objects[i]);
+		}
 	}
 }
 
