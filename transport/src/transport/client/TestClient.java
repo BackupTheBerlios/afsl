@@ -1,6 +1,5 @@
 package transport.client;
 
-import transport.logic.*;
 import transport.server.*;
 
 public class TestClient {
@@ -10,4 +9,3 @@ public class TestClient {
 		TransportFactory tf=new TransportFactory();
 	}
 }
-

@@ -1,6 +1,6 @@
 package transport.logic;
 
-import java.util.Date;
+import java.util.*;
 
 public class Functionary {
 	private int id;
@@ -9,7 +9,7 @@ public class Functionary {
 	private Date stopsWork;
 	private Role role;
 
-	public Functionary(int id, String name, Date beginsWork, 
+	public Functionary(int id, String name, Date beginsWork,
 					   Date stopsWork, Role role) {
 		this.id=id;
 		this.name=name;
@@ -19,13 +19,13 @@ public class Functionary {
 	}
 
 	public Functionary() {
-		id=-1;
+		id= -1;
 	}
 
 	public String toString() {
 		return name;
 	}
-	
+
 	/**
 	 * Get id.
 	 *
@@ -34,16 +34,16 @@ public class Functionary {
 	public int getId() {
 		return id;
 	}
-	
+
 	/**
 	 * Set id.
 	 *
 	 * @param id the value to set.
 	 */
 	public void setId(int id) {
-		this.id = id;
+		this.id=id;
 	}
-	
+
 	/**
 	 * Get name.
 	 *
@@ -52,16 +52,16 @@ public class Functionary {
 	public String getName() {
 		return name;
 	}
-	
+
 	/**
 	 * Set name.
 	 *
 	 * @param name the value to set.
 	 */
 	public void setName(String name) {
-		this.name = name;
+		this.name=name;
 	}
-	
+
 	/**
 	 * Get beginsWork.
 	 *
@@ -70,16 +70,16 @@ public class Functionary {
 	public Date getBeginsWork() {
 		return beginsWork;
 	}
-	
+
 	/**
 	 * Set beginsWork.
 	 *
 	 * @param beginsWork the value to set.
 	 */
 	public void setBeginsWork(Date beginsWork) {
-		this.beginsWork = beginsWork;
+		this.beginsWork=beginsWork;
 	}
-	
+
 	/**
 	 * Get stopsWork.
 	 *
@@ -88,16 +88,16 @@ public class Functionary {
 	public Date getStopsWork() {
 		return stopsWork;
 	}
-	
+
 	/**
 	 * Set stopsWork.
 	 *
 	 * @param stopsWork the value to set.
 	 */
 	public void setStopsWork(Date stopsWork) {
-		this.stopsWork = stopsWork;
+		this.stopsWork=stopsWork;
 	}
-	
+
 	/**
 	 * Get role.
 	 *
@@ -106,14 +106,13 @@ public class Functionary {
 	public Role getRole() {
 		return role;
 	}
-	
+
 	/**
 	 * Set role.
 	 *
 	 * @param role the value to set.
 	 */
 	public void setRole(Role role) {
-		this.role = role;
+		this.role=role;
 	}
 }
-

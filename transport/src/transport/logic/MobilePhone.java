@@ -28,7 +28,7 @@ public class MobilePhone {
 	 * @param id the value to set.
 	 */
 	public void setId(int id) {
-		this.id = id;
+		this.id=id;
 	}
 
 	/**
@@ -46,14 +46,13 @@ public class MobilePhone {
 	 * @param number the value to set.
 	 */
 	public void setNumber(String number) {
-		this.number = number;
+		this.number=number;
 	}
 
 	/**
 	 * MobilePhone
 	 */
 	public MobilePhone() {
-		this.id=-1;
+		this.id= -1;
 	}
 }
-

@@ -1,9 +1,9 @@
 package transport.server;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.Date;
+import java.util.*;
 import java.util.logging.*;
+
 import transport.logic.*;
 
 public class RoleFactory {
@@ -18,9 +18,10 @@ public class RoleFactory {
 
 		try {
 			Connection conn=ConnectionFactory.getConnection();
-			PreparedStatement st=conn.prepareStatement("select * from roles where id = ?");
+			PreparedStatement st=conn.prepareStatement(
+				"select * from roles where id = ?");
 
-			st.setInt(1,id);
+			st.setInt(1, id);
 			ResultSet rs=st.executeQuery();
 			rs.first();
 			c=new Role(id, rs.getString(2), rs.getString(3));
@@ -59,9 +60,10 @@ public class RoleFactory {
 	public Role newRole(Role newRole) {
 		try {
 			Connection conn=ConnectionFactory.getConnection();
-			PreparedStatement st=conn.prepareStatement("insert into roles (short_descr, long_descr) values ( ? , ? )");
-			st.setString(1,newRole.getShortDescr());
-			st.setString(2,newRole.getLongDescr());
+			PreparedStatement st=conn.prepareStatement(
+				"insert into roles (short_descr, long_descr) values ( ? , ? )");
+			st.setString(1, newRole.getShortDescr());
+			st.setString(2, newRole.getLongDescr());
 			// FIXME: error checking, damnit!
 			st.executeUpdate();
 
@@ -81,10 +83,11 @@ public class RoleFactory {
 	public void updateRole(Role updatedRole) {
 		try {
 			Connection conn=ConnectionFactory.getConnection();
-			PreparedStatement st=conn.prepareStatement("update roles set short_descr = ? , long_descr = ?  where id = ?");
-			st.setString(1,updatedRole.getShortDescr());
-			st.setString(2,updatedRole.getLongDescr());
-			st.setInt(3,updatedRole.getId());
+			PreparedStatement st=conn.prepareStatement(
+				"update roles set short_descr = ? , long_descr = ?  where id = ?");
+			st.setString(1, updatedRole.getShortDescr());
+			st.setString(2, updatedRole.getLongDescr());
+			st.setInt(3, updatedRole.getId());
 
 			conn.close();
 		} catch (SQLException e) {
@@ -92,5 +95,3 @@ public class RoleFactory {
 		}
 	}
 }
-
-

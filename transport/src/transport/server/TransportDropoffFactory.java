@@ -1,8 +1,8 @@
 package transport.server;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.logging.*;
+import java.util.*;
+
 import transport.logic.*;
 
 public class TransportDropoffFactory {
@@ -12,15 +12,16 @@ public class TransportDropoffFactory {
 
 		Connection conn=ConnectionFactory.getConnection();
 
-		PreparedStatement ps=conn.prepareStatement("select * from transport_dropoffs where transport_id = ?");
-		ps.setInt(1,transportId);
+		PreparedStatement ps=conn.prepareStatement(
+			"select * from transport_dropoffs where transport_id = ?");
+		ps.setInt(1, transportId);
 		ResultSet rs=ps.executeQuery();
 
-	 	while (rs.next()) {
-			a.add(new TransportDropoff(pf.getPlace(rs.getInt("place_id")),rs.getDate("dropoff_time")));
+		while (rs.next()) {
+			a.add(new TransportDropoff(pf.getPlace(rs.getInt("place_id")),
+									   rs.getDate("dropoff_time")));
 		}
 
 		return (TransportDropoff[])a.toArray();
 	}
 }
-

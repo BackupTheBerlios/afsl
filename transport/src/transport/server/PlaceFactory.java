@@ -1,8 +1,9 @@
 package transport.server;
 
 import java.sql.*;
-import java.util.ArrayList;
+import java.util.*;
 import java.util.logging.*;
+
 import transport.logic.*;
 
 public class PlaceFactory {
@@ -14,17 +15,19 @@ public class PlaceFactory {
 
 	public Place getPlace(int id) {
 		Place p=null;
-		logger.entering("PlaceFactory","getPlace("+id+")");
+		logger.entering("PlaceFactory", "getPlace(" + id + ")");
 
 		try {
 			Connection conn=ConnectionFactory.getConnection();
-			PreparedStatement st=conn.prepareStatement("select * from places where id = ?");
+			PreparedStatement st=conn.prepareStatement(
+				"select * from places where id = ?");
 
-			st.setInt(1,id);
+			st.setInt(1, id);
 			ResultSet rs=st.executeQuery();
 
 			if (!rs.next()) {
-				logger.log(Level.WARNING,"No rows returned for getPlace("+id+"), returning null.");
+				logger.log(Level.WARNING,
+						   "No rows returned for getPlace(" + id + "), returning null.");
 				return null;
 			}
 
@@ -64,8 +67,9 @@ public class PlaceFactory {
 	public Place newPlace(Place newPlace) {
 		try {
 			Connection conn=ConnectionFactory.getConnection();
-			PreparedStatement st=conn.prepareStatement("insert into places (name) values ( ? )");
-			st.setString(1,newPlace.getName());
+			PreparedStatement st=conn.prepareStatement(
+				"insert into places (name) values ( ? )");
+			st.setString(1, newPlace.getName());
 			// FIXME: error checking, damnit!
 			st.executeUpdate();
 
@@ -86,9 +90,10 @@ public class PlaceFactory {
 	public void updatePlace(Place updatedPlace) {
 		try {
 			Connection conn=ConnectionFactory.getConnection();
-			PreparedStatement st=conn.prepareStatement("update places set name = ? where id = ?");
-			st.setString(1,updatedPlace.getName());
-			st.setInt(2,updatedPlace.getId());
+			PreparedStatement st=conn.prepareStatement(
+				"update places set name = ? where id = ?");
+			st.setString(1, updatedPlace.getName());
+			st.setInt(2, updatedPlace.getId());
 
 			conn.close();
 		} catch (SQLException e) {
@@ -96,4 +101,3 @@ public class PlaceFactory {
 		}
 	}
 }
-

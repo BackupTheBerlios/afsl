@@ -12,6 +12,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import transport.client.tablemodel.*;
+import javax.swing.JDesktopPane;
 
 /**
  *
@@ -28,12 +29,17 @@ public class GenericListFrame extends javax.swing.JInternalFrame {
 		jbInit();
 	}
 
-        public void setTitle(String title){
-          super.setTitle(title);
-          this.artistTable.setToolTipText(title);
-        }
+	public void setTitle(String title) {
+		super.setTitle(title);
+		this.objectTable.setToolTipText(title);
+	}
+
 	private void editCurrent() {
-//		tableModel.get
+		GenericEditor editor=tableModel.getEditor();
+		editor.edit(tableModel.getRowData(objectTable.getSelectedRow()));
+		MainFrame w=(MainFrame)this.getTopLevelAncestor();
+		w.addToDesktop(editor);
+		editor.show();
 	}
 
 	private void removeCurrent() {
@@ -44,32 +50,32 @@ public class GenericListFrame extends javax.swing.JInternalFrame {
 	 */
 	private void jbInit() {
 		jScrollPane1=new javax.swing.JScrollPane();
-		artistTable=new javax.swing.JTable();
+		objectTable=new javax.swing.JTable();
 
-		artistTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		artistTable.setRowSelectionAllowed(true);
-		artistTable.addKeyListener(new java.awt.event.KeyAdapter() {
+		objectTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		objectTable.setRowSelectionAllowed(true);
+		objectTable.addKeyListener(new java.awt.event.KeyAdapter() {
 			public void keyTyped(KeyEvent e) {
-				artistTable_keyTyped(e);
+				objectTable_keyTyped(e);
 			}
 		});
-		artistTable.setCellSelectionEnabled(false);
-		artistTable.setColumnSelectionAllowed(false);
+		objectTable.setCellSelectionEnabled(false);
+		objectTable.setColumnSelectionAllowed(false);
 
 		setClosable(true);
 		setResizable(true);
 
 		setAutoscrolls(true);
-		artistTable.setModel(tableModel);
+		objectTable.setModel(tableModel);
 
-		artistTable.setCellSelectionEnabled(true);
-		artistTable.addMouseListener(new java.awt.event.MouseAdapter() {
+		objectTable.setCellSelectionEnabled(true);
+		objectTable.addMouseListener(new java.awt.event.MouseAdapter() {
 			public void mouseClicked(java.awt.event.MouseEvent evt) {
-				artistTableMouseClicked(evt);
+				objectTableMouseClicked(evt);
 			}
 		});
 
-		jScrollPane1.setViewportView(artistTable);
+		jScrollPane1.setViewportView(objectTable);
 
 		editButton.setText("Edit");
 		editButton.addActionListener(new java.awt.event.ActionListener() {
@@ -84,45 +90,43 @@ public class GenericListFrame extends javax.swing.JInternalFrame {
 
 		removeButton.setMnemonic('R');
 		removeButton.setText("Remove");
-        addButton.setMnemonic('A');
-    editButton.setText("Add");
-    addButton.addActionListener(new java.awt.event.ActionListener() {
-      public void actionPerformed(ActionEvent e) {
-        addButton_actionPerformed(e);
-      }
-    });
-    getContentPane().add(jScrollPane1, java.awt.BorderLayout.CENTER);
+		addButton.setMnemonic('A');
+		addButton.setText("Add");
+		addButton.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				addButton_actionPerformed(e);
+			}
+		});
+		getContentPane().add(jScrollPane1, java.awt.BorderLayout.CENTER);
 		this.getContentPane().add(jPanel1, BorderLayout.SOUTH);
+		jPanel1.add(addButton, null);
 		jPanel1.add(editButton, null);
-    jPanel1.add(editButton, null);
 		jPanel1.add(removeButton, null);
 		jPanel1.add(cancelButton, null);
 
 		pack();
 	}
 
-	private void artistTableMouseClicked(java.awt.event.MouseEvent evt) {
+	private void objectTableMouseClicked(java.awt.event.MouseEvent evt) {
 		if (evt.getClickCount() == 2) {
-			//ArtistEditor ae=new ArtistEditor(artistTable.getModel().getRowData(artistTable.getSelectedRow()));
-			JInternalFrame jit=tableModel.getEditor();
-
+			editCurrent();
 		}
 	}
 
 	// Variables declaration - do not modify//GEN-BEGIN:variables
-	private javax.swing.JTable artistTable;
+	private javax.swing.JTable objectTable;
 	private javax.swing.JScrollPane jScrollPane1;
 	JPanel jPanel1=new JPanel();
 	JButton editButton=new JButton();
 	JButton cancelButton=new JButton();
 	JButton removeButton=new JButton();
-  JButton addButton = new JButton();
+	JButton addButton=new JButton();
 
 	void editButton_actionPerformed(ActionEvent e) {
 		editCurrent();
 	}
 
-	void artistTable_keyTyped(KeyEvent e) {
+	void objectTable_keyTyped(KeyEvent e) {
 		if (e.getKeyCode() == KeyEvent.VK_DELETE) {
 			removeCurrent();
 		} else if (e.getKeyCode() == KeyEvent.VK_ENTER) {
@@ -131,7 +135,11 @@ public class GenericListFrame extends javax.swing.JInternalFrame {
 	}
 
 	void addButton_actionPerformed(ActionEvent e) {
-tableModel.getEditor().editNew();
+		GenericEditor editor=tableModel.getEditor();
+		editor.editNew();
+		MainFrame w=(MainFrame)this.getTopLevelAncestor();
+		w.addToDesktop(editor);
+		editor.show();
 	}
 }
 

@@ -7,10 +7,12 @@
 package transport.client;
 
 import java.util.*;
-import javax.swing.*;
+
 import java.awt.*;
 import java.awt.event.*;
+import javax.swing.*;
 import javax.swing.border.*;
+import javax.swing.table.*;
 
 /**
  *
@@ -46,8 +48,8 @@ public class PickDateTime extends javax.swing.JPanel {
 		jPanel3=new javax.swing.JPanel();
 
 		titledBorder1=new TitledBorder("");
-		titledBorder2 = new TitledBorder("");
-    setLayout(new java.awt.BorderLayout());
+		titledBorder2=new TitledBorder("");
+		setLayout(new java.awt.BorderLayout());
 
 		setMinimumSize(new java.awt.Dimension(100, 100));
 		setPreferredSize(new java.awt.Dimension(100, 156));
@@ -64,7 +66,7 @@ public class PickDateTime extends javax.swing.JPanel {
 		cancelButton.addMouseListener(new
 									  PickDateTime_cancelButton_mouseAdapter(this));
 		dateLabel.setBorder(BorderFactory.createLoweredBevelBorder());
-    jPanel1.add(prevMonth);
+		jPanel1.add(prevMonth);
 		jPanel1.add(prevDay);
 		jPanel1.add(dateLabel);
 		jPanel1.add(nextDay, null);
@@ -111,7 +113,7 @@ public class PickDateTime extends javax.swing.JPanel {
 	JButton okButton=new JButton();
 	JButton cancelButton=new JButton();
 	TitledBorder titledBorder1;
-  TitledBorder titledBorder2;
+	TitledBorder titledBorder2;
 	// End of variables declaration//GEN-END:variables
 
 	private class DateTableModel extends javax.swing.table.AbstractTableModel {
@@ -141,7 +143,7 @@ public class PickDateTime extends javax.swing.JPanel {
 		}
 
 		public void incMonth() {
-			cal.add(Calendar.MONTH,1);
+			cal.add(Calendar.MONTH, 1);
 			Date time=cal.getTime();
 			fixMonth();
 			cal.setTime(time);
@@ -149,7 +151,7 @@ public class PickDateTime extends javax.swing.JPanel {
 		}
 
 		public void decMonth() {
-			cal.add(Calendar.MONTH,-1);
+			cal.add(Calendar.MONTH, -1);
 			Date time=cal.getTime();
 			fixMonth();
 			cal.setTime(time);
@@ -158,7 +160,7 @@ public class PickDateTime extends javax.swing.JPanel {
 
 		public void incDay() {
 			// FIXME: optimise
-			cal.add(Calendar.DATE,1);
+			cal.add(Calendar.DATE, 1);
 			Date time=cal.getTime();
 			fixMonth();
 			cal.setTime(time);
@@ -178,7 +180,7 @@ public class PickDateTime extends javax.swing.JPanel {
 			int i;
 			data=new String[6][8];
 
-			if (cal==null) {
+			if (cal == null) {
 				System.err.println("NULL NULL NULL!!!");
 				System.exit( -1);
 			}
@@ -194,7 +196,8 @@ public class PickDateTime extends javax.swing.JPanel {
 
 				setValueAt(new String("" + (i + 1)), row, col);
 				if (col == 7) {
-					setValueAt(new String("" + cal.get(Calendar.WEEK_OF_YEAR)), row, 0);
+					setValueAt(new String("" + cal.get(Calendar.WEEK_OF_YEAR)),
+							   row, 0);
 					row++;
 				}
 
@@ -203,7 +206,8 @@ public class PickDateTime extends javax.swing.JPanel {
 
 		}
 
-		public void addTableModelListener(javax.swing.event.TableModelListener l) {
+		public void addTableModelListener(javax.swing.event.TableModelListener
+										  l) {
 		}
 
 		public Class getColumnClass(int columnIndex) {
@@ -250,7 +254,8 @@ public class PickDateTime extends javax.swing.JPanel {
 			return false;
 		}
 
-		public void removeTableModelListener(javax.swing.event.TableModelListener l) {
+		public void removeTableModelListener(javax.swing.event.
+											 TableModelListener l) {
 		}
 
 		public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
@@ -259,9 +264,9 @@ public class PickDateTime extends javax.swing.JPanel {
 
 	}
 
-    void prevMonth_mouseClicked(MouseEvent e) {
+	void prevMonth_mouseClicked(MouseEvent e) {
 		table.decMonth();
-    }
+	}
 
 	void prevDay_mouseClicked(MouseEvent e) {
 		table.decDay();
@@ -278,7 +283,6 @@ public class PickDateTime extends javax.swing.JPanel {
 	void cancelButton_mouseClicked(MouseEvent e) {
 		this.setVisible(false);
 	}
-
 
 	void prevMonth_focusLost(FocusEvent e) {
 		prevMonth.setBorder(null);
@@ -342,81 +346,94 @@ public class PickDateTime extends javax.swing.JPanel {
 }
 
 class PickDateTime_prevMonth_mouseAdapter extends java.awt.event.MouseAdapter {
-    PickDateTime adaptee;
+	PickDateTime adaptee;
 
-    PickDateTime_prevMonth_mouseAdapter(PickDateTime adaptee) {
-	this.adaptee = adaptee;
-    }
-    public void mouseClicked(MouseEvent e) {
-	adaptee.prevMonth_mouseClicked(e);
-    }
-  public void mouseEntered(MouseEvent e) {
-    adaptee.prevMonth_mouseEntered(e);
-  }
-  public void mouseExited(MouseEvent e) {
-    adaptee.prevMonth_mouseExited(e);
-  }
+	PickDateTime_prevMonth_mouseAdapter(PickDateTime adaptee) {
+		this.adaptee=adaptee;
+	}
+
+	public void mouseClicked(MouseEvent e) {
+		adaptee.prevMonth_mouseClicked(e);
+	}
+
+	public void mouseEntered(MouseEvent e) {
+		adaptee.prevMonth_mouseEntered(e);
+	}
+
+	public void mouseExited(MouseEvent e) {
+		adaptee.prevMonth_mouseExited(e);
+	}
 }
 
 class PickDateTime_prevDay_mouseAdapter extends java.awt.event.MouseAdapter {
-  PickDateTime adaptee;
+	PickDateTime adaptee;
 
-  PickDateTime_prevDay_mouseAdapter(PickDateTime adaptee) {
-    this.adaptee = adaptee;
-  }
-  public void mouseClicked(MouseEvent e) {
-    adaptee.prevDay_mouseClicked(e);
-  }
-  public void mouseEntered(MouseEvent e) {
-    adaptee.prevDay_mouseEntered(e);
-  }
-  public void mouseExited(MouseEvent e) {
-    adaptee.prevDay_mouseExited(e);
-  }
+	PickDateTime_prevDay_mouseAdapter(PickDateTime adaptee) {
+		this.adaptee=adaptee;
+	}
+
+	public void mouseClicked(MouseEvent e) {
+		adaptee.prevDay_mouseClicked(e);
+	}
+
+	public void mouseEntered(MouseEvent e) {
+		adaptee.prevDay_mouseEntered(e);
+	}
+
+	public void mouseExited(MouseEvent e) {
+		adaptee.prevDay_mouseExited(e);
+	}
 }
 
 class PickDateTime_nextDay_mouseAdapter extends java.awt.event.MouseAdapter {
-  PickDateTime adaptee;
+	PickDateTime adaptee;
 
-  PickDateTime_nextDay_mouseAdapter(PickDateTime adaptee) {
-    this.adaptee = adaptee;
-  }
-  public void mouseClicked(MouseEvent e) {
-    adaptee.nextDay_mouseClicked(e);
-  }
-  public void mouseExited(MouseEvent e) {
-    adaptee.nextDay_mouseExited(e);
-  }
-  public void mouseEntered(MouseEvent e) {
-    adaptee.nextDay_mouseEntered(e);
-  }
+	PickDateTime_nextDay_mouseAdapter(PickDateTime adaptee) {
+		this.adaptee=adaptee;
+	}
+
+	public void mouseClicked(MouseEvent e) {
+		adaptee.nextDay_mouseClicked(e);
+	}
+
+	public void mouseExited(MouseEvent e) {
+		adaptee.nextDay_mouseExited(e);
+	}
+
+	public void mouseEntered(MouseEvent e) {
+		adaptee.nextDay_mouseEntered(e);
+	}
 }
 
 class PickDateTime_nextMonth_mouseAdapter extends java.awt.event.MouseAdapter {
-  PickDateTime adaptee;
+	PickDateTime adaptee;
 
-  PickDateTime_nextMonth_mouseAdapter(PickDateTime adaptee) {
-    this.adaptee = adaptee;
-  }
-  public void mouseClicked(MouseEvent e) {
-    adaptee.nextMonth_mouseClicked(e);
-  }
-  public void mouseEntered(MouseEvent e) {
-    adaptee.nextMonth_mouseEntered(e);
-  }
-  public void mouseExited(MouseEvent e) {
-    adaptee.nextMonth_mouseExited(e);
-  }
+	PickDateTime_nextMonth_mouseAdapter(PickDateTime adaptee) {
+		this.adaptee=adaptee;
+	}
+
+	public void mouseClicked(MouseEvent e) {
+		adaptee.nextMonth_mouseClicked(e);
+	}
+
+	public void mouseEntered(MouseEvent e) {
+		adaptee.nextMonth_mouseEntered(e);
+	}
+
+	public void mouseExited(MouseEvent e) {
+		adaptee.nextMonth_mouseExited(e);
+	}
 }
 
-class PickDateTime_cancelButton_mouseAdapter extends java.awt.event.MouseAdapter {
-  PickDateTime adaptee;
+class PickDateTime_cancelButton_mouseAdapter extends java.awt.event.
+	MouseAdapter {
+	PickDateTime adaptee;
 
-  PickDateTime_cancelButton_mouseAdapter(PickDateTime adaptee) {
-    this.adaptee = adaptee;
-  }
-  public void mouseClicked(MouseEvent e) {
-    adaptee.cancelButton_mouseClicked(e);
-  }
+	PickDateTime_cancelButton_mouseAdapter(PickDateTime adaptee) {
+		this.adaptee=adaptee;
+	}
+
+	public void mouseClicked(MouseEvent e) {
+		adaptee.cancelButton_mouseClicked(e);
+	}
 }
-

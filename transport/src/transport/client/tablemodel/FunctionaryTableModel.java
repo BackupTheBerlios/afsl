@@ -1,10 +1,8 @@
 package transport.client.tablemodel;
 
-import transport.logic.Functionary;
-import transport.server.FunctionaryFactory;
-import javax.swing.JInternalFrame;
-import transport.client.FunctionaryEditor;
-import transport.client.GenericEditor;
+import transport.client.*;
+import transport.logic.*;
+import transport.server.*;
 
 public class FunctionaryTableModel extends GenericTableModel {
 	private FunctionaryFactory af;
@@ -25,14 +23,14 @@ public class FunctionaryTableModel extends GenericTableModel {
 
 	public String getColumnName(int col) {
 		switch (col) {
-		case 0:
-			return "Name";
-		case 1:
-			return "Role";
-		case 2:
-			return "Begins working";
-		case 3:
-			return "Stops working";
+			case 0:
+				return "Name";
+			case 1:
+				return "Role";
+			case 2:
+				return "Begins working";
+			case 3:
+				return "Stops working";
 		}
 
 		return "FIXME";
@@ -49,14 +47,14 @@ public class FunctionaryTableModel extends GenericTableModel {
 	public Object getValueAt(int row, int col) {
 
 		switch (col) {
-		case 0:
-			return rowData[row].getName();
-		case 1:
-			return rowData[row].getRole();
-		case 2:
-			return rowData[row].getBeginsWork();
-		case 3:
-			return rowData[row].getStopsWork();
+			case 0:
+				return rowData[row].getName();
+			case 1:
+				return rowData[row].getRole();
+			case 2:
+				return rowData[row].getBeginsWork();
+			case 3:
+				return rowData[row].getStopsWork();
 		}
 
 		// FIXME: should not happen. Log error if it does.

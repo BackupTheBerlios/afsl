@@ -6,13 +6,12 @@
 
 package transport.client;
 
+import java.text.*;
+import java.util.*;
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-import javax.swing.event.*;
-import java.util.Date;
-import java.text.DateFormat;
-import java.text.*;
 
 /**
  *
@@ -65,9 +64,9 @@ public class PickDateTimeCombo extends javax.swing.JPanel {
 		evt) { //GEN-FIRST:event_launchPickDateTimeActionPerformed
 		if (pdtWin == null) {
 			PickDateTime pdt=new PickDateTime();
-			Window w= (Window)this.getTopLevelAncestor();
+			Window w=(Window)this.getTopLevelAncestor();
 			pdtWin=new JWindow(w);
-			JPanel contentPane= (JPanel) pdtWin.getContentPane();
+			JPanel contentPane=(JPanel)pdtWin.getContentPane();
 			contentPane.setLayout(new BorderLayout());
 			contentPane.add(pdt);
 			pdtWin.pack();
@@ -79,7 +78,7 @@ public class PickDateTimeCombo extends javax.swing.JPanel {
 		}
 
 		Point p=this.getLocationOnScreen();
-		pdtWin.setBounds( (int) p.getX(), (int) p.getY() + this.getHeight(),
+		pdtWin.setBounds((int)p.getX(), (int)p.getY() + this.getHeight(),
 						 300, 300);
 		pdtWin.setVisible(true);
 	} //GEN-LAST:event_launchPickDateTimeActionPerformed
@@ -89,9 +88,9 @@ public class PickDateTimeCombo extends javax.swing.JPanel {
 	private javax.swing.JButton launchPickDateTime;
 
 	void launchPickDateTime_mouseClicked(MouseEvent e) {
-		Window anc= (Window)this.getTopLevelAncestor();
+		Window anc=(Window)this.getTopLevelAncestor();
 		JWindow pickDateTimeWindow=new JWindow(anc);
-		JPanel contentPane= (JPanel) pickDateTimeWindow.getContentPane();
+		JPanel contentPane=(JPanel)pickDateTimeWindow.getContentPane();
 		contentPane.add(pickDateTime);
 	}
 
@@ -103,6 +102,7 @@ public class PickDateTimeCombo extends javax.swing.JPanel {
 			ex.printStackTrace();
 			return null;
 		}
-}
+	}
+
 	// End of variables declaration//GEN-END:variables
 }

@@ -1,6 +1,6 @@
 package transport.logic;
 
-import java.util.Date;
+import java.util.*;
 
 public class Artist {
 	private int id;
@@ -17,17 +17,17 @@ public class Artist {
 	private int noOfGuests;
 	private String extraInfo;
 
-	public Artist(int id, 
-				  String name, 
-				  String contactName, 
-				  String telephoneNo, 
-				  Date arrivalTime, 
-				  Place arrival, 
-				  Place hotel, 
+	public Artist(int id,
+				  String name,
+				  String contactName,
+				  String telephoneNo,
+				  Date arrivalTime,
+				  Place arrival,
+				  Place hotel,
 				  Date departureTime,
-				  Place departure, 
-				  int noOfArtists, 
-				  int noOfCrew, 
+				  Place departure,
+				  int noOfArtists,
+				  int noOfCrew,
 				  int noOfGuests,
 				  String extraInfo) {
 		this.id=id;
@@ -48,11 +48,11 @@ public class Artist {
 	public String toString() {
 		return name;
 	}
-	
+
 	public Artist() {
-		this.id=-1;
+		this.id= -1;
 	}
-	
+
 	/**
 	 * Get id.
 	 *
@@ -61,16 +61,16 @@ public class Artist {
 	public int getId() {
 		return id;
 	}
-	
+
 	/**
 	 * Set id.
 	 *
 	 * @param id the value to set.
 	 */
 	public void setId(int id) {
-		this.id = id;
+		this.id=id;
 	}
-	
+
 	/**
 	 * Get name.
 	 *
@@ -79,16 +79,16 @@ public class Artist {
 	public String getName() {
 		return name;
 	}
-	
+
 	/**
 	 * Set name.
 	 *
 	 * @param name the value to set.
 	 */
 	public void setName(String name) {
-		this.name = name;
+		this.name=name;
 	}
-	
+
 	/**
 	 * Get contactName.
 	 *
@@ -97,16 +97,16 @@ public class Artist {
 	public String getContactName() {
 		return contactName;
 	}
-	
+
 	/**
 	 * Set contactName.
 	 *
 	 * @param contactName the value to set.
 	 */
 	public void setContactName(String contactName) {
-		this.contactName = contactName;
+		this.contactName=contactName;
 	}
-	
+
 	/**
 	 * Get telephoneNo.
 	 *
@@ -115,16 +115,16 @@ public class Artist {
 	public String getTelephoneNo() {
 		return telephoneNo;
 	}
-	
+
 	/**
 	 * Set telephoneNo.
 	 *
 	 * @param telephoneNo the value to set.
 	 */
 	public void setTelephoneNo(String telephoneNo) {
-		this.telephoneNo = telephoneNo;
+		this.telephoneNo=telephoneNo;
 	}
-	
+
 	/**
 	 * Get arrivalTime.
 	 *
@@ -133,16 +133,16 @@ public class Artist {
 	public Date getArrivalTime() {
 		return arrivalTime;
 	}
-	
+
 	/**
 	 * Set arrivalTime.
 	 *
 	 * @param arrivalTime the value to set.
 	 */
 	public void setArrivalTime(Date arrivalTime) {
-		this.arrivalTime = arrivalTime;
+		this.arrivalTime=arrivalTime;
 	}
-	
+
 	/**
 	 * Get arrival.
 	 *
@@ -151,16 +151,16 @@ public class Artist {
 	public Place getArrival() {
 		return arrival;
 	}
-	
+
 	/**
 	 * Set arrival.
 	 *
 	 * @param arrival the value to set.
 	 */
 	public void setArrival(Place arrival) {
-		this.arrival = arrival;
+		this.arrival=arrival;
 	}
-	
+
 	/**
 	 * Get hotel.
 	 *
@@ -169,16 +169,16 @@ public class Artist {
 	public Place getHotel() {
 		return hotel;
 	}
-	
+
 	/**
 	 * Set hotel.
 	 *
 	 * @param hotel the value to set.
 	 */
 	public void setHotel(Place hotel) {
-		this.hotel = hotel;
+		this.hotel=hotel;
 	}
-	
+
 	/**
 	 * Get departure.
 	 *
@@ -187,16 +187,16 @@ public class Artist {
 	public Place getDeparture() {
 		return departure;
 	}
-	
+
 	/**
 	 * Set departure.
 	 *
 	 * @param departure the value to set.
 	 */
 	public void setDeparture(Place departure) {
-		this.departure = departure;
+		this.departure=departure;
 	}
-	
+
 	/**
 	 * Get noOfArtists.
 	 *
@@ -205,16 +205,16 @@ public class Artist {
 	public int getNoOfArtists() {
 		return noOfArtists;
 	}
-	
+
 	/**
 	 * Set noOfArtists.
 	 *
 	 * @param noOfArtists the value to set.
 	 */
 	public void setNoOfArtists(int noOfArtists) {
-		this.noOfArtists = noOfArtists;
+		this.noOfArtists=noOfArtists;
 	}
-	
+
 	/**
 	 * Get noOfCrew.
 	 *
@@ -223,16 +223,16 @@ public class Artist {
 	public int getNoOfCrew() {
 		return noOfCrew;
 	}
-	
+
 	/**
 	 * Set noOfCrew.
 	 *
 	 * @param noOfCrew the value to set.
 	 */
 	public void setNoOfCrew(int noOfCrew) {
-		this.noOfCrew = noOfCrew;
+		this.noOfCrew=noOfCrew;
 	}
-	
+
 	/**
 	 * Get noOfGuests.
 	 *
@@ -241,16 +241,16 @@ public class Artist {
 	public int getNoOfGuests() {
 		return noOfGuests;
 	}
-	
+
 	/**
 	 * Set noOfGuests.
 	 *
 	 * @param noOfGuests the value to set.
 	 */
 	public void setNoOfGuests(int noOfGuests) {
-		this.noOfGuests = noOfGuests;
+		this.noOfGuests=noOfGuests;
 	}
-	
+
 	/**
 	 * Get extraInfo.
 	 *
@@ -259,16 +259,16 @@ public class Artist {
 	public String getExtraInfo() {
 		return extraInfo;
 	}
-	
+
 	/**
 	 * Set extraInfo.
 	 *
 	 * @param extraInfo the value to set.
 	 */
 	public void setExtraInfo(String extraInfo) {
-		this.extraInfo = extraInfo;
+		this.extraInfo=extraInfo;
 	}
-	
+
 	/**
 	 * Get departureTime.
 	 *
@@ -277,14 +277,13 @@ public class Artist {
 	public Date getDepartureTime() {
 		return departureTime;
 	}
-	
+
 	/**
 	 * Set departureTime.
 	 *
 	 * @param departureTime the value to set.
 	 */
 	public void setDepartureTime(Date departureTime) {
-		this.departureTime = departureTime;
+		this.departureTime=departureTime;
 	}
 }
-

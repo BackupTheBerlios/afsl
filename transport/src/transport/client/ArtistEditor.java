@@ -6,7 +6,6 @@
 
 package transport.client;
 
-import javax.swing.*;
 import transport.logic.*;
 import transport.server.*;
 
@@ -30,7 +29,7 @@ public class ArtistEditor extends GenericEditor {
 	private void fixCombos() {
 		Place[] p=(new PlaceFactory()).getAllPlaces();
 
-		for (int i=0;i<p.length;i++) {
+		for (int i=0; i < p.length; i++) {
 			arrivalCombo.addItem(p[i]);
 			hotelCombo.addItem(p[i]);
 			departureCombo.addItem(p[i]);
@@ -182,7 +181,7 @@ public class ArtistEditor extends GenericEditor {
 	} //GEN-END:jbInit
 
 	private void contactNameTextActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_contactNameTextActionPerformed
-	// TODO add your handling code here:
+		// TODO add your handling code here:
 	} //GEN-LAST:event_contactNameTextActionPerformed
 
 	private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_cancelButtonActionPerformed
@@ -193,14 +192,14 @@ public class ArtistEditor extends GenericEditor {
 		// FIXME add error checking
 
 		ArtistFactory af=new ArtistFactory();
-		/*
-		   artist.setArrival();
-		   artist.setArrivalTime();
-		   artist.setContactName();
-		   artist.setDeparture();
-		   artist.setDepartureTime();
-		   artist.setExtraInfo();
-		 */
+
+	   artist.setArrival((Place)arrivalCombo.getSelectedItem());
+	   artist.setArrivalTime(arrivalTimeCombo.getDate());
+	   artist.setContactName(contactNameText.getText());
+	   artist.setDeparture((Place)departureCombo.getSelectedItem());
+	   artist.setDepartureTime(departureTimeCombo.getDate());
+	   artist.setExtraInfo(extraInfoText.getText());
+
 
 		if (artist.getId() == -1) {
 			af.newArtist(artist);
@@ -266,7 +265,5 @@ public class ArtistEditor extends GenericEditor {
 	public void editNew() {
 		edit(new Artist());
 	}
-
-
 
 }

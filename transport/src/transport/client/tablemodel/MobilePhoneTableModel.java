@@ -1,10 +1,8 @@
 package transport.client.tablemodel;
 
-import transport.logic.MobilePhone;
-import transport.server.MobilePhoneFactory;
-import javax.swing.JInternalFrame;
-import transport.client.MobilePhoneEditor;
-import transport.client.GenericEditor;
+import transport.client.*;
+import transport.logic.*;
+import transport.server.*;
 
 public class MobilePhoneTableModel extends GenericTableModel {
 	private MobilePhoneFactory af;
@@ -25,28 +23,8 @@ public class MobilePhoneTableModel extends GenericTableModel {
 
 	public String getColumnName(int col) {
 		switch (col) {
-		case 0:
-			return "Name";
-		case 1:
-			return "Contact name";
-		case 2:
-			return "Telephone number";
-		case 3:
-			return "Arrival";
-		case 4:
-			return "Arrival time";
-		case 5:
-			return "Hotel";
-		case 6:
-			return "Departure";
-		case 7:
-			return "Departure Time";
-		case 8:
-			return "No of MobilePhones";
-		case 9:
-			return "No of Crew";
-		case 10:
-			return "No of Guests";
+			case 0:
+				return "Number";
 		}
 
 		return "FIXME";
@@ -57,36 +35,14 @@ public class MobilePhoneTableModel extends GenericTableModel {
 	}
 
 	public int getColumnCount() {
-		return 11;
+		return 1;
 	}
 
 	public Object getValueAt(int row, int col) {
-		/*
 		switch (col) {
-		case 0:
-			return rowData[row].getName();
-		case 1:
-			return rowData[row].getContactName();
-		case 2:
-			return rowData[row].getTelephoneNo();
-		case 3:
-			return rowData[row].getArrival();
-		case 4:
-			return rowData[row].getArrivalTime();
-		case 5:
-			return rowData[row].getHotel();
-		case 6:
-			return rowData[row].getDeparture();
-		case 7:
-			return rowData[row].getDepartureTime();
-		case 8:
-			return new Integer(rowData[row].getNoOfFunctionaries());
-		case 9:
-			return new Integer(rowData[row].getNoOfCrew());
-		case 10:
-			return new Integer(rowData[row].getNoOfGuests());
+			case 0:
+				return rowData[row].getNumber();
 		}
-		*/
 
 		// FIXME: should not happen. Log error if it does.
 

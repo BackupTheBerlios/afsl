@@ -1,10 +1,8 @@
 package transport.client.tablemodel;
 
-import transport.logic.Car;
-import transport.server.CarFactory;
-import javax.swing.JInternalFrame;
-import transport.client.CarEditor;
-import transport.client.GenericEditor;
+import transport.client.*;
+import transport.logic.*;
+import transport.server.*;
 
 public class CarTableModel extends GenericTableModel {
 	private CarFactory af;
@@ -25,14 +23,14 @@ public class CarTableModel extends GenericTableModel {
 
 	public String getColumnName(int col) {
 		switch (col) {
-		case 0:
-			return "Registration number";
-		case 1:
-			return "Car type";
-		case 2:
-			return "Number of seats";
-		case 3:
-			return "Misc info";
+			case 0:
+				return "Registration number";
+			case 1:
+				return "Car type";
+			case 2:
+				return "Number of seats";
+			case 3:
+				return "Misc info";
 		}
 
 		return "FIXME";
@@ -48,14 +46,14 @@ public class CarTableModel extends GenericTableModel {
 
 	public Object getValueAt(int row, int col) {
 		switch (col) {
-		case 0:
-			return rowData[row].getRegNo();
-		case 1:
-			return rowData[row].getCarType();
-		case 2:
-			return new Integer(rowData[row].getNumberOfSeats());
-		case 3:
-			return rowData[row].getMiscInfo();
+			case 0:
+				return rowData[row].getRegNo();
+			case 1:
+				return rowData[row].getCarType();
+			case 2:
+				return new Integer(rowData[row].getNumberOfSeats());
+			case 3:
+				return rowData[row].getMiscInfo();
 		}
 
 		// FIXME: should not happen. Log error if it does.

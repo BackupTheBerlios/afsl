@@ -30,7 +30,7 @@ public class Role {
 	 * @param id the value to set.
 	 */
 	public void setId(int id) {
-		this.id = id;
+		this.id=id;
 	}
 
 	/**
@@ -48,7 +48,7 @@ public class Role {
 	 * @param shortDescr the value to set.
 	 */
 	public void setShortDescr(String shortDescr) {
-		this.shortDescr = shortDescr;
+		this.shortDescr=shortDescr;
 	}
 
 	/**
@@ -66,14 +66,13 @@ public class Role {
 	 * @param longDescr the value to set.
 	 */
 	public void setLongDescr(String longDescr) {
-		this.longDescr = longDescr;
+		this.longDescr=longDescr;
 	}
 
 	/**
 	 * Role
 	 */
 	public Role() {
-		this.id=-1;
+		this.id= -1;
 	}
 }
-

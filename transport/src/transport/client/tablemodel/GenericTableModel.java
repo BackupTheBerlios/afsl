@@ -1,12 +1,14 @@
 package transport.client.tablemodel;
 
-import javax.swing.JInternalFrame;
-import javax.swing.table.AbstractTableModel;
-import transport.client.GenericEditor;
-import javax.swing.ListSelectionModel;
+import javax.swing.table.*;
+
+import transport.client.*;
 
 public abstract class GenericTableModel extends AbstractTableModel {
 	public abstract GenericEditor getEditor();
-	public boolean isCellEditable(int row, int col) { return false; }
+
+	public boolean isCellEditable(int row, int col) {return false;
+	}
+
 	public abstract Object getRowData(int row);
 }

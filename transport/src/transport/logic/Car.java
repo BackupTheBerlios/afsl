@@ -1,7 +1,5 @@
 package transport.logic;
 
-import java.util.*;
-
 public class Car {
 	private int id;
 	private String regNo;
@@ -10,10 +8,10 @@ public class Car {
 	private String miscInfo;
 
 	public Car() {
-		id=-1;
+		id= -1;
 	}
-	
-	public Car(int id, String regNo, String carType, 
+
+	public Car(int id, String regNo, String carType,
 			   int numberOfSeats, String miscInfo) {
 		this.id=id;
 		this.regNo=regNo;
@@ -23,9 +21,9 @@ public class Car {
 	}
 
 	public String toString() {
-		return new String(regNo + ", "+carType);
+		return new String(regNo + ", " + carType);
 	}
-	
+
 	/**
 	 * Get id.
 	 *
@@ -34,16 +32,16 @@ public class Car {
 	public int getId() {
 		return id;
 	}
-	
+
 	/**
 	 * Set id.
 	 *
 	 * @param id the value to set.
 	 */
 	public void setId(int id) {
-		this.id = id;
+		this.id=id;
 	}
-	
+
 	/**
 	 * Get regNo.
 	 *
@@ -52,16 +50,16 @@ public class Car {
 	public String getRegNo() {
 		return regNo;
 	}
-	
+
 	/**
 	 * Set regNo.
 	 *
 	 * @param regNo the value to set.
 	 */
 	public void setRegNo(String regNo) {
-		this.regNo = regNo;
+		this.regNo=regNo;
 	}
-	
+
 	/**
 	 * Get carType.
 	 *
@@ -70,16 +68,16 @@ public class Car {
 	public String getCarType() {
 		return carType;
 	}
-	
+
 	/**
 	 * Set carType.
 	 *
 	 * @param carType the value to set.
 	 */
 	public void setCarType(String carType) {
-		this.carType = carType;
+		this.carType=carType;
 	}
-	
+
 	/**
 	 * Get numberOfSeats.
 	 *
@@ -88,16 +86,16 @@ public class Car {
 	public int getNumberOfSeats() {
 		return numberOfSeats;
 	}
-	
+
 	/**
 	 * Set numberOfSeats.
 	 *
 	 * @param numberOfSeats the value to set.
 	 */
 	public void setNumberOfSeats(int numberOfSeats) {
-		this.numberOfSeats = numberOfSeats;
+		this.numberOfSeats=numberOfSeats;
 	}
-	
+
 	/**
 	 * Get miscInfo.
 	 *
@@ -106,14 +104,13 @@ public class Car {
 	public String getMiscInfo() {
 		return miscInfo;
 	}
-	
+
 	/**
 	 * Set miscInfo.
 	 *
 	 * @param miscInfo the value to set.
 	 */
 	public void setMiscInfo(String miscInfo) {
-		this.miscInfo = miscInfo;
+		this.miscInfo=miscInfo;
 	}
 }
-

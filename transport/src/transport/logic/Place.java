@@ -28,7 +28,7 @@ public class Place {
 	 * @param id the value to set.
 	 */
 	public void setId(int id) {
-		this.id = id;
+		this.id=id;
 	}
 
 	/**
@@ -46,13 +46,13 @@ public class Place {
 	 * @param name the value to set.
 	 */
 	public void setName(String name) {
-		this.name = name;
+		this.name=name;
 	}
 
 	/**
 	 * Place
 	 */
 	public Place() {
-		this.id=-1;
+		this.id= -1;
 	}
 }

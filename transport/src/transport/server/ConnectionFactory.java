@@ -2,16 +2,16 @@ package transport.server;
 
 import java.sql.*;
 import java.util.logging.*;
-import transport.logic.*;
 
 public class ConnectionFactory {
 	private static boolean init=false;
-	private static Logger logger=Logger.getLogger("transport.server.ConnectionFactory");
+	private static Logger logger=Logger.getLogger(
+		"transport.server.ConnectionFactory");
 
 	/**
 	 * FIXME: should read from a config file of sorts.
 	 */
-	
+
 	private static void initFactory() {
 		try {
 			Class.forName("org.postgresql.Driver");
@@ -30,6 +30,7 @@ public class ConnectionFactory {
 			initFactory();
 		}
 
-		return DriverManager.getConnection("jdbc:postgresql://localhost/transport","ola","passwd");
+		return DriverManager.getConnection(
+			"jdbc:postgresql://localhost/transport", "ola", "passwd");
 	}
 }
