@@ -9,6 +9,10 @@ public class Car {
 	private int numberOfSeats;
 	private String miscInfo;
 
+	public Car() {
+		id=-1;
+	}
+	
 	public Car(int id, String regNo, String carType, 
 			   int numberOfSeats, String miscInfo) {
 		this.id=id;
@@ -16,6 +20,10 @@ public class Car {
 		this.carType=carType;
 		this.numberOfSeats=numberOfSeats;
 		this.miscInfo=miscInfo;
+	}
+
+	public String toString() {
+		return new String(regNo + ", "+carType);
 	}
 	
 	/**

@@ -13,12 +13,12 @@ import transport.server.ArtistFactory;
  *
  * @author  ola
  */
-public class AddArtist extends javax.swing.JInternalFrame {
-	private Artist a;
+public class ArtistEditor extends javax.swing.JInternalFrame {
+	private Artist artist;
 	
 	/** Creates new form AddArtist */
-	public AddArtist() {
-		a=new Artist();
+	public ArtistEditor(Artist artist) {
+		this.artist=artist;
 		initComponents();
 	}
 	

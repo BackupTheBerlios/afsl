@@ -41,6 +41,10 @@ public class Transport {
 		this.distance=distance;
 		this.miscInfo=miscInfo;
 	}
+
+	public Transport() {
+		id=-1;
+	}
 	
 	/**
 	 * Get id.

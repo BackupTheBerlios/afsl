@@ -10,6 +10,10 @@ public class TransportDropoff {
 		this.place=place;
 		this.time=time;
 	}
+
+	public String toString() {
+		return new String(time + ", " + place);
+	}
 	
 	/**
 	 * Get place.

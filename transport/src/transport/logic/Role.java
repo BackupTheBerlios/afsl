@@ -10,6 +10,10 @@ public class Role {
 		this.shortDescr=shortDescr;
 		this.longDescr=longDescr;
 	}
+
+	public String toString() {
+		return shortDescr;
+	}
 	
 	/**
 	 * Get id.

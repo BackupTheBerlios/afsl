@@ -17,6 +17,14 @@ public class Functionary {
 		this.stopsWork=stopsWork;
 		this.role=role;
 	}
+
+	public Functionary() {
+		id=-1;
+	}
+
+	public String toString() {
+		return name;
+	}
 	
 	/**
 	 * Get id.

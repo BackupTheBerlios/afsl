@@ -44,8 +44,13 @@ public class Artist {
 		this.extraInfo=extraInfo;
 		this.departureTime=departureTime;
 	}
+
+	public String toString() {
+		return name;
+	}
 	
 	public Artist() {
+		this.id=-1;
 	}
 	
 	/**

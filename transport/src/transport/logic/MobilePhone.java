@@ -8,6 +8,10 @@ public class MobilePhone {
 		this.id=id;
 		this.number=number;
 	}
+
+	public String toString() {
+		return number;
+	}
 	
 	/**
 	 * Get id.

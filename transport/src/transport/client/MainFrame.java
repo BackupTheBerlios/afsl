@@ -51,6 +51,12 @@ public class MainFrame extends javax.swing.JFrame {
                 MenuFile.setToolTipText("File menu");
                 MenuExit.setMnemonic('E');
                 MenuExit.setText("Exit");
+                MenuExit.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                menuExitHandler(evt);
+                        }
+                });
+
                 MenuFile.add(MenuExit);
 
                 MenuBar.add(MenuFile);
@@ -93,6 +99,11 @@ public class MainFrame extends javax.swing.JFrame {
 
                 pack();
         }//GEN-END:initComponents
+
+	private void menuExitHandler(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuExitHandler
+		// TODO add your handling code here:
+		System.exit(0);
+	}//GEN-LAST:event_menuExitHandler
 
 	private void ArtistItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ArtistItemActionPerformed
 		// TODO add your handling code here:

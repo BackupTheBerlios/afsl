@@ -8,6 +8,10 @@ public class Place {
 		this.id=id;
 		this.name=name;
 	}
+
+	public String toString() {
+		return name;
+	}
 	
 	/**
 	 * Get id.
