@@ -63,6 +63,8 @@ public class PlaceEditor extends GenericEditor {
 
 		cancelButton.setText("Cancel");
 		jPanel2.add(cancelButton);
+                this.setClosable(true);
+                this.setResizable(true);
 
 		getContentPane().add(jPanel2, java.awt.BorderLayout.SOUTH);
 		getRootPane().setDefaultButton(okButton);

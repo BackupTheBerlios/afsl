@@ -61,6 +61,7 @@ public class MultipleChooser extends javax.swing.JPanel {
 		addObject.addActionListener(new ActionListener(this));
 
 		objectsList.setBorder(BorderFactory.createLineBorder(Color.black));
+    objectsList.addKeyListener(new MultipleChooser_objectsList_keyAdapter(this));
 		removeObject.addActionListener(new
 			MultipleChooser_removeObject_actionAdapter(this));
 		removeObject.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -116,12 +117,16 @@ public class MultipleChooser extends javax.swing.JPanel {
 		chooserWindow.setVisible(!chooserWindow.isVisible());
 	}
 
-	void removeObject_actionPerformed(ActionEvent e) {
-		Object[] o=objectsList.getSelectedValues();
+        private void removeSelected() {
+          Object[] o = objectsList.getSelectedValues();
 
-		for (int i=0;i<o.length;i++) {
-			listModel.removeElement(o[i]);
-		}
+          for (int i = 0; i < o.length; i++) {
+            listModel.removeElement(o[i]);
+          }
+        }
+
+	void removeObject_actionPerformed(ActionEvent e) {
+          removeSelected();
 	}
 
 	/**
@@ -145,6 +150,14 @@ public class MultipleChooser extends javax.swing.JPanel {
 			add(objects[i]);
 		}
 	}
+
+  void objectsList_keyTyped(KeyEvent e) {
+    if (e.getKeyCode()==KeyEvent.VK_DELETE) {
+      removeSelected();
+    }
+  }
+
+
 }
 
 class ActionListener implements java.awt.event.ActionListener {
@@ -167,5 +180,16 @@ class MultipleChooser_removeObject_actionAdapter implements java.awt.event.Actio
   }
   public void actionPerformed(ActionEvent e) {
     adaptee.removeObject_actionPerformed(e);
+  }
+}
+
+class MultipleChooser_objectsList_keyAdapter extends java.awt.event.KeyAdapter {
+  MultipleChooser adaptee;
+
+  MultipleChooser_objectsList_keyAdapter(MultipleChooser adaptee) {
+    this.adaptee = adaptee;
+  }
+  public void keyTyped(KeyEvent e) {
+    adaptee.objectsList_keyTyped(e);
   }
 }

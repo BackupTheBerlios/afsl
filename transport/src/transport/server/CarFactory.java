@@ -135,15 +135,15 @@ public class CarFactory {
 	}
 
 	public void updateCar(Car updatedCar, Connection conn) throws SQLException {
-		PreparedStatement st=conn.prepareStatement("update cars set reg_no = ?, car_type = ?, no_of_seast = ?, misc_info = ? where id = ?");
+		PreparedStatement st=conn.prepareStatement("update cars set reg_no = ?, car_type = ?, no_of_seats = ?, misc_info = ? where id = ?");
 		st.setString(1, updatedCar.getRegNo());
 		st.setString(2, updatedCar.getCarType());
 		st.setInt(3, updatedCar.getNumberOfSeats());
 		st.setString(4, updatedCar.getMiscInfo());
 		st.setInt(5, updatedCar.getId());
-		if (conn.getAutoCommit()) {
-			conn.close();
-		}
+
+                st.executeUpdate();
+		conn.close();
 	}
 
 	public void updateCar(Car updatedCar) {

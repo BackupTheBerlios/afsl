@@ -115,7 +115,7 @@ public class RoleEditor extends GenericEditor {
 	}
 
 	public void editNew() {
-		edit(null);
+		edit(new Role());
 	}
 
 	void okButton_actionPerformed(ActionEvent e) {
