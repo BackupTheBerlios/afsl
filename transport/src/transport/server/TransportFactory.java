@@ -148,7 +148,7 @@ public class TransportFactory {
 
 	private void insertTransportDropoffs(Transport newTransport,
 										 Connection conn) throws SQLException {
-		TransportDropoff[] dropoffs=newTransport.getDropoffs();
+		TransportWaypoint[] dropoffs=newTransport.getDropoffs();
 		PreparedStatement st=conn.prepareStatement("insert into transport_dropoffs (transport_id, place_id, dropoff_time) values ( ? , ? )");
 
 		for (int i=0; i < dropoffs.length; i++) {
@@ -241,5 +241,21 @@ public class TransportFactory {
 		} catch (SQLException e) {
 			logger.log(Level.SEVERE, e.getMessage(), e);
 		}
+	}
+
+	public void deleteTransport(int id) {
+		try {
+			Connection conn=ConnectionFactory.getConnection();
+			PreparedStatement st=conn.prepareStatement(
+				"delete from artists where id = ?");
+			st.executeUpdate();
+			conn.close();
+		} catch (SQLException e) {
+			logger.log(Level.SEVERE, e.getMessage(), e);
+		}
+}
+
+	public void deleteTransport(Transport deletedTransport) {
+		deleteTransport(deletedTransport.getId());
 	}
 }

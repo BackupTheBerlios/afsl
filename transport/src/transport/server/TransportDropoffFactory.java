@@ -6,7 +6,7 @@ import java.util.*;
 import transport.logic.*;
 
 public class TransportDropoffFactory {
-	static TransportDropoff[] getDropoffs(int transportId) throws SQLException {
+	static TransportWaypoint[] getDropoffs(int transportId) throws SQLException {
 		ArrayList a=new ArrayList();
 		PlaceFactory pf=new PlaceFactory();
 
@@ -18,10 +18,10 @@ public class TransportDropoffFactory {
 		ResultSet rs=ps.executeQuery();
 
 		while (rs.next()) {
-			a.add(new TransportDropoff(pf.getPlace(rs.getInt("place_id")),
+			a.add(new TransportWaypoint(pf.getPlace(rs.getInt("place_id")),
 									   rs.getDate("dropoff_time")));
 		}
 
-		return (TransportDropoff[])a.toArray();
+		return (TransportWaypoint[])a.toArray();
 	}
 }
