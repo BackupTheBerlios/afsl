@@ -70,33 +70,46 @@ public void refresh() {
 		itemList=new javax.swing.JList();
 		buttonPanel=new javax.swing.JPanel();
 		addButton=new javax.swing.JButton();
-		Cancel=new javax.swing.JButton();
+		cancelButton=new javax.swing.JButton();
 
 		this.setLayout(borderLayout1);
 		addButton.addActionListener(new ItemChooser_addButton_actionAdapter(this));
-    add(itemList,  BorderLayout.CENTER);
+		cancelButton.addActionListener(new
+									   ItemChooser_cancelButton_actionAdapter(this));
+		itemList.setModel(listModel);
 		add(buttonPanel, BorderLayout.SOUTH);
 
 		addButton.setMnemonic('A');
 		addButton.setText("Add");
 
-		Cancel.setMnemonic('C');
-		Cancel.setText("Cancel");
+		cancelButton.setMnemonic('C');
+		cancelButton.setText("Cancel");
 		buttonPanel.add(addButton);
-		buttonPanel.add(Cancel);
+		buttonPanel.add(cancelButton);
+    this.add(jScrollPane1, BorderLayout.CENTER);
+    jScrollPane1.getViewport().add(itemList, null);
 	} //GEN-END:jbInit
 
 	// Variables declaration - do not modify//GEN-BEGIN:variables
-	private javax.swing.JButton Cancel;
+	private javax.swing.JButton cancelButton;
 	private javax.swing.JButton addButton;
 	private javax.swing.JPanel buttonPanel;
 	private javax.swing.JList itemList;
 	BorderLayout borderLayout1 = new BorderLayout();
+  JScrollPane jScrollPane1 = new JScrollPane();
 
-  void addButton_actionPerformed(ActionEvent e) {
+	void addButton_actionPerformed(ActionEvent e) {
+		Object o[]=itemList.getSelectedValues();
 
-	  //mc.add();
-  }
+		for (int i=0; i < o.length; i++) {
+			mc.add(o[i]);
+		}
+		mc.closeChooser();
+	}
+
+	void cancelButton_actionPerformed(ActionEvent e) {
+		mc.closeChooser();
+	}
 
 	// End of variables declaration//GEN-END:variables
 
@@ -110,5 +123,16 @@ class ItemChooser_addButton_actionAdapter implements java.awt.event.ActionListen
   }
   public void actionPerformed(ActionEvent e) {
     adaptee.addButton_actionPerformed(e);
+  }
+}
+
+class ItemChooser_cancelButton_actionAdapter implements java.awt.event.ActionListener {
+  ItemChooser adaptee;
+
+  ItemChooser_cancelButton_actionAdapter(ItemChooser adaptee) {
+    this.adaptee = adaptee;
+  }
+  public void actionPerformed(ActionEvent e) {
+    adaptee.cancelButton_actionPerformed(e);
   }
 }

@@ -61,6 +61,7 @@ public class TransportEditor extends GenericEditor {
     distanceText.setText("");
     distanceText.setHorizontalAlignment(SwingConstants.TRAILING);
     miscInfoText.setRequestFocusEnabled(true);
+    this.setResizable(true);
     jPanel2.add(okButton);
 
 		cancelButton.setMnemonic('C');

@@ -61,7 +61,9 @@ public class MainFrame extends javax.swing.JFrame {
 		ViewCarScheduleMenuItem=new javax.swing.JMenuItem();
 
 		setTitle("Arvikafestivalen Booking System");
+    this.getContentPane().setLayout(borderLayout1);
 		setName("MainFrame");
+    this.setResizable(true);
 		this.setIconImage(logo);
 		addWindowListener(new java.awt.event.WindowAdapter() {
 			public void windowClosing(java.awt.event.WindowEvent evt) {
@@ -70,7 +72,8 @@ public class MainFrame extends javax.swing.JFrame {
 		});
 
 		desktopPane.setAutoscrolls(true);
-		getContentPane().add(desktopPane, java.awt.BorderLayout.CENTER);
+    this.getContentPane().add(jScrollPane1,  BorderLayout.CENTER);
+    jScrollPane1.getViewport().add(desktopPane, null);
 
 		FileMenu.setMnemonic('F');
 		FileMenu.setText("File");
@@ -419,6 +422,8 @@ public class MainFrame extends javax.swing.JFrame {
 	private javax.swing.JMenuItem ViewFunctionaryScheduleMenuItem;
 	private javax.swing.JMenu ViewMenu;
 	private javax.swing.JDesktopPane desktopPane;
+  JScrollPane jScrollPane1 = new JScrollPane();
+  BorderLayout borderLayout1 = new BorderLayout();
 
 	// End of variables declaration//GEN-END:variables
 

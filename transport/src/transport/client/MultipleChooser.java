@@ -17,7 +17,6 @@ import javax.swing.*;
  * @author  ola
  */
 public class MultipleChooser extends javax.swing.JPanel {
-	ArrayList objects=new ArrayList();
 	Object type;
 	DefaultListModel listModel=new DefaultListModel();
 	JWindow chooserWindow;
@@ -44,7 +43,7 @@ public class MultipleChooser extends javax.swing.JPanel {
 	}
 
 	public void add(Object o) {
-		this.objects.add(o);
+		listModel.addElement(o);
 	}
 
 	/** This method is called from within the constructor to
@@ -71,12 +70,13 @@ public class MultipleChooser extends javax.swing.JPanel {
 		jPanel1.setLayout(gridLayout1);
 		gridLayout1.setColumns(1);
 		gridLayout1.setRows(2);
-		add(objectsList, BorderLayout.CENTER);
 
 		removeObject.setText("-");
 		this.add(jPanel1, BorderLayout.EAST);
 		jPanel1.add(addObject, null);
 		jPanel1.add(removeObject, null);
+    this.add(jScrollPane1, BorderLayout.CENTER);
+    jScrollPane1.getViewport().add(objectsList, null);
 		objectsList.setLayoutOrientation(JList.HORIZONTAL_WRAP);
 		objectsList.setModel(listModel);
 	} //GEN-END:jbInit
@@ -88,6 +88,7 @@ public class MultipleChooser extends javax.swing.JPanel {
 	BorderLayout borderLayout1=new BorderLayout();
 	JPanel jPanel1=new JPanel();
 	GridLayout gridLayout1=new GridLayout();
+  JScrollPane jScrollPane1 = new JScrollPane();
 
 	void addObject_actionPerformed(ActionEvent e) {
 /*		Window w=(Window)this.getTopLevelAncestor();
@@ -118,13 +119,23 @@ public class MultipleChooser extends javax.swing.JPanel {
 	}
 
 	void removeObject_actionPerformed(ActionEvent e) {
+		Object[] o=objectsList.getSelectedValues();
 
-		//listModel.remove();
+		for (int i=0;i<o.length;i++) {
+			listModel.removeElement(o[i]);
+		}
 	}
 
+	/**
+	 * closeChooser
+	 */
+	public void closeChooser() {
+		chooserWindow.setVisible(false);
+	}
 
-	// End of variables declaration//GEN-END:variables
-
+	public Object[] getObjects() {
+		return listModel.toArray();
+	}
 }
 
 class ActionListener implements java.awt.event.ActionListener {
