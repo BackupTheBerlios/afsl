@@ -7,10 +7,10 @@ create database transport;
 
 create table cars (
 	id serial,
-	reg_no char(6) not null,
-	car_type varchar(30) not null,
+	reg_no char(12) not null,
+	car_type varchar(60) not null,
 	no_of_seats integer not null,
-	misc_info varchar(500),
+	misc_info varchar(2500),
 	primary key(id)
 );
 
@@ -44,9 +44,9 @@ insert into places (name) values ('Hotell Bristol');
 
 create table artists (
 	id serial,
-	name varchar(50) not null,
-	contact_name varchar(40),
-	phone_no varchar(25),
+	name varchar(150) not null,
+	contact_name varchar(140),
+	phone_no varchar(50),
 	arrival_time timestamp with time zone,
 	arrival_place_id integer,
 	hotel_id integer,
@@ -55,7 +55,7 @@ create table artists (
 	no_of_artists integer,
 	no_of_crew integer,
 	no_of_guests integer,
-	extra_info varchar(500),
+	extra_info varchar(50000),
 	foreign key(arrival_place_id) references places on delete set null,
 	foreign key(hotel_id) references places on delete cascade,
 	foreign key(departure_place_id) references places on delete cascade,
@@ -155,7 +155,7 @@ insert into roles (short_descr,long_descr) values ('Aristkoordinatorchef','Koord
 
 create table functionaries (
 	id serial,
-	name varchar(30) not null,
+	name varchar(50) not null,
 	begins_work timestamp not null,
 	stops_work timestamp not null,
 	role_id integer not null,
@@ -169,7 +169,7 @@ create table transports (
 	return_time timestamp not null,
 	actual_return_time timestamp,
 	internal integer not null,
-	misc_info varchar(400),
+	misc_info varchar(4000),
 	primary key (id)
 );
 

@@ -87,6 +87,11 @@ public class GenericListFrame extends javax.swing.JInternalFrame {
 		editButton.setMnemonic('E');
 
 		cancelButton.setText("Close");
+	cancelButton.addActionListener(new java.awt.event.ActionListener() {
+	    public void actionPerformed(ActionEvent e) {
+		cancelButton_actionPerformed(e);
+	    }
+	});
 		cancelButton.setMnemonic('C');
 
 		removeButton.setMnemonic('R');
@@ -149,9 +154,24 @@ public class GenericListFrame extends javax.swing.JInternalFrame {
 	}
 
 	void removeButton_actionPerformed(ActionEvent e) {
+		/*
+		javax.swing.JOptionPane.showOptionDialog(
+			  (Component)this.getTopLevelAncestor(),
+			  "Are you sure?",
+			  "Deleting...",
+			  JOptionPane.WARNING_MESSAGE,
+			  JOptionPane.YES_NO_OPTION,
+			  null,
+			  null);
+*/
 
 		removeCurrent();
+		tableModel.fireTableDataChanged();
 	}
+
+    void cancelButton_actionPerformed(ActionEvent e) {
+		this.dispose();
+    }
 }
 
 // End of variables declaration//GEN-END:variables

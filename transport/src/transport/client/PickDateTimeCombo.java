@@ -54,7 +54,6 @@ public class PickDateTimeCombo extends javax.swing.JPanel {
 
 		add(launchPickDateTime, java.awt.BorderLayout.EAST);
 
-		dateField.setEditable(false);
 		dateField.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
 		add(dateField, java.awt.BorderLayout.CENTER);
 
