@@ -79,6 +79,10 @@ public class PickDateTimeCombo extends javax.swing.JPanel {
 	}
 
 	public Date getDate() {
+		if (dateField.getText().compareTo("")==0) {
+			return null;
+		}
+
 		try {
 			return DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT, new Locale("sv")).parse(dateField.getText());
 		} catch (ParseException ex) {
