@@ -23,6 +23,12 @@
             </MenuItem>
           </SubComponents>
         </Menu>
+        <Menu class="javax.swing.JMenu" name="Edit">
+          <Properties>
+            <Property name="mnemonic" type="int" value="69"/>
+            <Property name="text" type="java.lang.String" value="Edit"/>
+          </Properties>
+        </Menu>
         <Menu class="javax.swing.JMenu" name="AddThingsMenu">
           <Properties>
             <Property name="mnemonic" type="int" value="65"/>
@@ -33,6 +39,18 @@
               <Properties>
                 <Property name="mnemonic" type="int" value="70"/>
                 <Property name="text" type="java.lang.String" value="Add Functionary"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="AddArtist">
+              <Properties>
+                <Property name="mnemonic" type="int" value="114"/>
+                <Property name="text" type="java.lang.String" value="Add Artist"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="AddCar">
+              <Properties>
+                <Property name="mnemonic" type="int" value="67"/>
+                <Property name="text" type="java.lang.String" value="Add Car"/>
               </Properties>
             </MenuItem>
           </SubComponents>

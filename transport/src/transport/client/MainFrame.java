@@ -28,8 +28,11 @@ public class MainFrame extends javax.swing.JFrame {
                 MenuBar = new javax.swing.JMenuBar();
                 MenuFile = new javax.swing.JMenu();
                 MenuExit = new javax.swing.JMenuItem();
+                Edit = new javax.swing.JMenu();
                 AddThingsMenu = new javax.swing.JMenu();
                 AddFunctionary = new javax.swing.JMenuItem();
+                AddArtist = new javax.swing.JMenuItem();
+                AddCar = new javax.swing.JMenuItem();
 
                 setName("MainFrame");
                 addWindowListener(new java.awt.event.WindowAdapter() {
@@ -53,11 +56,23 @@ public class MainFrame extends javax.swing.JFrame {
                 MenuBar.add(MenuFile);
                 MenuFile.getAccessibleContext().setAccessibleName("File");
 
+                Edit.setMnemonic('E');
+                Edit.setText("Edit");
+                MenuBar.add(Edit);
+
                 AddThingsMenu.setMnemonic('A');
                 AddThingsMenu.setText("Add");
                 AddFunctionary.setMnemonic('F');
                 AddFunctionary.setText("Add Functionary");
                 AddThingsMenu.add(AddFunctionary);
+
+                AddArtist.setMnemonic('r');
+                AddArtist.setText("Add Artist");
+                AddThingsMenu.add(AddArtist);
+
+                AddCar.setMnemonic('C');
+                AddCar.setText("Add Car");
+                AddThingsMenu.add(AddCar);
 
                 MenuBar.add(AddThingsMenu);
 
@@ -79,8 +94,11 @@ public class MainFrame extends javax.swing.JFrame {
 	}
 	
         // Variables declaration - do not modify//GEN-BEGIN:variables
+        private javax.swing.JMenuItem AddArtist;
+        private javax.swing.JMenuItem AddCar;
         private javax.swing.JMenuItem AddFunctionary;
         private javax.swing.JMenu AddThingsMenu;
+        private javax.swing.JMenu Edit;
         private javax.swing.JMenuBar MenuBar;
         private javax.swing.JMenuItem MenuExit;
         private javax.swing.JMenu MenuFile;

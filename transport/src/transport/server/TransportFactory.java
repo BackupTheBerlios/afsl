@@ -5,6 +5,11 @@ import java.util.ArrayList;
 import java.util.Date;
 import transport.logic.*;
 
+/**
+ * This factory class produces transport objects.
+ * @author Ola Sundell
+ */
+
 public class TransportFactory {
 	private void calcDistance(Transport t, Connection conn) {
 	}
@@ -38,6 +43,11 @@ public class TransportFactory {
 		return t;
 	}
 
+	/**
+	 * This method gets a transport according to its corresponding id.
+	 * @param the id of the transport
+	 */
+	
 	public Transport getTransport(int id) {
 		Transport t=null;
 		
@@ -65,6 +75,10 @@ public class TransportFactory {
 		return t;
 	}
 
+	/**
+	 * Gets all transports currently in the database.
+	 */
+	
 	public Transport[] getAllTransports() {
 		ArrayList a=new ArrayList();
 
@@ -128,6 +142,11 @@ public class TransportFactory {
 		}
 	}
 
+	/**
+	 * Creates a new transport according to Transport object
+	 * @param newTransport the corresponging transport to create.
+	 */
+	
 	public void newTransport(Transport newTransport) {
 		try {
 			Connection conn=ConnectionFactory.getConnection();
