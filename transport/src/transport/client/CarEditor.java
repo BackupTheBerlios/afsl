@@ -106,13 +106,10 @@ public class CarEditor extends GenericEditor {
 	} //GEN-END:jbInit
 
 	private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_cancelButtonActionPerformed
-		// TODO add your handling code here:
 		this.dispose();
 	} //GEN-LAST:event_cancelButtonActionPerformed
 
 	private void okButtonActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_okButtonActionPerformed
-		// TODO add your handling code here:
-
 		car.setCarType(carTypeText.getText());
 		car.setMiscInfo(miscInfoText.getText());
 		car.setRegNo(regNoText.getText());
@@ -125,7 +122,7 @@ public class CarEditor extends GenericEditor {
 			cf.updateCar(car);
 		}
 		this.dispose();
-	} //GEN-LAST:event_okButtonActionPerformed
+	}
 
 	// Variables declaration - do not modify//GEN-BEGIN:variables
 	private javax.swing.JButton cancelButton;
@@ -153,9 +150,10 @@ public class CarEditor extends GenericEditor {
 			okButton.setText("New");
 			okButton.setMnemonic('N');
 		} else {
-			this.setTitle("Update an artist");
+			this.setTitle("Update a car");
 			okButton.setText("Update");
 			okButton.setMnemonic('U');
+
 			carTypeText.setText(car.getCarType());
 			seatNoText.setText("" + car.getNumberOfSeats());
 			miscInfoText.setText(car.getMiscInfo());

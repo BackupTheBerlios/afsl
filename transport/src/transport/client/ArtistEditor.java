@@ -14,7 +14,9 @@ import transport.server.*;
  * @author  ola
  */
 public class ArtistEditor extends GenericEditor {
-//public class ArtistEditor extends JInternalFrame {
+//public class ArtistEditor extends javax.swing.JInternalFrame {
+	Place[] allPlaces;
+
 	private Artist artist;
 
 	public ArtistEditor() {
@@ -28,12 +30,12 @@ public class ArtistEditor extends GenericEditor {
 	}
 
 	private void fixCombos() {
-		Place[] p=(new PlaceFactory()).getAllPlaces();
+		allPlaces=(new PlaceFactory()).getAllPlaces();
 
-		for (int i=0; i < p.length; i++) {
-			arrivalCombo.addItem(p[i]);
-			hotelCombo.addItem(p[i]);
-			departureCombo.addItem(p[i]);
+		for (int i=0; i < allPlaces.length; i++) {
+			arrivalCombo.addItem(allPlaces[i]);
+			hotelCombo.addItem(allPlaces[i]);
+			departureCombo.addItem(allPlaces[i]);
 		}
 	}
 
@@ -239,6 +241,16 @@ public class ArtistEditor extends GenericEditor {
 	private javax.swing.JButton okButton;
 	private javax.swing.JFormattedTextField phoneNumberText;
 
+	public Place getPlace(Place p) {
+		for (int i=0;i<allPlaces.length;i++){
+			if (p.getId()==allPlaces[i].getId()) {
+				return allPlaces[i];
+			}
+		}
+		// AIEH!
+		return null;
+	}
+
 	/**
 	 * edit
 	 *
@@ -257,9 +269,16 @@ public class ArtistEditor extends GenericEditor {
 			this.setTitle("Update an artist");
 			okButton.setText("Update");
 			okButton.setMnemonic('U');
+
 			nameText.setText(artist.getName());
 			contactNameText.setText(artist.getContactName());
 			phoneNumberText.setText(artist.getTelephoneNo());
+			arrivalCombo.setSelectedItem(getPlace(artist.getArrival()));
+			departureCombo.setSelectedItem(getPlace(artist.getDeparture()));
+			hotelCombo.setSelectedItem(getPlace(artist.getHotel()));
+			arrivalTimeCombo.setDate(artist.getArrivalTime());
+			departureTimeCombo.setDate(artist.getDepartureTime());
+			extraInfoText.setText(artist.getExtraInfo());
 		}
 	}
 

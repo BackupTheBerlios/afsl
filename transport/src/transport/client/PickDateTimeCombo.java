@@ -104,5 +104,9 @@ public class PickDateTimeCombo extends javax.swing.JPanel {
 		}
 	}
 
+	public void setDate(Date newDate) {
+		dateField.setText(DateFormat.getInstance().format(newDate));
+	}
+
 	// End of variables declaration//GEN-END:variables
 }

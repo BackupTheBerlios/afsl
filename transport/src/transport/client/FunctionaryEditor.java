@@ -123,6 +123,18 @@ public class FunctionaryEditor extends GenericEditor {
 			this.setTitle("Update a functionary");
 			okButton.setText("Update");
 			okButton.setMnemonic('U');
+
+			beginTime.setDate(functionary.getBeginsWork());
+			nameField.setText(functionary.getName());
+
+			for (int i=0; i < roles.length; i++) {
+				if (roles[i].getId()==functionary.getRole().getId()) {
+					roleCombo.setSelectedItem(roles[i]);
+					break;
+				}
+			}
+
+			stopTime.setDate(functionary.getStopsWork());
 		}
 
 	}

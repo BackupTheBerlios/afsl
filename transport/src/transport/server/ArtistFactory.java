@@ -108,7 +108,7 @@ public class ArtistFactory {
 			PreparedStatement st=conn.prepareStatement(
 				"insert into artists (name, contact_name, phone_no," +
 				"arrival_time, arrival_place_id, hotel_id," +
-				"departure_place_id, no_of_artists, no_of_crew," +
+				"departure_time, departure_place_id, no_of_artists, no_of_crew," +
 				"no_of_guests, extra_info) values " +
 				"( ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? )");
 

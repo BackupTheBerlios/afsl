@@ -7,12 +7,16 @@
 package transport.client;
 
 import transport.logic.*;
+import javax.swing.*;
+import java.awt.event.*;
+import transport.server.MobilePhoneFactory;
 
 /**
  *
  * @author  ola
  */
 public class MobilePhoneEditor extends GenericEditor {
+//public class MobilePhoneEditor extends javax.swing.JInternalFrame {
 	MobilePhone mobilePhone;
 
 	public MobilePhoneEditor() {
@@ -33,7 +37,6 @@ public class MobilePhoneEditor extends GenericEditor {
 	private void jbInit() { //GEN-BEGIN:jbInit
 		jPanel1=new javax.swing.JPanel();
 		jLabel1=new javax.swing.JLabel();
-		jFormattedTextField1=new javax.swing.JFormattedTextField();
 		jPanel2=new javax.swing.JPanel();
 		okButton=new javax.swing.JButton();
 		cancelButton=new javax.swing.JButton();
@@ -42,10 +45,12 @@ public class MobilePhoneEditor extends GenericEditor {
 		jPanel1.setLayout(new java.awt.GridLayout());
 
 		jLabel1.setText("Number");
-		jPanel1.add(jLabel1);
+    mobilePhoneText.setText("");
+    okButton.addActionListener(new MobilePhoneEditor_okButton_actionAdapter(this));
+    cancelButton.addActionListener(new MobilePhoneEditor_cancelButton_actionAdapter(this));
+    jPanel1.add(jLabel1);
+    jPanel1.add(mobilePhoneText, null);
 
-		jFormattedTextField1.setText("jFormattedTextField1");
-		jPanel1.add(jFormattedTextField1);
 
 		getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
@@ -62,11 +67,11 @@ public class MobilePhoneEditor extends GenericEditor {
 
 	// Variables declaration - do not modify//GEN-BEGIN:variables
 	private javax.swing.JButton cancelButton;
-	private javax.swing.JFormattedTextField jFormattedTextField1;
 	private javax.swing.JLabel jLabel1;
 	private javax.swing.JPanel jPanel1;
 	private javax.swing.JPanel jPanel2;
 	private javax.swing.JButton okButton;
+  JTextField mobilePhoneText = new JTextField();
 
 	/**
 	 * edit
@@ -74,14 +79,69 @@ public class MobilePhoneEditor extends GenericEditor {
 	 * @param o Object
 	 */
 	public void edit(Object o) {
+		this.mobilePhone=(MobilePhone)o;
+
+		if (mobilePhone.getId() == -1) {
+			this.setTitle("Add a mobile phone");
+			okButton.setText("New");
+			okButton.setMnemonic('N');
+		} else {
+			this.setTitle("Update a mobile phone");
+			okButton.setText("Update");
+			okButton.setMnemonic('U');
+
+			mobilePhoneText.setText(mobilePhone.getNumber());
+		}
 	}
 
 	/**
 	 * editNew
 	 */
 	public void editNew() {
+		edit(new MobilePhone());
 	}
+
+	void okButton_actionPerformed(ActionEvent e) {
+		mobilePhone.setNumber(mobilePhoneText.getText());
+
+		MobilePhoneFactory mpf=new MobilePhoneFactory();
+
+		if (mobilePhone.getId() == -1) {
+			mpf.newMobilePhone(mobilePhone);
+		} else {
+			mpf.updateMobilePhone(mobilePhone);
+		}
+
+		this.dispose();
+	}
+
+	void cancelButton_actionPerformed(ActionEvent e) {
+		this.dispose();
+	}
+
 
 	// End of variables declaration//GEN-END:variables
 
+}
+
+class MobilePhoneEditor_okButton_actionAdapter implements java.awt.event.ActionListener {
+  MobilePhoneEditor adaptee;
+
+  MobilePhoneEditor_okButton_actionAdapter(MobilePhoneEditor adaptee) {
+    this.adaptee = adaptee;
+  }
+  public void actionPerformed(ActionEvent e) {
+    adaptee.okButton_actionPerformed(e);
+  }
+}
+
+class MobilePhoneEditor_cancelButton_actionAdapter implements java.awt.event.ActionListener {
+  MobilePhoneEditor adaptee;
+
+  MobilePhoneEditor_cancelButton_actionAdapter(MobilePhoneEditor adaptee) {
+    this.adaptee = adaptee;
+  }
+  public void actionPerformed(ActionEvent e) {
+    adaptee.cancelButton_actionPerformed(e);
+  }
 }

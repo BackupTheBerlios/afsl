@@ -7,12 +7,15 @@
 package transport.client;
 
 import transport.logic.*;
+import java.awt.event.*;
+import transport.server.PlaceFactory;
 
 /**
  *
  * @author  ola
  */
 public class PlaceEditor extends GenericEditor {
+//public class PlaceEditor extends javax.swing.JInternalFrame {
 	Place place;
 
 	public PlaceEditor() {
@@ -42,7 +45,9 @@ public class PlaceEditor extends GenericEditor {
 		jPanel1.setLayout(new java.awt.GridLayout());
 
 		jLabel1.setText("Name");
-		jPanel1.add(jLabel1);
+		okButton.addActionListener(new PlaceEditor_okButton_actionAdapter(this));
+    cancelButton.addActionListener(new PlaceEditor_cancelButton_actionAdapter(this));
+    jPanel1.add(jLabel1);
 
 		jPanel1.add(nameText);
 
@@ -94,6 +99,48 @@ public class PlaceEditor extends GenericEditor {
 		edit(new Place());
 	}
 
+	void okButton_actionPerformed(ActionEvent e) {
+
+		place.setName(nameText.getText());
+
+		PlaceFactory pf=new PlaceFactory();
+
+		if (place.getId() == -1) {
+			pf.newPlace(place);
+		} else {
+			pf.updatePlace(place);
+		}
+
+		this.dispose();
+	}
+
+	void cancelButton_actionPerformed(ActionEvent e) {
+		this.dispose();
+	}
+
+
 	// End of variables declaration//GEN-END:variables
 
+}
+
+class PlaceEditor_okButton_actionAdapter implements java.awt.event.ActionListener {
+  PlaceEditor adaptee;
+
+  PlaceEditor_okButton_actionAdapter(PlaceEditor adaptee) {
+    this.adaptee = adaptee;
+  }
+  public void actionPerformed(ActionEvent e) {
+    adaptee.okButton_actionPerformed(e);
+  }
+}
+
+class PlaceEditor_cancelButton_actionAdapter implements java.awt.event.ActionListener {
+  PlaceEditor adaptee;
+
+  PlaceEditor_cancelButton_actionAdapter(PlaceEditor adaptee) {
+    this.adaptee = adaptee;
+  }
+  public void actionPerformed(ActionEvent e) {
+    adaptee.cancelButton_actionPerformed(e);
+  }
 }
