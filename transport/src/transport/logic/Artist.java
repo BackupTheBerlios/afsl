@@ -17,6 +17,10 @@ public class Artist extends LogicItem {
 	private int noOfCrew;
 	private int noOfGuests;
 	private String extraInfo;
+        private String arrivalFlightNo;
+        private String departureFlightNo;
+        private String stage;
+        private String bookedBy;
 
 	public Artist(int id,
 				  String name,
@@ -30,7 +34,11 @@ public class Artist extends LogicItem {
 				  int noOfArtists,
 				  int noOfCrew,
 				  int noOfGuests,
-				  String extraInfo) {
+				  String extraInfo,
+                                  String departureFlightNo,
+                                  String arrivalFlightNo,
+                                  String stage,
+                                  String bookedBy) {
 		this.id=id;
 		this.name=name;
 		this.contactName=contactName;
@@ -44,6 +52,10 @@ public class Artist extends LogicItem {
 		this.noOfGuests=noOfGuests;
 		this.extraInfo=extraInfo;
 		this.departureTime=departureTime;
+                this.arrivalFlightNo = arrivalFlightNo;
+                this.departureFlightNo = departureFlightNo;
+                this.stage = stage;
+                this.bookedBy=bookedBy;
 	}
 
 	public String toString() {
@@ -287,6 +299,79 @@ public class Artist extends LogicItem {
 	public void setDepartureTime(Date departureTime) {
 		this.departureTime=departureTime;
 	}
+
+        /**
+         * Get arrivalFlightNo.
+         *
+         * @return arrivalFlightNo as String.
+         */
+        public String getArrivalFlightNo() {
+                return arrivalFlightNo;
+        }
+
+        /**
+         * Set arrivalFlightNo.
+         *
+         * @param arrivalFlightNo the value to set.
+         */
+        public void setArrivalFlightNo(String arrivalFlightNo) {
+                this.arrivalFlightNo=arrivalFlightNo;
+        }
+        /**
+         * Get departureFlightNo.
+         *
+         * @return departureFlightNo as String.
+         */
+        public String getDepartureFlightNo() {
+                return departureFlightNo;
+        }
+
+        /**
+         * Set departureFlightNo.
+         *
+         * @param departureFlightNo the value to set.
+         */
+        public void setDepartureFlightNo(String departureFlightNo) {
+                this.departureFlightNo=departureFlightNo;
+        }
+        /**
+         * Get stage.
+         *
+         * @return stage as String.
+         */
+        public String getStage() {
+                return stage;
+        }
+
+        /**
+         * Set stage.
+         *
+         * @param stage the value to set.
+         */
+        public void setStage(String stage) {
+                this.stage=stage;
+        }
+
+        /**
+         * Get bookedBy.
+         *
+         * @return bookedBy as String.
+         */
+        public String getBookedBy() {
+                return bookedBy;
+        }
+
+        /**
+         * Set bookedBy.
+         *
+         * @param bookedBy the value to set.
+         */
+        public void setBookedBy(String bookedBy) {
+                this.bookedBy=bookedBy;
+        }
+
+
+
         public String toHTML() {
          String html;
          DateFormat df = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.SHORT, new Locale("sv"));
@@ -310,6 +395,14 @@ public class Artist extends LogicItem {
          if (getTelephoneNo() != null) {
            TelephoneNo = getTelephoneNo();
          }
+         String booked ="N/A";
+         if (getBookedBy()!=null){
+           booked=getBookedBy();
+         }
+         String scen = "N/A";
+         if (getStage() != null) {
+           scen = getStage();
+         }
 
          html = "<TABLE BORDER=1>\n";
          html = html + "<TR><TD><b>Name:</b></TD><TD><b>" + name+"</b></TD></TR>\n";
@@ -317,12 +410,16 @@ public class Artist extends LogicItem {
          html = html + "<TR><TD><b>Telephone Number:</b></TD><TD>" + TelephoneNo+"</TD></TR>\n";
          html = html + "<TR><TD><b>Arrival:</b></TD><TD>" + getArrival().toHTML()+"</TD></TR>\n";
          html = html + "<TR><TD><b>Arrival Time:</b></TD><TD>" +  ArrivalTime +"</TD></TR>\n";
+         html = html + "<TR><TD><b>Arrival Flight No:</b></TD><TD>" +  getArrivalFlightNo() +"</TD></TR>\n";
          html = html + "<TR><TD><b>Hotel:</b></TD><TD>" + getHotel().toHTML()+"</TD></TR>\n";
          html = html + "<TR><TD><b>Departure:</b></TD><TD>" +getDeparture().toHTML() +"</TD></TR>\n";
          html = html + "<TR><TD><b>Departure Time:</b></TD><TD>" +DepartureTime+"</TD></TR>\n";
+         html = html + "<TR><TD><b>Departure Flight No:</b></TD><TD>" +getDepartureFlightNo()+"</TD></TR>\n";
+         html = html + "<TR><TD><b>Stage:</b></TD><TD>" +scen+"</TD></TR>\n";
          html = html + "<TR><TD><b>No of Artists:</b></TD><TD>" +getNoOfArtists() +"</TD></TR>\n";
          html = html + "<TR><TD><b>No of Crew:</b></TD><TD>" + getNoOfCrew()+"</TD></TR>\n";
          html = html + "<TR><TD><b>No of Guests:</b></TD><TD>" +getNoOfGuests() +"</TD></TR>\n";
+         html = html + "<TR><TD><b>Booked By:</b></TD><TD>" +booked +"</TD></TR>\n";
          html = html + "</TABLE>\n";
 
          return html;

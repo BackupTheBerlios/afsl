@@ -34,18 +34,24 @@ public class ArtistTableModel extends GenericTableModel {
 			case 3:
 				return "Arrival";
 			case 4:
-				return "Arrival time";
-			case 5:
+				return "Arrival Flight #";
+                        case 5:
 				return "Hotel";
 			case 6:
-				return "Departure";
+				return "Hotel";
 			case 7:
-				return "Departure Time";
+				return "Departure";
 			case 8:
+				return "Departure Time";
+                        case 9:
+				return "Departure Flight #";
+                        case 10:
+                                return "Stage";
+			case 11:
 				return "No of Artists";
-			case 9:
+			case 12:
 				return "No of Crew";
-			case 10:
+			case 13:
 				return "No of Guests";
 		}
 
@@ -57,7 +63,7 @@ public class ArtistTableModel extends GenericTableModel {
 	}
 
 	public int getColumnCount() {
-		return 11;
+		return 14;
 	}
 
 	public Object getValueAt(int row, int col) {
@@ -72,17 +78,23 @@ public class ArtistTableModel extends GenericTableModel {
 				return rowData[row].getArrival();
 			case 4:
 				return rowData[row].getArrivalTime();
-			case 5:
-				return rowData[row].getHotel();
+                        case 5:
+				return rowData[row].getArrivalFlightNo();
 			case 6:
-				return rowData[row].getDeparture();
+				return rowData[row].getHotel();
 			case 7:
-				return rowData[row].getDepartureTime();
+				return rowData[row].getDeparture();
 			case 8:
+				return rowData[row].getDepartureTime();
+                        case 9:
+				return rowData[row].getDepartureFlightNo();
+                        case 10:
+				return rowData[row].getStage();
+			case 11:
 				return new Integer(rowData[row].getNoOfArtists());
-			case 9:
+			case 12:
 				return new Integer(rowData[row].getNoOfCrew());
-			case 10:
+			case 13:
 				return new Integer(rowData[row].getNoOfGuests());
 		}
 

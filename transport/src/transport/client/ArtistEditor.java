@@ -77,6 +77,14 @@ public class ArtistEditor extends GenericEditor {
 		numberOfGuestsText=new javax.swing.JFormattedTextField();
 		jLabel11=new javax.swing.JLabel();
 		extraInfoText=new javax.swing.JTextArea();
+                jLabel20=new javax.swing.JLabel();
+                jLabel21=new javax.swing.JLabel();
+                jLabel22=new javax.swing.JLabel();
+                jLabel23=new javax.swing.JLabel();
+                flightNoArrival=new javax.swing.JFormattedTextField();
+                flightNoDeparture=new javax.swing.JFormattedTextField();
+                stage=new javax.swing.JFormattedTextField();
+                bookedBy=new javax.swing.JFormattedTextField();
 		buttonPanel=new javax.swing.JPanel();
 		okButton=new javax.swing.JButton();
 		cancelButton=new javax.swing.JButton();
@@ -90,7 +98,7 @@ public class ArtistEditor extends GenericEditor {
           }
     });
         this.getContentPane().setLayout(borderLayout2);
-		infoPanel.setLayout(new java.awt.GridLayout(12, 2));
+		infoPanel.setLayout(new java.awt.GridLayout(16, 2));
 
 		jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
 		jLabel1.setText("Name");
@@ -105,18 +113,26 @@ public class ArtistEditor extends GenericEditor {
         infoPanel.add(arrivalCombo);
         infoPanel.add(jLabel4);
         infoPanel.add(arrivalTimeCombo);
+        infoPanel.add(jLabel20);
+        infoPanel.add(flightNoArrival);
         infoPanel.add(jLabel5);
         infoPanel.add(hotelCombo);
         infoPanel.add(jLabel7);
         infoPanel.add(departureCombo);
         infoPanel.add(jLabel8);
         infoPanel.add(departureTimeCombo);
+        infoPanel.add(jLabel21);
+        infoPanel.add(flightNoDeparture);
+        infoPanel.add(jLabel22);
+        infoPanel.add(stage);
         infoPanel.add(jLabel9);
         infoPanel.add(numberOfArtistsText);
         infoPanel.add(jLabel10);
         infoPanel.add(numberOfCrewText);
         infoPanel.add(labelGuests);
         infoPanel.add(numberOfGuestsText);
+        infoPanel.add(jLabel23);
+        infoPanel.add(bookedBy);
         infoPanel.add(jLabel11);
         infoPanel.add(extraInfoText);
     this.getContentPane().add(buttonPanel, BorderLayout.SOUTH);
@@ -168,7 +184,14 @@ public class ArtistEditor extends GenericEditor {
 
 
 		jLabel11.setText("Extra info");
-
+                jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+		jLabel20.setText("Flight No Arrival");
+                jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+		jLabel21.setText("Flight No Departure");
+                jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+		jLabel22.setText("Stage");
+                jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+		jLabel23.setText("Booked By");
 
 
 		okButton.setMnemonic('O');
@@ -227,8 +250,11 @@ public class ArtistEditor extends GenericEditor {
 		artist.setNoOfCrew(Integer.parseInt(numberOfCrewText.getText()));
 		artist.setNoOfGuests(Integer.parseInt(numberOfGuestsText.getText()));
 		artist.setExtraInfo(extraInfoText.getText());
-
-		MainFrame mf=(MainFrame)this.getTopLevelAncestor();
+                artist.setStage(stage.getText());
+                artist.setBookedBy(bookedBy.getText());
+                artist.setArrivalFlightNo(flightNoArrival.getText());
+                artist.setDepartureFlightNo(flightNoDeparture.getText());
+                MainFrame mf=(MainFrame)this.getTopLevelAncestor();
 
 		if (artist.getId() == -1) {
 			af.newArtist(artist);
@@ -269,11 +295,19 @@ public class ArtistEditor extends GenericEditor {
 	private javax.swing.JLabel jLabel7;
 	private javax.swing.JLabel jLabel8;
 	private javax.swing.JLabel jLabel9;
+        private javax.swing.JLabel jLabel20;
+        private javax.swing.JLabel jLabel21;
+        private javax.swing.JLabel jLabel22;
+        private javax.swing.JLabel jLabel23;
+        private javax.swing.JTextField flightNoArrival;
+        private javax.swing.JTextField flightNoDeparture;
+        private javax.swing.JTextField stage;
+        private javax.swing.JTextField bookedBy;
 	private javax.swing.JLabel labelGuests;
 	private javax.swing.JTextField nameText;
 	private javax.swing.JButton okButton;
 	private javax.swing.JFormattedTextField phoneNumberText;
-    BorderLayout borderLayout2 = new BorderLayout();
+        BorderLayout borderLayout2 = new BorderLayout();
 
 	public Place getPlace(Place p) {
 		for (int i=0;i<allPlaces.length;i++){
@@ -316,6 +350,10 @@ public class ArtistEditor extends GenericEditor {
 			numberOfCrewText.setText(""+artist.getNoOfCrew());
 			numberOfGuestsText.setText(""+artist.getNoOfGuests());
 			extraInfoText.setText(artist.getExtraInfo());
+                        stage.setText(artist.getStage());
+                        bookedBy.setText(artist.getBookedBy());
+                        flightNoDeparture.setText(artist.getDepartureFlightNo());
+                        flightNoArrival.setText(artist.getArrivalFlightNo());
 		}
 	}
 

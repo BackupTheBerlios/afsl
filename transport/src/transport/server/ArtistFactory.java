@@ -52,7 +52,12 @@ public class ArtistFactory {
 							rs.getInt(10),
 							rs.getInt(11),
 							rs.getInt(12),
-							rs.getString(13));
+							rs.getString(13),
+                                                        rs.getString(14),
+                                                        rs.getString(15),
+                                                        rs.getString(16),
+                                                        rs.getString(17)
+                                                        );
 
 		return a;
 	}
@@ -112,8 +117,8 @@ public class ArtistFactory {
 				"insert into artists (name, contact_name, phone_no," +
 				"arrival_time, arrival_place_id, hotel_id," +
 				"departure_time, departure_place_id, no_of_artists, no_of_crew," +
-				"no_of_guests, extra_info) values " +
-				"( ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? )");
+                                "no_of_guests, extra_info, flightno_departure, flightno_arrival, stage, bookedBy) values " +
+				"( ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? )");
 
 			st.setString(1, newArtist.getName());
 			st.setString(2, newArtist.getContactName());
@@ -127,6 +132,10 @@ public class ArtistFactory {
 			st.setInt(10, newArtist.getNoOfCrew());
 			st.setInt(11, newArtist.getNoOfGuests());
 			st.setString(12, newArtist.getExtraInfo());
+                        st.setString(13, newArtist.getDepartureFlightNo());
+                        st.setString(14, newArtist.getArrivalFlightNo());
+                        st.setString(15, newArtist.getStage());
+                        st.setString(16, newArtist.getBookedBy());
 			st.executeUpdate();
 
 			Statement st2=conn.createStatement();
@@ -159,7 +168,11 @@ public class ArtistFactory {
 				"no_of_artists = ?, " +
 				"no_of_crew = ?," +
 				"no_of_guests = ?, " +
-				"extra_info = ? "+
+				"extra_info = ?,"+
+                                "flightno_departure = ?," +
+                                "flightno_arrival = ?," +
+                                "stage = ?," +
+                                "bookedBy = ? "+
 				"where id = ?");
 
 			st.setString(1, updatedArtist.getName());
@@ -187,8 +200,11 @@ public class ArtistFactory {
 			st.setInt(10, updatedArtist.getNoOfCrew());
 			st.setInt(11, updatedArtist.getNoOfGuests());
 			st.setString(12, updatedArtist.getExtraInfo());
-			st.setInt(13, updatedArtist.getId());
-
+                        st.setString(13, updatedArtist.getDepartureFlightNo());
+                        st.setString(14, updatedArtist.getArrivalFlightNo());
+                        st.setString(15, updatedArtist.getStage());
+                        st.setString(16, updatedArtist.getBookedBy());
+			st.setInt(17, updatedArtist.getId());
 			st.executeUpdate();
 			conn.commit();
 			conn.close();
