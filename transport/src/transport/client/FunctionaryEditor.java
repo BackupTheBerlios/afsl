@@ -28,6 +28,7 @@ public class FunctionaryEditor extends GenericEditor {
 	/** Creates new form AddFunctionary */
 	public FunctionaryEditor(Functionary functionary) {
 		jbInit();
+		edit(functionary);
 	}
 
 	/** This method is called from within the constructor to

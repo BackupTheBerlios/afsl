@@ -110,7 +110,7 @@ public class ArtistFactory {
 				"arrival_time, arrival_place_id, hotel_id," +
 				"departure_place_id, no_of_artists, no_of_crew," +
 				"no_of_guests, extra_info) values " +
-				"( ? , ? , ? , ? , ? , ? , ? , ? , ? , ? )");
+				"( ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? )");
 
 			st.setString(1, newArtist.getName());
 			st.setString(2, newArtist.getContactName());

@@ -21,8 +21,8 @@ public class TransportEditor extends GenericEditor {
 
 	/** Creates new form AddTransport */
 	public TransportEditor(Transport transport) {
-		this.transport=transport;
 		jbInit();
+		edit(transport);
 	}
 
 	/** This method is called from within the constructor to

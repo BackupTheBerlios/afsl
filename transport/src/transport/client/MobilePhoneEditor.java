@@ -22,6 +22,7 @@ public class MobilePhoneEditor extends GenericEditor {
 	/** Creates new form MobilePhoneEditor */
 	public MobilePhoneEditor(MobilePhone mobilePhone) {
 		jbInit();
+		edit(mobilePhone);
 	}
 
 	/** This method is called from within the constructor to

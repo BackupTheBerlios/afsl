@@ -24,6 +24,7 @@ public class ArtistEditor extends GenericEditor {
 	/** Creates new form AddArtist */
 	public ArtistEditor(Artist artist) {
 		jbInit();
+		edit(artist);
 	}
 
 	private void fixCombos() {

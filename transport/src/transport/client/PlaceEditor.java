@@ -21,8 +21,8 @@ public class PlaceEditor extends GenericEditor {
 
 	/** Creates new form PlaceEditor */
 	public PlaceEditor(Place place) {
-		this.place=place;
 		jbInit();
+		edit(place);
 	}
 
 	/** This method is called from within the constructor to
