@@ -83,8 +83,9 @@ public class TransportWaypointChooser extends javax.swing.JPanel {
 		removeButton.addActionListener(new
 			TransportWaypointChooser_removeButton_actionAdapter(this));
 		updateButton.setEnabled(false);
+    updateButton.setToolTipText("");
 		updateButton.setMnemonic('U');
-		updateButton.setText("Uptime time");
+		updateButton.setText("Update time");
 		updateButton.addActionListener(new
 			TransportWaypointChooser_updateButton_actionAdapter(this));
 		timeCombo.addPropertyChangeListener(new

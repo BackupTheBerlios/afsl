@@ -272,9 +272,10 @@ public class TransportEditor extends GenericEditor {
 	  transport.setFunctionaries(func);
 	  transport.setInternal(internalBox.isSelected());
 
-	// TODO: fix fscking waypoints.
-
-	transport.setWaypoints(waypointChooser.getWaypoints());
+	  // will be null if waypoints haven't been edited.
+	  if (waypointChooser != null) {
+		  transport.setWaypoints(waypointChooser.getWaypoints());
+	  }
 
 //	  transport.setWaypoints((TransportWaypoint[])waypointsChooser.getObjects());
 
