@@ -4,7 +4,7 @@ public class MobilePhone {
 	int id;
 	String number;
 
-	MobilePhone(int id, String number) {
+	public MobilePhone(int id, String number) {
 		this.id=id;
 		this.number=number;
 	}
