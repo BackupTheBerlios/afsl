@@ -48,6 +48,9 @@ public class ViewTransportByFunctionaryTableModel
   public Object getRowData(int row) {
     return rowData[row];
   }
+  public void removeRowData() {
+     rowData = null;
+   }
 
   public String getColumnName(int col) {
     switch (col) {
@@ -81,7 +84,11 @@ public class ViewTransportByFunctionaryTableModel
   }
 
   public int getRowCount() {
-    return rowData.length;
+    if (rowData!=null){
+      return rowData.length;
+    }else{
+      return 0;
+    }
   }
 
   public int getColumnCount() {
