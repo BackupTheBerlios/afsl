@@ -108,6 +108,33 @@ public class MobilePhoneFactory {
 		return newPhone;
 	}
 
+	protected static MobilePhone[] getMobilePhonesForTransport(int transportId) throws
+		SQLException {
+
+		ArrayList a=new ArrayList();
+
+		Connection conn=ConnectionFactory.getConnection();
+
+		PreparedStatement st=conn.prepareStatement(
+			"select * from mobile_phone_transport where transport_id = ?");
+		st.setInt(1, transportId);
+		ResultSet rs=st.executeQuery();
+
+		// FIXME: poor performance at all factories
+
+		MobilePhoneFactory mpf=new MobilePhoneFactory();
+		while (rs.next()) {
+			a.add(mpf.getMobilePhone(rs.getInt("mobile_phone_id")));
+		}
+
+		conn.close();
+
+		MobilePhone[] ar=new MobilePhone[a.size()];
+		a.toArray(ar);
+
+		return ar;
+	}
+
 	public void updateMobilePhone(MobilePhone updatedPhone) {
 		try {
 			Connection conn=ConnectionFactory.getConnection();

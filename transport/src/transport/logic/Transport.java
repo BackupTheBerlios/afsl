@@ -8,8 +8,8 @@ public class Transport {
 	private Date returnTime;
 	private Date actualReturnTime;
 	private boolean internal;
-	private MobilePhone mobile;
-	private TransportWaypoint[] dropoffs;
+	private MobilePhone[] mobilePhones;
+	private TransportWaypoint[] waypoints;
 	private Car[] cars;
 	private Artist[] artists;
 	private Functionary[] functionaries;
@@ -21,8 +21,8 @@ public class Transport {
 					 Date returnTime,
 					 Date actualReturnTime,
 					 boolean internal,
-					 MobilePhone mobile,
-					 TransportWaypoint[] dropoffs,
+					 MobilePhone[] mobilePhones,
+					 TransportWaypoint[] waypoints,
 					 Car[] cars,
 					 Artist[] artists,
 					 Functionary[] functionaries,
@@ -33,8 +33,8 @@ public class Transport {
 		this.returnTime=returnTime;
 		this.actualReturnTime=actualReturnTime;
 		this.internal=internal;
-		this.mobile=mobile;
-		this.dropoffs=dropoffs;
+		this.mobilePhones=mobilePhones;
+		this.waypoints=waypoints;
 		this.cars=cars;
 		this.artists=artists;
 		this.functionaries=functionaries;
@@ -137,30 +137,12 @@ public class Transport {
 	}
 
 	/**
-	 * Get mobile.
-	 *
-	 * @return mobile as MobilePhone.
-	 */
-	public MobilePhone getMobile() {
-		return mobile;
-	}
-
-	/**
-	 * Set mobile.
-	 *
-	 * @param mobile the value to set.
-	 */
-	public void setMobile(MobilePhone mobile) {
-		this.mobile=mobile;
-	}
-
-	/**
 	 * Get dropoffs.
 	 *
 	 * @return dropoffs as TransportDropoff[].
 	 */
-	public TransportWaypoint[] getDropoffs() {
-		return dropoffs;
+	public TransportWaypoint[] getWaypoints() {
+		return waypoints;
 	}
 
 	/**
@@ -169,8 +151,8 @@ public class Transport {
 	 * @param index the index.
 	 * @return dropoffs at index as TransportDropoff.
 	 */
-	public TransportWaypoint getDropoffs(int index) {
-		return dropoffs[index];
+	public TransportWaypoint getWaypoints(int index) {
+		return waypoints[index];
 	}
 
 	/**
@@ -178,8 +160,8 @@ public class Transport {
 	 *
 	 * @param dropoffs the value to set.
 	 */
-	public void setDropoffs(TransportWaypoint[] dropoffs) {
-		this.dropoffs=dropoffs;
+	public void setWaypoints(TransportWaypoint[] waypoints) {
+		this.waypoints=waypoints;
 	}
 
 	/**
@@ -188,8 +170,8 @@ public class Transport {
 	 * @param dropoffs the value to set.
 	 * @param index the index.
 	 */
-	public void setDropoffs(TransportWaypoint dropoffs, int index) {
-		this.dropoffs[index]=dropoffs;
+	public void setWaypoints(TransportWaypoint waypoints, int index) {
+		this.waypoints[index]=waypoints;
 	}
 
 	/**
@@ -333,6 +315,10 @@ public class Transport {
 		return miscInfo;
 	}
 
+	public MobilePhone[] getMobilePhones() {
+		return mobilePhones;
+	}
+
 	/**
 	 * Set miscInfo.
 	 *
@@ -340,5 +326,9 @@ public class Transport {
 	 */
 	public void setMiscInfo(String miscInfo) {
 		this.miscInfo=miscInfo;
+	}
+
+	public void setMobilePhones(MobilePhone[] mobilePhones) {
+		this.mobilePhones=mobilePhones;
 	}
 }

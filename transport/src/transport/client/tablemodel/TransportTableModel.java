@@ -23,28 +23,30 @@ public class TransportTableModel extends GenericTableModel {
 
 	public String getColumnName(int col) {
 		switch (col) {
-			case 0:
-				return "Name";
-			case 1:
-				return "Contact name";
-			case 2:
-				return "Telephone number";
-			case 3:
-				return "Arrival";
-			case 4:
-				return "Arrival time";
-			case 5:
-				return "Hotel";
-			case 6:
-				return "Departure";
-			case 7:
-				return "Departure Time";
-			case 8:
-				return "No of Transports";
-			case 9:
-				return "No of Crew";
-			case 10:
-				return "No of Guests";
+		case 0:
+			return "Artists";
+		case 1:
+			return "Cars";
+		case 2:
+			return "Functionaries";
+		case 3:
+			return "Internal";
+		case 4:
+			return "Waypoints";
+		case 5:
+			return "Mobile phones";
+		case 6:
+			return "Start time";
+		case 7:
+			return "Return time";
+		case 8:
+			return "Actual return time";
+		case 9:
+			return "Distance";
+		case 10:
+			return "Actual return time";
+		case 11:
+			return "Misc info";
 		}
 
 		return "FIXME";
@@ -55,56 +57,44 @@ public class TransportTableModel extends GenericTableModel {
 	}
 
 	public int getColumnCount() {
-		return 11;
+		return 12;
+	}
+
+	private String fixString(Object[] o) {
+		String s=new String();
+		for (int i=0; i < o.length - 1; i++) {
+			s=s + o.toString() + ", ";
+		}
+		s=s + o[o.length - 1];
+
+		return s;
 	}
 
 	public Object getValueAt(int row, int col) {
 		switch (col) {
 			case 0:
-				Artist[] a=rowData[row].getArtists();
-				String s=new String();
-				for (int i=0; i < a.length - 1; i++) {
-					s=s + a.toString() + ", ";
-				}
-				s=s + a[a.length - 1];
-
-				return a;
+				return fixString(rowData[row].getArtists());
 			case 1:
-				Car[] c=rowData[row].getCars();
-				String s2=new String();
-				for (int i=0; i < c.length - 1; i++) {
-					s2=s2 + c.toString() + ", ";
-				}
-				s2=s2 + c[c.length - 1];
-
-				return s2;
+				return fixString(rowData[row].getCars());
 			case 2:
-				Functionary[] f=rowData[row].getFunctionaries();
-				String s3=new String();
-				for (int i=0; i < f.length - 1; i++) {
-					s3=s3 + f.toString() + ", ";
+				return fixString(rowData[row].getFunctionaries());
+			case 3:
+				if (rowData[row].getInternal()) {
+					return "Yes";
+				} else {
+					return "";
 				}
-				s3=s3 + f[f.length - 1];
-				return s3;
-				/*
-				   case 3:
-					return rowData[row].getArrival();
-				   case 4:
-					return rowData[row].getArrivalTime();
-				   case 5:
-					return rowData[row].getHotel();
-				   case 6:
-					return rowData[row].getDeparture();
-				   case 7:
-					return rowData[row].getDepartureTime();
-				   case 8:
-					return new Integer(rowData[row].getNoOfTransports());
-				   case 9:
-					return new Integer(rowData[row].getNoOfCrew());
-				   case 10:
-					return new Integer(rowData[row].getNoOfGuests());
-				 */
-		}
+			case 4:
+				return fixString(rowData[row].getWaypoints());
+			case 5:
+				return fixString(rowData[row].getMobilePhones());
+			case 6:
+			case 7:
+			case 8:
+			case 9:
+			case 10:
+			case 11:
+			}
 
 		// FIXME: should not happen. Log error if it does.
 

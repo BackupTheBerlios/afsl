@@ -37,7 +37,7 @@ public class TransportFactory {
 						returnTime,
 						actualReturnTime,
 						internal,
-						mpf.getMobilePhone(mobilePhoneId),
+						MobilePhoneFactory.getMobilePhonesForTransport(id),
 						TransportWaypointFactory.getDropoffs(id),
 						CarFactory.getCarsForTransport(id),
 						ArtistFactory.getArtistsForTransport(id),
@@ -148,7 +148,7 @@ public class TransportFactory {
 
 	private void insertTransportDropoffs(Transport newTransport,
 										 Connection conn) throws SQLException {
-		TransportWaypoint[] dropoffs=newTransport.getDropoffs();
+		TransportWaypoint[] dropoffs=newTransport.getWaypoints();
 		PreparedStatement st=conn.prepareStatement("insert into transport_dropoffs (transport_id, place_id, dropoff_time) values ( ? , ? )");
 
 		for (int i=0; i < dropoffs.length; i++) {

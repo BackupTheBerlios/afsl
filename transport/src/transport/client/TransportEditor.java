@@ -101,25 +101,25 @@ public class TransportEditor extends GenericEditor {
 
 
 		getContentPane().add(jPanel3, java.awt.BorderLayout.CENTER);
-    jPanel3.add(jLabel3, null);
-    jPanel3.add(functionariesChooser, null);
-    jPanel3.add(jLabel4, null);
-    jPanel3.add(internalBox, null);
-    jPanel3.add(jLabel5, null);
-    jPanel3.add(waypointsChooser, null);
-    jPanel3.add(jLabel6, null);
-    jPanel3.add(mobilePhonesChooser, null);
-    jPanel3.add(jLabel7, null);
-    jPanel3.add(pickDateTimeCombo1, null);
-    jPanel3.add(jLabel9, null);
-    jPanel3.add(pickDateTimeCombo2, null);
-    jPanel3.add(jLabel8, null);
-    jPanel3.add(distanceText, null);
-    jPanel3.add(jLabel10, null);
-    jPanel3.add(pickDateTimeCombo3, null);
-    jPanel3.add(jLabel11, null);
-    jPanel3.add(jScrollPane1, null);
-    jScrollPane1.getViewport().add(miscInfoText, null);
+		jPanel3.add(jLabel3, null);
+		jPanel3.add(functionariesChooser, null);
+		jPanel3.add(jLabel4, null);
+		jPanel3.add(internalBox, null);
+		jPanel3.add(jLabel5, null);
+		jPanel3.add(waypointsChooser, null);
+		jPanel3.add(jLabel6, null);
+		jPanel3.add(mobilePhonesChooser, null);
+		jPanel3.add(jLabel7, null);
+		jPanel3.add(pickDateTimeCombo1, null);
+		jPanel3.add(jLabel9, null);
+		jPanel3.add(pickDateTimeCombo2, null);
+		jPanel3.add(jLabel8, null);
+		jPanel3.add(distanceText, null);
+		jPanel3.add(jLabel10, null);
+		jPanel3.add(pickDateTimeCombo3, null);
+		jPanel3.add(jLabel11, null);
+		jPanel3.add(jScrollPane1, null);
+		jScrollPane1.getViewport().add(miscInfoText, null);
 
 		pack();
 	} //GEN-END:jbInit
@@ -168,9 +168,8 @@ public class TransportEditor extends GenericEditor {
 		 this.setTitle("Update an artist");
 		 okButton.setText("Update");
 		 okButton.setMnemonic('U');
-		 nameText.setText(artist.getName());
-		 contactNameText.setText(artist.getContactName());
-		 phoneNumberText.setText(artist.getTelephoneNo());
+
+
 		 }*/
 
 	}
