@@ -141,7 +141,7 @@ public class FunctionaryFactory {
 	public void updateFunctionary(Functionary updatedFunctionary) {
 		try {
 			Connection conn=ConnectionFactory.getConnection();
-			PreparedStatement st=conn.prepareStatement("update cars set name = ? , begins_work = ? , stops_work = ? , role_id = ? where id = ?");
+			PreparedStatement st=conn.prepareStatement("update functionaries set name = ? , begins_work = ? , stops_work = ? , role_id = ? where id = ?");
 			st.setString(1, updatedFunctionary.getName());
 			st.setDate(2,
 					   new java.sql.Date(updatedFunctionary.getBeginsWork().getTime()));
@@ -149,6 +149,8 @@ public class FunctionaryFactory {
 					   new java.sql.Date(updatedFunctionary.getStopsWork().getTime()));
 			st.setInt(4, updatedFunctionary.getRole().getId());
 			st.setInt(5, updatedFunctionary.getId());
+
+			st.executeUpdate();
 
 			conn.close();
 		} catch (SQLException e) {

@@ -95,6 +95,8 @@ public class PlaceFactory {
 			st.setString(1, updatedPlace.getName());
 			st.setInt(2, updatedPlace.getId());
 
+			st.executeUpdate();
+
 			conn.close();
 		} catch (SQLException e) {
 			logger.log(Level.SEVERE, e.getMessage(), e);
