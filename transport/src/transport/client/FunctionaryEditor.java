@@ -108,7 +108,7 @@ public class FunctionaryEditor extends GenericEditor {
 	 * @param o Object
 	 */
 	public void edit(Object o) {
-		this.functionary=functionary;
+		this.functionary=(Functionary)o;
 		RoleFactory rf=new RoleFactory();
 		Role[] roles=rf.getAllRoles();
 

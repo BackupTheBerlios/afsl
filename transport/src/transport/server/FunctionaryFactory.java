@@ -158,6 +158,8 @@ public class FunctionaryFactory {
 			Connection conn=ConnectionFactory.getConnection();
 			PreparedStatement st=conn.prepareStatement(
 				"delete from functionaries where id = ?");
+
+			st.setInt(1, id);
 			st.executeUpdate();
 			conn.close();
 		} catch (SQLException e) {

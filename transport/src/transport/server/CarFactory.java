@@ -158,6 +158,8 @@ public class CarFactory {
 			Connection conn=ConnectionFactory.getConnection();
 			PreparedStatement st=conn.prepareStatement(
 				"delete from cars where id = ?");
+
+			st.setInt(1, id);
 			st.executeUpdate();
 			conn.close();
 		} catch (SQLException e) {
