@@ -31,6 +31,7 @@ public class ItemChooser extends javax.swing.JPanel {
 	}
 
 public void refresh() {
+          listModel.removeAllElements();
 		if (type instanceof Artist) {
 			ArtistFactory af=new ArtistFactory();
 			Artist[] a=af.getAllArtists();

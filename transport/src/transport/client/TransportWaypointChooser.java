@@ -143,9 +143,11 @@ public class TransportWaypointChooser extends javax.swing.JPanel {
 	}
 
 	void removeButton_actionPerformed(ActionEvent e) {
+          updating=true;
 		if (waypointList.getSelectedIndex()!=-1) {
 			listModel.removeElementAt(waypointList.getSelectedIndex());
 		}
+                updating=false;
 	}
 
 	void cancelButton_actionPerformed(ActionEvent e) {
@@ -185,12 +187,6 @@ public class TransportWaypointChooser extends javax.swing.JPanel {
 	  if (updating) {
 		  return;
 	  }
-
-          if (waypointList.getSelectedIndex()==-1) {
-            JOptionPane.showMessageDialog(this.getTopLevelAncestor(),
-                                          "No row selected!");
-            return;
-          }
 
 	  timeCombo.setDate(((TransportWaypoint)listModel.get(waypointList.getSelectedIndex())).getTime());
 	  updateButton.setEnabled(true);
