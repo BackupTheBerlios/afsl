@@ -165,11 +165,23 @@ public class ArtistFactory {
 			st.setString(1, updatedArtist.getName());
 			st.setString(2, updatedArtist.getContactName());
 			st.setString(3, updatedArtist.getTelephoneNo());
-			st.setTimestamp(4, new java.sql.Timestamp(updatedArtist.getArrivalTime().getTime()));
+			if (updatedArtist.getArrivalTime()!=null) {
+				st.setTimestamp(4,
+								new java.sql.Timestamp(updatedArtist.getArrivalTime().
+					getTime()));
+			} else {
+				st.setTimestamp(4, null);
+			}
 			st.setInt(5, updatedArtist.getArrival().getId());
 			st.setInt(6, updatedArtist.getHotel().getId());
-			st.setTimestamp(7,
-					   new java.sql.Timestamp(updatedArtist.getDepartureTime().getTime()));
+			if (updatedArtist.getArrivalTime()!=null) {
+				st.setTimestamp(7,
+								new java.sql.Timestamp(updatedArtist.getArrivalTime().
+					getTime()));
+			} else {
+				st.setTimestamp(7, null);
+			}
+
 			st.setInt(8, updatedArtist.getDeparture().getId());
 			st.setInt(9, updatedArtist.getNoOfArtists());
 			st.setInt(10, updatedArtist.getNoOfCrew());
