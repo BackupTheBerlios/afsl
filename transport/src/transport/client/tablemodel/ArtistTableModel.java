@@ -34,9 +34,9 @@ public class ArtistTableModel extends GenericTableModel {
 			case 3:
 				return "Arrival";
 			case 4:
-				return "Arrival Flight #";
+				return "Arrival Time";
                         case 5:
-				return "Hotel";
+				return "Arrival Flight #";
 			case 6:
 				return "Hotel";
 			case 7:
