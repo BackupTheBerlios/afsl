@@ -38,7 +38,7 @@ public class TransportFactory {
 						actualReturnTime,
 						internal,
 						mpf.getMobilePhone(mobilePhoneId),
-						TransportDropoffFactory.getDropoffs(id),
+						TransportWaypointFactory.getDropoffs(id),
 						CarFactory.getCarsForTransport(id),
 						ArtistFactory.getArtistsForTransport(id),
 						FunctionaryFactory.getFunctionariesForTransport(id),

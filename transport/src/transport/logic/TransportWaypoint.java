@@ -2,11 +2,11 @@ package transport.logic;
 
 import java.util.*;
 
-public class TransportDropoff {
+public class TransportWaypoint {
 	Place place;
 	Date time;
 
-	public TransportDropoff(Place place, Date time) {
+	public TransportWaypoint(Place place, Date time) {
 		this.place=place;
 		this.time=time;
 	}

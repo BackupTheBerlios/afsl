@@ -120,4 +120,26 @@ public class MobilePhoneFactory {
 			logger.log(Level.SEVERE, e.getMessage(), e);
 		}
 	}
+
+	public void deleteMobilePhone(int id) {
+		try {
+			Connection conn=ConnectionFactory.getConnection();
+			PreparedStatement st=conn.prepareStatement("delete from mobile_phones where id = ?");
+			st.setInt(1,id);
+
+			st.executeUpdate();
+			conn.close();
+		} catch (SQLException e) {
+			logger.log(Level.SEVERE, e.getMessage(), e);
+		}
+	}
+
+	/**
+	 * deleteMobilePhone
+	 *
+	 * @param mobilePhone MobilePhone
+	 */
+	public void deleteMobilePhone(MobilePhone mobilePhone) {
+		deleteMobilePhone(mobilePhone.getId());
+	}
 }

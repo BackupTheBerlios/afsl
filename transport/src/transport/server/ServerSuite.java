@@ -31,7 +31,7 @@ public class ServerSuite extends TestCase {
 		suite.addTest(transport.server.MobilePhoneFactoryTest.suite());
 		suite.addTest(transport.server.PlaceFactoryTest.suite());
 		suite.addTest(transport.server.RoleFactoryTest.suite());
-		suite.addTest(transport.server.TransportDropoffFactoryTest.suite());
+		suite.addTest(transport.server.TransportWaypointFactoryTest.suite());
 		suite.addTest(transport.server.TransportFactoryTest.suite());
 		return suite;
 	}

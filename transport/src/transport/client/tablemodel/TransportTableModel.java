@@ -118,4 +118,13 @@ public class TransportTableModel extends GenericTableModel {
 	public void setValueAt(Object value, int row, int col) {
 		fireTableCellUpdated(row, col);
 	}
+
+	/**
+	 * remove
+	 *
+	 * @param row int
+	 */
+	public void remove(int row) {
+		(new TransportFactory()).deleteTransport((Transport)getRowData(row));
+	}
 }

@@ -94,4 +94,22 @@ public class RoleFactory {
 			logger.log(Level.SEVERE, e.getMessage(), e);
 		}
 	}
+
+	public void deleteRole(int id) {
+		try {
+			Connection conn=ConnectionFactory.getConnection();
+			PreparedStatement st=conn.prepareStatement(
+				"delete from roles where id = ?");
+
+
+			st.executeUpdate();
+			conn.close();
+		} catch (SQLException e) {
+			logger.log(Level.SEVERE, e.getMessage(), e);
+		}
+	}
+
+	public void deleteRole(Role deletedRole) {
+		deleteRole(deletedRole.getId());
+	}
 }

@@ -9,7 +9,7 @@ public class Transport {
 	private Date actualReturnTime;
 	private boolean internal;
 	private MobilePhone mobile;
-	private TransportDropoff[] dropoffs;
+	private TransportWaypoint[] dropoffs;
 	private Car[] cars;
 	private Artist[] artists;
 	private Functionary[] functionaries;
@@ -22,7 +22,7 @@ public class Transport {
 					 Date actualReturnTime,
 					 boolean internal,
 					 MobilePhone mobile,
-					 TransportDropoff[] dropoffs,
+					 TransportWaypoint[] dropoffs,
 					 Car[] cars,
 					 Artist[] artists,
 					 Functionary[] functionaries,
@@ -159,7 +159,7 @@ public class Transport {
 	 *
 	 * @return dropoffs as TransportDropoff[].
 	 */
-	public TransportDropoff[] getDropoffs() {
+	public TransportWaypoint[] getDropoffs() {
 		return dropoffs;
 	}
 
@@ -169,7 +169,7 @@ public class Transport {
 	 * @param index the index.
 	 * @return dropoffs at index as TransportDropoff.
 	 */
-	public TransportDropoff getDropoffs(int index) {
+	public TransportWaypoint getDropoffs(int index) {
 		return dropoffs[index];
 	}
 
@@ -178,7 +178,7 @@ public class Transport {
 	 *
 	 * @param dropoffs the value to set.
 	 */
-	public void setDropoffs(TransportDropoff[] dropoffs) {
+	public void setDropoffs(TransportWaypoint[] dropoffs) {
 		this.dropoffs=dropoffs;
 	}
 
@@ -188,7 +188,7 @@ public class Transport {
 	 * @param dropoffs the value to set.
 	 * @param index the index.
 	 */
-	public void setDropoffs(TransportDropoff dropoffs, int index) {
+	public void setDropoffs(TransportWaypoint dropoffs, int index) {
 		this.dropoffs[index]=dropoffs;
 	}
 

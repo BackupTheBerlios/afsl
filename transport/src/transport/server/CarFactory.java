@@ -164,4 +164,8 @@ public class CarFactory {
 			logger.log(Level.SEVERE, e.getMessage(), e);
 		}
 	}
+
+	public void deleteCar(Car deletedCar) {
+		deleteCar(deletedCar.getId());
+	}
 }

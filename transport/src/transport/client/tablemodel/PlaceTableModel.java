@@ -56,4 +56,13 @@ public class PlaceTableModel extends GenericTableModel {
 	public void setValueAt(Object value, int row, int col) {
 		fireTableCellUpdated(row, col);
 	}
+
+	/**
+	 * remove
+	 *
+	 * @param row int
+	 */
+	public void remove(int row) {
+		(new PlaceFactory()).deletePlace((Place)getRowData(row));
+	}
 }

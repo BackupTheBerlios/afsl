@@ -43,6 +43,7 @@ public class GenericListFrame extends javax.swing.JInternalFrame {
 	}
 
 	private void removeCurrent() {
+		tableModel.remove(objectTable.getSelectedRow());
 	}
 
 	/** This method is called from within the constructor to
@@ -90,6 +91,11 @@ public class GenericListFrame extends javax.swing.JInternalFrame {
 
 		removeButton.setMnemonic('R');
 		removeButton.setText("Remove");
+    removeButton.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(ActionEvent e) {
+        removeButton_actionPerformed(e);
+      }
+    });
 		addButton.setMnemonic('A');
 		addButton.setText("Add");
 		addButton.addActionListener(new java.awt.event.ActionListener() {
@@ -140,6 +146,10 @@ public class GenericListFrame extends javax.swing.JInternalFrame {
 		MainFrame w=(MainFrame)this.getTopLevelAncestor();
 		w.addToDesktop(editor);
 		editor.show();
+	}
+
+	void removeButton_actionPerformed(ActionEvent e) {
+		removeCurrent();
 	}
 }
 

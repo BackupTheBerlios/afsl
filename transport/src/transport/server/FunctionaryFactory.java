@@ -164,4 +164,8 @@ public class FunctionaryFactory {
 			logger.log(Level.SEVERE, e.getMessage(), e);
 		}
 	}
+
+	public void deleteFunctionary(Functionary deletedFunctionary) {
+		deleteFunctionary(deletedFunctionary.getId());
+	}
 }

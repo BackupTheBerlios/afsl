@@ -188,6 +188,8 @@ public class ArtistFactory {
 			Connection conn=ConnectionFactory.getConnection();
 			PreparedStatement st=conn.prepareStatement(
 				"delete from artists where id = ?");
+			st.setInt(1, id);
+
 			st.executeUpdate();
 			conn.close();
 		} catch (SQLException e) {

@@ -11,4 +11,5 @@ public abstract class GenericTableModel extends AbstractTableModel {
 	}
 
 	public abstract Object getRowData(int row);
+	public abstract void remove(int row);
 }

@@ -5,7 +5,7 @@ import java.util.*;
 
 import transport.logic.*;
 
-public class TransportDropoffFactory {
+public class TransportWaypointFactory {
 	static TransportWaypoint[] getDropoffs(int transportId) throws SQLException {
 		ArrayList a=new ArrayList();
 		PlaceFactory pf=new PlaceFactory();

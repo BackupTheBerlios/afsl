@@ -13,14 +13,14 @@ import junit.framework.*;
  *
  * @author ola
  */
-public class TransportDropoffFactoryTest extends TestCase {
+public class TransportWaypointFactoryTest extends TestCase {
 
-	public TransportDropoffFactoryTest(java.lang.String testName) {
+	public TransportWaypointFactoryTest(java.lang.String testName) {
 		super(testName);
 	}
 
 	public static Test suite() {
-		TestSuite suite=new TestSuite(TransportDropoffFactoryTest.class);
+		TestSuite suite=new TestSuite(TransportWaypointFactoryTest.class);
 		return suite;
 	}
 

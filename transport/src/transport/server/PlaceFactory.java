@@ -100,4 +100,21 @@ public class PlaceFactory {
 			logger.log(Level.SEVERE, e.getMessage(), e);
 		}
 	}
+
+	public void deletePlace(int id) {
+		try {
+			Connection conn=ConnectionFactory.getConnection();
+			PreparedStatement st=conn.prepareStatement("delete from places where id = ?");
+
+			st.setInt(1, id);
+			st.executeUpdate();
+			conn.close();
+		} catch (SQLException e) {
+			logger.log(Level.SEVERE, e.getMessage(), e);
+		}
+	}
+
+	public void deletePlace(Place deletedPlace) {
+		deletePlace(deletedPlace.getId());
+	}
 }

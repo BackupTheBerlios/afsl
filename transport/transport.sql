@@ -56,7 +56,7 @@ create table artists (
 	no_of_crew integer,
 	no_of_guests integer,
 	extra_info varchar(500),
-	foreign key(arrival_place_id) references places on delete cascade,
+	foreign key(arrival_place_id) references places on delete set null,
 	foreign key(hotel_id) references places on delete cascade,
 	foreign key(departure_place_id) references places on delete cascade,
 	primary key(id)
@@ -159,7 +159,7 @@ create table functionaries (
 	begins_work timestamp not null,
 	stops_work timestamp not null,
 	role_id integer not null,
-	foreign key (role_id) references roles on delete cascade,
+	foreign key (role_id) references roles on delete set null,
 	primary key(id)
 );
 
@@ -171,24 +171,24 @@ create table transports (
 	internal integer not null,
 	mobile_phone_id integer,
 	misc_info varchar(400),
-	foreign key (mobile_phone_id) references mobile_phones on delete cascade,
+	foreign key (mobile_phone_id) references mobile_phones on delete set null,
 	primary key (id)
 );
 
 insert into transports (start_time, return_time, internal) values ('2004-07-16 20:00','2004-07-16 23:00', 0);
 
-create table transport_dropoffs (
+create table transport_waypoints (
 	id serial,
 	transport_id integer,
 	place_id integer,
-	dropoff_time timestamp,
+	waypoint_time timestamp,
 	foreign key (transport_id) references transports on delete cascade,
 	foreign key (place_id) references places on delete cascade,
 	primary key (id)
 );
 
-insert into transport_dropoffs (transport_id, place_id, dropoff_time) values (1,2,'2004-07-16 21:15');
-insert into transport_dropoffs (transport_id, place_id, dropoff_time) values (1,3,'2004-07-16 22:00');
+insert into transport_waypoints (transport_id, place_id, waypoint_time) values (1,2,'2004-07-16 21:15');
+insert into transport_waypoints (transport_id, place_id, waypoint_time) values (1,3,'2004-07-16 22:00');
 
 create table car_transport (
 	car_id integer,
