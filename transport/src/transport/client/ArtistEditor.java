@@ -224,6 +224,8 @@ public class ArtistEditor extends GenericEditor {
 		} else {
 			af.updateArtist(artist);
 		}
+
+		this.dispose();
 	} //GEN-LAST:event_okButtonActionPerformed
 
 	// Variables declaration - do not modify//GEN-BEGIN:variables

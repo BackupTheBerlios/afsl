@@ -6,13 +6,11 @@
 
 package transport.client;
 
-import transport.logic.*;
 import transport.server.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import transport.client.tablemodel.*;
-import javax.swing.JDesktopPane;
 
 /**
  *
