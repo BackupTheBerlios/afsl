@@ -10,12 +10,14 @@ import javax.swing.*;
 
 import transport.logic.*;
 import transport.server.*;
+import java.awt.event.*;
 
 /**
  *
  * @author  ola
  */
 public class CarEditor extends GenericEditor {
+//public class CarEditor extends javax.swing.JInternalFrame {
 	private Car car;
 
 	public CarEditor() {
@@ -37,6 +39,11 @@ public class CarEditor extends GenericEditor {
           ImageIcon frameIcon = new ImageIcon(this.getClass().getResource(
           "../pics/miniAF.png"));
       this.setFrameIcon(frameIcon);
+    this.addFocusListener(new java.awt.event.FocusAdapter() {
+      public void focusGained(FocusEvent e) {
+        this_focusGained(e);
+      }
+    });
 
 		jPanel1=new javax.swing.JPanel();
 		jLabel1=new javax.swing.JLabel();
@@ -104,7 +111,11 @@ public class CarEditor extends GenericEditor {
 
 		seatNoText.setValue(new Integer(5));
 
+		this.setClosable(true);
+		this.setResizable(true);
+
 		getContentPane().add(jPanel2, java.awt.BorderLayout.SOUTH);
+		okButton.setDefaultCapable(true);
 		getRootPane().setDefaultButton(okButton);
 
 		pack();
@@ -173,6 +184,10 @@ public class CarEditor extends GenericEditor {
 	public void editNew() {
 		edit(new Car());
 	}
+
+  void this_focusGained(FocusEvent e) {
+	  getRootPane().setDefaultButton(okButton);
+  }
 
 	// End of variables declaration//GEN-END:variables
 

@@ -101,6 +101,7 @@ public class RoleFactory {
 			PreparedStatement st=conn.prepareStatement(
 				"delete from roles where id = ?");
 
+		   st.setInt(1,id);
 
 			st.executeUpdate();
 			conn.close();

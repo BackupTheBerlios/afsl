@@ -18,7 +18,7 @@ import javax.swing.ImageIcon;
  */
 
 // fulhack galore
-//public class FunctionaryEditor extends JInternalFrame {
+//public class FunctionaryEditor extends javax.swing.JInternalFrame {
 public class FunctionaryEditor extends GenericEditor {
 	Functionary functionary;
 
@@ -41,6 +41,7 @@ public class FunctionaryEditor extends GenericEditor {
           ImageIcon frameIcon = new ImageIcon(this.getClass().getResource(
           "../pics/miniAF.png"));
       this.setFrameIcon(frameIcon);
+    this.addFocusListener(new FunctionaryEditor_this_focusAdapter(this));
 
 		jPanel1=new javax.swing.JPanel();
 		jLabel1=new javax.swing.JLabel();
@@ -88,7 +89,11 @@ public class FunctionaryEditor extends GenericEditor {
 		cancelButton.setText("Cancel");
 		jPanel2.add(cancelButton);
 
+		this.setClosable(true);
+		this.setResizable(true);
+
 		getContentPane().add(jPanel2, java.awt.BorderLayout.SOUTH);
+		okButton.setDefaultCapable(true);
 		getRootPane().setDefaultButton(okButton);
 
 		pack();
@@ -173,6 +178,10 @@ public class FunctionaryEditor extends GenericEditor {
 		this.dispose();
 	}
 
+  void this_focusGained(FocusEvent e) {
+	  getRootPane().setDefaultButton(okButton);
+  }
+
 	// End of variables declaration//GEN-END:variables
 
 }
@@ -201,4 +210,15 @@ class FunctionaryEditor_cancelButton_actionAdapter implements java.awt.event.
 	public void actionPerformed(ActionEvent e) {
 		adaptee.cancelButton_actionPerformed(e);
 	}
+}
+
+class FunctionaryEditor_this_focusAdapter extends java.awt.event.FocusAdapter {
+  FunctionaryEditor adaptee;
+
+  FunctionaryEditor_this_focusAdapter(FunctionaryEditor adaptee) {
+    this.adaptee = adaptee;
+  }
+  public void focusGained(FocusEvent e) {
+    adaptee.this_focusGained(e);
+  }
 }

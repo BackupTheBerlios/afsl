@@ -1,3 +1,4 @@
+
 /*
  * AddTransport.java
  *
@@ -42,7 +43,6 @@ public class TransportEditor extends GenericEditor {
 
 		jPanel2=new javax.swing.JPanel();
 		okButton=new javax.swing.JButton();
-                printButton=new javax.swing.JButton();
 		cancelButton=new javax.swing.JButton();
 		jPanel3=new javax.swing.JPanel();
 		jLabel1=new javax.swing.JLabel();
@@ -59,10 +59,7 @@ public class TransportEditor extends GenericEditor {
 
 		okButton.setMnemonic('O');
 		okButton.setText("OK");
-                okButton.addActionListener(new TransportEditor_okButton_actionAdapter(this));
-                printButton.addActionListener(new TransportEditor_printButton_actionAdapter(this));
-		gridLayout1.setColumns(2);
-		gridLayout1.setRows(11);
+    okButton.addActionListener(new TransportEditor_okButton_actionAdapter(this));
 		internalBox.setActionCommand("internalBox");
 		internalBox.setHorizontalAlignment(SwingConstants.CENTER);
 		internalBox.setText("");
@@ -76,22 +73,34 @@ public class TransportEditor extends GenericEditor {
 		cancelButton.addActionListener(new TransportEditor_cancelButton_actionAdapter(this));
     waypointsChooser.setEnabled(false);
     jPanel2.add(okButton);
-    jPanel2.add(printButton);
+
 		cancelButton.setMnemonic('C');
 		cancelButton.setText("Cancel");
 		jPanel2.add(cancelButton);
 
 		getContentPane().add(jPanel2, java.awt.BorderLayout.SOUTH);
 
-		jPanel3.setLayout(gridLayout1);
+		jPanel3.setLayout(gridBagLayout1);
 
 		jLabel1.setText("Artists");
 
 		jLabel2.setText("Cars");
-		jPanel3.add(jLabel1, null);
-		jPanel3.add(artistsChooser, null);
-		jPanel3.add(jLabel2, null);
-		jPanel3.add(carsChooser, null);
+		jPanel3.add(jLabel1,  new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0
+            ,GridBagConstraints.WEST, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 153, 6));
+    jPanel3.add(artistsChooser,  new GridBagConstraints(1, 0, 1, 1, 1.0, 1.0
+            ,GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(0, 0, 0, 0), 148, -29));
+    jPanel3.add(jLabel7,  new GridBagConstraints(0, 1, 1, 1, 0.0, 0.0
+            ,GridBagConstraints.WEST, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 134, 6));
+    jPanel3.add(startTimeCombo,  new GridBagConstraints(1, 1, 1, 1, 1.0, 1.0
+            ,GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(0, 0, 0, 0), 73, 2));
+    jPanel3.add(jLabel9,  new GridBagConstraints(0, 2, 1, 1, 0.0, 0.0
+            ,GridBagConstraints.WEST, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 122, 6));
+    jPanel3.add(returnTimeCombo,  new GridBagConstraints(1, 2, 1, 1, 1.0, 1.0
+            ,GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(0, 0, 0, 0), 73, 2));
+		jPanel3.add(jLabel2,  new GridBagConstraints(0, 3, 1, 1, 0.0, 0.0
+            ,GridBagConstraints.WEST, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 167, 6));
+		jPanel3.add(carsChooser,  new GridBagConstraints(1, 3, 1, 1, 1.0, 1.0
+            ,GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(0, 0, 0, 0), 148, -29));
 
 		jLabel3.setText("Functionaries");
 
@@ -110,27 +119,37 @@ public class TransportEditor extends GenericEditor {
 		jLabel10.setText("Actual return time");
 
 		jLabel11.setText("Misc info");
-                printButton.setText("Print");
+
 
 		getContentPane().add(jPanel3, java.awt.BorderLayout.CENTER);
-		jPanel3.add(jLabel3, null);
-		jPanel3.add(functionariesChooser, null);
-		jPanel3.add(jLabel4, null);
-		jPanel3.add(internalBox, null);
-		jPanel3.add(jLabel5, null);
-		jPanel3.add(waypointsChooser, null);
-		jPanel3.add(jLabel6, null);
-		jPanel3.add(mobilePhonesChooser, null);
-		jPanel3.add(jLabel7, null);
-		jPanel3.add(startTimeCombo, null);
-		jPanel3.add(jLabel9, null);
-		jPanel3.add(returnTimeCombo, null);
-		jPanel3.add(jLabel8, null);
-		jPanel3.add(distanceText, null);
-		jPanel3.add(jLabel10, null);
-		jPanel3.add(actualReturnTimeCombo, null);
-		jPanel3.add(jLabel11, null);
-		jPanel3.add(jScrollPane1, null);
+		jPanel3.add(jLabel3,   new GridBagConstraints(0, 4, 1, 1, 0.0, 0.0
+            ,GridBagConstraints.WEST, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 91, 6));
+		jPanel3.add(functionariesChooser,  new GridBagConstraints(1, 4, 1, 1, 1.0, 1.0
+            ,GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(0, 0, 0, 0), 148, -29));
+		jPanel3.add(jLabel4,  new GridBagConstraints(0, 5, 1, 1, 0.0, 0.0
+            ,GridBagConstraints.WEST, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 147, 6));
+		jPanel3.add(internalBox,  new GridBagConstraints(1, 5, 1, 1, 0.0, 0.0
+            ,GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 174, 0));
+		jPanel3.add(jLabel5,  new GridBagConstraints(0, 6, 1, 1, 0.0, 0.0
+            ,GridBagConstraints.WEST, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 130, 6));
+		jPanel3.add(waypointsChooser,  new GridBagConstraints(1, 6, 1, 1, 1.0, 1.0
+            ,GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(0, 0, 0, 0), 148, -29));
+		jPanel3.add(jLabel6,  new GridBagConstraints(0, 7, 1, 1, 0.0, 0.0
+            ,GridBagConstraints.WEST, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 103, 6));
+		jPanel3.add(mobilePhonesChooser,  new GridBagConstraints(1, 7, 1, 1, 1.0, 1.0
+            ,GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(0, 0, 0, 0), 148, -29));
+		jPanel3.add(jLabel8,  new GridBagConstraints(0, 8, 1, 1, 0.0, 0.0
+            ,GridBagConstraints.WEST, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 141, 6));
+		jPanel3.add(distanceText,  new GridBagConstraints(1, 8, 1, 1, 1.0, 0.0
+            ,GridBagConstraints.WEST, GridBagConstraints.HORIZONTAL, new Insets(0, 0, 0, 0), 191, 2));
+		jPanel3.add(jLabel10,  new GridBagConstraints(0, 9, 1, 1, 0.0, 0.0
+            ,GridBagConstraints.WEST, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 82, 6));
+		jPanel3.add(actualReturnTimeCombo,  new GridBagConstraints(1, 9, 1, 1, 1.0, 1.0
+            ,GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(0, 0, 0, 0), 73, 2));
+		jPanel3.add(jLabel11,  new GridBagConstraints(0, 10, 1, 1, 0.0, 0.0
+            ,GridBagConstraints.WEST, GridBagConstraints.NONE, new Insets(0, 0, 2, 0), 138, 6));
+		jPanel3.add(jScrollPane1,  new GridBagConstraints(1, 10, 1, 1, 1.0, 1.0
+            ,GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(0, 0, 2, 0), 192, 3));
 		jScrollPane1.getViewport().add(miscInfoText, null);
 
 		pack();
@@ -152,7 +171,6 @@ public class TransportEditor extends GenericEditor {
 	private javax.swing.JPanel jPanel2;
 	private javax.swing.JPanel jPanel3;
 	private javax.swing.JButton okButton;
-	GridLayout gridLayout1=new GridLayout();
 	MultipleChooser artistsChooser=new MultipleChooser(new Artist());
 	MultipleChooser carsChooser=new MultipleChooser(new Car());
 	MultipleChooser functionariesChooser=new MultipleChooser(new Functionary());
@@ -165,7 +183,8 @@ public class TransportEditor extends GenericEditor {
 	PickDateTimeCombo actualReturnTimeCombo=new PickDateTimeCombo();
 	JScrollPane jScrollPane1=new JScrollPane();
 	JTextArea miscInfoText=new JTextArea();
-        private javax.swing.JButton printButton;
+  GridBagLayout gridBagLayout1 = new GridBagLayout();
+
 /**
 	 * edit
 	 *
@@ -206,9 +225,6 @@ public class TransportEditor extends GenericEditor {
 
   void cancelButton_actionPerformed(ActionEvent e) {
 	  this.dispose();
-  }
-  void printButton_actionPerformed(ActionEvent e) {
-       System.out.println(transport.toHTML());
   }
 
   void okButton_actionPerformed(ActionEvent e) {
@@ -296,20 +312,7 @@ class TransportEditor_okButton_actionAdapter implements java.awt.event.ActionLis
   TransportEditor_okButton_actionAdapter(TransportEditor adaptee) {
     this.adaptee = adaptee;
   }
-
   public void actionPerformed(ActionEvent e) {
     adaptee.okButton_actionPerformed(e);
   }
-}
-  class TransportEditor_printButton_actionAdapter implements java.awt.event.ActionListener {
-  TransportEditor adaptee;
-
-  TransportEditor_printButton_actionAdapter(TransportEditor adaptee) {
-    this.adaptee = adaptee;
-  }
-  public void actionPerformed(ActionEvent e) {
-    adaptee.printButton_actionPerformed(e);
-  }
-
-
 }

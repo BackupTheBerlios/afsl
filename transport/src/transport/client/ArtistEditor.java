@@ -8,7 +8,9 @@ package transport.client;
 
 import transport.logic.*;
 import transport.server.*;
-import javax.swing.ImageIcon;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
 
 /**
  *
@@ -82,17 +84,45 @@ public class ArtistEditor extends GenericEditor {
 		setClosable(true);
 		setResizable(true);
 		setTitle("Add an artist");
+        this.addFocusListener(new java.awt.event.FocusAdapter() {
+          public void focusGained(FocusEvent e) {
+            this_focusGained(e);
+          }
+    });
+        this.getContentPane().setLayout(borderLayout2);
 		infoPanel.setLayout(new java.awt.GridLayout(12, 2));
 
 		jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
 		jLabel1.setText("Name");
-		infoPanel.add(jLabel1);
 
-		infoPanel.add(nameText);
+        infoPanel.add(jLabel1);
+        infoPanel.add(nameText);
+        infoPanel.add(jLabel2);
+        infoPanel.add(contactNameText);
+        infoPanel.add(jLabel6);
+        infoPanel.add(phoneNumberText);
+        infoPanel.add(jLabel3);
+        infoPanel.add(arrivalCombo);
+        infoPanel.add(jLabel4);
+        infoPanel.add(arrivalTimeCombo);
+        infoPanel.add(jLabel5);
+        infoPanel.add(hotelCombo);
+        infoPanel.add(jLabel7);
+        infoPanel.add(departureCombo);
+        infoPanel.add(jLabel8);
+        infoPanel.add(departureTimeCombo);
+        infoPanel.add(jLabel9);
+        infoPanel.add(numberOfArtistsText);
+        infoPanel.add(jLabel10);
+        infoPanel.add(numberOfCrewText);
+        infoPanel.add(labelGuests);
+        infoPanel.add(numberOfGuestsText);
+        infoPanel.add(jLabel11);
+        infoPanel.add(extraInfoText);
+    this.getContentPane().add(buttonPanel, BorderLayout.SOUTH);
 
 		jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
 		jLabel2.setText("Contact name");
-		infoPanel.add(jLabel2);
 
 		contactNameText.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -100,68 +130,46 @@ public class ArtistEditor extends GenericEditor {
 			}
 		});
 
-		infoPanel.add(contactNameText);
 
 		jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
 		jLabel6.setText("Phone number");
-		infoPanel.add(jLabel6);
 
-		infoPanel.add(phoneNumberText);
 
 		jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
 		jLabel3.setText("Arrival");
-		infoPanel.add(jLabel3);
 
-		infoPanel.add(arrivalCombo);
 
 		jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
 		jLabel4.setText("Arrival time");
-		infoPanel.add(jLabel4);
 
-		infoPanel.add(arrivalTimeCombo);
 
 		jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
 		jLabel5.setText("Hotel");
-		infoPanel.add(jLabel5);
 
-		infoPanel.add(hotelCombo);
 
 		jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
 		jLabel7.setText("Departure");
-		infoPanel.add(jLabel7);
 
-		infoPanel.add(departureCombo);
 
 		jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
 		jLabel8.setText("Departure time");
-		infoPanel.add(jLabel8);
 
-		infoPanel.add(departureTimeCombo);
 
 		jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
 		jLabel9.setText("Performers");
-		infoPanel.add(jLabel9);
 
-		infoPanel.add(numberOfArtistsText);
 
 		jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
 		jLabel10.setText("Crew");
-		infoPanel.add(jLabel10);
 
-		infoPanel.add(numberOfCrewText);
 
 		labelGuests.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
 		labelGuests.setText("Guests");
-		infoPanel.add(labelGuests);
 
-		infoPanel.add(numberOfGuestsText);
 
 		jLabel11.setText("Extra info");
-		infoPanel.add(jLabel11);
 
-		infoPanel.add(extraInfoText);
 
-		getContentPane().add(infoPanel, java.awt.BorderLayout.CENTER);
 
 		okButton.setMnemonic('O');
 		okButton.setText("OK");
@@ -171,7 +179,6 @@ public class ArtistEditor extends GenericEditor {
 			}
 		});
 
-		buttonPanel.add(okButton);
 
 		cancelButton.setMnemonic('C');
 		cancelButton.setText("Cancel");
@@ -181,13 +188,15 @@ public class ArtistEditor extends GenericEditor {
 			}
 		});
 
-		buttonPanel.add(cancelButton);
+        buttonPanel.add(okButton);
+        buttonPanel.add(cancelButton);
+    this.getContentPane().add(infoPanel, BorderLayout.NORTH);
 
 		numberOfArtistsText.setValue(new Integer(0));
 		numberOfCrewText.setValue(new Integer(0));
 		numberOfGuestsText.setValue(new Integer(0));
 
-		getContentPane().add(buttonPanel, java.awt.BorderLayout.SOUTH);
+		okButton.setDefaultCapable(true);
 		getRootPane().setDefaultButton(okButton);
 
 		pack();
@@ -264,6 +273,7 @@ public class ArtistEditor extends GenericEditor {
 	private javax.swing.JTextField nameText;
 	private javax.swing.JButton okButton;
 	private javax.swing.JFormattedTextField phoneNumberText;
+    BorderLayout borderLayout2 = new BorderLayout();
 
 	public Place getPlace(Place p) {
 		for (int i=0;i<allPlaces.length;i++){
@@ -312,5 +322,10 @@ public class ArtistEditor extends GenericEditor {
 	public void editNew() {
 		edit(new Artist());
 	}
+
+	// workaround hack.
+    void this_focusGained(FocusEvent e) {
+		getRootPane().setDefaultButton(okButton);
+    }
 
 }
