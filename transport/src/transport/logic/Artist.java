@@ -298,15 +298,27 @@ public class Artist extends LogicItem {
          if (getDepartureTime() != null) {
            DepartureTime = df.format(getDepartureTime());
          }
+         String name ="N/A";
+         if (getName()!=null){
+           name=getName();
+         }
+         String ContactName ="N/A";
+         if (getContactName()!=null){
+           ContactName=getContactName();
+         }
+         String TelephoneNo = "N/A";
+         if (getTelephoneNo() != null) {
+           TelephoneNo = getTelephoneNo();
+         }
 
          html = "<TABLE BORDER=1>\n";
-         html = html + "<TR><TD><b>Name:</b></TD><TD><b>" + getName()+"</b></TD></TR>\n";
-         html = html + "<TR><TD><b>Contact Name:</b></TD><TD>" + getContactName()+"</TD></TR>\n";
-         html = html + "<TR><TD><b>Telephone Number:</b></TD><TD>" + getTelephoneNo()+"</TD></TR>\n";
-         html = html + "<TR><TD><b>Arrival:</b></TD><TD>" + getArrival()+"</TD></TR>\n";
+         html = html + "<TR><TD><b>Name:</b></TD><TD><b>" + name+"</b></TD></TR>\n";
+         html = html + "<TR><TD><b>Contact Name:</b></TD><TD>" + ContactName+"</TD></TR>\n";
+         html = html + "<TR><TD><b>Telephone Number:</b></TD><TD>" + TelephoneNo+"</TD></TR>\n";
+         html = html + "<TR><TD><b>Arrival:</b></TD><TD>" + getArrival().toHTML()+"</TD></TR>\n";
          html = html + "<TR><TD><b>Arrival Time:</b></TD><TD>" +  ArrivalTime +"</TD></TR>\n";
-         html = html + "<TR><TD><b>Hotel:</b></TD><TD>" + getHotel()+"</TD></TR>\n";
-         html = html + "<TR><TD><b>Departure:</b></TD><TD>" +getDeparture() +"</TD></TR>\n";
+         html = html + "<TR><TD><b>Hotel:</b></TD><TD>" + getHotel().toHTML()+"</TD></TR>\n";
+         html = html + "<TR><TD><b>Departure:</b></TD><TD>" +getDeparture().toHTML() +"</TD></TR>\n";
          html = html + "<TR><TD><b>Departure Time:</b></TD><TD>" +DepartureTime+"</TD></TR>\n";
          html = html + "<TR><TD><b>No of Artists:</b></TD><TD>" +getNoOfArtists() +"</TD></TR>\n";
          html = html + "<TR><TD><b>No of Crew:</b></TD><TD>" + getNoOfCrew()+"</TD></TR>\n";

@@ -57,8 +57,7 @@ public class Place extends LogicItem {
 	}
         public String toHTML() {
          String html;
-         html = "\n<b>Place: </b>" + getName() + "(id:" + getId() +
-             ")<br>\n";
+         html = "\n" + getName()  +"<br>\n";
          return html;
        }
 
