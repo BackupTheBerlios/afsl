@@ -174,9 +174,9 @@ public class ArtistFactory {
 			}
 			st.setInt(5, updatedArtist.getArrival().getId());
 			st.setInt(6, updatedArtist.getHotel().getId());
-			if (updatedArtist.getArrivalTime()!=null) {
+			if (updatedArtist.getDepartureTime()!=null) {
 				st.setTimestamp(7,
-								new java.sql.Timestamp(updatedArtist.getArrivalTime().
+								new java.sql.Timestamp(updatedArtist.getDepartureTime().
 					getTime()));
 			} else {
 				st.setTimestamp(7, null);
