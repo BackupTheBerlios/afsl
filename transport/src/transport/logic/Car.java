@@ -113,4 +113,13 @@ public class Car extends LogicItem {
 	public void setMiscInfo(String miscInfo) {
 		this.miscInfo=miscInfo;
 	}
+
+        public String toHTML() {
+          String html;
+          html = "\n<b>Car:</b> " + getRegNo() +
+              " "+ getCarType() + "<i>(Number of seats: " + getNumberOfSeats() + ")</i>\n<br>"+
+              "Misc Info:"+getMiscInfo()+"<br>\n";
+          return html;
+        }
+
 }

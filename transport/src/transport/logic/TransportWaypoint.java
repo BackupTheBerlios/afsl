@@ -1,6 +1,7 @@
 package transport.logic;
 
 import java.util.*;
+import java.text.DateFormat;
 
 public class TransportWaypoint {
 	Place place;
@@ -56,4 +57,16 @@ public class TransportWaypoint {
 	 */
 	public TransportWaypoint() {
 	}
+        public String toHTML() {
+        String html;
+        DateFormat df = DateFormat.getDateInstance(DateFormat.LONG, new Locale("sv"));
+        String time="N/A";
+        if (getTime() != null) {
+          time = df.format(getTime());
+        }
+        html = "\n "+ getPlace().toHTML()+ " at: " + time +
+            "<br>\n";
+        return html;
+      }
+
 }

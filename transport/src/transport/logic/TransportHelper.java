@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.io.IOException;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 
 /**
  * <p>Title: Festival Logistics System</p>
@@ -51,5 +53,24 @@ public class TransportHelper {
         is.close();
         return bytes;
     }
+
+    public String createHTMLFileFromTransport(Transport transport){
+      final File htmlFile = new File("transport" + transport.getId() + ".html");
+      try {
+        BufferedWriter bw = new BufferedWriter(new FileWriter(htmlFile));
+        String line = null;
+        line = "<html>Transportfile<br>" + transport.getMiscInfo();
+        bw.write(line);
+        bw.newLine();
+        // Close the file
+        bw.close();
+      }
+      catch (Exception ex) {
+        System.out.println(ex);
+        return null;
+      }
+      return htmlFile.getName();
+    }
+
 
 }

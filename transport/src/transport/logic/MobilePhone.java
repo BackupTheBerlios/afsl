@@ -55,4 +55,11 @@ public class MobilePhone extends LogicItem {
 	public MobilePhone() {
 		this.id= -1;
 	}
+
+        public String toHTML() {
+          String html;
+          html = "\n<b>Mobile Phone:</b>" + getNumber() + "(id:" + getId() +
+              ")<br>\n";
+          return html;
+        }
 }

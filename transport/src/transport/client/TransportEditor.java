@@ -42,6 +42,7 @@ public class TransportEditor extends GenericEditor {
 
 		jPanel2=new javax.swing.JPanel();
 		okButton=new javax.swing.JButton();
+                printButton=new javax.swing.JButton();
 		cancelButton=new javax.swing.JButton();
 		jPanel3=new javax.swing.JPanel();
 		jLabel1=new javax.swing.JLabel();
@@ -58,7 +59,8 @@ public class TransportEditor extends GenericEditor {
 
 		okButton.setMnemonic('O');
 		okButton.setText("OK");
-    okButton.addActionListener(new TransportEditor_okButton_actionAdapter(this));
+                okButton.addActionListener(new TransportEditor_okButton_actionAdapter(this));
+                printButton.addActionListener(new TransportEditor_printButton_actionAdapter(this));
 		gridLayout1.setColumns(2);
 		gridLayout1.setRows(11);
 		internalBox.setActionCommand("internalBox");
@@ -74,7 +76,7 @@ public class TransportEditor extends GenericEditor {
 		cancelButton.addActionListener(new TransportEditor_cancelButton_actionAdapter(this));
     waypointsChooser.setEnabled(false);
     jPanel2.add(okButton);
-
+    jPanel2.add(printButton);
 		cancelButton.setMnemonic('C');
 		cancelButton.setText("Cancel");
 		jPanel2.add(cancelButton);
@@ -108,7 +110,7 @@ public class TransportEditor extends GenericEditor {
 		jLabel10.setText("Actual return time");
 
 		jLabel11.setText("Misc info");
-
+                printButton.setText("Print");
 
 		getContentPane().add(jPanel3, java.awt.BorderLayout.CENTER);
 		jPanel3.add(jLabel3, null);
@@ -163,7 +165,7 @@ public class TransportEditor extends GenericEditor {
 	PickDateTimeCombo actualReturnTimeCombo=new PickDateTimeCombo();
 	JScrollPane jScrollPane1=new JScrollPane();
 	JTextArea miscInfoText=new JTextArea();
-
+        private javax.swing.JButton printButton;
 /**
 	 * edit
 	 *
@@ -204,6 +206,9 @@ public class TransportEditor extends GenericEditor {
 
   void cancelButton_actionPerformed(ActionEvent e) {
 	  this.dispose();
+  }
+  void printButton_actionPerformed(ActionEvent e) {
+       System.out.println(transport.toHTML());
   }
 
   void okButton_actionPerformed(ActionEvent e) {
@@ -291,7 +296,20 @@ class TransportEditor_okButton_actionAdapter implements java.awt.event.ActionLis
   TransportEditor_okButton_actionAdapter(TransportEditor adaptee) {
     this.adaptee = adaptee;
   }
+
   public void actionPerformed(ActionEvent e) {
     adaptee.okButton_actionPerformed(e);
   }
+}
+  class TransportEditor_printButton_actionAdapter implements java.awt.event.ActionListener {
+  TransportEditor adaptee;
+
+  TransportEditor_printButton_actionAdapter(TransportEditor adaptee) {
+    this.adaptee = adaptee;
+  }
+  public void actionPerformed(ActionEvent e) {
+    adaptee.printButton_actionPerformed(e);
+  }
+
+
 }

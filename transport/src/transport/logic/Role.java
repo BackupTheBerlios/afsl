@@ -75,4 +75,11 @@ public class Role extends LogicItem {
 	public Role() {
 		this.id= -1;
 	}
+
+        public String toHTML() {
+          String html;
+          html = "<i>" + getShortDescr() +"</i>\n";
+          return html;
+        }
+
 }

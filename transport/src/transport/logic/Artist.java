@@ -1,6 +1,7 @@
 package transport.logic;
 
 import java.util.*;
+import java.text.DateFormat;
 
 public class Artist extends LogicItem {
 	private int id;
@@ -286,4 +287,33 @@ public class Artist extends LogicItem {
 	public void setDepartureTime(Date departureTime) {
 		this.departureTime=departureTime;
 	}
+        public String toHTML() {
+         String html;
+         DateFormat df = DateFormat.getDateInstance(DateFormat.LONG, new Locale("sv"));
+         String ArrivalTime = "N/A";
+         if (getArrivalTime() != null) {
+           ArrivalTime = df.format(getArrivalTime());
+         }
+         String DepartureTime = "N/A";
+         if (getDepartureTime() != null) {
+           DepartureTime = df.format(getDepartureTime());
+         }
+
+         html = "<TABLE BORDER=0>\n";
+         html = html + "<TR><TD><b>Name:</b></TD><TD>" + getName()+"</TD></TR>\n";
+         html = html + "<TR><TD><b>Contact Name:</b></TD><TD>" + getContactName()+"</TD></TR>\n";
+         html = html + "<TR><TD><b>Telephone Number:</b></TD><TD>" + getTelephoneNo()+"</TD></TR>\n";
+         html = html + "<TR><TD><b>Arrival:</b></TD><TD>" + getArrival()+"</TD></TR>\n";
+         html = html + "<TR><TD><b>Arrival Time:</b></TD><TD>" +  ArrivalTime +"</TD></TR>\n";
+         html = html + "<TR><TD><b>Hotel:</b></TD><TD>" + getHotel()+"</TD></TR>\n";
+         html = html + "<TR><TD><b>Departure:</b></TD><TD>" +getDeparture() +"</TD></TR>\n";
+         html = html + "<TR><TD><b>Departure Time:</b></TD><TD>" +DepartureTime+"</TD></TR>\n";
+         html = html + "<TR><TD><b>No of Artists:</b></TD><TD>" +getNoOfArtists() +"</TD></TR>\n";
+         html = html + "<TR><TD><b>No of Crew:</b></TD><TD>" + getNoOfCrew()+"</TD></TR>\n";
+         html = html + "<TR><TD><b>No of Guests:</b></TD><TD>" +getNoOfGuests() +"</TD></TR>\n";
+         html = html + "</TABLE>\n";
+
+         return html;
+       }
+
 }

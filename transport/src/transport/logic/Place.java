@@ -55,4 +55,11 @@ public class Place extends LogicItem {
 	public Place() {
 		this.id= -1;
 	}
+        public String toHTML() {
+         String html;
+         html = "\n<b>Place: </b>" + getName() + "(id:" + getId() +
+             ")<br>\n";
+         return html;
+       }
+
 }

@@ -1,6 +1,7 @@
 package transport.logic;
 
 import java.util.*;
+import java.text.DateFormat;
 
 public class Transport extends LogicItem {
 	private int id;
@@ -331,4 +332,92 @@ public class Transport extends LogicItem {
 	public void setMobilePhones(MobilePhone[] mobilePhones) {
 		this.mobilePhones=mobilePhones;
 	}
+
+        public String toHTML() {
+         String html="<html><body>\n";
+         DateFormat df = DateFormat.getDateInstance(DateFormat.LONG, new Locale("sv"));
+         if (getInternal()){
+           html = html+ "\n<b>INTERNAL TRANSPORT: </b>" +"(id:" + getId() +
+             ")<br>\n";
+         }
+         else{
+           html = html+"\n<b>TRANSPORT: </b>" +"(id:" + getId() +
+             ")<br>\n";
+         }
+         String ActualReturnTime = "N/A";
+         String StartTime = "N/A";
+         String ReturnTime = "N/A";
+         if (getActualReturnTime() != null) {
+           ActualReturnTime = df.format(getActualReturnTime());
+         }
+         if (getReturnTime() != null) {
+           ReturnTime = df.format(getReturnTime());
+         }
+         if (getStartTime() != null) {
+           StartTime = df.format(getStartTime());
+         }
+
+         html = html +"<TABLE BORDER=0>\n";
+         html = html +"<TR><TD><b>Artists:</b></TD><TD>"+  getHTMLArtists()+"</TD></TR>\n";
+         html = html +"<TR><TD><b>Cars:</b></TD><TD>"+ getHTMLCars()+"</TD></TR>\n";
+         html = html +"<TR><TD><b>Functionaries:</b></TD><TD>"+ getHTMLFunctionaries()+"</TD></TR>\n";
+         html = html +"<TR><TD><b>Waypoints:</b></TD><TD>"+ getHTMLWaypoints()+"</TD></TR>\n";
+         html = html +"<TR><TD><b>Mobile Phones:</b></TD><TD>"+ getHTMLMobilePhones() +"</TD></TR>\n";
+         html = html +"<TR><TD><b>Start Time:</b></TD><TD>"+ StartTime+"</TD></TR>\n";
+         html = html +"<TR><TD><b>Return Time:</b></TD><TD>"+ ReturnTime+"</TD></TR>\n";
+         html = html +"<TR><TD><b>Distance:</b></TD><TD>"+ getDistance()+"</TD></TR>\n";
+
+         html = html +"<TR><TD><b>Actual Return Time:</b></TD><TD>"+ActualReturnTime +"</TD></TR>\n";
+         html = html +"<TR><TD><b>Misc Info:</b></TD><TD>"+ getMiscInfo()+"</TD></TR>\n";
+         html = html +"</TABLE>\n";
+
+         html = html + "</body></html>";
+         return html;
+       }
+
+       public String getHTMLFunctionaries(){
+         String html="";
+         Functionary[] allFunctionaries=getFunctionaries();
+        for (int i = 0; i < allFunctionaries.length; i++) {
+          html=html+"\n<br>"+allFunctionaries[i].toHTML();
+        }
+        return html;
+       }
+       public String getHTMLCars(){
+        String html="";
+        Car[] allCars=getCars();
+       for (int i = 0; i < allCars.length; i++) {
+         html=html+"\n<br>"+allCars[i].toHTML();
+       }
+       return html;
+      }
+
+      public String getHTMLArtists() {
+        String html = "";
+        Artist[] allArtists = getArtists();
+        for (int i = 0; i < allArtists.length; i++) {
+          html = html+ "\n<br>"+ allArtists[i].toHTML();
+        }
+        return html;
+      }
+
+      public String getHTMLWaypoints() {
+        String html = "";
+        TransportWaypoint[] allWaypoints = getWaypoints();
+        for (int i = 0; i < allWaypoints.length; i++) {
+          html = html + "\n<br>" + allWaypoints[i].toHTML();
+        }
+        return html;
+      }
+
+      public String getHTMLMobilePhones() {
+        String html = "";
+        MobilePhone[] allPhones =  getMobilePhones();
+        for (int i = 0; i < allPhones.length; i++) {
+          html = html + "\n<br>" + allPhones[i].toHTML();
+        }
+        return html;
+      }
+
+
 }
