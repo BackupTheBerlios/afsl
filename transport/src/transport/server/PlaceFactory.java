@@ -15,21 +15,21 @@ public class PlaceFactory {
 	public Place getPlace(int id) {
 		Place p=null;
 		logger.entering("PlaceFactory","getPlace("+id+")");
-		
+
 		try {
 			Connection conn=ConnectionFactory.getConnection();
 			PreparedStatement st=conn.prepareStatement("select * from places where id = ?");
 
 			st.setInt(1,id);
 			ResultSet rs=st.executeQuery();
-			
+
 			if (!rs.next()) {
 				logger.log(Level.WARNING,"No rows returned for getPlace("+id+"), returning null.");
 				return null;
 			}
-			
+
 			p=new Place(id, rs.getString(2));
-			
+
 			conn.close();
 		} catch (SQLException e) {
 			logger.log(Level.SEVERE, e.getMessage(), e);
@@ -54,7 +54,11 @@ public class PlaceFactory {
 			logger.log(Level.SEVERE, e.getMessage(), e);
 		}
 
-		return (Place[])a.toArray();
+		Place[] ar=new Place[a.size()];
+
+		a.toArray(ar);
+
+		return ar;
 	}
 
 	public Place newPlace(Place newPlace) {
@@ -64,7 +68,7 @@ public class PlaceFactory {
 			st.setString(1,newPlace.getName());
 			// FIXME: error checking, damnit!
 			st.executeUpdate();
-			
+
 			ResultSet rs=st.getGeneratedKeys();
 			rs.next();
 

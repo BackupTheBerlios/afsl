@@ -9,6 +9,9 @@ package transport.client;
 import javax.swing.*;
 import java.awt.Window;
 import java.awt.event.*;
+import javax.swing.JPanel;
+import java.awt.BorderLayout;
+import java.awt.Point;
 
 /**
  *
@@ -16,7 +19,7 @@ import java.awt.event.*;
  */
 public class PickDateTimeCombo extends javax.swing.JPanel {
 	private PickDateTime pickDateTime;
-
+	private JWindow pdtWin;
 	/** Creates new form PickDateTimeCombo */
 	public PickDateTimeCombo() {
 		pickDateTime=new PickDateTime();
@@ -55,8 +58,24 @@ public class PickDateTimeCombo extends javax.swing.JPanel {
         }//GEN-END:jbInit
 
 	private void launchPickDateTimeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_launchPickDateTimeActionPerformed
-		// TODO add your handling code here:
-		//new PickDateTime(dateSpinner.get);
+		if (pdtWin==null) {
+			PickDateTime pdt=new PickDateTime();
+			Window w=(Window)this.getTopLevelAncestor();
+			pdtWin=new JWindow(w);
+			JPanel contentPane = (JPanel) pdtWin.getContentPane();
+			contentPane.setLayout(new BorderLayout());
+			contentPane.add(pdt);
+			pdtWin.pack();
+		}
+
+		if (pdtWin.isVisible()) {
+			pdtWin.setVisible(false);
+			return;
+		}
+
+		Point p=this.getLocationOnScreen();
+		pdtWin.setBounds((int)p.getX(),(int)p.getY()+this.getHeight(),300,300);
+		pdtWin.setVisible(true);
 	}//GEN-LAST:event_launchPickDateTimeActionPerformed
 
 

@@ -27,6 +27,8 @@ public class ArtistEditor extends javax.swing.JInternalFrame {
 		this.artist=artist;
 		jbInit();
 
+		fixCombos();
+
 		if (artist.getId() == -1) {
 			this.setTitle("Add an artist");
 			okButton.setText("New");
@@ -35,6 +37,16 @@ public class ArtistEditor extends javax.swing.JInternalFrame {
 			this.setTitle("Update an artist");
 			okButton.setText("Update");
 			okButton.setMnemonic('U');
+		}
+	}
+
+	private void fixCombos() {
+		Place[] p=(new PlaceFactory()).getAllPlaces();
+
+		for (int i=0;i<p.length;i++) {
+			arrivalCombo.addItem(p[i]);
+			hotelCombo.addItem(p[i]);
+			departureCombo.addItem(p[i]);
 		}
 	}
 
