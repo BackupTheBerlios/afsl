@@ -7,12 +7,15 @@
 package transport.client;
 
 import transport.logic.*;
+import java.awt.*;
+import javax.swing.*;
 
 /**
  *
  * @author  ola
  */
 public class TransportEditor extends GenericEditor {
+//public class TransportEditor extends javax.swing.JInternalFrame {
 	Transport transport;
 
 	public TransportEditor() {
@@ -35,7 +38,6 @@ public class TransportEditor extends GenericEditor {
 		okButton=new javax.swing.JButton();
 		cancelButton=new javax.swing.JButton();
 		jPanel3=new javax.swing.JPanel();
-		jPanel1=new javax.swing.JPanel();
 		jLabel1=new javax.swing.JLabel();
 		jLabel2=new javax.swing.JLabel();
 		jLabel3=new javax.swing.JLabel();
@@ -50,7 +52,16 @@ public class TransportEditor extends GenericEditor {
 
 		okButton.setMnemonic('O');
 		okButton.setText("OK");
-		jPanel2.add(okButton);
+		gridLayout1.setColumns(2);
+    gridLayout1.setRows(11);
+    internalBox.setActionCommand("internalBox");
+    internalBox.setHorizontalAlignment(SwingConstants.CENTER);
+    internalBox.setText("");
+    distanceText.setEnabled(false);
+    distanceText.setText("");
+    distanceText.setHorizontalAlignment(SwingConstants.TRAILING);
+    miscInfoText.setRequestFocusEnabled(true);
+    jPanel2.add(okButton);
 
 		cancelButton.setMnemonic('C');
 		cancelButton.setText("Cancel");
@@ -58,46 +69,56 @@ public class TransportEditor extends GenericEditor {
 
 		getContentPane().add(jPanel2, java.awt.BorderLayout.SOUTH);
 
-		jPanel3.setLayout(new java.awt.BorderLayout());
+		jPanel3.setLayout(gridLayout1);
 
-		jPanel1.setLayout(new java.awt.GridLayout(11, 1));
 
 		jLabel1.setText("Artists");
-		jPanel1.add(jLabel1);
 
 		jLabel2.setText("Cars");
-		jPanel1.add(jLabel2);
+    jPanel3.add(jLabel1, null);
+    jPanel3.add(artistsChooser, null);
+    jPanel3.add(jLabel2, null);
+    jPanel3.add(carsChooser, null);
 
 		jLabel3.setText("Functionaries");
-		jPanel1.add(jLabel3);
 
 		jLabel4.setText("Internal");
-		jPanel1.add(jLabel4);
 
-		jLabel5.setText("Dropoffs");
-		jPanel1.add(jLabel5);
+		jLabel5.setText("Waypoints");
 
 		jLabel6.setText("Mobile phones");
-		jPanel1.add(jLabel6);
 
 		jLabel7.setText("Start time");
-		jPanel1.add(jLabel7);
 
 		jLabel8.setText("Distance");
-		jPanel1.add(jLabel8);
 
 		jLabel9.setText("Return time");
-		jPanel1.add(jLabel9);
 
 		jLabel10.setText("Actual return time");
-		jPanel1.add(jLabel10);
 
 		jLabel11.setText("Misc info");
-		jPanel1.add(jLabel11);
 
-		jPanel3.add(jPanel1, java.awt.BorderLayout.WEST);
 
 		getContentPane().add(jPanel3, java.awt.BorderLayout.CENTER);
+    jPanel3.add(jLabel3, null);
+    jPanel3.add(functionariesChooser, null);
+    jPanel3.add(jLabel4, null);
+    jPanel3.add(internalBox, null);
+    jPanel3.add(jLabel5, null);
+    jPanel3.add(waypointsChooser, null);
+    jPanel3.add(jLabel6, null);
+    jPanel3.add(mobilePhonesChooser, null);
+    jPanel3.add(jLabel7, null);
+    jPanel3.add(pickDateTimeCombo1, null);
+    jPanel3.add(jLabel9, null);
+    jPanel3.add(pickDateTimeCombo2, null);
+    jPanel3.add(jLabel8, null);
+    jPanel3.add(distanceText, null);
+    jPanel3.add(jLabel10, null);
+    jPanel3.add(pickDateTimeCombo3, null);
+    jPanel3.add(jLabel11, null);
+    jPanel3.add(jScrollPane1, null);
+    jScrollPane1.getViewport().add(miscInfoText, null);
 
 		pack();
 	} //GEN-END:jbInit
@@ -115,10 +136,22 @@ public class TransportEditor extends GenericEditor {
 	private javax.swing.JLabel jLabel7;
 	private javax.swing.JLabel jLabel8;
 	private javax.swing.JLabel jLabel9;
-	private javax.swing.JPanel jPanel1;
 	private javax.swing.JPanel jPanel2;
 	private javax.swing.JPanel jPanel3;
 	private javax.swing.JButton okButton;
+  GridLayout gridLayout1 = new GridLayout();
+  MultipleChooser artistsChooser = new MultipleChooser(new Artist());
+  MultipleChooser carsChooser = new MultipleChooser(new Car());
+  MultipleChooser functionariesChooser = new MultipleChooser(new Functionary());
+  JCheckBox internalBox = new JCheckBox();
+  MultipleChooser waypointsChooser = new MultipleChooser(new TransportWaypoint());
+  MultipleChooser mobilePhonesChooser = new MultipleChooser(new MobilePhone());
+  PickDateTimeCombo pickDateTimeCombo1 = new PickDateTimeCombo();
+  PickDateTimeCombo pickDateTimeCombo2 = new PickDateTimeCombo();
+  JTextField distanceText = new JTextField();
+  PickDateTimeCombo pickDateTimeCombo3 = new PickDateTimeCombo();
+  JScrollPane jScrollPane1 = new JScrollPane();
+  JTextArea miscInfoText = new JTextArea();
 
 	/**
 	 * edit

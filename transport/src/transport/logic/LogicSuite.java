@@ -31,7 +31,7 @@ public class LogicSuite extends TestCase {
 		suite.addTest(transport.logic.PlaceTest.suite());
 		suite.addTest(transport.logic.RoleTest.suite());
 		suite.addTest(transport.logic.TransportTest.suite());
-		suite.addTest(transport.logic.TransportDropoffTest.suite());
+		suite.addTest(transport.logic.TransportWaypointTest.suite());
 		return suite;
 	}
 

@@ -50,4 +50,10 @@ public class TransportWaypoint {
 	public void setTime(Date time) {
 		this.time=time;
 	}
+
+	/**
+	 * TransportWaypoint
+	 */
+	public TransportWaypoint() {
+	}
 }

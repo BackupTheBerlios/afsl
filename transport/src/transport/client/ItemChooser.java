@@ -10,22 +10,55 @@ import javax.swing.*;
 
 import transport.logic.*;
 import transport.server.*;
+import java.awt.*;
+import java.awt.event.*;
 
 /**
  *
  * @author  ola
  */
-public class ItemChooser extends javax.swing.JDialog {
-	Object[] objects;
+public class ItemChooser extends javax.swing.JPanel {
+	DefaultListModel listModel=new DefaultListModel();
+	Object type;
+	MultipleChooser mc;
 
 	/** Creates new form ItemChooser */
-	public ItemChooser(java.awt.Frame parent) {
-
-		// always modal.
-		super(parent, true);
-
+	public ItemChooser(Object type, MultipleChooser mc) {
 		jbInit();
+		this.type=type;
+		this.mc=mc;
+		refresh();
+	}
 
+public void refresh() {
+		if (type instanceof Artist) {
+			ArtistFactory af=new ArtistFactory();
+			Artist[] a=af.getAllArtists();
+			for (int i=0; i < a.length; i++) {
+				listModel.addElement(a[i]);
+			}
+		} else if (type instanceof Car) {
+			CarFactory af=new CarFactory();
+			Car[] a=af.getAllCars();
+			for (int i=0; i < a.length; i++) {
+				listModel.addElement(a[i]);
+			}
+		} else if (type instanceof Functionary) {
+			FunctionaryFactory af=new FunctionaryFactory();
+			Functionary[] a=af.getAllFunctionaries();
+			for (int i=0; i < a.length; i++) {
+				listModel.addElement(a[i]);
+			}
+		} else if (type instanceof MobilePhone) {
+			MobilePhoneFactory af=new MobilePhoneFactory();
+			MobilePhone[] a=af.getAllMobilePhones();
+			for (int i=0; i < a.length; i++) {
+				listModel.addElement(a[i]);
+			}
+		} else {
+			throw new NullPointerException(
+				"Trying to ItemChoose something which doesn't exist!");
+		}
 	}
 
 	/** This method is called from within the constructor to
@@ -39,45 +72,43 @@ public class ItemChooser extends javax.swing.JDialog {
 		addButton=new javax.swing.JButton();
 		Cancel=new javax.swing.JButton();
 
-		setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-		setModal(true);
-		getContentPane().add(itemList, java.awt.BorderLayout.CENTER);
+		this.setLayout(borderLayout1);
+		addButton.addActionListener(new ItemChooser_addButton_actionAdapter(this));
+    add(itemList,  BorderLayout.CENTER);
+		add(buttonPanel, BorderLayout.SOUTH);
 
 		addButton.setMnemonic('A');
 		addButton.setText("Add");
-		buttonPanel.add(addButton);
 
 		Cancel.setMnemonic('C');
 		Cancel.setText("Cancel");
+		buttonPanel.add(addButton);
 		buttonPanel.add(Cancel);
-
-		getContentPane().add(buttonPanel, java.awt.BorderLayout.SOUTH);
-
-		pack();
 	} //GEN-END:jbInit
-
-	public Object[] chooseItems(Object type) {
-		// FIXME: type is an ugly HACK which reverberates through the
-		// entire call hierarchy
-
-		if (type instanceof Artist) {
-			ArtistFactory af=new ArtistFactory();
-			objects=af.getAllArtists();
-		}
-
-		itemList.setListData(objects);
-		this.pack();
-		this.show();
-
-		return null;
-	}
 
 	// Variables declaration - do not modify//GEN-BEGIN:variables
 	private javax.swing.JButton Cancel;
 	private javax.swing.JButton addButton;
 	private javax.swing.JPanel buttonPanel;
 	private javax.swing.JList itemList;
+	BorderLayout borderLayout1 = new BorderLayout();
+
+  void addButton_actionPerformed(ActionEvent e) {
+
+	  //mc.add();
+  }
 
 	// End of variables declaration//GEN-END:variables
 
+}
+
+class ItemChooser_addButton_actionAdapter implements java.awt.event.ActionListener {
+  ItemChooser adaptee;
+
+  ItemChooser_addButton_actionAdapter(ItemChooser adaptee) {
+    this.adaptee = adaptee;
+  }
+  public void actionPerformed(ActionEvent e) {
+    adaptee.addButton_actionPerformed(e);
+  }
 }
