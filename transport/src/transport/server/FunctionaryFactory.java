@@ -23,6 +23,7 @@ public class FunctionaryFactory {
 			"select * from functionary_transport where transport_id = ?");
 		st.setInt(1, transportId);
 		ResultSet rs=st.executeQuery();
+                conn.close();
 
 		while (rs.next()) {
 			a.add(new FunctionaryFactory().getFunctionary(rs.getInt(
@@ -57,6 +58,7 @@ public class FunctionaryFactory {
 									  rs.getDate(4),
 									  new RoleFactory().getRole(rs.getInt(5))));
 			}
+                        conn.close();
 		} catch (SQLException e) {
 			logger.log(Level.SEVERE, e.getMessage(), e);
 		}
@@ -78,6 +80,7 @@ public class FunctionaryFactory {
 			f=new Functionary(rs.getInt(1), rs.getString(2), rs.getDate(3),
 							  rs.getDate(4),
 							  new RoleFactory().getRole(rs.getInt(5)));
+                        conn.close();
 		} catch (SQLException e) {
 			logger.log(Level.SEVERE, e.getMessage(), e);
 		}
@@ -99,6 +102,8 @@ public class FunctionaryFactory {
 									  rs.getDate(4),
 									  new RoleFactory().getRole(rs.getInt(5))));
 			}
+
+                        conn.close();
 		} catch (SQLException e) {
 			logger.log(Level.SEVERE, e.getMessage(), e);
 		}

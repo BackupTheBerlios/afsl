@@ -33,6 +33,8 @@ public class CarFactory {
 		Car[] c=new Car[a.size()];
 		a.toArray(c);
 
+                conn.close();
+
 		return c;
 	}
 
@@ -74,6 +76,7 @@ public class CarFactory {
 			rs.first();
 			c=new Car(id, rs.getString(2), rs.getString(3), rs.getInt(4),
 					  rs.getString(5));
+                        conn.close();
 		} catch (SQLException e) {
 			logger.log(Level.SEVERE, e.getMessage(), e);
 		}
@@ -92,6 +95,7 @@ public class CarFactory {
 				a.add(new Car(rs.getInt(1), rs.getString(2), rs.getString(3),
 							  rs.getInt(4), rs.getString(5)));
 			}
+                        conn.close();
 		} catch (SQLException e) {
 			logger.log(Level.SEVERE, e.getMessage(), e);
 		}
@@ -151,6 +155,7 @@ public class CarFactory {
 			Connection conn=ConnectionFactory.getConnection();
 
 			updateCar(updatedCar, conn);
+                        conn.close();
 		} catch (SQLException e) {
 			logger.log(Level.SEVERE, e.getMessage(), e);
 		}

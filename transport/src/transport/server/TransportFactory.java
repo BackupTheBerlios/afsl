@@ -75,8 +75,8 @@ public class TransportFactory {
                        rs.getString(6),
                        conn);
 
-    }
-    catch (SQLException e) {
+      conn.close();
+    } catch (SQLException e) {
       logger.log(Level.SEVERE, e.getMessage(), e);
     }
 
@@ -101,6 +101,7 @@ public class TransportFactory {
                            rs.getBoolean(5), rs.getString(6),
                            conn));
       }
+      conn.close();
     }
     catch (SQLException e) {
       logger.log(Level.SEVERE, e.getMessage(), e);
@@ -354,6 +355,7 @@ public class TransportFactory {
                            rs.getBoolean(5), rs.getString(6),
                            conn));
       }
+      conn.close();
     }
     catch (SQLException e) {
       logger.log(Level.SEVERE, e.getMessage(), e);
@@ -381,6 +383,7 @@ public class TransportFactory {
                            rs.getBoolean(5), rs.getString(6),
                            conn));
       }
+      conn.close();
     }
     catch (SQLException e) {
       logger.log(Level.SEVERE, e.getMessage(), e);
@@ -407,6 +410,7 @@ public class TransportFactory {
                            rs.getBoolean(5), rs.getString(6),
                            conn));
       }
+      conn.close();
     }
     catch (SQLException e) {
       logger.log(Level.SEVERE, e.getMessage(), e);
@@ -434,6 +438,7 @@ public class TransportFactory {
                            rs.getBoolean(5), rs.getString(6),
                            conn));
       }
+      conn.close();
     }
     catch (SQLException e) {
       logger.log(Level.SEVERE, e.getMessage(), e);
@@ -461,6 +466,7 @@ public class TransportFactory {
                            rs.getBoolean(5), rs.getString(6),
                            conn));
       }
+      conn.close();
     }
     catch (SQLException e) {
       logger.log(Level.SEVERE, e.getMessage(), e);
@@ -487,6 +493,7 @@ public class TransportFactory {
                            rs.getBoolean(5), rs.getString(6),
                            conn));
       }
+      conn.close();
     }
     catch (SQLException e) {
       logger.log(Level.SEVERE, e.getMessage(), e);
@@ -513,6 +520,7 @@ public class TransportFactory {
                            rs.getBoolean(5), rs.getString(6),
                            conn));
       }
+      conn.close();
     }
     catch (SQLException e) {
       logger.log(Level.SEVERE, e.getMessage(), e);
@@ -540,6 +548,7 @@ public class TransportFactory {
                            rs.getBoolean(5), rs.getString(6),
                            conn));
       }
+      conn.close();
     }
     catch (SQLException e) {
       logger.log(Level.SEVERE, e.getMessage(), e);
