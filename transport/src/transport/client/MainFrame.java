@@ -323,7 +323,9 @@ public class MainFrame extends javax.swing.JFrame {
 	}//GEN-LAST:event_menuExitHandler
 
 	private void ArtistAddMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ArtistAddMenuItemActionPerformed
-		desktopPane.add(new ArtistEditor());
+		ArtistEditor ae=new ArtistEditor();
+		desktopPane.add(ae);
+		ae.show();
 	}//GEN-LAST:event_ArtistAddMenuItemActionPerformed
 
 	private void displayArtistFrame(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_displayArtistFrame

@@ -11,6 +11,7 @@ import transport.server.*;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
 
 /**
  *
@@ -38,6 +39,11 @@ public class GenericListFrame extends javax.swing.JInternalFrame {
 		jScrollPane1=new javax.swing.JScrollPane();
 		artistTable=new javax.swing.JTable();
 
+		artistTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		artistTable.setRowSelectionAllowed(true);
+		artistTable.setCellSelectionEnabled(false);
+		artistTable.setColumnSelectionAllowed(false);
+
 		setClosable(true);
 		setResizable(true);
 		setTitle("Listing of artists");
@@ -53,12 +59,21 @@ public class GenericListFrame extends javax.swing.JInternalFrame {
 
 		jScrollPane1.setViewportView(artistTable);
 
-		jButton1.setText("jButton1");
-		jButton2.setText("jButton2");
+		editButton.setText("Edit");
+		editButton.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				editButton_actionPerformed(e);
+			}
+		});
+		editButton.setMnemonic('E');
+
+		cancelButton.setText("Cancel");
+		cancelButton.setMnemonic('C');
+
 		getContentPane().add(jScrollPane1, java.awt.BorderLayout.CENTER);
 		this.getContentPane().add(jPanel1, BorderLayout.SOUTH);
-		jPanel1.add(jButton1, null);
-		jPanel1.add(jButton2, null);
+		jPanel1.add(editButton, null);
+		jPanel1.add(cancelButton, null);
 
 		pack();
 	}
@@ -73,8 +88,12 @@ public class GenericListFrame extends javax.swing.JInternalFrame {
 	private javax.swing.JTable artistTable;
 	private javax.swing.JScrollPane jScrollPane1;
 	JPanel jPanel1=new JPanel();
-	JButton jButton1=new JButton();
-	JButton jButton2=new JButton();
+	JButton editButton=new JButton();
+	JButton cancelButton=new JButton();
+
+  void editButton_actionPerformed(ActionEvent e) {
+
+  }
 	// End of variables declaration//GEN-END:variables
 
 }

@@ -49,21 +49,22 @@ public class PickDateTime extends javax.swing.JPanel {
                 setMinimumSize(new java.awt.Dimension(100, 100));
                 setPreferredSize(new java.awt.Dimension(100, 156));
                 prevMonth.setText("<<");
-	prevMonth.addMouseListener(new PickDateTime_prevMonth_mouseAdapter(this));
-	prevDay.addMouseListener(new PickDateTime_prevDay_mouseAdapter(this));
-    nextDay.addMouseListener(new PickDateTime_nextDay_mouseAdapter(this));
-    nextMonth.addMouseListener(new PickDateTime_nextMonth_mouseAdapter(this));
-    okButton.setActionCommand("jButton1");
-    okButton.setMnemonic('O');
-    okButton.setText("OK");
-    cancelButton.setMnemonic('C');
-    cancelButton.setText("Cancel");
-    cancelButton.addMouseListener(new PickDateTime_cancelButton_mouseAdapter(this));
-    jPanel1.add(prevMonth);
-	jPanel1.add(prevDay);
-	jPanel1.add(dateLabel);
-	jPanel1.add(nextMonth);
-    jPanel1.add(nextDay, null);
+				prevMonth.addMouseListener(new PickDateTime_prevMonth_mouseAdapter(this));
+				prevDay.addMouseListener(new PickDateTime_prevDay_mouseAdapter(this));
+				nextDay.addMouseListener(new PickDateTime_nextDay_mouseAdapter(this));
+				nextMonth.addMouseListener(new PickDateTime_nextMonth_mouseAdapter(this));
+				okButton.setActionCommand("jButton1");
+				okButton.setMnemonic('O');
+				okButton.setText("OK");
+				cancelButton.setMnemonic('C');
+				cancelButton.setText("Cancel");
+				cancelButton.addMouseListener(new
+											  PickDateTime_cancelButton_mouseAdapter(this));
+				jPanel1.add(prevMonth);
+				jPanel1.add(prevDay);
+				jPanel1.add(dateLabel);
+				jPanel1.add(nextMonth);
+				jPanel1.add(nextDay, null);
 
                 prevDay.setText("<");
 
@@ -79,13 +80,13 @@ public class PickDateTime extends javax.swing.JPanel {
                 jTable1.setModel((table=new DateTableModel()));
                 jTable1.setRowSelectionAllowed(false);
                 jPanel2.add(jTable1, java.awt.BorderLayout.CENTER);
-    jPanel2.add(jPanel3, BorderLayout.SOUTH);
-    jPanel3.add(okButton, null);
-    jPanel3.add(cancelButton, null);
+				jPanel2.add(jPanel3, BorderLayout.SOUTH);
+				jPanel3.add(okButton, null);
+				jPanel3.add(cancelButton, null);
 
-                add(jPanel2, java.awt.BorderLayout.CENTER);
+				add(jPanel2, java.awt.BorderLayout.CENTER);
 
-    jPanel2.add(jPanel1, BorderLayout.NORTH);
+				jPanel2.add(jPanel1, BorderLayout.NORTH);
 
 
         }//GEN-END:jbInit
@@ -113,11 +114,13 @@ public class PickDateTime extends javax.swing.JPanel {
 			this(null);
 		}
 
-		DateTableModel(Calendar cal) {
+		DateTableModel(GregorianCalendar inCal) {
 			Date time=null;
 
-			if (cal==null) {
+			if (inCal==null) {
 				cal=new GregorianCalendar(new Locale("sv"));
+			} else {
+				cal=inCal;
 			}
 
 			time=cal.getTime();
@@ -167,6 +170,10 @@ public class PickDateTime extends javax.swing.JPanel {
 			int i;
 			data=new String[6][8];
 
+			if (cal==null) {
+				System.err.println("NULL NULL NULL!!!");
+				System.exit( -1);
+			}
 
 			cal.set(Calendar.DATE, 1);
 			//cal.setFirstDayOfWeek(Calendar.MONDAY);

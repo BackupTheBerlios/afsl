@@ -1,0 +1,35 @@
+[PropertyInfo]
+arrivalCombo,javax.swing.JComboBox,false,false, , ,false,<default>
+arrivalTimeCombo,transport.client.PickDateTimeCombo,false,false, , ,false,<default>
+artist,Artist,false,false, , ,false,<default>
+buttonPanel,javax.swing.JPanel,false,false, , ,false,<default>
+cancelButton,javax.swing.JButton,false,false, , ,false,<default>
+contactNameText,javax.swing.JTextField,false,false, , ,false,<default>
+departureCombo,javax.swing.JComboBox,false,false, , ,false,<default>
+departureTimeCombo,transport.client.PickDateTimeCombo,false,false, , ,false,<default>
+extraInfoText,javax.swing.JTextArea,false,false, , ,false,<default>
+hotelCombo,javax.swing.JComboBox,false,false, , ,false,<default>
+infoPanel,javax.swing.JPanel,false,false, , ,false,<default>
+jFormattedTextField1,javax.swing.JFormattedTextField,false,false, , ,false,<default>
+jFormattedTextField2,javax.swing.JFormattedTextField,false,false, , ,false,<default>
+jFormattedTextField3,javax.swing.JFormattedTextField,false,false, , ,false,<default>
+jLabel1,javax.swing.JLabel,false,false, , ,false,<default>
+jLabel10,javax.swing.JLabel,false,false, , ,false,<default>
+jLabel11,javax.swing.JLabel,false,false, , ,false,<default>
+jLabel2,javax.swing.JLabel,false,false, , ,false,<default>
+jLabel3,javax.swing.JLabel,false,false, , ,false,<default>
+jLabel4,javax.swing.JLabel,false,false, , ,false,<default>
+jLabel5,javax.swing.JLabel,false,false, , ,false,<default>
+jLabel6,javax.swing.JLabel,false,false, , ,false,<default>
+jLabel7,javax.swing.JLabel,false,false, , ,false,<default>
+jLabel8,javax.swing.JLabel,false,false, , ,false,<default>
+jLabel9,javax.swing.JLabel,false,false, , ,false,<default>
+labelGuests,javax.swing.JLabel,false,false, , ,false,<default>
+nameText,javax.swing.JTextField,false,false, , ,false,<default>
+okButton,javax.swing.JButton,false,false, , ,false,<default>
+phoneNumberText,javax.swing.JFormattedTextField,false,false, , ,false,<default>
+[IconNames]
+
+
+
+
