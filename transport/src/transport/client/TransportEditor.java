@@ -42,7 +42,6 @@ public class TransportEditor extends GenericEditor {
           ImageIcon frameIcon = new ImageIcon(this.getClass().getResource(
           "../pics/miniAF.png"));
             this.setFrameIcon(frameIcon);
-
 		jPanel2=new javax.swing.JPanel();
 		okButton=new javax.swing.JButton();
 		cancelButton=new javax.swing.JButton();
@@ -58,7 +57,7 @@ public class TransportEditor extends GenericEditor {
 		jLabel9=new javax.swing.JLabel();
 		jLabel10=new javax.swing.JLabel();
 		jLabel11=new javax.swing.JLabel();
-
+                labelDirection=new javax.swing.JLabel();
 		okButton.setMnemonic('O');
 		okButton.setText("OK");
 		okButton.addActionListener(new TransportEditor_okButton_actionAdapter(this));
@@ -77,18 +76,21 @@ public class TransportEditor extends GenericEditor {
 		waypointsDisplayer.setText("...");
 		waypointsDisplayer.addActionListener(new
 			TransportEditor_waypointsDisplayer_actionAdapter(this));
-		jPanel2.add(okButton);
 
 		cancelButton.setMnemonic('C');
 		cancelButton.setText("Cancel");
-		jPanel2.add(cancelButton);
+                jPanel2.setLayout(new java.awt.GridLayout(2, 2));
+    jPanel2.add(labelDirection);
+    jPanel2.add(direction);
+    jPanel2.add(cancelButton);
+    jPanel2.add(okButton);
 
 		getContentPane().add(jPanel2, java.awt.BorderLayout.SOUTH);
 
 		jPanel3.setLayout(gridBagLayout1);
 
 		jLabel1.setText("Artists");
-
+                labelDirection.setText("Direction");
 		jLabel2.setText("Cars");
 		jPanel3.add(jLabel1, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0
 			, GridBagConstraints.WEST, GridBagConstraints.NONE,
@@ -166,8 +168,12 @@ public class TransportEditor extends GenericEditor {
     jPanel3.add(waypointsDisplayer, new GridBagConstraints(1, 6, 1, 1, 0.0, 0.0
             ,GridBagConstraints.WEST, GridBagConstraints.NONE, new Insets(0, 0, 0, 0), 0, 0));
 		jScrollPane1.getViewport().add(miscInfoText, null);
+                String[] allDirections = TransportHelper.getDirections();
+                for (int i = 0; i < allDirections.length; i++) {
+                  direction.addItem(allDirections[i]);
+                }
+                pack();
 
-		pack();
 	} //GEN-END:jbInit
 
 	// Variables declaration - do not modify//GEN-BEGIN:variables
@@ -185,6 +191,7 @@ public class TransportEditor extends GenericEditor {
 	private javax.swing.JLabel jLabel9;
 	private javax.swing.JPanel jPanel2;
 	private javax.swing.JPanel jPanel3;
+        private javax.swing.JLabel labelDirection;
 	private javax.swing.JButton okButton;
 	MultipleChooser artistsChooser=new MultipleChooser(new Artist());
 	MultipleChooser carsChooser=new MultipleChooser(new Car());
@@ -197,9 +204,10 @@ public class TransportEditor extends GenericEditor {
 	PickDateTimeCombo actualReturnTimeCombo=new PickDateTimeCombo();
 	JScrollPane jScrollPane1=new JScrollPane();
 	JTextArea miscInfoText=new JTextArea();
-  GridBagLayout gridBagLayout1 = new GridBagLayout();
-  JButton waypointsDisplayer = new JButton();
-
+        GridBagLayout gridBagLayout1 = new GridBagLayout();
+        JButton waypointsDisplayer = new JButton();
+        JComboBox direction = new JComboBox();
+  GridLayout gridLayout1 = new GridLayout();
 /**
 	 * edit
 	 *
@@ -226,6 +234,7 @@ public class TransportEditor extends GenericEditor {
 			returnTimeCombo.setDate(transport.getReturnTime());
 			actualReturnTimeCombo.setDate(transport.getActualReturnTime());
 			miscInfoText.setText(transport.getMiscInfo());
+                        direction.setSelectedItem(transport.getDirection());
 		}
 
 	}
@@ -291,7 +300,7 @@ public class TransportEditor extends GenericEditor {
 	  transport.setReturnTime(returnTimeCombo.getDate());
 	  transport.setActualReturnTime(actualReturnTimeCombo.getDate());
 	  transport.setMiscInfo(miscInfoText.getText());
-
+          transport.setDirection(direction.getSelectedItem().toString());
 	  TransportFactory tf=new TransportFactory();
 	  MainFrame mf=(MainFrame)this.getTopLevelAncestor();
 

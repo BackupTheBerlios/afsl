@@ -136,7 +136,8 @@ create table distance_reference (
 );
 
 alter table roles add initial varchar(5);
-alter table artists add flightno_arrival varchar(10);
 alter table artists add flightno_departure varchar(10);
-alter table artists add stage varchar(15);
-alter table artists add bookedBy varchar(30);
+alter table artists add flightno_arrival varchar(10);
+alter table artists add stage varchar(150);
+alter table artists add bookedBy varchar(300);
+alter table transports add direction integer;

@@ -24,29 +24,31 @@ public class TransportTableModel extends GenericTableModel {
 
 	public String getColumnName(int col) {
 		switch (col) {
-		case 0:
-			return "Artists";
+                case 0:
+                       return "Direction";
 		case 1:
-			return "Cars";
+			return "Artists";
 		case 2:
-			return "Functionaries";
+			return "Cars";
 		case 3:
-			return "Internal";
+			return "Functionaries";
 		case 4:
-			return "Waypoints";
+			return "Internal";
 		case 5:
-			return "Mobile phones";
+			return "Waypoints";
 		case 6:
-			return "Start time";
+			return "Mobile phones";
 		case 7:
-			return "Return time";
+			return "Start time";
 		case 8:
-			return "Actual return time";
+			return "Return time";
 		case 9:
-			return "Distance";
-		case 10:
 			return "Actual return time";
+		case 10:
+			return "Distance";
 		case 11:
+			return "Actual return time";
+		case 12:
 			return "Misc info";
 		}
 
@@ -58,7 +60,7 @@ public class TransportTableModel extends GenericTableModel {
 	}
 
 	public int getColumnCount() {
-		return 12;
+		return 13;
 	}
 
 	private String fixString(Object[] o) {
@@ -75,33 +77,35 @@ public class TransportTableModel extends GenericTableModel {
 
 	public Object getValueAt(int row, int col) {
 		switch (col) {
-			case 0:
-				return fixString(rowData[row].getArtists());
+                        case 0:
+				return rowData[row].getDirection();
 			case 1:
-				return fixString(rowData[row].getCars());
+				return fixString(rowData[row].getArtists());
 			case 2:
-				return fixString(rowData[row].getFunctionaries());
+				return fixString(rowData[row].getCars());
 			case 3:
+				return fixString(rowData[row].getFunctionaries());
+			case 4:
 				if (rowData[row].getInternal()) {
 					return "Yes";
 				} else {
 					return "";
 				}
-			case 4:
-				return fixString(rowData[row].getWaypoints());
 			case 5:
-				return fixString(rowData[row].getMobilePhones());
+				return fixString(rowData[row].getWaypoints());
 			case 6:
-				return rowData[row].getStartTime();
+				return fixString(rowData[row].getMobilePhones());
 			case 7:
-				return rowData[row].getReturnTime();
+				return rowData[row].getStartTime();
 			case 8:
-				return rowData[row].getActualReturnTime();
+				return rowData[row].getReturnTime();
 			case 9:
-				return new Integer(0);
-			case 10:
 				return rowData[row].getActualReturnTime();
+			case 10:
+				return new Integer(0);
 			case 11:
+				return rowData[row].getActualReturnTime();
+			case 12:
 				return rowData[row].getMiscInfo();
 			}
 

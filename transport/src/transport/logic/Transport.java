@@ -16,7 +16,7 @@ public class Transport extends LogicItem {
 	private Functionary[] functionaries;
 	private int distance;
 	private String miscInfo;
-
+        private String direction;
 	public Transport(int id,
 					 Date startTime,
 					 Date returnTime,
@@ -28,7 +28,8 @@ public class Transport extends LogicItem {
 					 Artist[] artists,
 					 Functionary[] functionaries,
 					 int distance,
-					 String miscInfo) {
+					 String miscInfo,
+                                         String direction) {
 		this.id=id;
 		this.startTime=startTime;
 		this.returnTime=returnTime;
@@ -41,6 +42,7 @@ public class Transport extends LogicItem {
 		this.functionaries=functionaries;
 		this.distance=distance;
 		this.miscInfo=miscInfo;
+                this.direction=direction;
 	}
 
 	public Transport() {
@@ -50,6 +52,7 @@ public class Transport extends LogicItem {
 		mobilePhones=new MobilePhone[0];
 		artists=new Artist[0];
 		functionaries=new Functionary[0];
+                direction="N/A";
 	}
 
 	/**
@@ -337,6 +340,23 @@ public class Transport extends LogicItem {
 	public void setMobilePhones(MobilePhone[] mobilePhones) {
 		this.mobilePhones=mobilePhones;
 	}
+        /**
+         * Get direction.
+         *
+         * @return direction as String.
+         */
+        public String getDirection() {
+                return direction;
+        }
+
+        /**
+         * Set direction.
+         *
+         * @param direction the value to set.
+         */
+        public void setDirection(String direction) {
+                this.direction=direction;
+        }
 
         public String toHTML() {
          String html="<html>\n";
@@ -364,11 +384,11 @@ public class Transport extends LogicItem {
            StartTime = df.format(getStartTime());
          }
          if (getInternal()){
-           html = html+ "\n<H3>INTERNAL TRANSPORT " + getId() +"<br>" +StartTime +
+           html = html+ "\n<H3>INTERNAL TRANSPORT " + getId()+" " + getDirection()+ "<br>" +StartTime +
              "</H3>\n";
          }
          else{
-           html = html+"\n<H3>TRANSPORT " + getId() +"<br>" + StartTime+
+           html = html+"\n<H3>TRANSPORT " + getId()+" " + getDirection() +"<br>" + StartTime+
              "</H3>\n";
          }
 
