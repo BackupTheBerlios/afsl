@@ -28,25 +28,11 @@ public class FunctionaryTableModel extends GenericTableModel {
 		case 0:
 			return "Name";
 		case 1:
-			return "Contact name";
+			return "Role";
 		case 2:
-			return "Telephone number";
+			return "Begins working";
 		case 3:
-			return "Arrival";
-		case 4:
-			return "Arrival time";
-		case 5:
-			return "Hotel";
-		case 6:
-			return "Departure";
-		case 7:
-			return "Departure Time";
-		case 8:
-			return "No of Functionaries";
-		case 9:
-			return "No of Crew";
-		case 10:
-			return "No of Guests";
+			return "Stops working";
 		}
 
 		return "FIXME";
@@ -57,36 +43,21 @@ public class FunctionaryTableModel extends GenericTableModel {
 	}
 
 	public int getColumnCount() {
-		return 11;
+		return 4;
 	}
 
 	public Object getValueAt(int row, int col) {
-		/*
+
 		switch (col) {
 		case 0:
 			return rowData[row].getName();
 		case 1:
-			return rowData[row].getContactName();
+			return rowData[row].getRole();
 		case 2:
-			return rowData[row].getTelephoneNo();
+			return rowData[row].getBeginsWork();
 		case 3:
-			return rowData[row].getArrival();
-		case 4:
-			return rowData[row].getArrivalTime();
-		case 5:
-			return rowData[row].getHotel();
-		case 6:
-			return rowData[row].getDeparture();
-		case 7:
-			return rowData[row].getDepartureTime();
-		case 8:
-			return new Integer(rowData[row].getNoOfFunctionarys());
-		case 9:
-			return new Integer(rowData[row].getNoOfCrew());
-		case 10:
-			return new Integer(rowData[row].getNoOfGuests());
+			return rowData[row].getStopsWork();
 		}
-		*/
 
 		// FIXME: should not happen. Log error if it does.
 

@@ -46,7 +46,7 @@ public class FunctionaryFactory {
 
 			ResultSet rs=st.executeQuery();
 			while (rs.next()) {
-				a.add(new Functionary(rs.getInt(1), rs.getString(2), rs.getDate(3), 
+				a.add(new Functionary(rs.getInt(1), rs.getString(2), rs.getDate(3),
 					rs.getDate(4), new RoleFactory().getRole(rs.getInt(5))));
 			}
 		} catch (SQLException e) {
@@ -55,10 +55,10 @@ public class FunctionaryFactory {
 
 		return (Functionary[])a.toArray();
 	}
-	
+
 	public Functionary getFunctionary(int id) {
 		Functionary f=null;
-		
+
 		try {
 			Connection conn=ConnectionFactory.getConnection();
 			PreparedStatement st=conn.prepareStatement("select * from functionaries where id = ?");
@@ -90,7 +90,10 @@ public class FunctionaryFactory {
 			logger.log(Level.SEVERE, e.getMessage(), e);
 		}
 
-		return (Functionary[])a.toArray();
+		Functionary[] ar=new Functionary[a.size()];
+		a.toArray(ar);
+
+		return ar;
 	}
 
 	public Functionary newFunctionary(Functionary newFunctionary) {
@@ -110,7 +113,7 @@ public class FunctionaryFactory {
 			rs.next();
 
 			newFunctionary.setId(rs.getInt(1));
-			
+
 			conn.close();
 		} catch (SQLException e) {
 			logger.log(Level.SEVERE, e.getMessage(), e);

@@ -15,10 +15,10 @@ public class RoleFactory {
 
 	public Role getRole(int id) {
 		Role c=null;
-		
+
 		try {
 			Connection conn=ConnectionFactory.getConnection();
-			PreparedStatement st=conn.prepareStatement("select * from mobile_phones where id = ?");
+			PreparedStatement st=conn.prepareStatement("select * from roles where id = ?");
 
 			st.setInt(1,id);
 			ResultSet rs=st.executeQuery();
@@ -38,7 +38,7 @@ public class RoleFactory {
 
 		try {
 			Connection conn=ConnectionFactory.getConnection();
-			PreparedStatement st=conn.prepareStatement("select * from mobile_phones");
+			PreparedStatement st=conn.prepareStatement("select * from roles");
 			ResultSet rs=st.executeQuery();
 			while (rs.next()) {
 				a.add(new Role(rs.getInt(1), rs.getString(2), rs.getString(3)));
@@ -49,7 +49,11 @@ public class RoleFactory {
 			logger.log(Level.SEVERE, e.getMessage(), e);
 		}
 
-		return (Role[])a.toArray();
+		Role[] ar=new Role[a.size()];
+
+		a.toArray(ar);
+
+		return ar;
 	}
 
 	public Role newRole(Role newRole) {
@@ -66,7 +70,7 @@ public class RoleFactory {
 			rs.next();
 
 			newRole.setId(rs.getInt(1));
-			
+
 			conn.close();
 		} catch (SQLException e) {
 			logger.log(Level.SEVERE, e.getMessage(), e);

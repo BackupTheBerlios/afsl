@@ -10,6 +10,9 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.event.*;
+import java.util.Date;
+import java.text.DateFormat;
+import java.text.*;
 
 /**
  *
@@ -33,6 +36,8 @@ public class PickDateTimeCombo extends javax.swing.JPanel {
 	private void jbInit() { //GEN-BEGIN:jbInit
 		launchPickDateTime=new javax.swing.JButton();
 		dateField=new javax.swing.JFormattedTextField();
+
+		dateField.setValue(new Date());
 
 		setLayout(new java.awt.BorderLayout());
 
@@ -89,5 +94,15 @@ public class PickDateTimeCombo extends javax.swing.JPanel {
 		JPanel contentPane= (JPanel) pickDateTimeWindow.getContentPane();
 		contentPane.add(pickDateTime);
 	}
+
+	public Date getDate() {
+		try {
+			return DateFormat.getDateInstance().parse(dateField.getText());
+		} catch (ParseException ex) {
+			// Will not happen. Text field is formatted automagically.
+			ex.printStackTrace();
+			return null;
+		}
+}
 	// End of variables declaration//GEN-END:variables
 }

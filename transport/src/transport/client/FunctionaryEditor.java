@@ -7,13 +7,21 @@
 package transport.client;
 
 import transport.logic.Functionary;
+import transport.logic.Role;
 import transport.server.FunctionaryFactory;
+import transport.server.RoleFactory;
+import javax.swing.*;
+import java.awt.event.*;
 
 /**
  *
  * @author  ola
  */
+
+// fulhack galore
+//public class FunctionaryEditor extends JInternalFrame {
 public class FunctionaryEditor extends GenericEditor {
+	Functionary functionary;
 
 	public FunctionaryEditor() {
 		this (new Functionary());
@@ -21,7 +29,23 @@ public class FunctionaryEditor extends GenericEditor {
 
 	/** Creates new form AddFunctionary */
 	public FunctionaryEditor(Functionary functionary) {
+		this.functionary=functionary;
 		jbInit();
+		RoleFactory rf=new RoleFactory();
+		Role[] roles=rf.getAllRoles();
+
+		for (int i=0; i < roles.length; i++) {
+			roleCombo.addItem(roles[i]);
+		}
+		if (functionary.getId() == -1) {
+			this.setTitle("Add a functionary");
+			okButton.setText("New");
+			okButton.setMnemonic('N');
+		} else {
+			this.setTitle("Update a functionary");
+			okButton.setText("Update");
+			okButton.setMnemonic('U');
+		}
 	}
 
 	/** This method is called from within the constructor to
@@ -32,43 +56,48 @@ public class FunctionaryEditor extends GenericEditor {
         private void jbInit() {//GEN-BEGIN:jbInit
                 jPanel1 = new javax.swing.JPanel();
                 jLabel1 = new javax.swing.JLabel();
-                jTextField1 = new javax.swing.JTextField();
+                nameField = new javax.swing.JTextField();
                 jLabel2 = new javax.swing.JLabel();
-                jComboBox1 = new javax.swing.JComboBox();
+                roleCombo = new javax.swing.JComboBox();
                 jLabel3 = new javax.swing.JLabel();
                 jLabel4 = new javax.swing.JLabel();
                 jPanel2 = new javax.swing.JPanel();
-                jButton1 = new javax.swing.JButton();
-                jButton2 = new javax.swing.JButton();
+                okButton = new javax.swing.JButton();
+                cancelButton = new javax.swing.JButton();
 
                 jPanel1.setLayout(new java.awt.GridLayout(4, 2));
 
                 jLabel1.setText("Name");
-                jPanel1.add(jLabel1);
+                nameField.setText("");
+    okButton.addActionListener(new FunctionaryEditor_okButton_actionAdapter(this));
+    cancelButton.addActionListener(new FunctionaryEditor_cancelButton_actionAdapter(this));
+    this.setResizable(true);
+    jPanel1.add(jLabel1);
 
-                jTextField1.setText("jTextField1");
-                jPanel1.add(jTextField1);
+                jPanel1.add(nameField);
 
                 jLabel2.setText("Role");
                 jPanel1.add(jLabel2);
 
-                jPanel1.add(jComboBox1);
+                jPanel1.add(roleCombo);
 
                 jLabel3.setText("Begins working");
                 jPanel1.add(jLabel3);
+    jPanel1.add(beginTime, null);
+    jPanel1.add(jLabel4);
+    jPanel1.add(stopTime, null);
 
                 jLabel4.setText("Stops working");
-                jPanel1.add(jLabel4);
 
                 getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
-                jButton1.setMnemonic('O');
-                jButton1.setText("OK");
-                jPanel2.add(jButton1);
+                okButton.setMnemonic('O');
+                okButton.setText("OK");
+                jPanel2.add(okButton);
 
-                jButton2.setMnemonic('C');
-                jButton2.setText("Cancel");
-                jPanel2.add(jButton2);
+                cancelButton.setMnemonic('C');
+                cancelButton.setText("Cancel");
+                jPanel2.add(cancelButton);
 
                 getContentPane().add(jPanel2, java.awt.BorderLayout.SOUTH);
 
@@ -77,16 +106,18 @@ public class FunctionaryEditor extends GenericEditor {
 
 
         // Variables declaration - do not modify//GEN-BEGIN:variables
-        private javax.swing.JButton jButton1;
-        private javax.swing.JButton jButton2;
-        private javax.swing.JComboBox jComboBox1;
+        private javax.swing.JButton okButton;
+        private javax.swing.JButton cancelButton;
+        private javax.swing.JComboBox roleCombo;
         private javax.swing.JLabel jLabel1;
         private javax.swing.JLabel jLabel2;
         private javax.swing.JLabel jLabel3;
         private javax.swing.JLabel jLabel4;
         private javax.swing.JPanel jPanel1;
         private javax.swing.JPanel jPanel2;
-        private javax.swing.JTextField jTextField1;
+        private javax.swing.JTextField nameField;
+  PickDateTimeCombo beginTime = new PickDateTimeCombo();
+  PickDateTimeCombo stopTime = new PickDateTimeCombo();
 
 	/**
 	 * edit
@@ -96,6 +127,50 @@ public class FunctionaryEditor extends GenericEditor {
 	public void edit(Object o) {
 	}
 
+	void okButton_actionPerformed(ActionEvent e) {
+		functionary.setBeginsWork(beginTime.getDate());
+		functionary.setName(nameField.getText());
+		functionary.setRole((Role)roleCombo.getSelectedItem());
+		functionary.setStopsWork(stopTime.getDate());
+
+		FunctionaryFactory ff=new FunctionaryFactory();
+
+		if (functionary.getId() == -1) {
+			ff.newFunctionary(functionary);
+		} else {
+			ff.updateFunctionary(functionary);
+		}
+
+		this.dispose();
+	}
+
+	void cancelButton_actionPerformed(ActionEvent e) {
+		this.dispose();
+	}
+
+
 	// End of variables declaration//GEN-END:variables
 
+}
+
+class FunctionaryEditor_okButton_actionAdapter implements java.awt.event.ActionListener {
+  FunctionaryEditor adaptee;
+
+  FunctionaryEditor_okButton_actionAdapter(FunctionaryEditor adaptee) {
+    this.adaptee = adaptee;
+  }
+  public void actionPerformed(ActionEvent e) {
+    adaptee.okButton_actionPerformed(e);
+  }
+}
+
+class FunctionaryEditor_cancelButton_actionAdapter implements java.awt.event.ActionListener {
+  FunctionaryEditor adaptee;
+
+  FunctionaryEditor_cancelButton_actionAdapter(FunctionaryEditor adaptee) {
+    this.adaptee = adaptee;
+  }
+  public void actionPerformed(ActionEvent e) {
+    adaptee.cancelButton_actionPerformed(e);
+  }
 }
