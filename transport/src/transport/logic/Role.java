@@ -1,6 +1,6 @@
 package transport.logic;
 
-public class Role {
+public class Role extends LogicItem {
 	private int id;
 	private String shortDescr;
 	private String longDescr;

@@ -67,6 +67,7 @@ public class MobilePhoneEditor extends GenericEditor {
 		jPanel2.add(cancelButton);
 
 		getContentPane().add(jPanel2, java.awt.BorderLayout.SOUTH);
+		getRootPane().setDefaultButton(okButton);
 
 		pack();
 	} //GEN-END:jbInit
@@ -111,11 +112,14 @@ public class MobilePhoneEditor extends GenericEditor {
 		mobilePhone.setNumber(mobilePhoneText.getText());
 
 		MobilePhoneFactory mpf=new MobilePhoneFactory();
+		MainFrame mf=(MainFrame)this.getTopLevelAncestor();
 
 		if (mobilePhone.getId() == -1) {
 			mpf.newMobilePhone(mobilePhone);
+			mf.refreshLists(mobilePhone, transport.client.tablemodel.GenericTableModel.REFRESH_INSERT);
 		} else {
 			mpf.updateMobilePhone(mobilePhone);
+			mf.refreshLists(mobilePhone, transport.client.tablemodel.GenericTableModel.REFRESH_UPDATE);
 		}
 
 		this.dispose();

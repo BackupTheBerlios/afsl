@@ -5,6 +5,7 @@ import transport.client.GenericEditor;
 import transport.server.TransportFactory;
 import transport.logic.Transport;
 import transport.client.TransportEditor;
+import transport.logic.LogicItem;
 
 /**
  * <p>Title: Festival Logistics System</p>
@@ -174,5 +175,31 @@ public class ViewTransportByCarTableModel extends GenericTableModel {
 
     fireTableDataChanged();
   }
+
+	/**
+	 * insert
+	 *
+	 * @param o LogicItem
+	 */
+	protected void insert(LogicItem o) {
+	}
+
+	/**
+	 * remove
+	 *
+	 * @param o LogicItem
+	 */
+	protected void remove(LogicItem o) {
+	}
+
+	/**
+	 * resizeArray
+	 *
+	 * @param len int
+	 * @return LogicItem[]
+	 */
+	protected LogicItem[] resizeArray(int len) {
+		return null;
+	}
 
 }

@@ -1,6 +1,6 @@
 package transport.logic;
 
-public class Car {
+public class Car extends LogicItem {
 	private int id;
 	private String regNo;
 	private String carType;

@@ -1,6 +1,6 @@
 package transport.logic;
 
-public class MobilePhone {
+public class MobilePhone extends LogicItem {
 	int id;
 	String number;
 

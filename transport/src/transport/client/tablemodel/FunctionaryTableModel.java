@@ -3,6 +3,8 @@ package transport.client.tablemodel;
 import transport.client.*;
 import transport.logic.*;
 import transport.server.*;
+import transport.logic.Functionary;
+import java.util.ArrayList;
 
 public class FunctionaryTableModel extends GenericTableModel {
 	private FunctionaryFactory af;
@@ -93,4 +95,31 @@ public class FunctionaryTableModel extends GenericTableModel {
 
 		fireTableDataChanged();
 	}
+
+	protected LogicItem[] resizeArray(int len) {
+		return new Functionary[len];
+	}
+
+	public void refresh(LogicItem o, int refreshType) {
+		if (o instanceof Functionary) {
+			super.refresh(o, refreshType);
+		}
+	}
+
+	/**
+	 * remove
+	 *
+	 * @param o LogicItem
+	 */
+	protected void remove(LogicItem o) {
+		super.remove(o, rowData);
+	}
+
+	/**
+	 * insert
+	 *
+	 * @param o LogicItem
+	 */
+	protected void insert(LogicItem o) {
+		rowData=(Functionary[])super.insert(o,rowData);	}
 }

@@ -11,7 +11,7 @@ import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
 import transport.server.TransportFactory;
-
+import transport.client.tablemodel.GenericTableModel;
 /**
  *
  * @author  ola
@@ -257,11 +257,14 @@ public class TransportEditor extends GenericEditor {
 	  transport.setMiscInfo(miscInfoText.getText());
 
 	  TransportFactory tf=new TransportFactory();
+	  MainFrame mf=(MainFrame)this.getTopLevelAncestor();
 
 	  if (transport.getId() == -1) {
 		  tf.newTransport(transport);
+		  mf.refreshLists(transport, GenericTableModel.REFRESH_INSERT);
 	  } else {
 		  tf.updateTransport(transport);
+		  mf.refreshLists(transport, GenericTableModel.REFRESH_UPDATE);
 	  }
 
 	  this.dispose();

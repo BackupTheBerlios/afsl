@@ -1,6 +1,6 @@
 package transport.logic;
 
-public class Place {
+public class Place extends LogicItem {
 	int id;
 	String name;
 

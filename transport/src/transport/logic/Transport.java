@@ -2,7 +2,7 @@ package transport.logic;
 
 import java.util.*;
 
-public class Transport {
+public class Transport extends LogicItem {
 	private int id;
 	private Date startTime;
 	private Date returnTime;

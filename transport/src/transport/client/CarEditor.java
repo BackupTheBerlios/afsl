@@ -105,6 +105,7 @@ public class CarEditor extends GenericEditor {
 		seatNoText.setValue(new Integer(5));
 
 		getContentPane().add(jPanel2, java.awt.BorderLayout.SOUTH);
+		getRootPane().setDefaultButton(okButton);
 
 		pack();
 	} //GEN-END:jbInit
@@ -120,10 +121,14 @@ public class CarEditor extends GenericEditor {
 		car.setNumberOfSeats(Integer.parseInt(seatNoText.getText()));
 
 		CarFactory cf=new CarFactory();
+		MainFrame mf=(MainFrame)this.getTopLevelAncestor();
+
 		if (car.getId() == -1) {
 			cf.newCar(car);
+			mf.refreshLists(car, transport.client.tablemodel.GenericTableModel.REFRESH_INSERT);
 		} else {
 			cf.updateCar(car);
+			mf.refreshLists(car, transport.client.tablemodel.GenericTableModel.REFRESH_UPDATE);
 		}
 		this.dispose();
 	}

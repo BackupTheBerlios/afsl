@@ -89,6 +89,7 @@ public class FunctionaryEditor extends GenericEditor {
 		jPanel2.add(cancelButton);
 
 		getContentPane().add(jPanel2, java.awt.BorderLayout.SOUTH);
+		getRootPane().setDefaultButton(okButton);
 
 		pack();
 	} //GEN-END:jbInit
@@ -155,11 +156,14 @@ public class FunctionaryEditor extends GenericEditor {
 		functionary.setStopsWork(stopTime.getDate());
 
 		FunctionaryFactory ff=new FunctionaryFactory();
+		MainFrame mf=(MainFrame)this.getTopLevelAncestor();
 
 		if (functionary.getId() == -1) {
 			ff.newFunctionary(functionary);
+			mf.refreshLists(functionary, transport.client.tablemodel.GenericTableModel.REFRESH_INSERT);
 		} else {
 			ff.updateFunctionary(functionary);
+			mf.refreshLists(functionary, transport.client.tablemodel.GenericTableModel.REFRESH_UPDATE);
 		}
 
 		this.dispose();

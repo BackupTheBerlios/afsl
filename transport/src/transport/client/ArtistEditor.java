@@ -188,6 +188,7 @@ public class ArtistEditor extends GenericEditor {
 		numberOfGuestsText.setValue(new Integer(0));
 
 		getContentPane().add(buttonPanel, java.awt.BorderLayout.SOUTH);
+		getRootPane().setDefaultButton(okButton);
 
 		pack();
 	} //GEN-END:jbInit
@@ -218,12 +219,18 @@ public class ArtistEditor extends GenericEditor {
 		artist.setNoOfGuests(Integer.parseInt(numberOfGuestsText.getText()));
 		artist.setExtraInfo(extraInfoText.getText());
 
+		MainFrame mf=(MainFrame)this.getTopLevelAncestor();
 
 		if (artist.getId() == -1) {
 			af.newArtist(artist);
+			mf.refreshLists(artist, transport.client.tablemodel.GenericTableModel.REFRESH_INSERT);
 		} else {
 			af.updateArtist(artist);
+			mf.refreshLists(artist, transport.client.tablemodel.GenericTableModel.REFRESH_UPDATE);
 		}
+
+
+
 
 		this.dispose();
 	} //GEN-LAST:event_okButtonActionPerformed

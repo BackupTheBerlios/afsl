@@ -65,6 +65,7 @@ public class PlaceEditor extends GenericEditor {
 		jPanel2.add(cancelButton);
 
 		getContentPane().add(jPanel2, java.awt.BorderLayout.SOUTH);
+		getRootPane().setDefaultButton(okButton);
 
 		pack();
 	} //GEN-END:jbInit
@@ -109,11 +110,14 @@ public class PlaceEditor extends GenericEditor {
 		place.setName(nameText.getText());
 
 		PlaceFactory pf=new PlaceFactory();
+		MainFrame mf=(MainFrame)this.getTopLevelAncestor();
 
 		if (place.getId() == -1) {
 			pf.newPlace(place);
+			mf.refreshLists(place, transport.client.tablemodel.GenericTableModel.REFRESH_INSERT);
 		} else {
 			pf.updatePlace(place);
+			mf.refreshLists(place, transport.client.tablemodel.GenericTableModel.REFRESH_UPDATE);
 		}
 
 		this.dispose();

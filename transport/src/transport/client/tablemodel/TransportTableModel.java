@@ -3,6 +3,7 @@ package transport.client.tablemodel;
 import transport.client.*;
 import transport.logic.*;
 import transport.server.*;
+import java.util.ArrayList;
 
 public class TransportTableModel extends GenericTableModel {
 	private TransportFactory tf;
@@ -139,5 +140,33 @@ public class TransportTableModel extends GenericTableModel {
 		rowData=ar;
 
 		fireTableDataChanged();
+	}
+
+	protected LogicItem[] resizeArray(int len) {
+		return new Transport[len];
+	}
+
+	public void refresh(LogicItem o, int refreshType) {
+		if (o instanceof Transport) {
+			super.refresh(o, refreshType);
+		}
+	}
+
+	/**
+	 * remove
+	 *
+	 * @param o LogicItem
+	 */
+	protected void remove(LogicItem o) {
+		super.remove(o, rowData);
+	}
+
+	/**
+	 * insert
+	 *
+	 * @param o LogicItem
+	 */
+	protected void insert(LogicItem o) {
+		rowData=(Transport[])super.insert(o,rowData);
 	}
 }

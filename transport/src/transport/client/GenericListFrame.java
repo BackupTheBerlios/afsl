@@ -6,11 +6,13 @@
 
 package transport.client;
 
-import transport.server.*;
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import javax.swing.*;
+
 import transport.client.tablemodel.*;
+import transport.server.*;
+import transport.logic.LogicItem;
 
 /**
  *
@@ -41,7 +43,10 @@ public class GenericListFrame extends javax.swing.JInternalFrame {
 	}
 
 	private void removeCurrent() {
+		LogicItem l=(LogicItem) tableModel.getRowData(objectTable.getSelectedRow());
 		tableModel.remove(objectTable.getSelectedRow());
+		MainFrame mf=(MainFrame)this.getTopLevelAncestor();
+		mf.refreshLists(l, transport.client.tablemodel.GenericTableModel.REFRESH_DELETE);
 	}
 
 	/** This method is called from within the constructor to
@@ -137,6 +142,12 @@ public class GenericListFrame extends javax.swing.JInternalFrame {
 	JButton addButton=new JButton();
 
 	void editButton_actionPerformed(ActionEvent e) {
+		if (objectTable.getSelectedRow() == -1) {
+			JOptionPane.showMessageDialog(this.getTopLevelAncestor(),
+										  "No row selected!");
+			return;
+		}
+
 		editCurrent();
 	}
 
@@ -157,6 +168,11 @@ public class GenericListFrame extends javax.swing.JInternalFrame {
 	}
 
 	void removeButton_actionPerformed(ActionEvent e) {
+		if (objectTable.getSelectedRow()==-1) {
+			JOptionPane.showMessageDialog(this.getTopLevelAncestor(), "No row selected!");
+			return;
+		}
+
 		int returnValue = JOptionPane.showConfirmDialog(
 			  this.getTopLevelAncestor(), "Are you sure?",
 			  "Deletion", JOptionPane.YES_NO_OPTION );
@@ -166,12 +182,20 @@ public class GenericListFrame extends javax.swing.JInternalFrame {
 		}
 
 		removeCurrent();
-		tableModel.fireTableDataChanged();
 	}
 
     void cancelButton_actionPerformed(ActionEvent e) {
 		this.dispose();
     }
+
+	/**
+	 * refresh
+	 *
+	 * @param o Object
+	 */
+	public void refresh(LogicItem o, int refreshType) {
+		tableModel.refresh(o, refreshType);
+	}
 }
 
 // End of variables declaration//GEN-END:variables

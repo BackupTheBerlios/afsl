@@ -3,6 +3,7 @@ package transport.client.tablemodel;
 import transport.client.*;
 import transport.logic.*;
 import transport.server.*;
+import java.util.ArrayList;
 
 public class MobilePhoneTableModel extends GenericTableModel {
 	private MobilePhoneFactory af;
@@ -79,5 +80,33 @@ public class MobilePhoneTableModel extends GenericTableModel {
 		rowData=ar;
 
 		fireTableDataChanged();
+	}
+
+	protected LogicItem[] resizeArray(int len) {
+		return new MobilePhone[len];
+	}
+
+	public void refresh(LogicItem o, int refreshType) {
+		if (o instanceof MobilePhone) {
+			super.refresh(o, refreshType);
+		}
+	}
+
+	/**
+	 * remove
+	 *
+	 * @param o LogicItem
+	 */
+	protected void remove(LogicItem o) {
+		super.remove(o, rowData);
+	}
+
+	/**
+	 * insert
+	 *
+	 * @param o LogicItem
+	 */
+	protected void insert(LogicItem o) {
+		rowData=(MobilePhone[])super.insert(o,rowData);
 	}
 }

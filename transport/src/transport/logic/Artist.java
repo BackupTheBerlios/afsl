@@ -2,7 +2,7 @@ package transport.logic;
 
 import java.util.*;
 
-public class Artist {
+public class Artist extends LogicItem {
 	private int id;
 	private String name;
 	private String contactName;

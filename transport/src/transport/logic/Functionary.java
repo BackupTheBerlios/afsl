@@ -2,7 +2,7 @@ package transport.logic;
 
 import java.util.*;
 
-public class Functionary {
+public class Functionary extends LogicItem {
 	private int id;
 	private String name;
 	private Date beginsWork;

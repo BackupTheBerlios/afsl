@@ -11,6 +11,7 @@ import java.awt.event.*;
 import transport.logic.*;
 import transport.server.*;
 import javax.swing.ImageIcon;
+import javax.swing.event.*;
 
 /**
  *
@@ -38,7 +39,9 @@ public class RoleEditor extends GenericEditor {
 	private void jbInit() { //GEN-BEGIN:jbInit
           ImageIcon frameIcon = new ImageIcon(this.getClass().getResource(
           "../pics/miniAF.png"));
-      this.setFrameIcon(frameIcon);
+      this.setClosable(true);
+    this.setFrameIcon(frameIcon);
+    this.setResizable(true);
 
 		jPanel1=new javax.swing.JPanel();
 		jLabel1=new javax.swing.JLabel();
@@ -75,6 +78,7 @@ public class RoleEditor extends GenericEditor {
 		jPanel2.add(cancelButton);
 
 		getContentPane().add(jPanel2, java.awt.BorderLayout.SOUTH);
+		getRootPane().setDefaultButton(okButton);
 
 		pack();
 	} //GEN-END:jbInit
@@ -119,11 +123,14 @@ public class RoleEditor extends GenericEditor {
 		role.setLongDescr(longDescrText.getText());
 
 		RoleFactory rf=new RoleFactory();
+		MainFrame mf=(MainFrame)this.getTopLevelAncestor();
 
 		if (role.getId() == -1) {
 			rf.newRole(role);
+			mf.refreshLists(role, transport.client.tablemodel.GenericTableModel.REFRESH_INSERT);
 		} else {
 			rf.updateRole(role);
+			mf.refreshLists(role, transport.client.tablemodel.GenericTableModel.REFRESH_UPDATE);
 		}
 		this.dispose();
 	}

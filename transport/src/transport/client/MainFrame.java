@@ -9,8 +9,10 @@ package transport.client;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import java.util.ArrayList;
 
 import transport.client.tablemodel.*;
+import transport.logic.LogicItem;
 
 /**
  *
@@ -460,4 +462,12 @@ public class MainFrame extends javax.swing.JFrame {
 
 	// End of variables declaration//GEN-END:variables
 
+	public void refreshLists(LogicItem o, int refreshType) {
+		JInternalFrame[] jit=desktopPane.getAllFrames();
+
+		for (int i=0; i < jit.length; i++) {
+			if (jit[i] instanceof GenericListFrame)
+				((GenericListFrame)jit[i]).refresh(o, refreshType);
+		}
+	}
 }
