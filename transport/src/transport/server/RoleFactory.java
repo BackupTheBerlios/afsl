@@ -19,12 +19,12 @@ public class RoleFactory {
 		try {
 			Connection conn=ConnectionFactory.getConnection();
 			PreparedStatement st=conn.prepareStatement(
-				"select * from roles where id = ?");
+				"select id, short_descr, long_descr, initial from roles where id = ?");
 
 			st.setInt(1, id);
 			ResultSet rs=st.executeQuery();
 			rs.first();
-			c=new Role(id, rs.getString(2), rs.getString(3));
+			c=new Role(id, rs.getString(2), rs.getString(3), rs.getString(4));
 
 			conn.close();
 		} catch (SQLException e) {
@@ -39,10 +39,10 @@ public class RoleFactory {
 
 		try {
 			Connection conn=ConnectionFactory.getConnection();
-			PreparedStatement st=conn.prepareStatement("select * from roles");
+			PreparedStatement st=conn.prepareStatement("select id, short_descr, long_descr, initial from roles");
 			ResultSet rs=st.executeQuery();
 			while (rs.next()) {
-				a.add(new Role(rs.getInt(1), rs.getString(2), rs.getString(3)));
+				a.add(new Role(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4)));
 			}
 
 			conn.close();
@@ -61,9 +61,10 @@ public class RoleFactory {
 		try {
 			Connection conn=ConnectionFactory.getConnection();
 			PreparedStatement st=conn.prepareStatement(
-				"insert into roles (short_descr, long_descr) values ( ? , ? )");
+				"insert into roles (short_descr, long_descr, initial) values ( ? , ? , ?)");
 			st.setString(1, newRole.getShortDescr());
 			st.setString(2, newRole.getLongDescr());
+                        st.setString(3, newRole.getInitial());
 			// FIXME: error checking, damnit!
 			st.executeUpdate();
 
@@ -84,11 +85,12 @@ public class RoleFactory {
 		try {
 			Connection conn=ConnectionFactory.getConnection();
 			PreparedStatement st=conn.prepareStatement(
-				"update roles set short_descr = ? , long_descr = ?  where id = ?");
+				"update roles set short_descr = ? , long_descr = ?, initial = ?  where id = ?");
 			st.setString(1, updatedRole.getShortDescr());
 			st.setString(2, updatedRole.getLongDescr());
-			st.setInt(3, updatedRole.getId());
-
+                        st.setString(3, updatedRole.getInitial());
+                        st.setInt(4, updatedRole.getId());
+                        st.executeUpdate();
 			conn.close();
 		} catch (SQLException e) {
 			logger.log(Level.SEVERE, e.getMessage(), e);

@@ -51,9 +51,10 @@ public class RoleEditor extends GenericEditor {
 		jPanel2=new javax.swing.JPanel();
 		okButton=new javax.swing.JButton();
 		cancelButton=new javax.swing.JButton();
-
+                jLabel3=new javax.swing.JLabel();
+                initialText= new javax.swing.JTextField();
 		setTitle("Role Editor");
-		jPanel1.setLayout(new java.awt.GridLayout(2, 2));
+		jPanel1.setLayout(new java.awt.GridLayout(3, 2));
 
 		jLabel1.setText("Short description");
 		okButton.addActionListener(new RoleEditor_okButton_actionAdapter(this));
@@ -66,9 +67,11 @@ public class RoleEditor extends GenericEditor {
 
 		jLabel2.setText("Long description");
 		jPanel1.add(jLabel2);
-
 		jPanel1.add(longDescrText);
+    jPanel1.add(jLabel3);
 
+                jLabel3.setText("Initial");
+                jPanel1.add(initialText);
 		getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
 		okButton.setText("OK");
@@ -87,12 +90,13 @@ public class RoleEditor extends GenericEditor {
 	private javax.swing.JButton cancelButton;
 	private javax.swing.JLabel jLabel1;
 	private javax.swing.JLabel jLabel2;
+        private javax.swing.JLabel jLabel3;
 	private javax.swing.JPanel jPanel1;
 	private javax.swing.JPanel jPanel2;
 	private javax.swing.JTextArea longDescrText;
 	private javax.swing.JButton okButton;
 	private javax.swing.JTextField shortDescrText;
-
+        private javax.swing.JTextField initialText;
 	/**
 	 * edit
 	 *
@@ -111,6 +115,7 @@ public class RoleEditor extends GenericEditor {
 			okButton.setMnemonic('U');
 			shortDescrText.setText(role.getShortDescr());
 			longDescrText.setText(role.getLongDescr());
+                        initialText.setText(role.getInitial());
 		}
 	}
 
@@ -121,7 +126,7 @@ public class RoleEditor extends GenericEditor {
 	void okButton_actionPerformed(ActionEvent e) {
 		role.setShortDescr(shortDescrText.getText());
 		role.setLongDescr(longDescrText.getText());
-
+                role.setInitial(initialText.getText());
 		RoleFactory rf=new RoleFactory();
 		MainFrame mf=(MainFrame)this.getTopLevelAncestor();
 

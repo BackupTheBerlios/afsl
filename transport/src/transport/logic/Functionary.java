@@ -23,7 +23,11 @@ public class Functionary extends LogicItem {
 	}
 
 	public String toString() {
-		return name;
+          String full = name;
+          if (getRole()!=null){
+            full = full + " ("  + getRole().getInitial() + ")";
+          }
+          return full;
 	}
 
 	/**

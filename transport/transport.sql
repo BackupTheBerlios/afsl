@@ -134,3 +134,4 @@ create table distance_reference (
 	foreign key (place_id_2) references places on delete cascade
 );
 
+alter table roles add initial varchar(5);

@@ -28,6 +28,8 @@ public class RoleTableModel extends GenericTableModel {
 				return "Short description";
 			case 1:
 				return "Long description";
+                        case 2:
+                                return "Initial";
 		}
 
 		return "FIXME";
@@ -38,7 +40,7 @@ public class RoleTableModel extends GenericTableModel {
 	}
 
 	public int getColumnCount() {
-		return 2;
+		return 3;
 	}
 
 	public Object getValueAt(int row, int col) {
@@ -47,6 +49,8 @@ public class RoleTableModel extends GenericTableModel {
 				return rowData[row].getShortDescr();
 			case 1:
 				return rowData[row].getLongDescr();
+                        case 2:
+                                return rowData[row].getInitial();
 		}
 
 		// FIXME: should not happen. Log error if it does.
