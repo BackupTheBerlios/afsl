@@ -1,19 +1,19 @@
 /*
- * Functionary.java
+ * Role.java
  *
  * Created on June 12, 2004, 6:05 PM
  */
 
-package transport.src.transport.client;
+package transport.client;
 
 /**
  *
  * @author  ola
  */
-public class Functionary extends javax.swing.JInternalFrame {
+public class RoleFrame extends javax.swing.JInternalFrame {
 	
-	/** Creates new form Functionary */
-	public Functionary() {
+	/** Creates new form Role */
+	public RoleFrame() {
 		initComponents();
 	}
 	

@@ -3,9 +3,16 @@ package transport.server;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.logging.*;
 import transport.logic.*;
 
 public class RoleFactory {
+	private Logger logger;
+
+	public RoleFactory() {
+		logger=Logger.getLogger("transport.server.RoleFactory");
+	}
+
 	public Role getRole(int id) {
 		Role c=null;
 		
@@ -20,7 +27,7 @@ public class RoleFactory {
 
 			conn.close();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.log(Level.SEVERE, e.getMessage(), e);
 		}
 
 		return c;
@@ -39,7 +46,7 @@ public class RoleFactory {
 
 			conn.close();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.log(Level.SEVERE, e.getMessage(), e);
 		}
 
 		return (Role[])a.toArray();
@@ -56,7 +63,7 @@ public class RoleFactory {
 			
 			conn.close();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.log(Level.SEVERE, e.getMessage(), e);
 		}
 	}
 
@@ -70,7 +77,7 @@ public class RoleFactory {
 
 			conn.close();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.log(Level.SEVERE, e.getMessage(), e);
 		}
 	}
 }

@@ -2,11 +2,19 @@ package transport.server;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.logging.*;
 import transport.logic.*;
 
 public class PlaceFactory {
+	private Logger logger;
+
+	public PlaceFactory() {
+		logger=Logger.getLogger("transport.server.PlaceFactory");
+	}
+
 	public Place getPlace(int id) {
 		Place p=null;
+		logger.entering("PlaceFactory","getPlace("+id+")");
 		
 		try {
 			Connection conn=ConnectionFactory.getConnection();
@@ -14,10 +22,17 @@ public class PlaceFactory {
 
 			st.setInt(1,id);
 			ResultSet rs=st.executeQuery();
-			rs.first();
+			
+			if (!rs.next()) {
+				logger.log(Level.WARNING,"No rows returned for getPlace("+id+"), returning null.");
+				return null;
+			}
+			
 			p=new Place(id, rs.getString(2));
+			
+			conn.close();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.log(Level.SEVERE, e.getMessage(), e);
 		}
 
 		return p;
@@ -36,7 +51,7 @@ public class PlaceFactory {
 
 			conn.close();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.log(Level.SEVERE, e.getMessage(), e);
 		}
 
 		return (Place[])a.toArray();
@@ -52,7 +67,7 @@ public class PlaceFactory {
 			
 			conn.close();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.log(Level.SEVERE, e.getMessage(), e);
 		}
 	}
 
@@ -65,7 +80,7 @@ public class PlaceFactory {
 
 			conn.close();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.log(Level.SEVERE, e.getMessage(), e);
 		}
 	}
 }

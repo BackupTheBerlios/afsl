@@ -3,6 +3,7 @@ package transport.server;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.logging.*;
 import transport.logic.*;
 
 /**
@@ -11,6 +12,12 @@ import transport.logic.*;
  */
 
 public class TransportFactory {
+	private Logger logger;
+
+	public TransportFactory() {
+		logger=Logger.getLogger("transport.server.TransportFactory");
+	}
+	
 	private void calcDistance(Transport t, Connection conn) {
 	}
 
@@ -45,7 +52,7 @@ public class TransportFactory {
 
 	/**
 	 * This method gets a transport according to its corresponding id.
-	 * @param the id of the transport
+	 * @param id the id of the transport
 	 */
 	
 	public Transport getTransport(int id) {
@@ -69,7 +76,7 @@ public class TransportFactory {
 				conn);
 
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.log(Level.SEVERE, e.getMessage(), e);
 		}
 
 		return t;
@@ -91,7 +98,7 @@ public class TransportFactory {
 					rs.getBoolean(5),rs.getInt(6), rs.getString(7), conn);
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.log(Level.SEVERE, e.getMessage(), e);
 		}
 
 		return (Transport[])a.toArray();
@@ -167,7 +174,7 @@ public class TransportFactory {
 
 			conn.close();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.log(Level.SEVERE, e.getMessage(), e);
 		}
 	}
 
@@ -208,7 +215,7 @@ public class TransportFactory {
 
 			conn.close();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.log(Level.SEVERE, e.getMessage(), e);
 		}
 	}
 }

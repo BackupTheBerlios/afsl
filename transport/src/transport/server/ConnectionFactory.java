@@ -1,10 +1,12 @@
 package transport.server;
 
 import java.sql.*;
+import java.util.logging.*;
 import transport.logic.*;
 
 public class ConnectionFactory {
 	private static boolean init=false;
+	private static Logger logger=Logger.getLogger("transport.server.ConnectionFactory");
 
 	/**
 	 * FIXME: should read from a config file of sorts.
@@ -14,7 +16,7 @@ public class ConnectionFactory {
 		try {
 			Class.forName("org.postgresql.Driver");
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.log(Level.SEVERE, e.getMessage(), e);
 		}
 		init=true;
 	}

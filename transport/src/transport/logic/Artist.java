@@ -45,6 +45,9 @@ public class Artist {
 		this.departureTime=departureTime;
 	}
 	
+	public Artist() {
+	}
+	
 	/**
 	 * Get id.
 	 *

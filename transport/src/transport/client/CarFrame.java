@@ -1,19 +1,19 @@
 /*
- * Role.java
+ * Car.java
  *
- * Created on June 12, 2004, 6:05 PM
+ * Created on June 12, 2004, 6:04 PM
  */
 
-package transport.src.transport.client;
+package transport.client;
 
 /**
  *
  * @author  ola
  */
-public class Role extends javax.swing.JInternalFrame {
+public class CarFrame extends javax.swing.JInternalFrame {
 	
-	/** Creates new form Role */
-	public Role() {
+	/** Creates new form Car */
+	public CarFrame() {
 		initComponents();
 	}
 	

@@ -1,19 +1,19 @@
 /*
- * MobilePhone.java
+ * Functionary.java
  *
  * Created on June 12, 2004, 6:05 PM
  */
 
-package transport.src.transport.client;
+package transport.client;
 
 /**
  *
  * @author  ola
  */
-public class MobilePhone extends javax.swing.JInternalFrame {
+public class FunctionaryFrame extends javax.swing.JInternalFrame {
 	
-	/** Creates new form MobilePhone */
-	public MobilePhone() {
+	/** Creates new form Functionary */
+	public FunctionaryFrame() {
 		initComponents();
 	}
 	

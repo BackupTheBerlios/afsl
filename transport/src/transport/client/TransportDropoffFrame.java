@@ -1,19 +1,19 @@
 /*
- * Car.java
+ * TransportDropoff.java
  *
- * Created on June 12, 2004, 6:04 PM
+ * Created on June 12, 2004, 6:07 PM
  */
 
-package transport.src.transport.client;
+package transport.client;
 
 /**
  *
  * @author  ola
  */
-public class Car extends javax.swing.JInternalFrame {
+public class TransportDropoffFrame extends javax.swing.JInternalFrame {
 	
-	/** Creates new form Car */
-	public Car() {
+	/** Creates new form TransportDropoff */
+	public TransportDropoffFrame() {
 		initComponents();
 	}
 	

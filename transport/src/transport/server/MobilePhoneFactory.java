@@ -3,9 +3,16 @@ package transport.server;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.logging.*;
 import transport.logic.*;
 
 public class MobilePhoneFactory {
+	private Logger logger;
+
+	public MobilePhoneFactory() {
+		logger=Logger.getLogger("transport.server.MobilePhoneFactory");
+	}
+
 	public MobilePhone[] getMobilePhonesFreeBetween(java.util.Date from, java.util.Date to) {
 		ArrayList a=new ArrayList();
 
@@ -26,7 +33,7 @@ public class MobilePhoneFactory {
 
 			conn.close();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.log(Level.SEVERE, e.getMessage(), e);
 		}
 
 		return (MobilePhone[])a.toArray();
@@ -46,7 +53,7 @@ public class MobilePhoneFactory {
 
 			conn.close();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.log(Level.SEVERE, e.getMessage(), e);
 		}
 
 		return c;
@@ -65,7 +72,7 @@ public class MobilePhoneFactory {
 
 			conn.close();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.log(Level.SEVERE, e.getMessage(), e);
 		}
 
 		return (MobilePhone[])a.toArray();
@@ -81,7 +88,7 @@ public class MobilePhoneFactory {
 			
 			conn.close();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.log(Level.SEVERE, e.getMessage(), e);
 		}
 	}
 
@@ -94,7 +101,7 @@ public class MobilePhoneFactory {
 
 			conn.close();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.log(Level.SEVERE, e.getMessage(), e);
 		}
 	}
 }

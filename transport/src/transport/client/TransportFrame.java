@@ -4,16 +4,16 @@
  * Created on June 12, 2004, 6:06 PM
  */
 
-package transport.src.transport.client;
+package transport.client;
 
 /**
  *
  * @author  ola
  */
-public class Transport extends javax.swing.JInternalFrame {
+public class TransportFrame extends javax.swing.JInternalFrame {
 	
 	/** Creates new form Transport */
-	public Transport() {
+	public TransportFrame() {
 		initComponents();
 	}
 	

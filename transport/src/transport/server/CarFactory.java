@@ -3,9 +3,16 @@ package transport.server;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.logging.*;
 import transport.logic.*;
 
 public class CarFactory {
+	private Logger logger;
+
+	public CarFactory() {
+		logger=Logger.getLogger("transport.server.CarFactory");
+	}
+	
 	protected static Car[] getCarsForTransport(int transportId) throws SQLException {
 		ArrayList a=new ArrayList();
 
@@ -42,7 +49,7 @@ public class CarFactory {
 				a.add(new Car(rs.getInt(1), rs.getString(2),rs.getString(3),rs.getInt(4),rs.getString(5)));
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.log(Level.SEVERE, e.getMessage(), e);
 		}
 
 		return (Car[])a.toArray();
@@ -60,7 +67,7 @@ public class CarFactory {
 			rs.first();
 			c=new Car(id, rs.getString(2),rs.getString(3),rs.getInt(4),rs.getString(5));
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.log(Level.SEVERE, e.getMessage(), e);
 		}
 
 		return c;
@@ -77,7 +84,7 @@ public class CarFactory {
 				a.add(new Car(rs.getInt(1), rs.getString(2),rs.getString(3),rs.getInt(4),rs.getString(5)));
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.log(Level.SEVERE, e.getMessage(), e);
 		}
 
 		Car[] r=new Car[a.size()];
@@ -100,7 +107,7 @@ public class CarFactory {
 			
 			conn.close();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.log(Level.SEVERE, e.getMessage(), e);
 		}
 	}
 
@@ -128,7 +135,18 @@ public class CarFactory {
 
 			updateCar(updatedCar, conn);
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.log(Level.SEVERE, e.getMessage(), e);
+		}
+	}
+
+	public void deleteCar(int id) {
+		try {
+			Connection conn=ConnectionFactory.getConnection();
+			PreparedStatement st=conn.prepareStatement("delete from cars where id = ?");
+			st.executeUpdate();
+			conn.close();
+		} catch (SQLException e) {
+			logger.log(Level.SEVERE,e.getMessage(), e);
 		}
 	}
 }

@@ -3,9 +3,17 @@ package transport.server;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.logging.*;
+
 import transport.logic.*;
 
 public class FunctionaryFactory {
+	private Logger logger;
+
+	public FunctionaryFactory() {
+		logger=Logger.getLogger("transport.server.FunctionaryFactory");
+	}
+
 	protected static Functionary[] getFunctionariesForTransport(int transportId) throws SQLException {
 		ArrayList a=new ArrayList();
 
@@ -42,7 +50,7 @@ public class FunctionaryFactory {
 					rs.getDate(4), new RoleFactory().getRole(rs.getInt(5))));
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.log(Level.SEVERE, e.getMessage(), e);
 		}
 
 		return (Functionary[])a.toArray();
@@ -61,7 +69,7 @@ public class FunctionaryFactory {
 			f=new Functionary(rs.getInt(1), rs.getString(2),rs.getDate(3),
 					rs.getDate(4), new RoleFactory().getRole(rs.getInt(5)));
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.log(Level.SEVERE, e.getMessage(), e);
 		}
 
 		return f;
@@ -79,7 +87,7 @@ public class FunctionaryFactory {
 					rs.getDate(4), new RoleFactory().getRole(rs.getInt(5))));
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.log(Level.SEVERE, e.getMessage(), e);
 		}
 
 		return (Functionary[])a.toArray();
@@ -99,7 +107,7 @@ public class FunctionaryFactory {
 			
 			conn.close();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.log(Level.SEVERE, e.getMessage(), e);
 		}
 	}
 
@@ -115,7 +123,18 @@ public class FunctionaryFactory {
 
 			conn.close();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.log(Level.SEVERE, e.getMessage(), e);
+		}
+	}
+
+	public void deleteFunctionary(int id) {
+		try {
+			Connection conn=ConnectionFactory.getConnection();
+			PreparedStatement st=conn.prepareStatement("delete from functionaries where id = ?");
+			st.executeUpdate();
+			conn.close();
+		} catch (SQLException e) {
+			logger.log(Level.SEVERE,e.getMessage(), e);
 		}
 	}
 }

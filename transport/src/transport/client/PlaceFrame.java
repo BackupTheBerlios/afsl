@@ -1,19 +1,19 @@
 /*
- * TransportDropoff.java
+ * Place.java
  *
- * Created on June 12, 2004, 6:07 PM
+ * Created on June 12, 2004, 6:05 PM
  */
 
-package transport.src.transport.client;
+package transport.client;
 
 /**
  *
  * @author  ola
  */
-public class TransportDropoff extends javax.swing.JInternalFrame {
+public class PlaceFrame extends javax.swing.JInternalFrame {
 	
-	/** Creates new form TransportDropoff */
-	public TransportDropoff() {
+	/** Creates new form Place */
+	public PlaceFrame() {
 		initComponents();
 	}
 	

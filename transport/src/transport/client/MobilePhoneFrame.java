@@ -1,19 +1,19 @@
 /*
- * Place.java
+ * MobilePhone.java
  *
  * Created on June 12, 2004, 6:05 PM
  */
 
-package transport.src.transport.client;
+package transport.client;
 
 /**
  *
  * @author  ola
  */
-public class Place extends javax.swing.JInternalFrame {
+public class MobilePhoneFrame extends javax.swing.JInternalFrame {
 	
-	/** Creates new form Place */
-	public Place() {
+	/** Creates new form MobilePhone */
+	public MobilePhoneFrame() {
 		initComponents();
 	}
 	

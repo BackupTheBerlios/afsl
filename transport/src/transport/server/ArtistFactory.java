@@ -2,13 +2,18 @@ package transport.server;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.logging.*;
 import transport.logic.*;
+
 
 public class ArtistFactory {
 	PlaceFactory pf;
+	Logger logger;
 	
 	public ArtistFactory() {
 		pf=new PlaceFactory();
+		logger=Logger.getLogger("transport.server.ArtistFactory");
+		logger.setLevel(Level.ALL);
 	}
 
 	protected static Artist[] getArtistsForTransport(int transportId) throws SQLException {
@@ -48,6 +53,8 @@ public class ArtistFactory {
 	public Artist getArtist(int id) {
 		Artist a=null;
 		
+		logger.fine("getArtist("+id+")");
+		
 		try {
 			Connection conn=ConnectionFactory.getConnection();
 			PreparedStatement st=conn.prepareStatement("select * from artists where id = ?");
@@ -59,9 +66,11 @@ public class ArtistFactory {
 
 			conn.close();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.log(Level.SEVERE, e.getMessage(), e);
 		}
 
+		logger.fine("getArtist() done.");
+		
 		return a;
 	}
 
@@ -78,10 +87,14 @@ public class ArtistFactory {
 
 			conn.close();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.log(Level.SEVERE, e.getMessage(), e);
 		}
 
-		return (Artist[])a.toArray();
+		Artist[] ar=new Artist[a.size()];
+		
+		a.toArray(ar);
+		
+		return ar;
 	}
 
 	public void newArtist(Artist newArtist) {
@@ -109,7 +122,7 @@ public class ArtistFactory {
 			st.executeUpdate();
 			conn.close();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.log(Level.SEVERE, e.getMessage(), e);
 		}
 	}
 
@@ -139,8 +152,23 @@ public class ArtistFactory {
 			st.executeUpdate();
 			conn.close();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.log(Level.SEVERE, e.getMessage(), e);
 		}
+	}
+
+	public void deleteArtist(int id) {
+		try {
+			Connection conn=ConnectionFactory.getConnection();
+			PreparedStatement st=conn.prepareStatement("delete from artists where id = ?");
+			st.executeUpdate();
+			conn.close();
+		} catch (SQLException e) {
+			logger.log(Level.SEVERE,e.getMessage(), e);
+		}
+	}
+
+	public void deleteArtist(Artist a) {
+		deleteArtist(a.getId());
 	}
 }
 
