@@ -68,9 +68,9 @@ public class TransportFactory {
       rs.first();
 
       t = newTransport(rs.getInt(1),
-                       rs.getDate(2),
-                       rs.getDate(3),
-                       rs.getDate(4),
+                       rs.getTimestamp(2),
+                       rs.getTimestamp(3),
+                       rs.getTimestamp(4),
                        rs.getBoolean(5),
                        rs.getString(6),
                        conn);
@@ -96,8 +96,8 @@ public class TransportFactory {
           "select * from transports");
       ResultSet rs = st.executeQuery();
       while (rs.next()) {
-        a.add(newTransport(rs.getInt(1), rs.getDate(2), rs.getDate(3),
-                           rs.getDate(4),
+        a.add(newTransport(rs.getInt(1), rs.getTimestamp(2), rs.getTimestamp(3),
+                           rs.getTimestamp(4),
                            rs.getBoolean(5), rs.getString(6),
                            conn));
       }
@@ -158,7 +158,7 @@ public class TransportFactory {
     for (int i = 0; i < waypoints.length; i++) {
       st.setInt(1, newTransport.getId());
       st.setInt(2, waypoints[i].getPlace().getId());
-      st.setDate(3, new java.sql.Date(waypoints[i].getTime().getTime()));
+      st.setTimestamp(3, new java.sql.Timestamp(waypoints[i].getTime().getTime()));
       st.executeUpdate();
     }
   }
@@ -194,9 +194,9 @@ public class TransportFactory {
 
       PreparedStatement st = conn.prepareStatement("insert into transports (start_time, return_time, internal, misc_info ) values ( ? , ? , ? , ? )");
 
-      st.setDate(1, new java.sql.Date(newTransport.getStartTime().getTime()));
-      st.setDate(2,
-                 new java.sql.Date(newTransport.getReturnTime().getTime()));
+      st.setTimestamp(1, new java.sql.Timestamp(newTransport.getStartTime().getTime()));
+      st.setTimestamp(2,
+                 new java.sql.Timestamp(newTransport.getReturnTime().getTime()));
       st.setBoolean(3, newTransport.getInternal());
       st.setString(4, newTransport.getMiscInfo());
 
@@ -295,10 +295,10 @@ public class TransportFactory {
 
       PreparedStatement st = conn.prepareStatement("update transports set start_time = ? , return_time = ? , internal = ? , misc_info = ? where id = ?");
 
-      st.setDate(1,
-                 new java.sql.Date(updatedTransport.getStartTime().getTime()));
-      st.setDate(2,
-                 new java.sql.Date(updatedTransport.getReturnTime().getTime()));
+      st.setTimestamp(1,
+                 new java.sql.Timestamp(updatedTransport.getStartTime().getTime()));
+      st.setTimestamp(2,
+                 new java.sql.Timestamp(updatedTransport.getReturnTime().getTime()));
       st.setBoolean(3, updatedTransport.getInternal());
       st.setString(4, updatedTransport.getMiscInfo());
       st.setInt(5, updatedTransport.getId());
@@ -349,8 +349,8 @@ public class TransportFactory {
       st.setInt(1, id);
       ResultSet rs = st.executeQuery();
       while (rs.next()) {
-        a.add(newTransport(rs.getInt(1), rs.getDate(2), rs.getDate(3),
-                           rs.getDate(4),
+        a.add(newTransport(rs.getInt(1), rs.getTimestamp(2), rs.getTimestamp(3),
+                           rs.getTimestamp(4),
                            rs.getBoolean(5), rs.getString(6),
                            conn));
       }
@@ -376,8 +376,8 @@ public class TransportFactory {
       st.setInt(1, id);
       ResultSet rs = st.executeQuery();
       while (rs.next()) {
-        a.add(newTransport(rs.getInt(1), rs.getDate(2), rs.getDate(3),
-                           rs.getDate(4),
+        a.add(newTransport(rs.getInt(1), rs.getTimestamp(2), rs.getTimestamp(3),
+                           rs.getTimestamp(4),
                            rs.getBoolean(5), rs.getString(6),
                            conn));
       }
@@ -402,8 +402,8 @@ public class TransportFactory {
       st.setInt(1, id);
       ResultSet rs = st.executeQuery();
       while (rs.next()) {
-        a.add(newTransport(rs.getInt(1), rs.getDate(2), rs.getDate(3),
-                           rs.getDate(4),
+        a.add(newTransport(rs.getInt(1), rs.getTimestamp(2), rs.getTimestamp(3),
+                           rs.getTimestamp(4),
                            rs.getBoolean(5), rs.getString(6),
                            conn));
       }
@@ -429,8 +429,8 @@ public class TransportFactory {
       st.setInt(1, id);
       ResultSet rs = st.executeQuery();
       while (rs.next()) {
-        a.add(newTransport(rs.getInt(1), rs.getDate(2), rs.getDate(3),
-                           rs.getDate(4),
+        a.add(newTransport(rs.getInt(1), rs.getTimestamp(2), rs.getTimestamp(3),
+                           rs.getTimestamp(4),
                            rs.getBoolean(5), rs.getString(6),
                            conn));
       }
@@ -456,8 +456,8 @@ public class TransportFactory {
       st.setInt(1, id);
       ResultSet rs = st.executeQuery();
       while (rs.next()) {
-        a.add(newTransport(rs.getInt(1), rs.getDate(2), rs.getDate(3),
-                           rs.getDate(4),
+        a.add(newTransport(rs.getInt(1), rs.getTimestamp(2), rs.getTimestamp(3),
+                           rs.getTimestamp(4),
                            rs.getBoolean(5), rs.getString(6),
                            conn));
       }
@@ -482,8 +482,8 @@ public class TransportFactory {
       st.setInt(1, id);
       ResultSet rs = st.executeQuery();
       while (rs.next()) {
-        a.add(newTransport(rs.getInt(1), rs.getDate(2), rs.getDate(3),
-                           rs.getDate(4),
+        a.add(newTransport(rs.getInt(1), rs.getTimestamp(2), rs.getTimestamp(3),
+                           rs.getTimestamp(4),
                            rs.getBoolean(5), rs.getString(6),
                            conn));
       }
@@ -508,8 +508,8 @@ public class TransportFactory {
       st.setInt(1, id);
       ResultSet rs = st.executeQuery();
       while (rs.next()) {
-        a.add(newTransport(rs.getInt(1), rs.getDate(2), rs.getDate(3),
-                           rs.getDate(4),
+        a.add(newTransport(rs.getInt(1), rs.getTimestamp(2), rs.getTimestamp(3),
+                           rs.getTimestamp(4),
                            rs.getBoolean(5), rs.getString(6),
                            conn));
       }
@@ -535,8 +535,8 @@ public class TransportFactory {
       st.setInt(1, id);
       ResultSet rs = st.executeQuery();
       while (rs.next()) {
-        a.add(newTransport(rs.getInt(1), rs.getDate(2), rs.getDate(3),
-                           rs.getDate(4),
+        a.add(newTransport(rs.getInt(1), rs.getTimestamp(2), rs.getTimestamp(3),
+                           rs.getTimestamp(4),
                            rs.getBoolean(5), rs.getString(6),
                            conn));
       }
