@@ -16,10 +16,22 @@ import transport.server.ArtistFactory;
 public class ArtistEditor extends javax.swing.JInternalFrame {
 	private Artist artist;
 	
+	public ArtistEditor() {
+		this(new Artist());
+	}
+	
 	/** Creates new form AddArtist */
 	public ArtistEditor(Artist artist) {
 		this.artist=artist;
 		initComponents();
+		
+		if (artist.getId()==-1) {
+			okButton.setText("New");
+			okButton.setMnemonic('N');
+		} else {
+			okButton.setText("Update");
+			okButton.setMnemonic('U');
+		}
 	}
 	
 	/** This method is called from within the constructor to
@@ -30,153 +42,188 @@ public class ArtistEditor extends javax.swing.JInternalFrame {
         private void initComponents() {//GEN-BEGIN:initComponents
                 infoPanel = new javax.swing.JPanel();
                 jLabel1 = new javax.swing.JLabel();
-                jTextField11 = new javax.swing.JTextField();
+                nameText = new javax.swing.JTextField();
                 jLabel2 = new javax.swing.JLabel();
-                jTextField10 = new javax.swing.JTextField();
+                contactNameText = new javax.swing.JTextField();
                 jLabel6 = new javax.swing.JLabel();
-                jTextField9 = new javax.swing.JTextField();
+                phoneNumberText = new javax.swing.JFormattedTextField();
                 jLabel3 = new javax.swing.JLabel();
-                jComboBox1 = new javax.swing.JComboBox();
+                arrivalCombo = new javax.swing.JComboBox();
                 jLabel4 = new javax.swing.JLabel();
-                jTextField7 = new javax.swing.JTextField();
+                arrivalTimeCombo = new transport.client.PickDateTimeCombo();
                 jLabel5 = new javax.swing.JLabel();
-                jComboBox2 = new javax.swing.JComboBox();
+                hotelCombo = new javax.swing.JComboBox();
                 jLabel7 = new javax.swing.JLabel();
-                jComboBox3 = new javax.swing.JComboBox();
+                departureCombo = new javax.swing.JComboBox();
                 jLabel8 = new javax.swing.JLabel();
-                jTextField4 = new javax.swing.JTextField();
+                departureTimeCombo = new transport.client.PickDateTimeCombo();
                 jLabel9 = new javax.swing.JLabel();
-                performerField = new javax.swing.JTextField();
+                jFormattedTextField1 = new javax.swing.JFormattedTextField();
                 jLabel10 = new javax.swing.JLabel();
-                crewField = new javax.swing.JTextField();
+                jFormattedTextField3 = new javax.swing.JFormattedTextField();
                 labelGuests = new javax.swing.JLabel();
-                guestsField = new javax.swing.JTextField();
+                jFormattedTextField2 = new javax.swing.JFormattedTextField();
+                jLabel11 = new javax.swing.JLabel();
+                extraInfoText = new javax.swing.JTextArea();
                 buttonPanel = new javax.swing.JPanel();
-                buttonOK = new javax.swing.JButton();
-                buttonCancel = new javax.swing.JButton();
+                okButton = new javax.swing.JButton();
+                cancelButton = new javax.swing.JButton();
 
                 setClosable(true);
                 setResizable(true);
                 setTitle("Add an artist");
-                infoPanel.setLayout(new java.awt.GridLayout(11, 2));
+                infoPanel.setLayout(new java.awt.GridLayout(12, 2));
 
                 jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
                 jLabel1.setText("Name");
                 infoPanel.add(jLabel1);
 
-                infoPanel.add(jTextField11);
+                infoPanel.add(nameText);
 
                 jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
                 jLabel2.setText("Contact name");
                 infoPanel.add(jLabel2);
 
-                infoPanel.add(jTextField10);
+                contactNameText.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                contactNameTextActionPerformed(evt);
+                        }
+                });
+
+                infoPanel.add(contactNameText);
 
                 jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
                 jLabel6.setText("Phone number");
                 infoPanel.add(jLabel6);
 
-                infoPanel.add(jTextField9);
+                infoPanel.add(phoneNumberText);
 
                 jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
                 jLabel3.setText("Arrival");
                 infoPanel.add(jLabel3);
 
-                infoPanel.add(jComboBox1);
+                infoPanel.add(arrivalCombo);
 
                 jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
                 jLabel4.setText("Arrival time");
                 infoPanel.add(jLabel4);
 
-                jTextField7.setEditable(false);
-                infoPanel.add(jTextField7);
+                infoPanel.add(arrivalTimeCombo);
 
                 jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
                 jLabel5.setText("Hotel");
                 infoPanel.add(jLabel5);
 
-                infoPanel.add(jComboBox2);
+                infoPanel.add(hotelCombo);
 
                 jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
                 jLabel7.setText("Departure");
                 infoPanel.add(jLabel7);
 
-                infoPanel.add(jComboBox3);
+                infoPanel.add(departureCombo);
 
                 jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
                 jLabel8.setText("Departure time");
                 infoPanel.add(jLabel8);
 
-                jTextField4.setEditable(false);
-                infoPanel.add(jTextField4);
+                infoPanel.add(departureTimeCombo);
 
                 jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
                 jLabel9.setText("Performers");
                 infoPanel.add(jLabel9);
 
-                performerField.addActionListener(new java.awt.event.ActionListener() {
-                        public void actionPerformed(java.awt.event.ActionEvent evt) {
-                                performerFieldActionPerformed(evt);
-                        }
-                });
-
-                infoPanel.add(performerField);
+                infoPanel.add(jFormattedTextField1);
 
                 jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
                 jLabel10.setText("Crew");
                 infoPanel.add(jLabel10);
 
-                infoPanel.add(crewField);
+                infoPanel.add(jFormattedTextField3);
 
                 labelGuests.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
                 labelGuests.setText("Guests");
                 infoPanel.add(labelGuests);
 
-                guestsField.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-                infoPanel.add(guestsField);
+                infoPanel.add(jFormattedTextField2);
+
+                jLabel11.setText("Extra info");
+                infoPanel.add(jLabel11);
+
+                infoPanel.add(extraInfoText);
 
                 getContentPane().add(infoPanel, java.awt.BorderLayout.CENTER);
 
-                buttonOK.setText("OK");
-                buttonOK.setMnemonic('O');
-                buttonOK.addActionListener(new java.awt.event.ActionListener() {
+                okButton.setMnemonic('O');
+                okButton.setText("OK");
+                okButton.addActionListener(new java.awt.event.ActionListener() {
                         public void actionPerformed(java.awt.event.ActionEvent evt) {
-                                buttonOKActionPerformed(evt);
+                                okButtonActionPerformed(evt);
                         }
                 });
 
-                buttonPanel.add(buttonOK);
+                buttonPanel.add(okButton);
 
-                buttonCancel.setText("Cancel");
-                buttonCancel.setMnemonic('C');
-                buttonPanel.add(buttonCancel);
+                cancelButton.setMnemonic('C');
+                cancelButton.setText("Cancel");
+                cancelButton.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                cancelButtonActionPerformed(evt);
+                        }
+                });
+
+                buttonPanel.add(cancelButton);
 
                 getContentPane().add(buttonPanel, java.awt.BorderLayout.SOUTH);
 
                 pack();
         }//GEN-END:initComponents
 
-	private void performerFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_performerFieldActionPerformed
+	private void contactNameTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contactNameTextActionPerformed
 		// TODO add your handling code here:
-	}//GEN-LAST:event_performerFieldActionPerformed
+	}//GEN-LAST:event_contactNameTextActionPerformed
 
-	private void buttonOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonOKActionPerformed
-		// TODO add your handling code here:
-	}//GEN-LAST:event_buttonOKActionPerformed
+	private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
+		this.dispose();
+	}//GEN-LAST:event_cancelButtonActionPerformed
+
+	private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
+		// FIXME add error checking
+		
+		ArtistFactory af=new ArtistFactory();
+		/*
+		artist.setArrival();
+		artist.setArrivalTime();
+		artist.setContactName();
+		artist.setDeparture();
+		artist.setDepartureTime();
+		artist.setExtraInfo();
+		*/
+		
+		if (artist.getId()==-1) {
+			af.newArtist(artist);
+		} else {
+			af.updateArtist(artist);
+		}
+	}//GEN-LAST:event_okButtonActionPerformed
 	
 	
         // Variables declaration - do not modify//GEN-BEGIN:variables
-        private javax.swing.JButton buttonCancel;
-        private javax.swing.JButton buttonOK;
+        private javax.swing.JComboBox arrivalCombo;
+        private transport.client.PickDateTimeCombo arrivalTimeCombo;
         private javax.swing.JPanel buttonPanel;
-        private javax.swing.JTextField crewField;
-        private javax.swing.JTextField guestsField;
+        private javax.swing.JButton cancelButton;
+        private javax.swing.JTextField contactNameText;
+        private javax.swing.JComboBox departureCombo;
+        private transport.client.PickDateTimeCombo departureTimeCombo;
+        private javax.swing.JTextArea extraInfoText;
+        private javax.swing.JComboBox hotelCombo;
         private javax.swing.JPanel infoPanel;
-        private javax.swing.JComboBox jComboBox1;
-        private javax.swing.JComboBox jComboBox2;
-        private javax.swing.JComboBox jComboBox3;
+        private javax.swing.JFormattedTextField jFormattedTextField1;
+        private javax.swing.JFormattedTextField jFormattedTextField2;
+        private javax.swing.JFormattedTextField jFormattedTextField3;
         private javax.swing.JLabel jLabel1;
         private javax.swing.JLabel jLabel10;
+        private javax.swing.JLabel jLabel11;
         private javax.swing.JLabel jLabel2;
         private javax.swing.JLabel jLabel3;
         private javax.swing.JLabel jLabel4;
@@ -185,13 +232,10 @@ public class ArtistEditor extends javax.swing.JInternalFrame {
         private javax.swing.JLabel jLabel7;
         private javax.swing.JLabel jLabel8;
         private javax.swing.JLabel jLabel9;
-        private javax.swing.JTextField jTextField10;
-        private javax.swing.JTextField jTextField11;
-        private javax.swing.JTextField jTextField4;
-        private javax.swing.JTextField jTextField7;
-        private javax.swing.JTextField jTextField9;
         private javax.swing.JLabel labelGuests;
-        private javax.swing.JTextField performerField;
+        private javax.swing.JTextField nameText;
+        private javax.swing.JButton okButton;
+        private javax.swing.JFormattedTextField phoneNumberText;
         // End of variables declaration//GEN-END:variables
 	
 }
