@@ -240,37 +240,37 @@ public class MainFrame extends javax.swing.JFrame {
         }//GEN-END:jbInit
 
 	private void TransportEditMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TransportEditMenuItemActionPerformed
-		TransportFrame tf=new TransportFrame();
-		desktopPane.add(tf);
-		tf.show();
+		GenericListFrame glf=new GenericListFrame(new TransportTableModel());
+		desktopPane.add(glf);
+		glf.show();
 	}//GEN-LAST:event_TransportEditMenuItemActionPerformed
 
 	private void RoleEditMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RoleEditMenuItemActionPerformed
-		RoleFrame rf=new RoleFrame();
+		GenericListFrame rf=new GenericListFrame(new RoleTableModel());
 		desktopPane.add(rf);
 		rf.show();
 	}//GEN-LAST:event_RoleEditMenuItemActionPerformed
 
 	private void PlaceEditMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PlaceEditMenuItemActionPerformed
-		PlaceFrame pf=new PlaceFrame();
+		GenericListFrame pf=new GenericListFrame(new PlaceTableModel());
 		desktopPane.add(pf);
 		pf.show();
 	}//GEN-LAST:event_PlaceEditMenuItemActionPerformed
 
 	private void MobilePhoneEditMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MobilePhoneEditMenuItemActionPerformed
-		MobilePhoneFrame mpf=new MobilePhoneFrame();
+		GenericListFrame mpf=new GenericListFrame(new MobilePhoneTableModel());
 		desktopPane.add(mpf);
 		mpf.show();
 	}//GEN-LAST:event_MobilePhoneEditMenuItemActionPerformed
 
 	private void FunctionaryEditMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FunctionaryEditMenuItemActionPerformed
-		FunctionaryFrame ff=new FunctionaryFrame();
+		GenericListFrame ff=new GenericListFrame(new FunctionaryTableModel());
 		desktopPane.add(ff);
 		ff.show();
 	}//GEN-LAST:event_FunctionaryEditMenuItemActionPerformed
 
 	private void CarEditMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CarEditMenuItemActionPerformed
-		CarFrame cf=new CarFrame();
+		GenericListFrame cf=new GenericListFrame(new CarTableModel());
 		desktopPane.add(cf);
 		cf.show();
 	}//GEN-LAST:event_CarEditMenuItemActionPerformed
@@ -312,7 +312,7 @@ public class MainFrame extends javax.swing.JFrame {
 	}//GEN-LAST:event_CarAddMenuItemActionPerformed
 
 	private void ArtistEditMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ArtistEditMenuItemActionPerformed
-		ArtistFrame af=new ArtistFrame();
+		GenericListFrame af=new GenericListFrame(new ArtistTableModel());
 		desktopPane.add(af);
 		af.show();
 	}//GEN-LAST:event_ArtistEditMenuItemActionPerformed
