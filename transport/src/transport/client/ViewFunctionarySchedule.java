@@ -120,7 +120,7 @@ public class ViewFunctionarySchedule
     objectTableCurrent.setColumnSelectionAllowed(false);
     tableModelCurrent=new ViewTransportByFunctionaryTableModel();
     tableModelCurrent.setRowDataCurrent(getCurrentFunctionaryID());
-    objectTableCurrent.setModel(tableModelAll);
+    objectTableCurrent.setModel(tableModelCurrent);
     objectTableCurrent.setCellSelectionEnabled(true);
     objectTableCurrent.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
     objectTableCurrent.setCellSelectionEnabled(false);
