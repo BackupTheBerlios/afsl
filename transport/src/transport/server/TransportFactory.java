@@ -5,6 +5,7 @@ import java.util.*;
 import java.util.logging.*;
 
 import transport.logic.*;
+import transport.logic.Transport;
 
 /**
  * This factory class produces transport objects.
@@ -108,6 +109,30 @@ public class TransportFactory {
 
 		return t;
 	}
+        public Transport[] getAllTransportsByFunctionaryID(int functionaryID) {
+                ArrayList a=new ArrayList();
+
+                try {
+                        Connection conn=ConnectionFactory.getConnection();
+                        PreparedStatement st=conn.prepareStatement(
+                                "select * from transports as t, functionary_transport as f where t.id=f.transport_id and functionary_id=?");
+                        st.setInt(1,functionaryID);
+                        ResultSet rs=st.executeQuery();
+                        while (rs.next()) {
+                                a.add(newTransport(rs.getInt(1), rs.getDate(2), rs.getDate(3),
+                                                         rs.getDate(4),
+                                                         rs.getBoolean(5), rs.getString(6),
+                                                         conn));
+                        }
+                } catch (SQLException e) {
+                        logger.log(Level.SEVERE, e.getMessage(), e);
+                }
+
+                Transport[] t=new Transport[a.size()];
+                a.toArray(t);
+
+                return t;
+        }
 
 	private void insertCars(Transport newTransport, Connection conn) throws
 		SQLException {
@@ -327,4 +352,85 @@ public class TransportFactory {
 	public void deleteTransport(Transport deletedTransport) {
 		deleteTransport(deletedTransport.getId());
 	}
+
+  public Transport[] getAllCurrentTransportsByFunctionaryID(int id) {
+    ArrayList a = new ArrayList();
+
+    try {
+      Connection conn = ConnectionFactory.getConnection();
+      PreparedStatement st = conn.prepareStatement(
+          "select * from transports as t, functionary_transport as f where t.id=f.transport_id and functionary_id=? and (start_time<=now()) and (return_time>=now())");
+
+      st.setInt(1, id);
+      ResultSet rs = st.executeQuery();
+      while (rs.next()) {
+        a.add(newTransport(rs.getInt(1), rs.getDate(2), rs.getDate(3),
+                           rs.getDate(4),
+                           rs.getBoolean(5), rs.getString(6),
+                           conn));
+      }
+    }
+    catch (SQLException e) {
+      logger.log(Level.SEVERE, e.getMessage(), e);
+    }
+
+    Transport[] t = new Transport[a.size()];
+    a.toArray(t);
+
+    return t;
+  }
+
+  public Transport[] getAllFinishedTransportsByFunctionaryID(int id) {
+    ArrayList a = new ArrayList();
+
+   try {
+     Connection conn = ConnectionFactory.getConnection();
+     PreparedStatement st = conn.prepareStatement(
+  "select * from transports as t, functionary_transport as f where t.id=f.transport_id and functionary_id=? and (return_time<now())");
+     st.setInt(1, id);
+     ResultSet rs = st.executeQuery();
+     while (rs.next()) {
+       a.add(newTransport(rs.getInt(1), rs.getDate(2), rs.getDate(3),
+                          rs.getDate(4),
+                          rs.getBoolean(5), rs.getString(6),
+                          conn));
+     }
+   }
+   catch (SQLException e) {
+     logger.log(Level.SEVERE, e.getMessage(), e);
+   }
+
+   Transport[] t = new Transport[a.size()];
+   a.toArray(t);
+
+   return t;
+
+  }
+
+  public Transport[] getAllFutureTransportsByFunctionaryID(int id) {
+    ArrayList a = new ArrayList();
+
+      try {
+        Connection conn = ConnectionFactory.getConnection();
+        PreparedStatement st = conn.prepareStatement(
+            "select * from transports as t, functionary_transport as f where t.id=f.transport_id and functionary_id=? and (start_time>now()");
+        st.setInt(1, id);
+        ResultSet rs = st.executeQuery();
+        while (rs.next()) {
+          a.add(newTransport(rs.getInt(1), rs.getDate(2), rs.getDate(3),
+                             rs.getDate(4),
+                             rs.getBoolean(5), rs.getString(6),
+                             conn));
+        }
+      }
+      catch (SQLException e) {
+        logger.log(Level.SEVERE, e.getMessage(), e);
+      }
+
+      Transport[] t = new Transport[a.size()];
+      a.toArray(t);
+
+      return t;
+
+  }
 }

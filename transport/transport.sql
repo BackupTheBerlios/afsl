@@ -38,7 +38,7 @@ insert into places (name) values ('Hotell Ekelunden');
 insert into places (name) values ('Oscar Statt');
 insert into places (name) values ('Gardemoen');
 insert into places (name) values ('Torp');
-insert into places (name) values ('Hagagården');
+insert into places (name) values ('Hagegården');
 insert into places (name) values ('Arvikafestivalen');
 insert into places (name) values ('Hotell Bristol');
 
