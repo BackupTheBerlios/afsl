@@ -61,7 +61,7 @@ public class TransportFactory {
 		try {
 			Connection conn=ConnectionFactory.getConnection();
 			PreparedStatement st=conn.prepareStatement(
-				"select * from transports where id = ?");
+				"select * from transports where id = ? order by start_time");
 
 			st.setInt(1, id);
 			ResultSet rs=st.executeQuery();

@@ -208,9 +208,9 @@ public class ArtistEditor extends GenericEditor {
 		artist.setHotel((Place)hotelCombo.getSelectedItem());
 		artist.setDepartureTime(departureTimeCombo.getDate());
 		artist.setDeparture((Place)departureCombo.getSelectedItem());
-		artist.setNoOfArtists(((Integer)numberOfArtistsText.getValue()).intValue());
-		artist.setNoOfCrew(((Integer)numberOfCrewText.getValue()).intValue());
-		artist.setNoOfGuests(((Integer)numberOfGuestsText.getValue()).intValue());
+		artist.setNoOfArtists(Integer.parseInt(numberOfArtistsText.getText()));
+		artist.setNoOfCrew(Integer.parseInt(numberOfCrewText.getText()));
+		artist.setNoOfGuests(Integer.parseInt(numberOfGuestsText.getText()));
 		artist.setExtraInfo(extraInfoText.getText());
 
 
