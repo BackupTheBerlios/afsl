@@ -7,15 +7,19 @@
 package transport.client;
 
 import javax.swing.*;
+import java.awt.Window;
+import java.awt.event.*;
 
 /**
  *
  * @author  ola
  */
 public class PickDateTimeCombo extends javax.swing.JPanel {
+	private PickDateTime pickDateTime;
 
 	/** Creates new form PickDateTimeCombo */
 	public PickDateTimeCombo() {
+		pickDateTime=new PickDateTime();
 		jbInit();
 	}
 
@@ -31,6 +35,11 @@ public class PickDateTimeCombo extends javax.swing.JPanel {
                 setLayout(new java.awt.BorderLayout());
 
                 launchPickDateTime.setText("...");
+    launchPickDateTime.addMouseListener(new java.awt.event.MouseAdapter() {
+      public void mouseClicked(MouseEvent e) {
+        launchPickDateTime_mouseClicked(e);
+      }
+    });
                 launchPickDateTime.addActionListener(new java.awt.event.ActionListener() {
                         public void actionPerformed(java.awt.event.ActionEvent evt) {
                                 launchPickDateTimeActionPerformed(evt);
@@ -54,6 +63,12 @@ public class PickDateTimeCombo extends javax.swing.JPanel {
         // Variables declaration - do not modify//GEN-BEGIN:variables
         private javax.swing.JFormattedTextField dateField;
         private javax.swing.JButton launchPickDateTime;
-        // End of variables declaration//GEN-END:variables
 
+		void launchPickDateTime_mouseClicked(MouseEvent e) {
+			Window anc=(Window) this.getTopLevelAncestor();
+			JWindow pickDateTimeWindow = new JWindow(anc);
+			JPanel contentPane = (JPanel) pickDateTimeWindow.getContentPane();
+			contentPane.add(pickDateTime);
+		}
+        // End of variables declaration//GEN-END:variables
 }

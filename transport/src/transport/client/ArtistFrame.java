@@ -9,6 +9,8 @@ package transport.client;
 import transport.logic.*;
 import transport.server.*;
 import javax.swing.table.AbstractTableModel;
+import javax.swing.*;
+import java.awt.*;
 
 /**
  *
@@ -24,81 +26,7 @@ public class ArtistFrame extends javax.swing.JInternalFrame {
 	}
 
 	private AbstractTableModel newTableModel() {
-		return new AbstractTableModel() {
-			private Artist[] rowData=af.getAllArtists();
-
-			public Artist getRowData(int row) {
-				return rowData[row];
-			}
-
-			public String getColumnName(int col) {
-				switch (col) {
-				case 0:
-					return "Name";
-				case 1:
-					return "Contact name";
-				case 2:
-					return "Telephone number";
-				case 3:
-					return "Arrival";
-				case 4:
-					return "Arrival time";
-				case 5:
-					return "Hotel";
-				case 6:
-					return "Departure";
-				case 7:
-					return "Departure Time";
-				case 8:
-					return "No of Artists";
-				case 9:
-					return "No of Crew";
-				case 10:
-					return "No of Guests";
-				}
-
-				return "FIXME";
-			}
-
-			public int getRowCount() { return rowData.length; }
-			public int getColumnCount() { return 11; }
-			public Object getValueAt(int row, int col) {
-				switch (col) {
-				case 0:
-					return rowData[row].getName();
-				case 1:
-					return rowData[row].getContactName();
-				case 2:
-					return rowData[row].getTelephoneNo();
-				case 3:
-					return rowData[row].getArrival();
-				case 4:
-					return rowData[row].getArrivalTime();
-				case 5:
-					return rowData[row].getHotel();
-				case 6:
-					return rowData[row].getDeparture();
-				case 7:
-					return rowData[row].getDepartureTime();
-				case 8:
-					return new Integer(rowData[row].getNoOfArtists());
-				case 9:
-					return new Integer(rowData[row].getNoOfCrew());
-				case 10:
-					return new Integer(rowData[row].getNoOfGuests());
-				}
-
-				// FIXME: should not happen. Log error if it does.
-
-				return null;
-			}
-
-			public boolean isCellEditable(int row, int col) { return false; }
-
-			public void setValueAt(Object value, int row, int col) {
-				fireTableCellUpdated(row, col);
-			}
-		};
+		return
 	}
 
 	/** This method is called from within the constructor to
@@ -125,7 +53,12 @@ public class ArtistFrame extends javax.swing.JInternalFrame {
 
                 jScrollPane1.setViewportView(artistTable);
 
-                getContentPane().add(jScrollPane1, java.awt.BorderLayout.CENTER);
+                jButton1.setText("jButton1");
+    jButton2.setText("jButton2");
+    getContentPane().add(jScrollPane1, java.awt.BorderLayout.CENTER);
+    this.getContentPane().add(jPanel1, BorderLayout.SOUTH);
+    jPanel1.add(jButton1, null);
+    jPanel1.add(jButton2, null);
 
                 pack();
         }//GEN-END:jbInit
@@ -140,6 +73,92 @@ public class ArtistFrame extends javax.swing.JInternalFrame {
         // Variables declaration - do not modify//GEN-BEGIN:variables
         private javax.swing.JTable artistTable;
         private javax.swing.JScrollPane jScrollPane1;
+  JPanel jPanel1 = new JPanel();
+  JButton jButton1 = new JButton();
+  JButton jButton2 = new JButton();
         // End of variables declaration//GEN-END:variables
 
+	private class ArtistModel extends AbstractTableModel {
+		private Artist[] rowData=af.getAllArtists();
+
+		public Artist getRowData(int row) {
+			return rowData[row];
+		}
+
+		public String getColumnName(int col) {
+			switch (col) {
+			case 0:
+				return "Name";
+			case 1:
+				return "Contact name";
+			case 2:
+				return "Telephone number";
+			case 3:
+				return "Arrival";
+			case 4:
+				return "Arrival time";
+			case 5:
+				return "Hotel";
+			case 6:
+				return "Departure";
+			case 7:
+				return "Departure Time";
+			case 8:
+				return "No of Artists";
+			case 9:
+				return "No of Crew";
+			case 10:
+				return "No of Guests";
+			}
+
+			return "FIXME";
+		}
+
+		public int getRowCount() {
+			return rowData.length;
+		}
+
+		public int getColumnCount() {
+			return 11;
+		}
+
+		public Object getValueAt(int row, int col) {
+			switch (col) {
+			case 0:
+				return rowData[row].getName();
+			case 1:
+				return rowData[row].getContactName();
+			case 2:
+				return rowData[row].getTelephoneNo();
+			case 3:
+				return rowData[row].getArrival();
+			case 4:
+				return rowData[row].getArrivalTime();
+			case 5:
+				return rowData[row].getHotel();
+			case 6:
+				return rowData[row].getDeparture();
+			case 7:
+				return rowData[row].getDepartureTime();
+			case 8:
+				return new Integer(rowData[row].getNoOfArtists());
+			case 9:
+				return new Integer(rowData[row].getNoOfCrew());
+			case 10:
+				return new Integer(rowData[row].getNoOfGuests());
+			}
+
+			// FIXME: should not happen. Log error if it does.
+
+			return null;
+		}
+
+		public boolean isCellEditable(int row, int col) {
+			return false;
+		}
+
+		public void setValueAt(Object value, int row, int col) {
+			fireTableCellUpdated(row, col);
+		}
+	}
 }

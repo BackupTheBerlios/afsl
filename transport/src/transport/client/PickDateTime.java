@@ -17,6 +17,8 @@ import java.awt.event.*;
  */
 public class PickDateTime extends javax.swing.JPanel {
 
+	private DateTableModel table;
+
 	public PickDateTime() {
 		this(Calendar.getInstance());
 	}
@@ -41,7 +43,6 @@ public class PickDateTime extends javax.swing.JPanel {
                 jPanel2 = new javax.swing.JPanel();
                 jTable1 = new javax.swing.JTable();
                 jPanel3 = new javax.swing.JPanel();
-                jLabel2 = new javax.swing.JLabel();
 
                 setLayout(new java.awt.BorderLayout());
 
@@ -49,11 +50,20 @@ public class PickDateTime extends javax.swing.JPanel {
                 setPreferredSize(new java.awt.Dimension(100, 156));
                 prevMonth.setText("<<");
 	prevMonth.addMouseListener(new PickDateTime_prevMonth_mouseAdapter(this));
-	jPanel1.add(prevMonth);
+	prevDay.addMouseListener(new PickDateTime_prevDay_mouseAdapter(this));
+    nextDay.addMouseListener(new PickDateTime_nextDay_mouseAdapter(this));
+    nextMonth.addMouseListener(new PickDateTime_nextMonth_mouseAdapter(this));
+    okButton.setActionCommand("jButton1");
+    okButton.setMnemonic('O');
+    okButton.setText("OK");
+    cancelButton.setMnemonic('C');
+    cancelButton.setText("Cancel");
+    cancelButton.addMouseListener(new PickDateTime_cancelButton_mouseAdapter(this));
+    jPanel1.add(prevMonth);
 	jPanel1.add(prevDay);
 	jPanel1.add(dateLabel);
-	jPanel1.add(nextDay);
 	jPanel1.add(nextMonth);
+    jPanel1.add(nextDay, null);
 
                 prevDay.setText("<");
 
@@ -66,24 +76,23 @@ public class PickDateTime extends javax.swing.JPanel {
 
                 jPanel2.setLayout(new java.awt.BorderLayout());
 
-                jTable1.setModel(new DateTableModel());
+                jTable1.setModel((table=new DateTableModel()));
                 jTable1.setRowSelectionAllowed(false);
                 jPanel2.add(jTable1, java.awt.BorderLayout.CENTER);
+    jPanel2.add(jPanel3, BorderLayout.SOUTH);
+    jPanel3.add(okButton, null);
+    jPanel3.add(cancelButton, null);
 
                 add(jPanel2, java.awt.BorderLayout.CENTER);
 
-                jLabel2.setText("jLabel2");
-                jPanel3.add(jLabel2);
-	this.add(jPanel1, BorderLayout.SOUTH);
+    jPanel2.add(jPanel1, BorderLayout.NORTH);
 
-                add(jPanel3, java.awt.BorderLayout.NORTH);
 
         }//GEN-END:jbInit
 
 
         // Variables declaration - do not modify//GEN-BEGIN:variables
         private javax.swing.JLabel dateLabel;
-        private javax.swing.JLabel jLabel2;
         private javax.swing.JLabel prevMonth;
         private javax.swing.JLabel prevDay;
         private javax.swing.JLabel nextDay;
@@ -92,11 +101,13 @@ public class PickDateTime extends javax.swing.JPanel {
         private javax.swing.JPanel jPanel2;
         private javax.swing.JPanel jPanel3;
         private javax.swing.JTable jTable1;
+  JButton okButton = new JButton();
+  JButton cancelButton = new JButton();
         // End of variables declaration//GEN-END:variables
 
 	private class DateTableModel extends javax.swing.table.AbstractTableModel {
-		String data[][];
-		GregorianCalendar cal;
+		private String data[][];
+		private GregorianCalendar cal;
 
 		DateTableModel() {
 			this(null);
@@ -108,12 +119,48 @@ public class PickDateTime extends javax.swing.JPanel {
 			if (cal==null) {
 				cal=new GregorianCalendar(new Locale("sv"));
 			}
+
 			time=cal.getTime();
 
 			fixMonth();
 
 			cal.setTime(time);
 
+			// FIXME: update table
+		}
+
+		public void incMonth() {
+			cal.add(Calendar.MONTH,1);
+			Date time=cal.getTime();
+			fixMonth();
+			cal.setTime(time);
+			fireTableDataChanged();
+		}
+
+		public void decMonth() {
+			cal.add(Calendar.MONTH,-1);
+			Date time=cal.getTime();
+			fixMonth();
+			cal.setTime(time);
+			fireTableDataChanged();
+		}
+
+		public void incDay() {
+			// FIXME: optimise
+			cal.add(Calendar.DATE,1);
+			Date time=cal.getTime();
+			fixMonth();
+			cal.setTime(time);
+			fireTableDataChanged();
+		}
+
+		public void decDay() {
+			// FIXME: optimise
+			cal.add(Calendar.DATE, -1);
+			Date time=cal.getTime();
+			fixMonth();
+			cal.setTime(time);
+			fireTableDataChanged();
 		}
 
 		private void fixMonth() {
@@ -198,8 +245,24 @@ public class PickDateTime extends javax.swing.JPanel {
 	}
 
     void prevMonth_mouseClicked(MouseEvent e) {
-
+		table.decMonth();
     }
+
+	void prevDay_mouseClicked(MouseEvent e) {
+		table.decDay();
+	}
+
+	void nextDay_mouseClicked(MouseEvent e) {
+		table.incDay();
+	}
+
+	void nextMonth_mouseClicked(MouseEvent e) {
+		table.incMonth();
+	}
+
+	void cancelButton_mouseClicked(MouseEvent e) {
+		this.hide();
+	}
 }
 
 class PickDateTime_prevMonth_mouseAdapter extends java.awt.event.MouseAdapter {
@@ -211,5 +274,49 @@ class PickDateTime_prevMonth_mouseAdapter extends java.awt.event.MouseAdapter {
     public void mouseClicked(MouseEvent e) {
 	adaptee.prevMonth_mouseClicked(e);
     }
+}
+
+class PickDateTime_prevDay_mouseAdapter extends java.awt.event.MouseAdapter {
+  PickDateTime adaptee;
+
+  PickDateTime_prevDay_mouseAdapter(PickDateTime adaptee) {
+    this.adaptee = adaptee;
+  }
+  public void mouseClicked(MouseEvent e) {
+    adaptee.prevDay_mouseClicked(e);
+  }
+}
+
+class PickDateTime_nextDay_mouseAdapter extends java.awt.event.MouseAdapter {
+  PickDateTime adaptee;
+
+  PickDateTime_nextDay_mouseAdapter(PickDateTime adaptee) {
+    this.adaptee = adaptee;
+  }
+  public void mouseClicked(MouseEvent e) {
+    adaptee.nextDay_mouseClicked(e);
+  }
+}
+
+class PickDateTime_nextMonth_mouseAdapter extends java.awt.event.MouseAdapter {
+  PickDateTime adaptee;
+
+  PickDateTime_nextMonth_mouseAdapter(PickDateTime adaptee) {
+    this.adaptee = adaptee;
+  }
+  public void mouseClicked(MouseEvent e) {
+    adaptee.nextMonth_mouseClicked(e);
+  }
+}
+
+class PickDateTime_cancelButton_mouseAdapter extends java.awt.event.MouseAdapter {
+  PickDateTime adaptee;
+
+  PickDateTime_cancelButton_mouseAdapter(PickDateTime adaptee) {
+    this.adaptee = adaptee;
+  }
+  public void mouseClicked(MouseEvent e) {
+    adaptee.cancelButton_mouseClicked(e);
+  }
 }
 
