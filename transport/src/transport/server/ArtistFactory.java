@@ -41,10 +41,10 @@ public class ArtistFactory {
 							rs.getString(2),
 							rs.getString(3),
 							rs.getString(4),
-							rs.getDate(5),
+							rs.getTimestamp(5),
 							pf.getPlace(rs.getInt(6)),
 							pf.getPlace(rs.getInt(7)),
-							rs.getDate(8),
+							rs.getTimestamp(8),
 							pf.getPlace(rs.getInt(9)),
 							rs.getInt(10),
 							rs.getInt(11),
@@ -115,11 +115,10 @@ public class ArtistFactory {
 			st.setString(1, newArtist.getName());
 			st.setString(2, newArtist.getContactName());
 			st.setString(3, newArtist.getTelephoneNo());
-			st.setDate(4, new java.sql.Date(newArtist.getArrivalTime().getTime()));
+			st.setTimestamp(4, new Timestamp(newArtist.getArrivalTime().getTime()));
 			st.setInt(5, newArtist.getArrival().getId());
 			st.setInt(6, newArtist.getHotel().getId());
-			st.setDate(7,
-					   new java.sql.Date(newArtist.getDepartureTime().getTime()));
+			st.setTimestamp(7, new Timestamp(newArtist.getDepartureTime().getTime()));
 			st.setInt(8, newArtist.getDeparture().getId());
 			st.setInt(9, newArtist.getNoOfArtists());
 			st.setInt(10, newArtist.getNoOfCrew());
