@@ -56,68 +56,68 @@ create table artists (
 	no_of_crew integer,
 	no_of_guests integer,
 	extra_info varchar(500),
-	foreign key(arrival_place_id) references places,
-	foreign key(hotel_id) references places,
-	foreign key(departure_place_id) references places,
+	foreign key(arrival_place_id) references places on delete cascade,
+	foreign key(hotel_id) references places on delete cascade,
+	foreign key(departure_place_id) references places on delete cascade,
 	primary key(id)
 );
 
-insert into artists (name) values ('Faithless (uk)');
-insert into artists (name) values ('Skinny Puppy (can)');
-insert into artists (name) values ('Cradle of Filth (uk)');
-insert into artists (name) values ('Karl Bartos (d)');
-insert into artists (name) values ('The Soundtrack of our lives');
-insert into artists (name) values ('My Dying Bride (uk)');
-insert into artists (name) values ('Ellen Allien (d)');
-insert into artists (name) values ('Broder Daniel');
-insert into artists (name) values ('Marit Bergman');
-insert into artists (name) values ('Weeping Willows');
-insert into artists (name) values ('Eskobar');
-insert into artists (name) values ('Lustans Lakejer');
-insert into artists (name) values ('Meshuggah');
-insert into artists (name) values ('Olle Ljungström');
-insert into artists (name) values ('Fixmer/McCarthy (fr/uk)');
-insert into artists (name) values ('Allied Vision (e)');
-insert into artists (name) values ('Sara Noxx (d)');
-insert into artists (name) values ('Magnet (n)');
-insert into artists (name) values ('Vive La Fête (b)');
-insert into artists (name) values ('Sophie Rimheden');
-insert into artists (name) values ('Wolfsheim (d)');
-insert into artists (name) values ('Iris (us)');
-insert into artists (name) values ('Space Tribe (aus)');
-insert into artists (name) values ('Her Majesty');
-insert into artists (name) values ('Jens Lekman');
-insert into artists (name) values ('Universal Poplab');
-insert into artists (name) values ('The Low Frequency in Stereo (n)');
-insert into artists (name) values ('The Immortal Lee County Killers (us)');
-insert into artists (name) values ('Patrick Wolf (uk)');
-insert into artists (name) values ('Wizzy Noise (gr)');
-insert into artists (name) values ('Bamboo Forest (fr)');
-insert into artists (name) values ('Disco Volante');
-insert into artists (name) values ('Etnoscope');
-insert into artists (name) values ('Deportees');
-insert into artists (name) values ('SUB6 (isr)');
-insert into artists (name) values ('DJ Antaro (d)');
-insert into artists (name) values ('DJ D-Nox (d)');
-insert into artists (name) values ('DJ Dimitri (uk)');
-insert into artists (name) values ('DJ Pushava (d)');
-insert into artists (name) values ('Moonbabies');
-insert into artists (name) values ('C.Aarmé');
-insert into artists (name) values ('Laakso');
-insert into artists (name) values ('Blanka');
-insert into artists (name) values ('Lolita stasi collective');
-insert into artists (name) values ('Burst');
-insert into artists (name) values ('Richard Reagh & wwnb2');
-insert into artists (name) values ('Gustav & The seasick sailors');
-insert into artists (name) values ('Chandra');
-insert into artists (name) values ('Seventribe');
-insert into artists (name) values ('Spektralized (n)');
-insert into artists (name) values ('Strip Music');
-insert into artists (name) values ('Sturm Café');
-insert into artists (name) values ('The Accidents');
-insert into artists (name) values ('The Legends');
-insert into artists (name) values ('The Sweetbacks');
-insert into artists (name) values ('Kraftwerk');
+insert into artists (name,arrival_place_id,departure_place_id,hotel_id) values ('Faithless (uk)',4,4,1);
+insert into artists (name,arrival_place_id,departure_place_id,hotel_id) values ('Skinny Puppy (can)',4,4,1);
+insert into artists (name,arrival_place_id,departure_place_id,hotel_id) values ('Cradle of Filth (uk)',4,4,1);
+insert into artists (name,arrival_place_id,departure_place_id,hotel_id) values ('Karl Bartos (d)',4,4,1);
+insert into artists (name,arrival_place_id,departure_place_id,hotel_id) values ('The Soundtrack of our lives',4,4,1);
+insert into artists (name,arrival_place_id,departure_place_id,hotel_id) values ('My Dying Bride (uk)',4,4,1);
+insert into artists (name,arrival_place_id,departure_place_id,hotel_id) values ('Ellen Allien (d)',4,4,1);
+insert into artists (name,arrival_place_id,departure_place_id,hotel_id) values ('Broder Daniel',4,4,1);
+insert into artists (name,arrival_place_id,departure_place_id,hotel_id) values ('Marit Bergman',4,4,1);
+insert into artists (name,arrival_place_id,departure_place_id,hotel_id) values ('Weeping Willows',4,4,1);
+insert into artists (name,arrival_place_id,departure_place_id,hotel_id) values ('Eskobar',4,4,1);
+insert into artists (name,arrival_place_id,departure_place_id,hotel_id) values ('Lustans Lakejer',4,4,1);
+insert into artists (name,arrival_place_id,departure_place_id,hotel_id) values ('Meshuggah',4,4,1);
+insert into artists (name,arrival_place_id,departure_place_id,hotel_id) values ('Olle Ljungström',4,4,1);
+insert into artists (name,arrival_place_id,departure_place_id,hotel_id) values ('Fixmer/McCarthy (fr/uk)',4,4,1);
+insert into artists (name,arrival_place_id,departure_place_id,hotel_id) values ('Allied Vision (e)',4,4,1);
+insert into artists (name,arrival_place_id,departure_place_id,hotel_id) values ('Sara Noxx (d)',4,4,1);
+insert into artists (name,arrival_place_id,departure_place_id,hotel_id) values ('Magnet (n)',4,4,1);
+insert into artists (name,arrival_place_id,departure_place_id,hotel_id) values ('Vive La Fête (b)',4,4,1);
+insert into artists (name,arrival_place_id,departure_place_id,hotel_id) values ('Sophie Rimheden',4,4,1);
+insert into artists (name,arrival_place_id,departure_place_id,hotel_id) values ('Wolfsheim (d)',4,4,1);
+insert into artists (name,arrival_place_id,departure_place_id,hotel_id) values ('Iris (us)',4,4,1);
+insert into artists (name,arrival_place_id,departure_place_id,hotel_id) values ('Space Tribe (aus)',4,4,1);
+insert into artists (name,arrival_place_id,departure_place_id,hotel_id) values ('Her Majesty',4,4,1);
+insert into artists (name,arrival_place_id,departure_place_id,hotel_id) values ('Jens Lekman',4,4,1);
+insert into artists (name,arrival_place_id,departure_place_id,hotel_id) values ('Universal Poplab',4,4,1);
+insert into artists (name,arrival_place_id,departure_place_id,hotel_id) values ('The Low Frequency in Stereo (n)',4,4,1);
+insert into artists (name,arrival_place_id,departure_place_id,hotel_id) values ('The Immortal Lee County Killers (us)',4,4,1);
+insert into artists (name,arrival_place_id,departure_place_id,hotel_id) values ('Patrick Wolf (uk)',4,4,1);
+insert into artists (name,arrival_place_id,departure_place_id,hotel_id) values ('Wizzy Noise (gr)',4,4,1);
+insert into artists (name,arrival_place_id,departure_place_id,hotel_id) values ('Bamboo Forest (fr)',4,4,1);
+insert into artists (name,arrival_place_id,departure_place_id,hotel_id) values ('Disco Volante',4,4,1);
+insert into artists (name,arrival_place_id,departure_place_id,hotel_id) values ('Etnoscope',4,4,1);
+insert into artists (name,arrival_place_id,departure_place_id,hotel_id) values ('Deportees',4,4,1);
+insert into artists (name,arrival_place_id,departure_place_id,hotel_id) values ('SUB6 (isr)',4,4,1);
+insert into artists (name,arrival_place_id,departure_place_id,hotel_id) values ('DJ Antaro (d)',4,4,1);
+insert into artists (name,arrival_place_id,departure_place_id,hotel_id) values ('DJ D-Nox (d)',4,4,1);
+insert into artists (name,arrival_place_id,departure_place_id,hotel_id) values ('DJ Dimitri (uk)',4,4,1);
+insert into artists (name,arrival_place_id,departure_place_id,hotel_id) values ('DJ Pushava (d)',4,4,1);
+insert into artists (name,arrival_place_id,departure_place_id,hotel_id) values ('Moonbabies',4,4,1);
+insert into artists (name,arrival_place_id,departure_place_id,hotel_id) values ('C.Aarmé',4,4,1);
+insert into artists (name,arrival_place_id,departure_place_id,hotel_id) values ('Laakso',4,4,1);
+insert into artists (name,arrival_place_id,departure_place_id,hotel_id) values ('Blanka',4,4,1);
+insert into artists (name,arrival_place_id,departure_place_id,hotel_id) values ('Lolita stasi collective',4,4,1);
+insert into artists (name,arrival_place_id,departure_place_id,hotel_id) values ('Burst',4,4,1);
+insert into artists (name,arrival_place_id,departure_place_id,hotel_id) values ('Richard Reagh & wwnb2',4,4,1);
+insert into artists (name,arrival_place_id,departure_place_id,hotel_id) values ('Gustav & The seasick sailors',4,4,1);
+insert into artists (name,arrival_place_id,departure_place_id,hotel_id) values ('Chandra',4,4,1);
+insert into artists (name,arrival_place_id,departure_place_id,hotel_id) values ('Seventribe',4,4,1);
+insert into artists (name,arrival_place_id,departure_place_id,hotel_id) values ('Spektralized (n)',4,4,1);
+insert into artists (name,arrival_place_id,departure_place_id,hotel_id) values ('Strip Music',4,4,1);
+insert into artists (name,arrival_place_id,departure_place_id,hotel_id) values ('Sturm Café',4,4,1);
+insert into artists (name,arrival_place_id,departure_place_id,hotel_id) values ('The Accidents',4,4,1);
+insert into artists (name,arrival_place_id,departure_place_id,hotel_id) values ('The Legends',4,4,1);
+insert into artists (name,arrival_place_id,departure_place_id,hotel_id) values ('The Sweetbacks',4,4,1);
+insert into artists (name,arrival_place_id,departure_place_id,hotel_id) values ('Kraftwerk',4,4,1);
 
 create table mobile_phones (
 	id serial,
@@ -159,7 +159,7 @@ create table functionaries (
 	begins_work timestamp not null,
 	stops_work timestamp not null,
 	role_id integer not null,
-	foreign key (role_id) references roles,
+	foreign key (role_id) references roles on delete cascade,
 	primary key(id)
 );
 
@@ -171,7 +171,7 @@ create table transports (
 	internal integer not null,
 	mobile_phone_id integer,
 	misc_info varchar(400),
-	foreign key (mobile_phone_id) references mobile_phones,
+	foreign key (mobile_phone_id) references mobile_phones on delete cascade,
 	primary key (id)
 );
 
@@ -182,8 +182,8 @@ create table transport_dropoffs (
 	transport_id integer,
 	place_id integer,
 	dropoff_time timestamp,
-	foreign key (transport_id) references transports,
-	foreign key (place_id) references places,
+	foreign key (transport_id) references transports on delete cascade,
+	foreign key (place_id) references places on delete cascade,
 	primary key (id)
 );
 
@@ -193,8 +193,8 @@ insert into transport_dropoffs (transport_id, place_id, dropoff_time) values (1,
 create table car_transport (
 	car_id integer,
 	transport_id integer,
-	foreign key (car_id) references cars,
-	foreign key (transport_id) references transports
+	foreign key (car_id) references cars on delete cascade,
+	foreign key (transport_id) references transports on delete cascade
 );
 
 insert into car_transport (car_id, transport_id) values (1,1);
@@ -203,22 +203,22 @@ insert into car_transport (car_id, transport_id) values (4,1);
 create table artist_transport (
 	artist_id integer,
 	transport_id integer,
-	foreign key (artist_id) references artists,
-	foreign key (transport_id) references transports
+	foreign key (artist_id) references artists on delete cascade,
+	foreign key (transport_id) references transports on delete cascade
 );
 
 create table functionary_transport (
 	functionary_id integer,
 	transport_id integer,
-	foreign key (functionary_id) references functionaries,
-	foreign key (transport_id) references transports
+	foreign key (functionary_id) references functionaries on delete cascade,
+	foreign key (transport_id) references transports on delete cascade
 );
 
 create table distance_reference (
 	place_id_1 integer,
 	place_id_2 integer,
 	distance integer not null,
-	foreign key (place_id_1) references places,
-	foreign key (place_id_2) references places
+	foreign key (place_id_1) references places on delete cascade,
+	foreign key (place_id_2) references places on delete cascade
 );
 
