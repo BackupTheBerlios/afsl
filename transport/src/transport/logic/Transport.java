@@ -339,15 +339,13 @@ public class Transport extends LogicItem {
          html = html +"<LINK href=http://www.pal.pp.se/~jessica/jessica.css rel=stylesheet type=text/css>\n";
          html = html +"</head>\n";
          html = html +"<body>\n";
+
+         html = html +"<TABLE BORDER=0>\n";
+         html = html +"<TR><TD valign=top><img src='http://www.pal.pp.se/~jessica/festival.png'></TD>\n";
+         html = html +"<TD valign=top>\n";
+
+
          DateFormat df = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.SHORT, new Locale("sv"));
-         if (getInternal()){
-           html = html+ "\n<b>INTERNAL TRANSPORT: </b>" +"(id:" + getId() +
-             ")<br>\n";
-         }
-         else{
-           html = html+"\n<b>TRANSPORT: </b>" +"(id:" + getId() +
-             ")<br>\n";
-         }
          String ActualReturnTime = "N/A";
          String StartTime = "N/A";
          String ReturnTime = "N/A";
@@ -360,19 +358,32 @@ public class Transport extends LogicItem {
          if (getStartTime() != null) {
            StartTime = df.format(getStartTime());
          }
+         if (getInternal()){
+           html = html+ "\n<H3>INTERNAL TRANSPORT " + getId() +"<br>" +StartTime +
+             "</H3>\n";
+         }
+         else{
+           html = html+"\n<H3>TRANSPORT " + getId() +"<br>" + StartTime+
+             "</H3>\n";
+         }
+
+
+         html = html + "</TD></TR>\n";
+         html = html + "</TABLE>\n";
+         html = html + "<hr>\n";
 
          html = html +"<TABLE BORDER=0>\n";
-         html = html +"<TR><TD valign=top><b>Artists:</b></TD><TD>"+  getHTMLArtists()+"</TD></TR>\n";
-         html = html +"<TR><TD valign=top><b>Cars:</b></TD><TD>"+ getHTMLCars()+"</TD></TR>\n";
-         html = html +"<TR><TD valign=top><b>Functionaries:</b></TD><TD>"+ getHTMLFunctionaries()+"</TD></TR>\n";
-         html = html +"<TR><TD valign=top><b>Waypoints:</b></TD><TD>"+ getHTMLWaypoints()+"</TD></TR>\n";
-         html = html +"<TR><TD valign=top><b>Mobile Phones:</b></TD><TD>"+ getHTMLMobilePhones() +"</TD></TR>\n";
-         html = html +"<TR><TD valign=top><b>Start Time:</b></TD><TD>"+ StartTime+"</TD></TR>\n";
-         html = html +"<TR><TD valign=top><b>Return Time:</b></TD><TD>"+ ReturnTime+"</TD></TR>\n";
-         html = html +"<TR><TD valign=top><b>Distance:</b></TD><TD>"+ getDistance()+"</TD></TR>\n";
+         html = html +"<TR><TD valign=top><b>Artists:</b></TD><TD valign=top>"+  getHTMLArtists()+"</TD></TR>\n";
+         html = html +"<TR><TD valign=top><b>Cars:</b></TD><TD valign=top>"+ getHTMLCars()+"</TD></TR>\n";
+         html = html +"<TR><TD valign=top><b>Functionaries:</b></TD><TD valign=top>"+ getHTMLFunctionaries()+"</TD></TR>\n";
+         html = html +"<TR><TD valign=top><b>Waypoints:</b></TD><TD valign=top>"+ getHTMLWaypoints()+"</TD></TR>\n";
+         html = html +"<TR><TD valign=top><b>Mobile Phones:</b></TD><TD valign=top>"+ getHTMLMobilePhones() +"</TD></TR>\n";
+         html = html +"<TR><TD valign=top><b>Start Time:</b></TD><TD valign=top>"+ StartTime+"</TD></TR>\n";
+         html = html +"<TR><TD valign=top><b>Return Time:</b></TD><TD valign=top>"+ ReturnTime+"</TD></TR>\n";
+         html = html +"<TR><TD valign=top><b>Distance:</b></TD><TD valign=top>"+ getDistance()+"</TD></TR>\n";
 
-         html = html +"<TR><TD valign=top><b>Actual Return Time:</b></TD><TD>"+ActualReturnTime +"</TD></TR>\n";
-         html = html +"<TR><TD valign=top><b>Misc Info:</b></TD><TD>"+ getMiscInfo()+"</TD></TR>\n";
+         html = html +"<TR><TD valign=top><b>Actual Return Time:</b></TD><TD valign=top>"+ActualReturnTime +"</TD></TR>\n";
+         html = html +"<TR><TD valign=top><b>Misc Info:</b></TD><TD valign=top>"+ getMiscInfo()+"</TD></TR>\n";
          html = html +"</TABLE>\n";
 
          html = html + "</body></html>";
@@ -383,7 +394,7 @@ public class Transport extends LogicItem {
          String html="";
          Functionary[] allFunctionaries=getFunctionaries();
         for (int i = 0; i < allFunctionaries.length; i++) {
-          html=html+"\n<br>"+allFunctionaries[i].toHTML();
+          html=html+allFunctionaries[i].toHTML()+"\n<br>\n";
         }
         return html;
        }
@@ -391,7 +402,7 @@ public class Transport extends LogicItem {
         String html="";
         Car[] allCars=getCars();
        for (int i = 0; i < allCars.length; i++) {
-         html=html+"\n<br>"+allCars[i].toHTML();
+         html=html+allCars[i].toHTML()+"\n<br>\n";
        }
        return html;
       }
@@ -400,7 +411,7 @@ public class Transport extends LogicItem {
         String html = "";
         Artist[] allArtists = getArtists();
         for (int i = 0; i < allArtists.length; i++) {
-          html = html+ "\n<br>"+ allArtists[i].toHTML();
+          html = html+allArtists[i].toHTML()+"\n<br>\n";
         }
         return html;
       }
@@ -409,7 +420,7 @@ public class Transport extends LogicItem {
         String html = "";
         TransportWaypoint[] allWaypoints = getWaypoints();
         for (int i = 0; i < allWaypoints.length; i++) {
-          html = html + "\n<br>" + allWaypoints[i].toHTML();
+          html = html + allWaypoints[i].toHTML()+"\n<br>\n";
         }
         return html;
       }
@@ -418,7 +429,7 @@ public class Transport extends LogicItem {
         String html = "";
         MobilePhone[] allPhones =  getMobilePhones();
         for (int i = 0; i < allPhones.length; i++) {
-          html = html + "\n<br>" + allPhones[i].toHTML();
+          html = html + allPhones[i].toHTML()+"\n<br>\n";
         }
         return html;
       }

@@ -58,8 +58,7 @@ public class MobilePhone extends LogicItem {
 
         public String toHTML() {
           String html;
-          html = "\n<b>Mobile Phone:</b>" + getNumber() + "(id:" + getId() +
-              ")<br>\n";
+          html = "\n" + getNumber() +"<br>\n";
           return html;
         }
 }
