@@ -8,4 +8,5 @@ import javax.swing.ListSelectionModel;
 public abstract class GenericTableModel extends AbstractTableModel {
 	public abstract GenericEditor getEditor();
 	public boolean isCellEditable(int row, int col) { return false; }
+	public abstract Object getRowData(int row);
 }

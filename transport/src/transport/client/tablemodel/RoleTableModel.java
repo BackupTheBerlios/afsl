@@ -19,7 +19,7 @@ public class RoleTableModel extends GenericTableModel {
 		return new RoleEditor();
 	}
 
-	public Role getRowData(int row) {
+	public Object getRowData(int row) {
 		return rowData[row];
 	}
 

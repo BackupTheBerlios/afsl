@@ -33,6 +33,7 @@ public class GenericListFrame extends javax.swing.JInternalFrame {
           this.artistTable.setToolTipText(title);
         }
 	private void editCurrent() {
+//		tableModel.get
 	}
 
 	private void removeCurrent() {

@@ -19,7 +19,7 @@ public class TransportTableModel extends GenericTableModel {
 		return new TransportEditor();
 	}
 
-	public Transport getRowData(int row) {
+	public Object getRowData(int row) {
 		return rowData[row];
 	}
 

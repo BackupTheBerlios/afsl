@@ -19,7 +19,7 @@ public class CarTableModel extends GenericTableModel {
 		return new CarEditor();
 	}
 
-	public Car getRowData(int row) {
+	public Object getRowData(int row) {
 		return rowData[row];
 	}
 

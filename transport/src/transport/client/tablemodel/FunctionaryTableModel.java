@@ -19,7 +19,7 @@ public class FunctionaryTableModel extends GenericTableModel {
 		return new FunctionaryEditor();
 	}
 
-	public Functionary getRowData(int row) {
+	public Object getRowData(int row) {
 		return rowData[row];
 	}
 

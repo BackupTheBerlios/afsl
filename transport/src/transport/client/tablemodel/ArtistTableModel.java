@@ -19,7 +19,7 @@ public class ArtistTableModel extends GenericTableModel {
 		return new ArtistEditor();
 	}
 
-	public Artist getRowData(int row) {
+	public Object getRowData(int row) {
 		return rowData[row];
 	}
 

@@ -19,7 +19,7 @@ public class MobilePhoneTableModel extends GenericTableModel {
 		return new MobilePhoneEditor();
 	}
 
-	public MobilePhone getRowData(int row) {
+	public Object getRowData(int row) {
 		return rowData[row];
 	}
 

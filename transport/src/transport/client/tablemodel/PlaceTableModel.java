@@ -19,7 +19,7 @@ public class PlaceTableModel extends GenericTableModel {
 		return new PlaceEditor();
 	}
 
-	public Place getRowData(int row) {
+	public Object getRowData(int row) {
 		return rowData[row];
 	}
 
