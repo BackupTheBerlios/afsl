@@ -268,7 +268,7 @@ public class PickDateTime extends javax.swing.JPanel {
 	}
 
 	void cancelButton_mouseClicked(MouseEvent e) {
-		this.hide();
+		this.setVisible(false);
 	}
 }
 
