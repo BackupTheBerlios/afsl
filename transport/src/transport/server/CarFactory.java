@@ -33,7 +33,7 @@ public class CarFactory {
 		Car[] c=new Car[a.size()];
 		a.toArray(c);
 
-                conn.close();
+                ConnectionFactory.closeConnection(conn);
 
 		return c;
 	}
@@ -76,7 +76,7 @@ public class CarFactory {
 			rs.first();
 			c=new Car(id, rs.getString(2), rs.getString(3), rs.getInt(4),
 					  rs.getString(5));
-                        conn.close();
+                        ConnectionFactory.closeConnection(conn);
 		} catch (SQLException e) {
 			logger.log(Level.SEVERE, e.getMessage(), e);
 		}
@@ -95,7 +95,7 @@ public class CarFactory {
 				a.add(new Car(rs.getInt(1), rs.getString(2), rs.getString(3),
 							  rs.getInt(4), rs.getString(5)));
 			}
-                        conn.close();
+                        ConnectionFactory.closeConnection(conn);
 		} catch (SQLException e) {
 			logger.log(Level.SEVERE, e.getMessage(), e);
 		}
@@ -124,7 +124,7 @@ public class CarFactory {
 
 			newCar.setId(rs.getInt(1));
 
-			conn.close();
+			ConnectionFactory.closeConnection(conn);
 		} catch (SQLException e) {
 			logger.log(Level.SEVERE, e.getMessage(), e);
 		}
@@ -147,7 +147,7 @@ public class CarFactory {
 		st.setInt(5, updatedCar.getId());
 
                 st.executeUpdate();
-		conn.close();
+		ConnectionFactory.closeConnection(conn);
 	}
 
 	public void updateCar(Car updatedCar) {
@@ -155,7 +155,7 @@ public class CarFactory {
 			Connection conn=ConnectionFactory.getConnection();
 
 			updateCar(updatedCar, conn);
-                        conn.close();
+                        ConnectionFactory.closeConnection(conn);
 		} catch (SQLException e) {
 			logger.log(Level.SEVERE, e.getMessage(), e);
 		}
@@ -169,7 +169,7 @@ public class CarFactory {
 
 			st.setInt(1, id);
 			st.executeUpdate();
-			conn.close();
+			ConnectionFactory.closeConnection(conn);
 		} catch (SQLException e) {
 			logger.log(Level.SEVERE, e.getMessage(), e);
 		}

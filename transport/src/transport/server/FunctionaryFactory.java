@@ -23,7 +23,7 @@ public class FunctionaryFactory {
 			"select * from functionary_transport where transport_id = ?");
 		st.setInt(1, transportId);
 		ResultSet rs=st.executeQuery();
-                conn.close();
+                ConnectionFactory.closeConnection(conn);
 
 		while (rs.next()) {
 			a.add(new FunctionaryFactory().getFunctionary(rs.getInt(
@@ -58,7 +58,7 @@ public class FunctionaryFactory {
 									  rs.getTimestamp(4),
 									  new RoleFactory().getRole(rs.getInt(5))));
 			}
-                        conn.close();
+                        ConnectionFactory.closeConnection(conn);
 		} catch (SQLException e) {
 			logger.log(Level.SEVERE, e.getMessage(), e);
 		}
@@ -80,7 +80,7 @@ public class FunctionaryFactory {
 			f=new Functionary(rs.getInt(1), rs.getString(2), rs.getTimestamp(3),
 							  rs.getTimestamp(4),
 							  new RoleFactory().getRole(rs.getInt(5)));
-                        conn.close();
+                        ConnectionFactory.closeConnection(conn);
 		} catch (SQLException e) {
 			logger.log(Level.SEVERE, e.getMessage(), e);
 		}
@@ -103,7 +103,7 @@ public class FunctionaryFactory {
 									  new RoleFactory().getRole(rs.getInt(5))));
 			}
 
-                        conn.close();
+                        ConnectionFactory.closeConnection(conn);
 		} catch (SQLException e) {
 			logger.log(Level.SEVERE, e.getMessage(), e);
 		}
@@ -135,7 +135,7 @@ public class FunctionaryFactory {
 
 			newFunctionary.setId(rs.getInt(1));
 
-			conn.close();
+			ConnectionFactory.closeConnection(conn);
 		} catch (SQLException e) {
 			logger.log(Level.SEVERE, e.getMessage(), e);
 		}
@@ -157,7 +157,7 @@ public class FunctionaryFactory {
 
 			st.executeUpdate();
 
-			conn.close();
+			ConnectionFactory.closeConnection(conn);
 		} catch (SQLException e) {
 			logger.log(Level.SEVERE, e.getMessage(), e);
 		}
@@ -171,7 +171,7 @@ public class FunctionaryFactory {
 
 			st.setInt(1, id);
 			st.executeUpdate();
-			conn.close();
+			ConnectionFactory.closeConnection(conn);
 		} catch (SQLException e) {
 			logger.log(Level.SEVERE, e.getMessage(), e);
 		}

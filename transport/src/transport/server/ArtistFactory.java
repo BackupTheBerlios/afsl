@@ -20,7 +20,8 @@ public class ArtistFactory {
 		SQLException {
 		ArrayList a=new ArrayList();
 
-		Connection conn=ConnectionFactory.getConnection();
+		Connection conn = ConnectionFactory.getConnection();
+
 
 		PreparedStatement st=conn.prepareStatement(
 			"select * from artist_transport where transport_id = ?");
@@ -31,7 +32,7 @@ public class ArtistFactory {
 			a.add(new ArtistFactory().getArtist(rs.getInt(1)));
 		}
 
-		conn.close();
+		ConnectionFactory.closeConnection(conn);
 
 		Artist[] ar=new Artist[a.size()];
 		a.toArray(ar);
@@ -77,7 +78,7 @@ public class ArtistFactory {
 			rs.first();
 			a=createArtist(rs);
 
-			conn.close();
+			ConnectionFactory.closeConnection(conn);
 		} catch (SQLException e) {
 			logger.log(Level.SEVERE, e.getMessage(), e);
 		}
@@ -98,7 +99,7 @@ public class ArtistFactory {
 				a.add(createArtist(rs));
 			}
 
-			conn.close();
+			ConnectionFactory.closeConnection(conn);
 		} catch (SQLException e) {
 			logger.log(Level.SEVERE, e.getMessage(), e);
 		}
@@ -144,7 +145,7 @@ public class ArtistFactory {
 
 			newArtist.setId(rs.getInt(1));
 
-			conn.close();
+			ConnectionFactory.closeConnection(conn);
 		} catch (SQLException e) {
 			logger.log(Level.SEVERE, e.getMessage(), e);
 		}
@@ -207,7 +208,7 @@ public class ArtistFactory {
 			st.setInt(17, updatedArtist.getId());
 			st.executeUpdate();
 			conn.commit();
-			conn.close();
+			ConnectionFactory.closeConnection(conn);
 		} catch (SQLException e) {
 			logger.log(Level.SEVERE, e.getMessage(), e);
 		}
@@ -221,7 +222,7 @@ public class ArtistFactory {
 			st.setInt(1, id);
 
 			st.executeUpdate();
-			conn.close();
+			ConnectionFactory.closeConnection(conn);
 		} catch (SQLException e) {
 			logger.log(Level.SEVERE, e.getMessage(), e);
 		}

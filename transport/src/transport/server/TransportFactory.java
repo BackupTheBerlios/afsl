@@ -78,7 +78,7 @@ public class TransportFactory {
                        rs.getString(7),
                        conn);
 
-      conn.close();
+      ConnectionFactory.closeConnection(conn);
     } catch (SQLException e) {
       logger.log(Level.SEVERE, e.getMessage(), e);
     }
@@ -104,7 +104,7 @@ public class TransportFactory {
                            rs.getBoolean(5), rs.getString(6), rs.getString(7),
                            conn));
       }
-      conn.close();
+      ConnectionFactory.closeConnection(conn);
     }
     catch (SQLException e) {
       logger.log(Level.SEVERE, e.getMessage(), e);
@@ -222,7 +222,7 @@ public class TransportFactory {
 
       conn.commit();
 
-      conn.close();
+      ConnectionFactory.closeConnection(conn);
     }
     catch (SQLException e) {
       logger.log(Level.SEVERE, e.getMessage(), e);
@@ -319,7 +319,7 @@ public class TransportFactory {
 
       conn.commit();
 
-      conn.close();
+      ConnectionFactory.closeConnection(conn);
     }
     catch (SQLException e) {
       logger.log(Level.SEVERE, e.getMessage(), e);
@@ -334,7 +334,7 @@ public class TransportFactory {
 
       st.setInt(1, id);
       st.executeUpdate();
-      conn.close();
+      ConnectionFactory.closeConnection(conn);
     }
     catch (SQLException e) {
       logger.log(Level.SEVERE, e.getMessage(), e);
@@ -360,7 +360,7 @@ public class TransportFactory {
                            rs.getBoolean(5), rs.getString(6), rs.getString(7),
                            conn));
       }
-      conn.close();
+      ConnectionFactory.closeConnection(conn);
     }
     catch (SQLException e) {
       logger.log(Level.SEVERE, e.getMessage(), e);
@@ -388,7 +388,7 @@ public class TransportFactory {
                            rs.getBoolean(5), rs.getString(6), rs.getString(7),
                            conn));
       }
-      conn.close();
+      ConnectionFactory.closeConnection(conn);
     }
     catch (SQLException e) {
       logger.log(Level.SEVERE, e.getMessage(), e);
@@ -415,7 +415,7 @@ public class TransportFactory {
                            rs.getBoolean(5), rs.getString(6), rs.getString(7),
                            conn));
       }
-      conn.close();
+      ConnectionFactory.closeConnection(conn);
     }
     catch (SQLException e) {
       logger.log(Level.SEVERE, e.getMessage(), e);
@@ -443,7 +443,7 @@ public class TransportFactory {
                            rs.getBoolean(5), rs.getString(6), rs.getString(7),
                            conn));
       }
-      conn.close();
+      ConnectionFactory.closeConnection(conn);
     }
     catch (SQLException e) {
       logger.log(Level.SEVERE, e.getMessage(), e);
@@ -471,7 +471,7 @@ public class TransportFactory {
                            rs.getBoolean(5), rs.getString(6), rs.getString(7),
                            conn));
       }
-      conn.close();
+      ConnectionFactory.closeConnection(conn);
     }
     catch (SQLException e) {
       logger.log(Level.SEVERE, e.getMessage(), e);
@@ -498,7 +498,7 @@ public class TransportFactory {
                            rs.getBoolean(5), rs.getString(6), rs.getString(7),
                            conn));
       }
-      conn.close();
+      ConnectionFactory.closeConnection(conn);
     }
     catch (SQLException e) {
       logger.log(Level.SEVERE, e.getMessage(), e);
@@ -525,7 +525,7 @@ public class TransportFactory {
                            rs.getBoolean(5), rs.getString(6), rs.getString(7),
                            conn));
       }
-      conn.close();
+      ConnectionFactory.closeConnection(conn);
     }
     catch (SQLException e) {
       logger.log(Level.SEVERE, e.getMessage(), e);
@@ -553,7 +553,7 @@ public class TransportFactory {
                            rs.getBoolean(5), rs.getString(6), rs.getString(7),
                            conn));
       }
-      conn.close();
+      ConnectionFactory.closeConnection(conn);
     }
     catch (SQLException e) {
       logger.log(Level.SEVERE, e.getMessage(), e);

@@ -33,7 +33,7 @@ public class MobilePhoneFactory {
 				a.add(new MobilePhone(rs.getInt(1), rs.getString(2)));
 			}
 
-			conn.close();
+			ConnectionFactory.closeConnection(conn);
 		} catch (SQLException e) {
 			logger.log(Level.SEVERE, e.getMessage(), e);
 		}
@@ -54,7 +54,7 @@ public class MobilePhoneFactory {
 			rs.first();
 			c=new MobilePhone(id, rs.getString(2));
 
-			conn.close();
+			ConnectionFactory.closeConnection(conn);
 		} catch (SQLException e) {
 			logger.log(Level.SEVERE, e.getMessage(), e);
 		}
@@ -74,7 +74,7 @@ public class MobilePhoneFactory {
 				a.add(new MobilePhone(rs.getInt(1), rs.getString(2)));
 			}
 
-			conn.close();
+			ConnectionFactory.closeConnection(conn);
 		} catch (SQLException e) {
 			logger.log(Level.SEVERE, e.getMessage(), e);
 		}
@@ -101,7 +101,7 @@ public class MobilePhoneFactory {
 
 			newPhone.setId(rs.getInt(1));
 
-			conn.close();
+			ConnectionFactory.closeConnection(conn);
 		} catch (SQLException e) {
 			logger.log(Level.SEVERE, e.getMessage(), e);
 		}
@@ -127,7 +127,7 @@ public class MobilePhoneFactory {
 			a.add(mpf.getMobilePhone(rs.getInt("mobile_phone_id")));
 		}
 
-		conn.close();
+		ConnectionFactory.closeConnection(conn);
 
 		MobilePhone[] ar=new MobilePhone[a.size()];
 		a.toArray(ar);
@@ -145,7 +145,7 @@ public class MobilePhoneFactory {
 
 			st.executeUpdate();
 
-			conn.close();
+			ConnectionFactory.closeConnection(conn);
 		} catch (SQLException e) {
 			logger.log(Level.SEVERE, e.getMessage(), e);
 		}
@@ -158,7 +158,7 @@ public class MobilePhoneFactory {
 			st.setInt(1,id);
 
 			st.executeUpdate();
-			conn.close();
+			ConnectionFactory.closeConnection(conn);
 		} catch (SQLException e) {
 			logger.log(Level.SEVERE, e.getMessage(), e);
 		}

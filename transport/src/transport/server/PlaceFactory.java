@@ -33,7 +33,7 @@ public class PlaceFactory {
 
 			p=new Place(id, rs.getString(2));
 
-			conn.close();
+			ConnectionFactory.closeConnection(conn);
 		} catch (SQLException e) {
 			logger.log(Level.SEVERE, e.getMessage(), e);
 		}
@@ -52,7 +52,7 @@ public class PlaceFactory {
 				a.add(new Place(rs.getInt(1), rs.getString(2)));
 			}
 
-			conn.close();
+			ConnectionFactory.closeConnection(conn);
 		} catch (SQLException e) {
 			logger.log(Level.SEVERE, e.getMessage(), e);
 		}
@@ -79,7 +79,7 @@ public class PlaceFactory {
 
 			newPlace.setId(rs.getInt(1));
 
-			conn.close();
+			ConnectionFactory.closeConnection(conn);
 		} catch (SQLException e) {
 			logger.log(Level.SEVERE, e.getMessage(), e);
 		}
@@ -97,7 +97,7 @@ public class PlaceFactory {
 
 			st.executeUpdate();
 
-			conn.close();
+			ConnectionFactory.closeConnection(conn);
 		} catch (SQLException e) {
 			logger.log(Level.SEVERE, e.getMessage(), e);
 		}
@@ -110,7 +110,7 @@ public class PlaceFactory {
 
 			st.setInt(1, id);
 			st.executeUpdate();
-			conn.close();
+			ConnectionFactory.closeConnection(conn);
 		} catch (SQLException e) {
 			logger.log(Level.SEVERE, e.getMessage(), e);
 		}

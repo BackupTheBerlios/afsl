@@ -21,7 +21,7 @@ public class TransportWaypointFactory {
 			a.add(new TransportWaypoint(pf.getPlace(rs.getInt("place_id")),
 rs.getTimestamp("waypoint_time")));
 		}
-                conn.close();
+                ConnectionFactory.closeConnection(conn);
 
 		TransportWaypoint[] t=new TransportWaypoint[a.size()];
 		a.toArray(t);

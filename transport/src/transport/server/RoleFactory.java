@@ -26,7 +26,7 @@ public class RoleFactory {
 			rs.first();
 			c=new Role(id, rs.getString(2), rs.getString(3), rs.getString(4));
 
-			conn.close();
+			ConnectionFactory.closeConnection(conn);
 		} catch (SQLException e) {
 			logger.log(Level.SEVERE, e.getMessage(), e);
 		}
@@ -45,7 +45,7 @@ public class RoleFactory {
 				a.add(new Role(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4)));
 			}
 
-			conn.close();
+			ConnectionFactory.closeConnection(conn);
 		} catch (SQLException e) {
 			logger.log(Level.SEVERE, e.getMessage(), e);
 		}
@@ -74,7 +74,7 @@ public class RoleFactory {
 
 			newRole.setId(rs.getInt(1));
 
-			conn.close();
+			ConnectionFactory.closeConnection(conn);
 		} catch (SQLException e) {
 			logger.log(Level.SEVERE, e.getMessage(), e);
 		}
@@ -91,7 +91,7 @@ public class RoleFactory {
                         st.setString(3, updatedRole.getInitial());
                         st.setInt(4, updatedRole.getId());
                         st.executeUpdate();
-			conn.close();
+			ConnectionFactory.closeConnection(conn);
 		} catch (SQLException e) {
 			logger.log(Level.SEVERE, e.getMessage(), e);
 		}
@@ -106,7 +106,7 @@ public class RoleFactory {
 		   st.setInt(1,id);
 
 			st.executeUpdate();
-			conn.close();
+			ConnectionFactory.closeConnection(conn);
 		} catch (SQLException e) {
 			logger.log(Level.SEVERE, e.getMessage(), e);
 		}
