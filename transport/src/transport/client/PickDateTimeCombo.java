@@ -13,12 +13,12 @@ import javax.swing.*;
  * @author  ola
  */
 public class PickDateTimeCombo extends javax.swing.JPanel {
-	
+
 	/** Creates new form PickDateTimeCombo */
 	public PickDateTimeCombo() {
 		jbInit();
 	}
-	
+
 	/** This method is called from within the constructor to
 	 * initialize the form.
 	 * WARNING: Do NOT modify this code. The content of this method is
@@ -41,7 +41,6 @@ public class PickDateTimeCombo extends javax.swing.JPanel {
 
                 dateField.setEditable(false);
                 dateField.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
-                dateField.setText("jFormattedTextField1");
                 add(dateField, java.awt.BorderLayout.CENTER);
 
         }//GEN-END:jbInit
@@ -50,11 +49,11 @@ public class PickDateTimeCombo extends javax.swing.JPanel {
 		// TODO add your handling code here:
 		//new PickDateTime(dateSpinner.get);
 	}//GEN-LAST:event_launchPickDateTimeActionPerformed
-	
-	
+
+
         // Variables declaration - do not modify//GEN-BEGIN:variables
         private javax.swing.JFormattedTextField dateField;
         private javax.swing.JButton launchPickDateTime;
         // End of variables declaration//GEN-END:variables
-	
+
 }

@@ -8,23 +8,24 @@ package transport.client;
 
 import java.util.*;
 import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
 
 /**
  *
  * @author  ola
  */
 public class PickDateTime extends javax.swing.JPanel {
-	Calendar cal;
-		
+
 	public PickDateTime() {
 		this(Calendar.getInstance());
 	}
-	
+
 	/** Creates new form PickDateTime */
 	public PickDateTime(Calendar cal) {
 		jbInit();
 	}
-	
+
 	/** This method is called from within the constructor to
 	 * initialize the form.
 	 * WARNING: Do NOT modify this code. The content of this method is
@@ -32,11 +33,11 @@ public class PickDateTime extends javax.swing.JPanel {
 	 */
         private void jbInit() {//GEN-BEGIN:jbInit
                 jPanel1 = new javax.swing.JPanel();
-                jLabel3 = new javax.swing.JLabel();
-                jLabel4 = new javax.swing.JLabel();
-                jLabel1 = new javax.swing.JLabel();
-                jLabel5 = new javax.swing.JLabel();
-                jLabel6 = new javax.swing.JLabel();
+                prevMonth = new javax.swing.JLabel();
+                prevDay = new javax.swing.JLabel();
+                dateLabel = new javax.swing.JLabel();
+                nextDay = new javax.swing.JLabel();
+                nextMonth = new javax.swing.JLabel();
                 jPanel2 = new javax.swing.JPanel();
                 jTable1 = new javax.swing.JTable();
                 jPanel3 = new javax.swing.JPanel();
@@ -46,22 +47,22 @@ public class PickDateTime extends javax.swing.JPanel {
 
                 setMinimumSize(new java.awt.Dimension(100, 100));
                 setPreferredSize(new java.awt.Dimension(100, 156));
-                jLabel3.setText("<<");
-                jPanel1.add(jLabel3);
+                prevMonth.setText("<<");
+	prevMonth.addMouseListener(new PickDateTime_prevMonth_mouseAdapter(this));
+	jPanel1.add(prevMonth);
+	jPanel1.add(prevDay);
+	jPanel1.add(dateLabel);
+	jPanel1.add(nextDay);
+	jPanel1.add(nextMonth);
 
-                jLabel4.setText("<");
-                jPanel1.add(jLabel4);
+                prevDay.setText("<");
 
-                jLabel1.setText("YYYY-MM-DD");
-                jPanel1.add(jLabel1);
+                dateLabel.setText("YYYY-MM-DD");
 
-                jLabel5.setText(">");
-                jPanel1.add(jLabel5);
+                nextDay.setText(">");
 
-                jLabel6.setText(">>");
-                jPanel1.add(jLabel6);
+                nextMonth.setText(">>");
 
-                add(jPanel1, java.awt.BorderLayout.SOUTH);
 
                 jPanel2.setLayout(new java.awt.BorderLayout());
 
@@ -73,66 +74,84 @@ public class PickDateTime extends javax.swing.JPanel {
 
                 jLabel2.setText("jLabel2");
                 jPanel3.add(jLabel2);
+	this.add(jPanel1, BorderLayout.SOUTH);
 
                 add(jPanel3, java.awt.BorderLayout.NORTH);
 
         }//GEN-END:jbInit
-	
-	
+
+
         // Variables declaration - do not modify//GEN-BEGIN:variables
-        private javax.swing.JLabel jLabel1;
+        private javax.swing.JLabel dateLabel;
         private javax.swing.JLabel jLabel2;
-        private javax.swing.JLabel jLabel3;
-        private javax.swing.JLabel jLabel4;
-        private javax.swing.JLabel jLabel5;
-        private javax.swing.JLabel jLabel6;
+        private javax.swing.JLabel prevMonth;
+        private javax.swing.JLabel prevDay;
+        private javax.swing.JLabel nextDay;
+        private javax.swing.JLabel nextMonth;
         private javax.swing.JPanel jPanel1;
         private javax.swing.JPanel jPanel2;
         private javax.swing.JPanel jPanel3;
         private javax.swing.JTable jTable1;
         // End of variables declaration//GEN-END:variables
-	
+
 	private class DateTableModel extends javax.swing.table.AbstractTableModel {
 		String data[][];
-		
+		GregorianCalendar cal;
+
 		DateTableModel() {
+			this(null);
+		}
+
+		DateTableModel(Calendar cal) {
+			Date time=null;
+
+			if (cal==null) {
+				cal=new GregorianCalendar(new Locale("sv"));
+			}
+			time=cal.getTime();
+
+			fixMonth();
+
+			cal.setTime(time);
+
+		}
+
+		private void fixMonth() {
 			int i;
 			data=new String[6][8];
-			GregorianCalendar cal=new GregorianCalendar(new Locale("sv"));
 
-			cal.set(Calendar.DATE,1);
-			cal.setFirstDayOfWeek(Calendar.MONDAY);
-			
-			// fix weeks
-		
+
+			cal.set(Calendar.DATE, 1);
+			//cal.setFirstDayOfWeek(Calendar.MONDAY);
+
 			int row=1;
 			int col;
-			
-			for (i=0;i<cal.getActualMaximum(Calendar.DATE);i++) {
+
+			for (i=0; i < cal.getActualMaximum(Calendar.DATE); i++) {
 				col=cal.get(Calendar.DAY_OF_WEEK);
-				
-				setValueAt(new String(""+(i+1)), row, col);
-				if (col==7) {
+
+				setValueAt(new String("" + (i + 1)), row, col);
+				if (col == 7) {
+					setValueAt(new String("" + cal.get(Calendar.WEEK_OF_YEAR)), row, 0);
 					row++;
 				}
-				
-				cal.add(Calendar.DATE,1);
+
+				cal.add(Calendar.DATE, 1);
 			}
-			// find offset
-			// scroll through the month
+
 		}
-		
+
 		public void addTableModelListener(javax.swing.event.TableModelListener l) {
 		}
-		
+
 		public Class getColumnClass(int columnIndex) {
 			return new String().getClass();
 		}
-		
+
 		public int getColumnCount() {
 			return 8;
 		}
-		
+
 		public String getColumnName(int columnIndex) {
 			//FIXME: add locale handling.
 			switch (columnIndex) {
@@ -156,26 +175,41 @@ public class PickDateTime extends javax.swing.JPanel {
 
 			return "FAULT!";
 		}
-		
+
 		public int getRowCount() {
 			return 6;
 		}
-		
+
 		public Object getValueAt(int rowIndex, int columnIndex) {
 			return data[rowIndex][columnIndex];
 		}
-		
+
 		public boolean isCellEditable(int rowIndex, int columnIndex) {
 			return false;
 		}
-		
+
 		public void removeTableModelListener(javax.swing.event.TableModelListener l) {
 		}
-		
+
 		public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
 			data[rowIndex][columnIndex]=(String)aValue;
 		}
-		
+
 	}
+
+    void prevMonth_mouseClicked(MouseEvent e) {
+
+    }
+}
+
+class PickDateTime_prevMonth_mouseAdapter extends java.awt.event.MouseAdapter {
+    PickDateTime adaptee;
+
+    PickDateTime_prevMonth_mouseAdapter(PickDateTime adaptee) {
+	this.adaptee = adaptee;
+    }
+    public void mouseClicked(MouseEvent e) {
+	adaptee.prevMonth_mouseClicked(e);
+    }
 }
 
