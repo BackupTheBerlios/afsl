@@ -105,7 +105,8 @@ public class FunctionaryFactory {
 			// FIXME: error checking, damnit!
 			st.executeUpdate();
 
-			ResultSet rs=st.getGeneratedKeys();
+			Statement st2=conn.createStatement();
+			ResultSet rs=st2.executeQuery("select currval('functionaries_id_seq')");
 			rs.next();
 
 			newFunctionary.setId(rs.getInt(1));

@@ -3,7 +3,7 @@
   <!--JBuilder Library Definition File-->
   <fullname>Postgresql</fullname>
   <class>
-    <path>[../../../../../usr/share/java/pg74.1jdbc3.jar]</path>
+    <path>[../../../../../usr/share/java/pg74.214.jdbc3.jar]</path>
   </class>
-  <lastmodsaved>1088886588197</lastmodsaved>
+  <lastmodsaved>1089023388380</lastmodsaved>
 </library>

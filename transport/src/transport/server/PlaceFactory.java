@@ -69,7 +69,8 @@ public class PlaceFactory {
 			// FIXME: error checking, damnit!
 			st.executeUpdate();
 
-			ResultSet rs=st.getGeneratedKeys();
+			Statement st2=conn.createStatement();
+			ResultSet rs=st2.executeQuery("select currval('places_id_seq')");
 			rs.next();
 
 			newPlace.setId(rs.getInt(1));

@@ -86,7 +86,8 @@ public class MobilePhoneFactory {
 			// FIXME: error checking, damnit!
 			st.executeUpdate();
 
-			ResultSet rs=st.getGeneratedKeys();
+			Statement st2=conn.createStatement();
+			ResultSet rs=st2.executeQuery("select currval('mobile_phones_id_seq')");
 			rs.next();
 
 			newPhone.setId(rs.getInt(1));

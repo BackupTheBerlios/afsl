@@ -61,7 +61,8 @@ public class RoleFactory {
 			// FIXME: error checking, damnit!
 			st.executeUpdate();
 
-			ResultSet rs=st.getGeneratedKeys();
+			Statement st2=conn.createStatement();
+			ResultSet rs=st2.executeQuery("select currval('roles_id_seq')");
 			rs.next();
 
 			newRole.setId(rs.getInt(1));

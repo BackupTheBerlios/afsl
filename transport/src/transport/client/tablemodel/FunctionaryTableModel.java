@@ -1,23 +1,24 @@
-package transport.client;
+package transport.client.tablemodel;
 
-import transport.logic.Role;
-import transport.server.RoleFactory;
+import transport.logic.Functionary;
+import transport.server.FunctionaryFactory;
 import javax.swing.JInternalFrame;
+import transport.client.FunctionaryEditor;
 
-public class RoleTableModel extends GenericTableModel {
-	private RoleFactory af;
-	private Role[] rowData;
+public class FunctionaryTableModel extends GenericTableModel {
+	private FunctionaryFactory af;
+	private Functionary[] rowData;
 
-	RoleTableModel() {
-		af=new RoleFactory();
-		rowData=af.getAllRoles();
+	public FunctionaryTableModel() {
+		af=new FunctionaryFactory();
+		rowData=af.getAllFunctionaries();
 	}
 
 	public JInternalFrame getEditor() {
-		return (JInternalFrame)new RoleEditor();
+		return (JInternalFrame)new FunctionaryEditor();
 	}
 
-	public Role getRowData(int row) {
+	public Functionary getRowData(int row) {
 		return rowData[row];
 	}
 
@@ -40,7 +41,7 @@ public class RoleTableModel extends GenericTableModel {
 		case 7:
 			return "Departure Time";
 		case 8:
-			return "No of Roles";
+			return "No of Functionaries";
 		case 9:
 			return "No of Crew";
 		case 10:
@@ -78,7 +79,7 @@ public class RoleTableModel extends GenericTableModel {
 		case 7:
 			return rowData[row].getDepartureTime();
 		case 8:
-			return new Integer(rowData[row].getNoOfRoles());
+			return new Integer(rowData[row].getNoOfFunctionarys());
 		case 9:
 			return new Integer(rowData[row].getNoOfCrew());
 		case 10:

@@ -1,23 +1,24 @@
-package transport.client;
+package transport.client.tablemodel;
 
-import transport.logic.MobilePhone;
-import transport.server.MobilePhoneFactory;
+import transport.logic.Artist;
+import transport.server.ArtistFactory;
 import javax.swing.JInternalFrame;
+import transport.client.ArtistEditor;
 
-public class MobilePhoneTableModel extends GenericTableModel {
-	private MobilePhoneFactory af;
-	private MobilePhone[] rowData;
+public class ArtistTableModel extends GenericTableModel {
+	private ArtistFactory af;
+	private Artist[] rowData;
 
-	MobilePhoneTableModel() {
-		af=new MobilePhoneFactory();
-		rowData=af.getAllMobilePhones();
+	public ArtistTableModel() {
+		af=new ArtistFactory();
+		rowData=af.getAllArtists();
 	}
 
 	public JInternalFrame getEditor() {
-		return (JInternalFrame)new MobilePhoneEditor();
+		return (JInternalFrame)new ArtistEditor();
 	}
 
-	public MobilePhone getRowData(int row) {
+	public Artist getRowData(int row) {
 		return rowData[row];
 	}
 
@@ -40,7 +41,7 @@ public class MobilePhoneTableModel extends GenericTableModel {
 		case 7:
 			return "Departure Time";
 		case 8:
-			return "No of MobilePhones";
+			return "No of Artists";
 		case 9:
 			return "No of Crew";
 		case 10:
@@ -59,7 +60,6 @@ public class MobilePhoneTableModel extends GenericTableModel {
 	}
 
 	public Object getValueAt(int row, int col) {
-		/*
 		switch (col) {
 		case 0:
 			return rowData[row].getName();
@@ -78,13 +78,12 @@ public class MobilePhoneTableModel extends GenericTableModel {
 		case 7:
 			return rowData[row].getDepartureTime();
 		case 8:
-			return new Integer(rowData[row].getNoOfFunctionaries());
+			return new Integer(rowData[row].getNoOfArtists());
 		case 9:
 			return new Integer(rowData[row].getNoOfCrew());
 		case 10:
 			return new Integer(rowData[row].getNoOfGuests());
 		}
-		*/
 
 		// FIXME: should not happen. Log error if it does.
 

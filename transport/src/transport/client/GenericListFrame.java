@@ -8,10 +8,10 @@ package transport.client;
 
 import transport.logic.*;
 import transport.server.*;
-import javax.swing.table.AbstractTableModel;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import transport.client.tablemodel.*;
 
 /**
  *
@@ -28,8 +28,10 @@ public class GenericListFrame extends javax.swing.JInternalFrame {
 		jbInit();
 	}
 
-	private AbstractTableModel newTableModel() {
-		return null;
+	private void editCurrent() {
+	}
+
+	private void removeCurrent() {
 	}
 
 	/** This method is called from within the constructor to
@@ -41,6 +43,11 @@ public class GenericListFrame extends javax.swing.JInternalFrame {
 
 		artistTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		artistTable.setRowSelectionAllowed(true);
+		artistTable.addKeyListener(new java.awt.event.KeyAdapter() {
+			public void keyTyped(KeyEvent e) {
+				artistTable_keyTyped(e);
+			}
+		});
 		artistTable.setCellSelectionEnabled(false);
 		artistTable.setColumnSelectionAllowed(false);
 
@@ -67,12 +74,15 @@ public class GenericListFrame extends javax.swing.JInternalFrame {
 		});
 		editButton.setMnemonic('E');
 
-		cancelButton.setText("Cancel");
+		cancelButton.setText("Close");
 		cancelButton.setMnemonic('C');
 
-		getContentPane().add(jScrollPane1, java.awt.BorderLayout.CENTER);
+		removeButton.setMnemonic('R');
+		removeButton.setText("Remove");
+        getContentPane().add(jScrollPane1, java.awt.BorderLayout.CENTER);
 		this.getContentPane().add(jPanel1, BorderLayout.SOUTH);
 		jPanel1.add(editButton, null);
+		jPanel1.add(removeButton, null);
 		jPanel1.add(cancelButton, null);
 
 		pack();
@@ -80,7 +90,9 @@ public class GenericListFrame extends javax.swing.JInternalFrame {
 
 	private void artistTableMouseClicked(java.awt.event.MouseEvent evt) {
 		if (evt.getClickCount() == 2) {
-		//ArtistEditor ae=new ArtistEditor(artistTable.getModel().getRowData(artistTable.getSelectedRow()));
+			//ArtistEditor ae=new ArtistEditor(artistTable.getModel().getRowData(artistTable.getSelectedRow()));
+			JInternalFrame jit=tableModel.getEditor();
+
 		}
 	}
 
@@ -90,10 +102,19 @@ public class GenericListFrame extends javax.swing.JInternalFrame {
 	JPanel jPanel1=new JPanel();
 	JButton editButton=new JButton();
 	JButton cancelButton=new JButton();
+	JButton removeButton=new JButton();
 
-  void editButton_actionPerformed(ActionEvent e) {
+	void editButton_actionPerformed(ActionEvent e) {
+		editCurrent();
+	}
 
-  }
-	// End of variables declaration//GEN-END:variables
-
+	void artistTable_keyTyped(KeyEvent e) {
+		if (e.getKeyCode() == KeyEvent.VK_DELETE) {
+			removeCurrent();
+		} else if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+			editCurrent();
+		}
+	}
 }
+
+// End of variables declaration//GEN-END:variables

@@ -1,5 +1,6 @@
-package transport.client;
+package transport.client.tablemodel;
 
+import transport.client.PlaceEditor;
 import transport.logic.Place;
 import transport.server.PlaceFactory;
 import javax.swing.JInternalFrame;
@@ -8,7 +9,7 @@ public class PlaceTableModel extends GenericTableModel {
 	private PlaceFactory af;
 	private Place[] rowData;
 
-	PlaceTableModel() {
+	public PlaceTableModel() {
 		af=new PlaceFactory();
 		rowData=af.getAllPlaces();
 	}

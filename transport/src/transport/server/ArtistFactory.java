@@ -121,7 +121,8 @@ public class ArtistFactory {
 			st.setString(12,newArtist.getExtraInfo());
 			st.executeUpdate();
 
-			ResultSet rs=st.getGeneratedKeys();
+			Statement st2=conn.createStatement();
+			ResultSet rs=st2.executeQuery("select currval('artists_id_seq')");
 			rs.next();
 
 			newArtist.setId(rs.getInt(1));

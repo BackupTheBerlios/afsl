@@ -1,23 +1,24 @@
-package transport.client;
+package transport.client.tablemodel;
 
-import transport.logic.*;
-import transport.server.TransportFactory;
+import transport.logic.MobilePhone;
+import transport.server.MobilePhoneFactory;
 import javax.swing.JInternalFrame;
+import transport.client.MobilePhoneEditor;
 
-public class TransportTableModel extends GenericTableModel {
-	private TransportFactory tf;
-	private Transport[] rowData;
+public class MobilePhoneTableModel extends GenericTableModel {
+	private MobilePhoneFactory af;
+	private MobilePhone[] rowData;
 
-	TransportTableModel() {
-		tf=new TransportFactory();
-		rowData=tf.getAllTransports();
+	public MobilePhoneTableModel() {
+		af=new MobilePhoneFactory();
+		rowData=af.getAllMobilePhones();
 	}
 
 	public JInternalFrame getEditor() {
-		return (JInternalFrame)new TransportEditor();
+		return (JInternalFrame)new MobilePhoneEditor();
 	}
 
-	public Transport getRowData(int row) {
+	public MobilePhone getRowData(int row) {
 		return rowData[row];
 	}
 
@@ -40,7 +41,7 @@ public class TransportTableModel extends GenericTableModel {
 		case 7:
 			return "Departure Time";
 		case 8:
-			return "No of Transports";
+			return "No of MobilePhones";
 		case 9:
 			return "No of Crew";
 		case 10:
@@ -59,34 +60,14 @@ public class TransportTableModel extends GenericTableModel {
 	}
 
 	public Object getValueAt(int row, int col) {
+		/*
 		switch (col) {
 		case 0:
-			Artist[] a=rowData[row].getArtists();
-			String s=new String();
-			for (int i=0;i<a.length-1;i++) {
-				s=s + a.toString() + ", ";
-			}
-			s=s + a[a.length-1];
-
-			return a;
+			return rowData[row].getName();
 		case 1:
-			Car[] c=rowData[row].getCars();
-			String s2=new String();
-			for (int i=0;i<c.length-1;i++) {
-				s2=s2 + c.toString() + ", ";
-			}
-			s2=s2 + c[c.length-1];
-
-			return s2;
+			return rowData[row].getContactName();
 		case 2:
-			Functionary[] f=rowData[row].getFunctionaries();
-			String s3=new String();
-			for (int i=0;i<f.length-1;i++) {
-				s3=s3+f.toString() + ", ";
-			}
-			s3=s3 + f[f.length-1];
-			return s3;
-			/*
+			return rowData[row].getTelephoneNo();
 		case 3:
 			return rowData[row].getArrival();
 		case 4:
@@ -98,14 +79,13 @@ public class TransportTableModel extends GenericTableModel {
 		case 7:
 			return rowData[row].getDepartureTime();
 		case 8:
-			return new Integer(rowData[row].getNoOfTransports());
+			return new Integer(rowData[row].getNoOfFunctionaries());
 		case 9:
 			return new Integer(rowData[row].getNoOfCrew());
 		case 10:
 			return new Integer(rowData[row].getNoOfGuests());
-				*/
 		}
-
+		*/
 
 		// FIXME: should not happen. Log error if it does.
 

@@ -12,7 +12,7 @@ public class CarFactory {
 	public CarFactory() {
 		logger=Logger.getLogger("transport.server.CarFactory");
 	}
-	
+
 	protected static Car[] getCarsForTransport(int transportId) throws SQLException {
 		ArrayList a=new ArrayList();
 
@@ -30,7 +30,7 @@ public class CarFactory {
 
 		return (Car[])a.toArray();
 	}
-	
+
 	public Car[] getCarsFreeBetween(java.util.Date from, java.util.Date to) {
 		ArrayList a=new ArrayList();
 
@@ -54,10 +54,10 @@ public class CarFactory {
 
 		return (Car[])a.toArray();
 	}
-	
+
 	public Car getCar(int id) {
 		Car c=null;
-		
+
 		try {
 			Connection conn=ConnectionFactory.getConnection();
 			PreparedStatement st=conn.prepareStatement("select * from cars where id = ?");
@@ -105,11 +105,12 @@ public class CarFactory {
 			// FIXME: error checking, damnit!
 			st.executeUpdate();
 
-			ResultSet rs=st.getGeneratedKeys();
+			Statement st2=conn.createStatement();
+			ResultSet rs=st2.executeQuery("select currval('cars_id_seq')");
 			rs.next();
 
 			newCar.setId(rs.getInt(1));
-			
+
 			conn.close();
 		} catch (SQLException e) {
 			logger.log(Level.SEVERE, e.getMessage(), e);

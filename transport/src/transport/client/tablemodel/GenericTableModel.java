@@ -1,4 +1,4 @@
-package transport.client;
+package transport.client.tablemodel;
 
 import javax.swing.JInternalFrame;
 import javax.swing.table.AbstractTableModel;

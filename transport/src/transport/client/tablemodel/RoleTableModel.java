@@ -1,23 +1,24 @@
-package transport.client;
+package transport.client.tablemodel;
 
-import transport.logic.Car;
-import transport.server.CarFactory;
+import transport.logic.Role;
+import transport.server.RoleFactory;
 import javax.swing.JInternalFrame;
+import transport.client.RoleEditor;
 
-public class CarTableModel extends GenericTableModel {
-	private CarFactory af;
-	private Car[] rowData;
+public class RoleTableModel extends GenericTableModel {
+	private RoleFactory af;
+	private Role[] rowData;
 
-	CarTableModel() {
-		af=new CarFactory();
-		rowData=af.getAllCars();
+	public RoleTableModel() {
+		af=new RoleFactory();
+		rowData=af.getAllRoles();
 	}
 
 	public JInternalFrame getEditor() {
-		return (JInternalFrame)new CarEditor();
+		return (JInternalFrame)new RoleEditor();
 	}
 
-	public Car getRowData(int row) {
+	public Role getRowData(int row) {
 		return rowData[row];
 	}
 
@@ -40,7 +41,7 @@ public class CarTableModel extends GenericTableModel {
 		case 7:
 			return "Departure Time";
 		case 8:
-			return "No of Cars";
+			return "No of Roles";
 		case 9:
 			return "No of Crew";
 		case 10:
@@ -78,7 +79,7 @@ public class CarTableModel extends GenericTableModel {
 		case 7:
 			return rowData[row].getDepartureTime();
 		case 8:
-			return new Integer(rowData[row].getNoOfCars());
+			return new Integer(rowData[row].getNoOfRoles());
 		case 9:
 			return new Integer(rowData[row].getNoOfCrew());
 		case 10:
