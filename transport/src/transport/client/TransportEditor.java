@@ -164,6 +164,8 @@ public class TransportEditor extends GenericEditor {
 	 * @param o Object
 	 */
 	public void edit(Object o) {
+		transport=(Transport)o;
+
 		if (transport.getId() == -1) {
 			this.setTitle("Add a transport");
 			okButton.setText("New");
@@ -191,7 +193,7 @@ public class TransportEditor extends GenericEditor {
 	 * editNew
 	 */
 	public void editNew() {
-		edit(null);
+		edit(new Transport());
 	}
 
   void cancelButton_actionPerformed(ActionEvent e) {

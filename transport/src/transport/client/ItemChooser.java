@@ -55,6 +55,12 @@ public void refresh() {
 			for (int i=0; i < a.length; i++) {
 				listModel.addElement(a[i]);
 			}
+		} else if (type instanceof Place) {
+			PlaceFactory pf=new PlaceFactory();
+			Place[] p=pf.getAllPlaces();
+			for (int i=0;i<p.length;i++) {
+				listModel.addElement(p[i]);
+			}
 		} else {
 			throw new NullPointerException(
 				"Trying to ItemChoose something which doesn't exist!");
