@@ -50,6 +50,10 @@ public class GenericListFrame extends javax.swing.JInternalFrame {
 	 * initialize the form.
 	 */
 	private void jbInit() {
+          ImageIcon frameIcon = new ImageIcon(this.getClass().getResource(
+              "../pics/miniAF.png"));
+          this.setFrameIcon(frameIcon);
+
 		jScrollPane1=new javax.swing.JScrollPane();
 		objectTable=new javax.swing.JTable();
 
