@@ -242,48 +242,56 @@ public class MainFrame extends javax.swing.JFrame {
 
 	private void TransportEditMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TransportEditMenuItemActionPerformed
 		GenericListFrame glf=new GenericListFrame(new TransportTableModel());
+                glf.setTitle("Transports");
 		desktopPane.add(glf);
 		glf.show();
 	}//GEN-LAST:event_TransportEditMenuItemActionPerformed
 
 	private void RoleEditMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RoleEditMenuItemActionPerformed
 		GenericListFrame rf=new GenericListFrame(new RoleTableModel());
+                rf.setTitle("Roles");
 		desktopPane.add(rf);
 		rf.show();
 	}//GEN-LAST:event_RoleEditMenuItemActionPerformed
 
 	private void PlaceEditMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PlaceEditMenuItemActionPerformed
 		GenericListFrame pf=new GenericListFrame(new PlaceTableModel());
+                pf.setTitle("Places");
 		desktopPane.add(pf);
 		pf.show();
 	}//GEN-LAST:event_PlaceEditMenuItemActionPerformed
 
 	private void MobilePhoneEditMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MobilePhoneEditMenuItemActionPerformed
 		GenericListFrame mpf=new GenericListFrame(new MobilePhoneTableModel());
+                mpf.setTitle("Mobile Phones");
 		desktopPane.add(mpf);
 		mpf.show();
 	}//GEN-LAST:event_MobilePhoneEditMenuItemActionPerformed
 
 	private void FunctionaryEditMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FunctionaryEditMenuItemActionPerformed
 		GenericListFrame ff=new GenericListFrame(new FunctionaryTableModel());
+                ff.setTitle("Functionaries");
 		desktopPane.add(ff);
 		ff.show();
 	}//GEN-LAST:event_FunctionaryEditMenuItemActionPerformed
 
 	private void CarEditMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CarEditMenuItemActionPerformed
 		GenericListFrame cf=new GenericListFrame(new CarTableModel());
+                cf.setTitle("Cars");
 		desktopPane.add(cf);
 		cf.show();
 	}//GEN-LAST:event_CarEditMenuItemActionPerformed
 
 	private void TransportAddMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TransportAddMenuItemActionPerformed
 		TransportEditor te=new TransportEditor();
+
 		desktopPane.add(te);
 		te.show();
 	}//GEN-LAST:event_TransportAddMenuItemActionPerformed
 
 	private void RoleAddMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RoleAddMenuItemActionPerformed
 		RoleEditor re=new RoleEditor();
+
 		desktopPane.add(re);
 		re.show();
 	}//GEN-LAST:event_RoleAddMenuItemActionPerformed
@@ -314,6 +322,7 @@ public class MainFrame extends javax.swing.JFrame {
 
 	private void ArtistEditMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ArtistEditMenuItemActionPerformed
 		GenericListFrame af=new GenericListFrame(new ArtistTableModel());
+                af.setTitle("Artists");
 		desktopPane.add(af);
 		af.show();
 	}//GEN-LAST:event_ArtistEditMenuItemActionPerformed
