@@ -20,10 +20,6 @@ public class TransportHelper {
   public TransportHelper() {
   }
 
-  public static String[] getDirections(){
-    return new String[]{"N/A","Airport-Festival", "Airport-Hotel", "Festival-Hotel", "Festival-Airport", "Hotel-Festival", "Hotel-Airport"};
-  }
-
   public static byte[] getBytesFromFile(File file) throws IOException {
         InputStream is = new FileInputStream(file);
 

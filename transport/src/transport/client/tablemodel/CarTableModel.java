@@ -5,6 +5,7 @@ import transport.logic.*;
 import transport.server.*;
 import transport.logic.Car;
 import java.util.ArrayList;
+import transport.client.editor.*;
 
 public class CarTableModel extends GenericTableModel {
 	private CarFactory af;

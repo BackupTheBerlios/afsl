@@ -106,13 +106,14 @@ public class MultipleChooser extends javax.swing.JPanel {
 			chooser=new ItemChooser(type, this);
 			contentPane.add(chooser);
 			chooserWindow.pack();
-			Point p=this.getLocationOnScreen();
-			chooserWindow.setBounds((int)p.getX(),
-									(int)p.getY() + this.getHeight(),
-									300, 300);
 		} else {
 			chooser.refresh();
 		}
+
+		Point p=this.getLocationOnScreen();
+		chooserWindow.setBounds((int)p.getX(),
+								(int)p.getY() + this.getHeight(),
+								300, 300);
 
 		chooserWindow.setVisible(!chooserWindow.isVisible());
 	}

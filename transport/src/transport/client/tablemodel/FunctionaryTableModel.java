@@ -5,6 +5,7 @@ import transport.logic.*;
 import transport.server.*;
 import transport.logic.Functionary;
 import java.util.ArrayList;
+import transport.client.editor.*;
 
 public class FunctionaryTableModel extends GenericTableModel {
 	private FunctionaryFactory af;

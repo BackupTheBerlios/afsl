@@ -16,7 +16,8 @@ public class Transport extends LogicItem {
 	private Functionary[] functionaries;
 	private int distance;
 	private String miscInfo;
-        private String direction;
+	private Direction direction;
+
 	public Transport(int id,
 					 Date startTime,
 					 Date returnTime,
@@ -29,7 +30,7 @@ public class Transport extends LogicItem {
 					 Functionary[] functionaries,
 					 int distance,
 					 String miscInfo,
-                                         String direction) {
+					 Direction direction) {
 		this.id=id;
 		this.startTime=startTime;
 		this.returnTime=returnTime;
@@ -42,7 +43,7 @@ public class Transport extends LogicItem {
 		this.functionaries=functionaries;
 		this.distance=distance;
 		this.miscInfo=miscInfo;
-                this.direction=direction;
+		this.direction=direction;
 	}
 
 	public Transport() {
@@ -52,7 +53,7 @@ public class Transport extends LogicItem {
 		mobilePhones=new MobilePhone[0];
 		artists=new Artist[0];
 		functionaries=new Functionary[0];
-                direction="N/A";
+		direction=new Direction();
 	}
 
 	/**
@@ -340,124 +341,142 @@ public class Transport extends LogicItem {
 	public void setMobilePhones(MobilePhone[] mobilePhones) {
 		this.mobilePhones=mobilePhones;
 	}
-        /**
-         * Get direction.
-         *
-         * @return direction as String.
-         */
-        public String getDirection() {
-                return direction;
-        }
-
-        /**
-         * Set direction.
-         *
-         * @param direction the value to set.
-         */
-        public void setDirection(String direction) {
-                this.direction=direction;
-        }
-
-        public String toHTML() {
-         String html="<html>\n";
-         html = html +"<head>\n";
-         html = html +"<LINK href=http://www.pal.pp.se/~jessica/jessica.css rel=stylesheet type=text/css>\n";
-         html = html +"</head>\n";
-         html = html +"<body>\n";
-
-         html = html +"<TABLE BORDER=0>\n";
-         html = html +"<TR><TD valign=top><img src='http://www.pal.pp.se/~jessica/festival.png'></TD>\n";
-         html = html +"<TD valign=top>\n";
 
 
-         DateFormat df = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.SHORT, new Locale("sv"));
-         String ActualReturnTime = "N/A";
-         String StartTime = "N/A";
-         String ReturnTime = "N/A";
-         if (getActualReturnTime() != null) {
-           ActualReturnTime = df.format(getActualReturnTime());
-         }
-         if (getReturnTime() != null) {
-           ReturnTime = df.format(getReturnTime());
-         }
-         if (getStartTime() != null) {
-           StartTime = df.format(getStartTime());
-         }
-         if (getInternal()){
-           html = html+ "\n<H3>INTERNAL TRANSPORT " + getId()+" " + getDirection()+ "<br>" +StartTime +
-             "</H3>\n";
-         }
-         else{
-           html = html+"\n<H3>TRANSPORT " + getId()+" " + getDirection() +"<br>" + StartTime+
-             "</H3>\n";
-         }
 
 
-         html = html + "</TD></TR>\n";
-         html = html + "</TABLE>\n";
-         html = html + "<hr>\n";
 
-         html = html +"<TABLE BORDER=0>\n";
-         html = html +"<TR><TD valign=top><b>Artists:</b></TD><TD valign=top>"+  getHTMLArtists()+"</TD></TR>\n";
-         html = html +"<TR><TD valign=top><b>Cars:</b></TD><TD valign=top>"+ getHTMLCars()+"</TD></TR>\n";
-         html = html +"<TR><TD valign=top><b>Functionaries:</b></TD><TD valign=top>"+ getHTMLFunctionaries()+"</TD></TR>\n";
-         html = html +"<TR><TD valign=top><b>Waypoints:</b></TD><TD valign=top>"+ getHTMLWaypoints()+"</TD></TR>\n";
-         html = html +"<TR><TD valign=top><b>Mobile Phones:</b></TD><TD valign=top>"+ getHTMLMobilePhones() +"</TD></TR>\n";
-         html = html +"<TR><TD valign=top><b>Start Time:</b></TD><TD valign=top>"+ StartTime+"</TD></TR>\n";
-         html = html +"<TR><TD valign=top><b>Return Time:</b></TD><TD valign=top>"+ ReturnTime+"</TD></TR>\n";
-         html = html +"<TR><TD valign=top><b>Distance:</b></TD><TD valign=top>"+ getDistance()+"</TD></TR>\n";
+	/**
+	 * Get direction.
+	 *
+	 * @return direction as String.
+	 */
+	public Direction getDirection() {
+		return direction;
+	}
 
-         html = html +"<TR><TD valign=top><b>Actual Return Time:</b></TD><TD valign=top>"+ActualReturnTime +"</TD></TR>\n";
-         html = html +"<TR><TD valign=top><b>Misc Info:</b></TD><TD valign=top>"+ getMiscInfo()+"</TD></TR>\n";
-         html = html +"</TABLE>\n";
+	/**
+	 * Set direction.
+	 *
+	 * @param direction the value to set.
+	 */
+	public void setDirection(Direction direction) {
+		this.direction=direction;
+	}
 
-         html = html + "</body></html>";
-         return html;
-       }
+	public String toHTML() {
+		String html="<html>\n";
+		html=html + "<head>\n";
+		html=html + "<LINK href=http://www.pal.pp.se/~jessica/jessica.css rel=stylesheet type=text/css>\n";
+		html=html + "</head>\n";
+		html=html + "<body>\n";
 
-       public String getHTMLFunctionaries(){
-         String html="";
-         Functionary[] allFunctionaries=getFunctionaries();
-        for (int i = 0; i < allFunctionaries.length; i++) {
-          html=html+allFunctionaries[i].toHTML()+"\n<br>\n";
-        }
-        return html;
-       }
-       public String getHTMLCars(){
-        String html="";
-        Car[] allCars=getCars();
-       for (int i = 0; i < allCars.length; i++) {
-         html=html+allCars[i].toHTML()+"\n<br>\n";
-       }
-       return html;
-      }
+		html=html + "<TABLE BORDER=0>\n";
+		html=html + "<TR><TD valign=top><img src='http://www.pal.pp.se/~jessica/festival.png'></TD>\n";
+		html=html + "<TD valign=top>\n";
 
-      public String getHTMLArtists() {
-        String html = "";
-        Artist[] allArtists = getArtists();
-        for (int i = 0; i < allArtists.length; i++) {
-          html = html+allArtists[i].toHTML()+"\n<br>\n";
-        }
-        return html;
-      }
+		DateFormat df=DateFormat.getDateTimeInstance(DateFormat.LONG,
+			DateFormat.SHORT, new Locale("sv"));
+		String ActualReturnTime="N/A";
+		String StartTime="N/A";
+		String ReturnTime="N/A";
+		if (getActualReturnTime() != null) {
+			ActualReturnTime=df.format(getActualReturnTime());
+		}
+		if (getReturnTime() != null) {
+			ReturnTime=df.format(getReturnTime());
+		}
+		if (getStartTime() != null) {
+			StartTime=df.format(getStartTime());
+		}
+		if (getInternal()) {
+			html=html + "\n<H3>INTERNAL TRANSPORT " + getId() + " " +
+				getDirection() + "<br>" + StartTime +
+				"</H3>\n";
+		} else {
+			html=html + "\n<H3>TRANSPORT " + getId() + " " + getDirection() +
+				"<br>" + StartTime +
+				"</H3>\n";
+		}
 
-      public String getHTMLWaypoints() {
-        String html = "";
-        TransportWaypoint[] allWaypoints = getWaypoints();
-        for (int i = 0; i < allWaypoints.length; i++) {
-          html = html + allWaypoints[i].toHTML()+"\n<br>\n";
-        }
-        return html;
-      }
+		html=html + "</TD></TR>\n";
+		html=html + "</TABLE>\n";
+		html=html + "<hr>\n";
 
-      public String getHTMLMobilePhones() {
-        String html = "";
-        MobilePhone[] allPhones =  getMobilePhones();
-        for (int i = 0; i < allPhones.length; i++) {
-          html = html + allPhones[i].toHTML()+"\n<br>\n";
-        }
-        return html;
-      }
+		html=html + "<TABLE BORDER=0>\n";
+		html=html + "<TR><TD valign=top><b>Artists:</b></TD><TD valign=top>" +
+			getHTMLArtists() + "</TD></TR>\n";
+		html=html + "<TR><TD valign=top><b>Cars:</b></TD><TD valign=top>" +
+			getHTMLCars() + "</TD></TR>\n";
+		html=html +
+			"<TR><TD valign=top><b>Functionaries:</b></TD><TD valign=top>" +
+			getHTMLFunctionaries() + "</TD></TR>\n";
+		html=html + "<TR><TD valign=top><b>Waypoints:</b></TD><TD valign=top>" +
+			getHTMLWaypoints() + "</TD></TR>\n";
+		html=html +
+			"<TR><TD valign=top><b>Mobile Phones:</b></TD><TD valign=top>" +
+			getHTMLMobilePhones() + "</TD></TR>\n";
+		html=html + "<TR><TD valign=top><b>Start Time:</b></TD><TD valign=top>" +
+			StartTime + "</TD></TR>\n";
+		html=html +
+			"<TR><TD valign=top><b>Return Time:</b></TD><TD valign=top>" +
+			ReturnTime + "</TD></TR>\n";
+		html=html + "<TR><TD valign=top><b>Distance:</b></TD><TD valign=top>" +
+			getDistance() + "</TD></TR>\n";
 
+		html=html +
+			"<TR><TD valign=top><b>Actual Return Time:</b></TD><TD valign=top>" +
+			ActualReturnTime + "</TD></TR>\n";
+		html=html + "<TR><TD valign=top><b>Misc Info:</b></TD><TD valign=top>" +
+			getMiscInfo() + "</TD></TR>\n";
+		html=html + "</TABLE>\n";
 
+		html=html + "</body></html>";
+		return html;
+	}
+
+	public String getHTMLFunctionaries() {
+		String html="";
+		Functionary[] allFunctionaries=getFunctionaries();
+		for (int i=0; i < allFunctionaries.length; i++) {
+			html=html + allFunctionaries[i].toHTML() + "\n<br>\n";
+		}
+		return html;
+	}
+
+	public String getHTMLCars() {
+		String html="";
+		Car[] allCars=getCars();
+		for (int i=0; i < allCars.length; i++) {
+			html=html + allCars[i].toHTML() + "\n<br>\n";
+		}
+		return html;
+	}
+
+	public String getHTMLArtists() {
+		String html="";
+		Artist[] allArtists=getArtists();
+		for (int i=0; i < allArtists.length; i++) {
+			html=html + allArtists[i].toHTML() + "\n<br>\n";
+		}
+		return html;
+	}
+
+	public String getHTMLWaypoints() {
+		String html="";
+		TransportWaypoint[] allWaypoints=getWaypoints();
+		for (int i=0; i < allWaypoints.length; i++) {
+			html=html + allWaypoints[i].toHTML() + "\n<br>\n";
+		}
+		return html;
+	}
+
+	public String getHTMLMobilePhones() {
+		String html="";
+		MobilePhone[] allPhones=getMobilePhones();
+		for (int i=0; i < allPhones.length; i++) {
+			html=html + allPhones[i].toHTML() + "\n<br>\n";
+		}
+		return html;
+	}
 }

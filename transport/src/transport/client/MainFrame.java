@@ -13,6 +13,7 @@ import java.util.ArrayList;
 
 import transport.client.tablemodel.*;
 import transport.logic.LogicItem;
+import transport.client.editor.*;
 
 /**
  *

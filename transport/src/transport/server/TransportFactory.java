@@ -22,12 +22,23 @@ public class TransportFactory {
   private void calcDistance(Transport t, Connection conn) {
   }
 
+  private Transport newTransport(ResultSet rs, Connection conn) throws SQLException {
+	  return newTransport(rs.getInt(1),
+					   rs.getTimestamp(2),
+					   rs.getTimestamp(3),
+					   rs.getTimestamp(4),
+					   rs.getBoolean(5),
+					   rs.getString(6),
+					   rs.getInt(7),
+					   conn);
+}
+
   private Transport newTransport(int id, java.util.Date startTime,
                                  java.util.Date returnTime,
                                  java.util.Date actualReturnTime,
                                  boolean internal,
                                  String miscInfo,
-                                 String direction,
+                                 int direction,
                                  Connection conn) throws SQLException {
     Transport t;
 
@@ -45,7 +56,7 @@ public class TransportFactory {
                       FunctionaryFactory.getFunctionariesForTransport(id),
                       0,
                       miscInfo,
-                      direction);
+                      (new DirectionFactory()).getDirection(direction));
 
     calcDistance(t, conn);
 
@@ -69,13 +80,7 @@ public class TransportFactory {
       ResultSet rs = st.executeQuery();
       rs.first();
 
-      t = newTransport(rs.getInt(1),
-                       rs.getTimestamp(2),
-                       rs.getTimestamp(3),
-                       rs.getTimestamp(4),
-                       rs.getBoolean(5),
-                       rs.getString(6),
-                       rs.getString(7),
+      t = newTransport(rs,
                        conn);
 
       ConnectionFactory.closeConnection(conn);
@@ -101,7 +106,7 @@ public class TransportFactory {
       while (rs.next()) {
         a.add(newTransport(rs.getInt(1), rs.getTimestamp(2), rs.getTimestamp(3),
                            rs.getTimestamp(4),
-                           rs.getBoolean(5), rs.getString(6), rs.getString(7),
+                           rs.getBoolean(5), rs.getString(6), rs.getInt(7),
                            conn));
       }
       ConnectionFactory.closeConnection(conn);
@@ -203,7 +208,7 @@ public class TransportFactory {
                  new java.sql.Timestamp(newTransport.getReturnTime().getTime()));
       st.setBoolean(3, newTransport.getInternal());
       st.setString(4, newTransport.getMiscInfo());
-      st.setString(5, newTransport.getDirection());
+      st.setInt(5, newTransport.getDirection().getId());
 
       // FIXME: error checking, damnit!
       st.executeUpdate();
@@ -306,7 +311,7 @@ public class TransportFactory {
                  new java.sql.Timestamp(updatedTransport.getReturnTime().getTime()));
       st.setBoolean(3, updatedTransport.getInternal());
       st.setString(4, updatedTransport.getMiscInfo());
-      st.setString(5, updatedTransport.getDirection());
+      st.setInt(5, updatedTransport.getDirection().getId());
       st.setInt(6, updatedTransport.getId());
 
       st.executeUpdate();
@@ -355,9 +360,7 @@ public class TransportFactory {
       st.setInt(1, id);
       ResultSet rs = st.executeQuery();
       while (rs.next()) {
-        a.add(newTransport(rs.getInt(1), rs.getTimestamp(2), rs.getTimestamp(3),
-                           rs.getTimestamp(4),
-                           rs.getBoolean(5), rs.getString(6), rs.getString(7),
+        a.add(newTransport(rs,
                            conn));
       }
       ConnectionFactory.closeConnection(conn);
@@ -383,9 +386,7 @@ public class TransportFactory {
       st.setInt(1, id);
       ResultSet rs = st.executeQuery();
       while (rs.next()) {
-        a.add(newTransport(rs.getInt(1), rs.getTimestamp(2), rs.getTimestamp(3),
-                           rs.getTimestamp(4),
-                           rs.getBoolean(5), rs.getString(6), rs.getString(7),
+        a.add(newTransport(rs,
                            conn));
       }
       ConnectionFactory.closeConnection(conn);
@@ -410,9 +411,7 @@ public class TransportFactory {
       st.setInt(1, id);
       ResultSet rs = st.executeQuery();
       while (rs.next()) {
-        a.add(newTransport(rs.getInt(1), rs.getTimestamp(2), rs.getTimestamp(3),
-                           rs.getTimestamp(4),
-                           rs.getBoolean(5), rs.getString(6), rs.getString(7),
+        a.add(newTransport(rs,
                            conn));
       }
       ConnectionFactory.closeConnection(conn);
@@ -438,9 +437,7 @@ public class TransportFactory {
       st.setInt(1, id);
       ResultSet rs = st.executeQuery();
       while (rs.next()) {
-        a.add(newTransport(rs.getInt(1), rs.getTimestamp(2), rs.getTimestamp(3),
-                           rs.getTimestamp(4),
-                           rs.getBoolean(5), rs.getString(6), rs.getString(7),
+        a.add(newTransport(rs,
                            conn));
       }
       ConnectionFactory.closeConnection(conn);
@@ -466,9 +463,7 @@ public class TransportFactory {
       st.setInt(1, id);
       ResultSet rs = st.executeQuery();
       while (rs.next()) {
-        a.add(newTransport(rs.getInt(1), rs.getTimestamp(2), rs.getTimestamp(3),
-                           rs.getTimestamp(4),
-                           rs.getBoolean(5), rs.getString(6), rs.getString(7),
+        a.add(newTransport(rs,
                            conn));
       }
       ConnectionFactory.closeConnection(conn);
@@ -493,10 +488,7 @@ public class TransportFactory {
       st.setInt(1, id);
       ResultSet rs = st.executeQuery();
       while (rs.next()) {
-        a.add(newTransport(rs.getInt(1), rs.getTimestamp(2), rs.getTimestamp(3),
-                           rs.getTimestamp(4),
-                           rs.getBoolean(5), rs.getString(6), rs.getString(7),
-                           conn));
+        a.add(newTransport(rs, conn));
       }
       ConnectionFactory.closeConnection(conn);
     }
@@ -520,9 +512,7 @@ public class TransportFactory {
       st.setInt(1, id);
       ResultSet rs = st.executeQuery();
       while (rs.next()) {
-        a.add(newTransport(rs.getInt(1), rs.getTimestamp(2), rs.getTimestamp(3),
-                           rs.getTimestamp(4),
-                           rs.getBoolean(5), rs.getString(6), rs.getString(7),
+        a.add(newTransport(rs,
                            conn));
       }
       ConnectionFactory.closeConnection(conn);
@@ -548,9 +538,7 @@ public class TransportFactory {
       st.setInt(1, id);
       ResultSet rs = st.executeQuery();
       while (rs.next()) {
-        a.add(newTransport(rs.getInt(1), rs.getTimestamp(2), rs.getTimestamp(3),
-                           rs.getTimestamp(4),
-                           rs.getBoolean(5), rs.getString(6), rs.getString(7),
+        a.add(newTransport(rs,
                            conn));
       }
       ConnectionFactory.closeConnection(conn);

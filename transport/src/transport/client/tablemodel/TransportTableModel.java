@@ -4,6 +4,7 @@ import transport.client.*;
 import transport.logic.*;
 import transport.server.*;
 import java.util.ArrayList;
+import transport.client.editor.*;
 
 public class TransportTableModel extends GenericTableModel {
 	private TransportFactory tf;

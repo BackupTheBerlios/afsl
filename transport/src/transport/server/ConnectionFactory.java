@@ -36,6 +36,16 @@ public class ConnectionFactory {
 	 * FIXME: Rule-based and not fixed.
 	 */
 
+	private static boolean validate(Connection conn) {
+		try {
+			conn.getMetaData();
+		} catch (Exception e) {
+			return false;
+		}
+
+		return true;
+	}
+
 	public static synchronized Connection getConnection() throws SQLException {
 		if (!init) {
 			initFactory();
@@ -52,7 +62,7 @@ public class ConnectionFactory {
 			Connection conn = (Connection) connections.get(0);
 			connections.remove(0);
 
-			if (conn.isClosed()) {
+			if (!validate(conn)) {
 				conn = DriverManager.getConnection(
 					"jdbc:postgresql://localhost/transport", "ola", "passwd");
 			}

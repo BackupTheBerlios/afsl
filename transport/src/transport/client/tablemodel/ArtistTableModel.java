@@ -5,6 +5,7 @@ import transport.logic.*;
 import transport.server.*;
 import transport.logic.Artist;
 import java.util.ArrayList;
+import transport.client.editor.*;
 
 public class ArtistTableModel extends GenericTableModel {
 	private ArtistFactory af;

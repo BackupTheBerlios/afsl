@@ -1,10 +1,10 @@
 package transport.client.tablemodel;
 
 import javax.swing.table.*;
-import transport.client.GenericEditor;
+import transport.client.editor.GenericEditor;
 import transport.server.TransportFactory;
 import transport.logic.Transport;
-import transport.client.TransportEditor;
+import transport.client.editor.TransportEditor;
 import transport.logic.LogicItem;
 
 /**

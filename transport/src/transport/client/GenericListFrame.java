@@ -16,6 +16,7 @@ import transport.logic.LogicItem;
 import transport.logic.Transport;
 import transport.logic.TransportHelper;
 import java.io.IOException;
+import transport.client.editor.*;
 
 /**
  *
@@ -95,7 +96,8 @@ public class GenericListFrame extends javax.swing.JInternalFrame {
 		setAutoscrolls(true);
 		objectTable.setModel(tableModel);
 
-		objectTable.setCellSelectionEnabled(true);
+		objectTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+    objectTable.setCellSelectionEnabled(true);
 		objectTable.addMouseListener(new java.awt.event.MouseAdapter() {
 			public void mouseClicked(java.awt.event.MouseEvent evt) {
 				objectTableMouseClicked(evt);

@@ -4,6 +4,7 @@ import javax.swing.table.*;
 import transport.logic.LogicItem;
 import transport.client.*;
 import java.util.ArrayList;
+import transport.client.editor.*;
 
 public abstract class GenericTableModel extends AbstractTableModel {
 	public static final int REFRESH_INSERT=1;
