@@ -114,4 +114,8 @@ public class RoleTableModel extends GenericTableModel {
 	protected void insert(LogicItem o) {
 		rowData=(Role[])super.insert(o,rowData);
 	}
+        public void refresh() {
+          rowData=af.getAllRoles();
+          fireTableDataChanged();
+        }
 }

@@ -91,7 +91,7 @@ public class FunctionaryFactory {
 		try {
 			Connection conn=ConnectionFactory.getConnection();
 			PreparedStatement st=conn.prepareStatement(
-				"select * from functionaries");
+				"select * from functionaries order by name");
 			ResultSet rs=st.executeQuery();
 			while (rs.next()) {
 				a.add(new Functionary(rs.getInt(1), rs.getString(2),

@@ -123,4 +123,9 @@ public class CarTableModel extends GenericTableModel {
 	protected void insert(LogicItem o) {
 		rowData=(Car[])super.insert(o,rowData);
 	}
+
+  public void refresh() {
+      rowData=af.getAllCars();
+      fireTableDataChanged();
+  }
 }

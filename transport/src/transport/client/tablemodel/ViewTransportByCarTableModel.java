@@ -202,4 +202,6 @@ public class ViewTransportByCarTableModel extends GenericTableModel {
 		return null;
 	}
 
+  public void refresh() {
+  }
 }

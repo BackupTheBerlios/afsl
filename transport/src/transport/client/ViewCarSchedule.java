@@ -73,10 +73,12 @@ public class ViewCarSchedule
     jPanel1.add(comboSelectCar, null);
     this.getContentPane().add(buttonClose, BorderLayout.SOUTH);
     comboSelectCar.fillCombo(rowData);
-    initTableAll();
-   initTableCurrent();
-   initTableFuture();
-   initTableFinished();
+    if(comboSelectCar.getCount()>0){
+      initTableAll();
+      initTableCurrent();
+      initTableFuture();
+      initTableFinished();
+    }
    paneShowAll.setViewportView(objectTableAll);
    panelShowCurrent.setViewportView(objectTableCurrent);
    paneShowFinished.setViewportView(objectTableFinished);

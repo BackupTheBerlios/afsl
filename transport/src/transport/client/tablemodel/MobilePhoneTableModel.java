@@ -109,4 +109,8 @@ public class MobilePhoneTableModel extends GenericTableModel {
 	protected void insert(LogicItem o) {
 		rowData=(MobilePhone[])super.insert(o,rowData);
 	}
+        public void refresh() {
+          rowData=af.getAllMobilePhones();
+          fireTableDataChanged();
+        }
 }

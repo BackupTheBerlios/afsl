@@ -169,4 +169,9 @@ public class TransportTableModel extends GenericTableModel {
 	protected void insert(LogicItem o) {
 		rowData=(Transport[])super.insert(o,rowData);
 	}
+
+        public void refresh() {
+          rowData=tf.getAllTransports();
+          fireTableDataChanged();
+        }
 }

@@ -80,10 +80,12 @@ public class ViewFunctionarySchedule
     jPanel1.add(comboSelectFunctionary, null);
     this.getContentPane().add(buttonClose, BorderLayout.SOUTH);
     comboSelectFunctionary.fillCombo(rowData);
-    initTableAll();
-    initTableCurrent();
-    initTableFuture();
-    initTableFinished();
+    if(comboSelectFunctionary.getCount()>0){
+      initTableAll();
+      initTableCurrent();
+      initTableFuture();
+      initTableFinished();
+    }
     paneShowAll.setViewportView(objectTableAll);
     panelShowCurrent.setViewportView(objectTableCurrent);
     paneShowFinished.setViewportView(objectTableFinished);

@@ -50,6 +50,8 @@ public abstract class GenericTableModel extends AbstractTableModel {
 	protected abstract void remove(LogicItem o);
 	protected abstract void insert(LogicItem o);
 
+        public abstract void refresh();
+
 	/**
 	 * refresh
 	 *

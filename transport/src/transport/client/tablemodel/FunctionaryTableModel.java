@@ -122,4 +122,9 @@ public class FunctionaryTableModel extends GenericTableModel {
 	 */
 	protected void insert(LogicItem o) {
 		rowData=(Functionary[])super.insert(o,rowData);	}
+
+              public void refresh() {
+                rowData = af.getAllFunctionaries();
+                fireTableDataChanged();
+              }
 }

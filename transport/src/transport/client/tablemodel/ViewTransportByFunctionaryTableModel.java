@@ -204,4 +204,7 @@ public class ViewTransportByFunctionaryTableModel
 	 */
 	protected void insert(LogicItem o) {
 	}
+
+  public void refresh() {
+  }
 }

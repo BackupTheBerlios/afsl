@@ -112,12 +112,19 @@ public class GenericListFrame extends javax.swing.JInternalFrame {
 		});
 		editButton.setMnemonic('E');
                 printButton.setText("Print");
-                                printButton.addActionListener(new java.awt.event.ActionListener() {
-                                        public void actionPerformed(ActionEvent e) {
-                                                printButton_actionPerformed(e);
-                                        }
-                                });
-                                printButton.setMnemonic('P');
+                printButton.addActionListener(new java.awt.event.ActionListener() {
+                  public void actionPerformed(ActionEvent e) {
+                    printButton_actionPerformed(e);
+                  }
+                });
+                printButton.setMnemonic('P');
+                refreshButton.setText("Refresh");
+                refreshButton.addActionListener(new java.awt.event.ActionListener() {
+                  public void actionPerformed(ActionEvent e) {
+                    refreshButton_actionPerformed(e);
+                  }
+                });
+                refreshButton.setMnemonic('F');
 
 		cancelButton.setText("Close");
 	cancelButton.addActionListener(new java.awt.event.ActionListener() {
@@ -150,7 +157,7 @@ public class GenericListFrame extends javax.swing.JInternalFrame {
 		jPanel1.add(editButton, null);
 		jPanel1.add(removeButton, null);
 		jPanel1.add(cancelButton, null);
-
+                jPanel1.add(refreshButton, null);
 		pack();
 	}
 
@@ -169,6 +176,7 @@ public class GenericListFrame extends javax.swing.JInternalFrame {
 	JButton removeButton=new JButton();
 	JButton addButton=new JButton();
         JButton printButton=new JButton();
+        JButton refreshButton=new JButton();
 	void editButton_actionPerformed(ActionEvent e) {
 		if (objectTable.getSelectedRow() == -1) {
 			JOptionPane.showMessageDialog(this.getTopLevelAncestor(),
@@ -224,6 +232,9 @@ public class GenericListFrame extends javax.swing.JInternalFrame {
     void cancelButton_actionPerformed(ActionEvent e) {
 		this.dispose();
     }
+    void refreshButton_actionPerformed(ActionEvent e) {
+      tableModel.refresh();
+       }
 
 	/**
 	 * refresh

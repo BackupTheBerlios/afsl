@@ -11,8 +11,8 @@ public class ArtistTableModel extends GenericTableModel {
 	private Artist[] rowData;
 
 	public ArtistTableModel() {
-		af=new ArtistFactory();
-		rowData=af.getAllArtists();
+          af=new ArtistFactory();
+          rowData=af.getAllArtists();
 	}
 
 	public GenericEditor getEditor() {
@@ -150,4 +150,9 @@ public class ArtistTableModel extends GenericTableModel {
 	protected void remove(LogicItem o) {
 		super.remove(o, rowData);
 	}
+
+  public void refresh() {
+    rowData=af.getAllArtists();
+    fireTableDataChanged();
+  }
 }

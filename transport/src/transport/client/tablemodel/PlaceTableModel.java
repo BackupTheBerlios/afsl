@@ -110,4 +110,8 @@ public class PlaceTableModel extends GenericTableModel {
 	protected void insert(LogicItem o) {
 		rowData=(Place[])super.insert(o,rowData);
 	}
+        public void refresh() {
+          rowData=af.getAllPlaces();
+          fireTableDataChanged();
+        }
 }
