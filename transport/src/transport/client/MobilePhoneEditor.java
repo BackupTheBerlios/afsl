@@ -40,6 +40,7 @@ public class MobilePhoneEditor extends GenericEditor {
           ImageIcon frameIcon = new ImageIcon(this.getClass().getResource(
               "../pics/miniAF.png"));
           this.setFrameIcon(frameIcon);
+    this.setResizable(true);
 		jPanel1=new javax.swing.JPanel();
 		jLabel1=new javax.swing.JLabel();
 		jPanel2=new javax.swing.JPanel();

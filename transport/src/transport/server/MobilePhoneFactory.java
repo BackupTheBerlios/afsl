@@ -143,6 +143,8 @@ public class MobilePhoneFactory {
 			st.setString(1, updatedPhone.getNumber());
 			st.setInt(2, updatedPhone.getId());
 
+			st.executeUpdate();
+
 			conn.close();
 		} catch (SQLException e) {
 			logger.log(Level.SEVERE, e.getMessage(), e);

@@ -11,7 +11,7 @@ import transport.server.FunctionaryFactory;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import transport.client.tablemodel.ViewTransportByFunctionaryTableModel;
+//import transport.client.tablemodel.ViewTransportByFunctionaryTableModel;
 
 /**
  *
@@ -22,13 +22,13 @@ public class ViewFunctionarySchedule
   private Functionary[] rowData;
   private FunctionaryFactory af;
   JPanel jPanel1 = new JPanel();
-  afslComboBox comboSelectFunctionary = new afslComboBox();
+//  afslComboBox comboSelectFunctionary = new afslComboBox();
   JButton buttonClose = new JButton();
   GridLayout gridLayout1 = new GridLayout();
-  ViewTransportByFunctionaryTableModel tableModelAll;
-  ViewTransportByFunctionaryTableModel tableModelCurrent;
-  ViewTransportByFunctionaryTableModel tableModelFuture;
-  ViewTransportByFunctionaryTableModel tableModelFinished;
+//  ViewTransportByFunctionaryTableModel tableModelAll;
+//  ViewTransportByFunctionaryTableModel tableModelCurrent;
+//  ViewTransportByFunctionaryTableModel tableModelFuture;
+//  ViewTransportByFunctionaryTableModel tableModelFinished;
   /** Creates new form ViewFunctionarySchedule */
   JTabbedPane jTabbedPane1 = new JTabbedPane();
   JTable objectTableAll;
@@ -68,12 +68,12 @@ public class ViewFunctionarySchedule
     buttonClose.addActionListener(new
         ViewFunctionarySchedule_buttonClose_actionAdapter(this));
     jPanel1.setLayout(gridLayout1);
-    comboSelectFunctionary.addActionListener(new ViewFunctionarySchedule_comboSelectFunctionary_actionAdapter(this));
+//    comboSelectFunctionary.addActionListener(new ViewFunctionarySchedule_comboSelectFunctionary_actionAdapter(this));
 
     this.getContentPane().add(jPanel1,  BorderLayout.NORTH);
-    jPanel1.add(comboSelectFunctionary, null);
+//    jPanel1.add(comboSelectFunctionary, null);
     this.getContentPane().add(buttonClose, BorderLayout.SOUTH);
-    comboSelectFunctionary.fillCombo(rowData);
+//    comboSelectFunctionary.fillCombo(rowData);
     initTableAll();
     initTableCurrent();
     initTableFuture();
@@ -100,8 +100,8 @@ public class ViewFunctionarySchedule
     objectTableAll.setRowSelectionAllowed(true);
     objectTableAll.setCellSelectionEnabled(false);
     objectTableAll.setColumnSelectionAllowed(false);
-    tableModelAll=new ViewTransportByFunctionaryTableModel(getCurrentFunctionaryID());
-    objectTableAll.setModel(tableModelAll);
+//    tableModelAll=new ViewTransportByFunctionaryTableModel(getCurrentFunctionaryID());
+//    objectTableAll.setModel(tableModelAll);
     objectTableAll.setCellSelectionEnabled(true);
     objectTableAll.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
     objectTableAll.setCellSelectionEnabled(false);
@@ -118,9 +118,9 @@ public class ViewFunctionarySchedule
     objectTableCurrent.setRowSelectionAllowed(true);
     objectTableCurrent.setCellSelectionEnabled(false);
     objectTableCurrent.setColumnSelectionAllowed(false);
-    tableModelCurrent=new ViewTransportByFunctionaryTableModel();
-    tableModelCurrent.setRowDataCurrent(getCurrentFunctionaryID());
-    objectTableCurrent.setModel(tableModelCurrent);
+//    tableModelCurrent=new ViewTransportByFunctionaryTableModel();
+//    tableModelCurrent.setRowDataCurrent(getCurrentFunctionaryID());
+//    objectTableCurrent.setModel(tableModelCurrent);
     objectTableCurrent.setCellSelectionEnabled(true);
     objectTableCurrent.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
     objectTableCurrent.setCellSelectionEnabled(false);
@@ -138,9 +138,9 @@ public class ViewFunctionarySchedule
       objectTableFuture.setRowSelectionAllowed(true);
       objectTableFuture.setCellSelectionEnabled(false);
       objectTableFuture.setColumnSelectionAllowed(false);
-      tableModelFuture=new ViewTransportByFunctionaryTableModel();
-      tableModelFuture.setRowDataFuture(getCurrentFunctionaryID());
-      objectTableFuture.setModel(tableModelFuture);
+//      tableModelFuture=new ViewTransportByFunctionaryTableModel();
+//      tableModelFuture.setRowDataFuture(getCurrentFunctionaryID());
+//      objectTableFuture.setModel(tableModelFuture);
       objectTableFuture.setCellSelectionEnabled(true);
       objectTableFuture.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
       objectTableFuture.setCellSelectionEnabled(false);
@@ -158,9 +158,9 @@ public class ViewFunctionarySchedule
         objectTableFinished.setRowSelectionAllowed(true);
         objectTableFinished.setCellSelectionEnabled(false);
         objectTableFinished.setColumnSelectionAllowed(false);
-        tableModelFinished=new ViewTransportByFunctionaryTableModel();
-        tableModelFinished.setRowDataFinished(getCurrentFunctionaryID());
-        objectTableFinished.setModel(tableModelFinished);
+//        tableModelFinished=new ViewTransportByFunctionaryTableModel();
+//        tableModelFinished.setRowDataFinished(getCurrentFunctionaryID());
+//        objectTableFinished.setModel(tableModelFinished);
         objectTableFinished.setCellSelectionEnabled(true);
         objectTableFinished.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         objectTableFinished.setCellSelectionEnabled(false);
@@ -172,13 +172,13 @@ public class ViewFunctionarySchedule
 
         this.getContentPane().add(jTabbedPane1, BorderLayout.CENTER);
       }
-
+/*
   private int getCurrentFunctionaryID() {
 
        return ( (Functionary) comboSelectFunctionary.
                getSelectedItem()).getId();
    }
-
+*/
   void comboSelectFunctionary_actionPerformed(ActionEvent e) {
     initTableAll();
     initTableCurrent();

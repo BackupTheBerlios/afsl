@@ -11,7 +11,7 @@ import java.awt.*;
 import transport.logic.Car;
 import transport.server.CarFactory;
 import java.awt.event.*;
-import transport.client.tablemodel.ViewTransportByFunctionaryTableModel;
+//import transport.client.tablemodel.ViewTransportByFunctionaryTableModel;
 
 /**
  *
@@ -23,7 +23,7 @@ public class ViewCarSchedule
   private CarFactory cf;
   private javax.swing.JTable objectTable;
   JPanel jPanel1 = new JPanel();
-  afslComboBox comboSelectCar = new afslComboBox();
+//  afslComboBox comboSelectCar = new afslComboBox();
   JButton buttonClose = new JButton();
   GridLayout gridLayout1 = new GridLayout();
 
@@ -53,9 +53,9 @@ public class ViewCarSchedule
     buttonClose.addActionListener(new ViewCarSchedule_buttonClose_actionAdapter(this));
     jPanel1.setLayout(gridLayout1);
     this.getContentPane().add(jPanel1, BorderLayout.NORTH);
-    jPanel1.add(comboSelectCar, null);
+//    jPanel1.add(comboSelectCar, null);
     this.getContentPane().add(buttonClose, BorderLayout.SOUTH);
-    comboSelectCar.fillCombo(rowData);
+//    comboSelectCar.fillCombo(rowData);
   }
 
   void buttonClose_actionPerformed(ActionEvent e) {

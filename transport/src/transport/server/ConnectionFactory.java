@@ -38,6 +38,6 @@ public class ConnectionFactory {
 
                 String afslPassWord = System.getProperty(PASSWD_PROPERTY);*/
 
-		return DriverManager.getConnection("jdbc:postgresql://localhost/transport","sessan","utfors22");
+		return DriverManager.getConnection("jdbc:postgresql://localhost/transport","ola","passwd");
 	}
 }
