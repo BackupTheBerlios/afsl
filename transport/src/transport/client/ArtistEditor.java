@@ -63,11 +63,11 @@ public class ArtistEditor extends GenericEditor {
 		jLabel8=new javax.swing.JLabel();
 		departureTimeCombo=new transport.client.PickDateTimeCombo();
 		jLabel9=new javax.swing.JLabel();
-		jFormattedTextField1=new javax.swing.JFormattedTextField();
+		numberOfArtistsText=new javax.swing.JFormattedTextField();
 		jLabel10=new javax.swing.JLabel();
-		jFormattedTextField3=new javax.swing.JFormattedTextField();
+		numberOfCrewText=new javax.swing.JFormattedTextField();
 		labelGuests=new javax.swing.JLabel();
-		jFormattedTextField2=new javax.swing.JFormattedTextField();
+		numberOfGuestsText=new javax.swing.JFormattedTextField();
 		jLabel11=new javax.swing.JLabel();
 		extraInfoText=new javax.swing.JTextArea();
 		buttonPanel=new javax.swing.JPanel();
@@ -137,19 +137,19 @@ public class ArtistEditor extends GenericEditor {
 		jLabel9.setText("Performers");
 		infoPanel.add(jLabel9);
 
-		infoPanel.add(jFormattedTextField1);
+		infoPanel.add(numberOfArtistsText);
 
 		jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
 		jLabel10.setText("Crew");
 		infoPanel.add(jLabel10);
 
-		infoPanel.add(jFormattedTextField3);
+		infoPanel.add(numberOfCrewText);
 
 		labelGuests.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
 		labelGuests.setText("Guests");
 		infoPanel.add(labelGuests);
 
-		infoPanel.add(jFormattedTextField2);
+		infoPanel.add(numberOfGuestsText);
 
 		jLabel11.setText("Extra info");
 		infoPanel.add(jLabel11);
@@ -178,6 +178,10 @@ public class ArtistEditor extends GenericEditor {
 
 		buttonPanel.add(cancelButton);
 
+		numberOfArtistsText.setValue(new Integer(0));
+		numberOfCrewText.setValue(new Integer(0));
+		numberOfGuestsText.setValue(new Integer(0));
+
 		getContentPane().add(buttonPanel, java.awt.BorderLayout.SOUTH);
 
 		pack();
@@ -196,13 +200,19 @@ public class ArtistEditor extends GenericEditor {
 
 		ArtistFactory af=new ArtistFactory();
 
-	   artist.setArrival((Place)arrivalCombo.getSelectedItem());
-	   artist.setArrivalTime(arrivalTimeCombo.getDate());
-	   artist.setContactName(contactNameText.getText());
-	   artist.setDeparture((Place)departureCombo.getSelectedItem());
-	   artist.setDepartureTime(departureTimeCombo.getDate());
-	   artist.setExtraInfo(extraInfoText.getText());
-	   artist.setHotel((Place)hotelCombo.getSelectedItem());
+		artist.setName(nameText.getText());
+		artist.setContactName(contactNameText.getText());
+		artist.setTelephoneNo(phoneNumberText.getText());
+		artist.setArrivalTime(arrivalTimeCombo.getDate());
+		artist.setArrival((Place)arrivalCombo.getSelectedItem());
+		artist.setHotel((Place)hotelCombo.getSelectedItem());
+		artist.setDepartureTime(departureTimeCombo.getDate());
+		artist.setDeparture((Place)departureCombo.getSelectedItem());
+		artist.setNoOfArtists(((Integer)numberOfArtistsText.getValue()).intValue());
+		artist.setNoOfCrew(((Integer)numberOfCrewText.getValue()).intValue());
+		artist.setNoOfGuests(((Integer)numberOfGuestsText.getValue()).intValue());
+		artist.setExtraInfo(extraInfoText.getText());
+
 
 		if (artist.getId() == -1) {
 			af.newArtist(artist);
@@ -222,9 +232,9 @@ public class ArtistEditor extends GenericEditor {
 	private javax.swing.JTextArea extraInfoText;
 	private javax.swing.JComboBox hotelCombo;
 	private javax.swing.JPanel infoPanel;
-	private javax.swing.JFormattedTextField jFormattedTextField1;
-	private javax.swing.JFormattedTextField jFormattedTextField2;
-	private javax.swing.JFormattedTextField jFormattedTextField3;
+	private javax.swing.JFormattedTextField numberOfArtistsText;
+	private javax.swing.JFormattedTextField numberOfGuestsText;
+	private javax.swing.JFormattedTextField numberOfCrewText;
 	private javax.swing.JLabel jLabel1;
 	private javax.swing.JLabel jLabel10;
 	private javax.swing.JLabel jLabel11;
@@ -278,6 +288,9 @@ public class ArtistEditor extends GenericEditor {
 			hotelCombo.setSelectedItem(getPlace(artist.getHotel()));
 			arrivalTimeCombo.setDate(artist.getArrivalTime());
 			departureTimeCombo.setDate(artist.getDepartureTime());
+			numberOfArtistsText.setText(""+artist.getNoOfArtists());
+			numberOfCrewText.setText(""+artist.getNoOfCrew());
+			numberOfGuestsText.setText(""+artist.getNoOfGuests());
 			extraInfoText.setText(artist.getExtraInfo());
 		}
 	}
