@@ -119,7 +119,7 @@ public class Functionary extends LogicItem {
         public String toHTML() {
          String html;
          html =  getName() + " \n";
-         html = html + getRole().toHTML() +"<br>/n";
+         html = html + getRole().toHTML() +"<br>\n";
          return html;
        }
 

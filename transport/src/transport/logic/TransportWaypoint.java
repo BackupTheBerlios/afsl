@@ -59,7 +59,7 @@ public class TransportWaypoint {
 	}
         public String toHTML() {
         String html;
-        DateFormat df = DateFormat.getDateInstance(DateFormat.LONG, new Locale("sv"));
+        DateFormat df = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.SHORT, new Locale("sv"));
         String time="N/A";
         if (getTime() != null) {
           time = df.format(getTime());

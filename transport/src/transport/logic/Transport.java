@@ -334,8 +334,12 @@ public class Transport extends LogicItem {
 	}
 
         public String toHTML() {
-         String html="<html><body>\n";
-         DateFormat df = DateFormat.getDateInstance(DateFormat.LONG, new Locale("sv"));
+         String html="<html>\n";
+         html = html +"<head>\n";
+         html = html +"<LINK href=http://www.pal.pp.se/~jessica/jessica.css rel=stylesheet type=text/css>\n";
+         html = html +"</head>\n";
+         html = html +"<body>\n";
+         DateFormat df = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.SHORT, new Locale("sv"));
          if (getInternal()){
            html = html+ "\n<b>INTERNAL TRANSPORT: </b>" +"(id:" + getId() +
              ")<br>\n";
@@ -358,17 +362,17 @@ public class Transport extends LogicItem {
          }
 
          html = html +"<TABLE BORDER=0>\n";
-         html = html +"<TR><TD><b>Artists:</b></TD><TD>"+  getHTMLArtists()+"</TD></TR>\n";
-         html = html +"<TR><TD><b>Cars:</b></TD><TD>"+ getHTMLCars()+"</TD></TR>\n";
-         html = html +"<TR><TD><b>Functionaries:</b></TD><TD>"+ getHTMLFunctionaries()+"</TD></TR>\n";
-         html = html +"<TR><TD><b>Waypoints:</b></TD><TD>"+ getHTMLWaypoints()+"</TD></TR>\n";
-         html = html +"<TR><TD><b>Mobile Phones:</b></TD><TD>"+ getHTMLMobilePhones() +"</TD></TR>\n";
-         html = html +"<TR><TD><b>Start Time:</b></TD><TD>"+ StartTime+"</TD></TR>\n";
-         html = html +"<TR><TD><b>Return Time:</b></TD><TD>"+ ReturnTime+"</TD></TR>\n";
-         html = html +"<TR><TD><b>Distance:</b></TD><TD>"+ getDistance()+"</TD></TR>\n";
+         html = html +"<TR><TD valign=top><b>Artists:</b></TD><TD>"+  getHTMLArtists()+"</TD></TR>\n";
+         html = html +"<TR><TD valign=top><b>Cars:</b></TD><TD>"+ getHTMLCars()+"</TD></TR>\n";
+         html = html +"<TR><TD valign=top><b>Functionaries:</b></TD><TD>"+ getHTMLFunctionaries()+"</TD></TR>\n";
+         html = html +"<TR><TD valign=top><b>Waypoints:</b></TD><TD>"+ getHTMLWaypoints()+"</TD></TR>\n";
+         html = html +"<TR><TD valign=top><b>Mobile Phones:</b></TD><TD>"+ getHTMLMobilePhones() +"</TD></TR>\n";
+         html = html +"<TR><TD valign=top><b>Start Time:</b></TD><TD>"+ StartTime+"</TD></TR>\n";
+         html = html +"<TR><TD valign=top><b>Return Time:</b></TD><TD>"+ ReturnTime+"</TD></TR>\n";
+         html = html +"<TR><TD valign=top><b>Distance:</b></TD><TD>"+ getDistance()+"</TD></TR>\n";
 
-         html = html +"<TR><TD><b>Actual Return Time:</b></TD><TD>"+ActualReturnTime +"</TD></TR>\n";
-         html = html +"<TR><TD><b>Misc Info:</b></TD><TD>"+ getMiscInfo()+"</TD></TR>\n";
+         html = html +"<TR><TD valign=top><b>Actual Return Time:</b></TD><TD>"+ActualReturnTime +"</TD></TR>\n";
+         html = html +"<TR><TD valign=top><b>Misc Info:</b></TD><TD>"+ getMiscInfo()+"</TD></TR>\n";
          html = html +"</TABLE>\n";
 
          html = html + "</body></html>";

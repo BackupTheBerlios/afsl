@@ -13,6 +13,9 @@ import javax.swing.*;
 import transport.client.tablemodel.*;
 import transport.server.*;
 import transport.logic.LogicItem;
+import transport.logic.Transport;
+import transport.logic.TransportHelper;
+import java.io.IOException;
 
 /**
  *
@@ -41,6 +44,21 @@ public class GenericListFrame extends javax.swing.JInternalFrame {
 		w.addToDesktop(editor);
 		editor.show();
 	}
+        private void printCurrent() {
+          if(tableModel instanceof TransportTableModel){
+            Transport o= (Transport) tableModel.getRowData(objectTable.getSelectedRow());
+            String filename = TransportHelper.createHTMLFileFromTransport(o);
+            try {
+              Runtime runtime = Runtime.getRuntime();
+              runtime.exec("explorer "+ filename);
+            }
+            catch (IOException ioe) {
+              System.out.println(ioe);
+            }
+
+          }
+
+        }
 
 	private void removeCurrent() {
 		LogicItem l=(LogicItem) tableModel.getRowData(objectTable.getSelectedRow());
@@ -93,6 +111,13 @@ public class GenericListFrame extends javax.swing.JInternalFrame {
 			}
 		});
 		editButton.setMnemonic('E');
+                printButton.setText("Print");
+                                printButton.addActionListener(new java.awt.event.ActionListener() {
+                                        public void actionPerformed(ActionEvent e) {
+                                                printButton_actionPerformed(e);
+                                        }
+                                });
+                                printButton.setMnemonic('P');
 
 		cancelButton.setText("Close");
 	cancelButton.addActionListener(new java.awt.event.ActionListener() {
@@ -118,6 +143,9 @@ public class GenericListFrame extends javax.swing.JInternalFrame {
 		});
 		getContentPane().add(jScrollPane1, java.awt.BorderLayout.CENTER);
 		this.getContentPane().add(jPanel1, BorderLayout.SOUTH);
+                if(tableModel instanceof TransportTableModel){
+                  jPanel1.add(printButton, null);
+                }
 		jPanel1.add(addButton, null);
 		jPanel1.add(editButton, null);
 		jPanel1.add(removeButton, null);
@@ -140,7 +168,7 @@ public class GenericListFrame extends javax.swing.JInternalFrame {
 	JButton cancelButton=new JButton();
 	JButton removeButton=new JButton();
 	JButton addButton=new JButton();
-
+        JButton printButton=new JButton();
 	void editButton_actionPerformed(ActionEvent e) {
 		if (objectTable.getSelectedRow() == -1) {
 			JOptionPane.showMessageDialog(this.getTopLevelAncestor(),
@@ -150,6 +178,15 @@ public class GenericListFrame extends javax.swing.JInternalFrame {
 
 		editCurrent();
 	}
+        void printButton_actionPerformed(ActionEvent e) {
+                if (objectTable.getSelectedRow() == -1) {
+                        JOptionPane.showMessageDialog(this.getTopLevelAncestor(),
+                                                                                  "No row selected!");
+                        return;
+                }
+
+                printCurrent();
+        }
 
 	void objectTable_keyTyped(KeyEvent e) {
 		if (e.getKeyCode() == KeyEvent.VK_DELETE) {

@@ -289,7 +289,7 @@ public class Artist extends LogicItem {
 	}
         public String toHTML() {
          String html;
-         DateFormat df = DateFormat.getDateInstance(DateFormat.LONG, new Locale("sv"));
+         DateFormat df = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.SHORT, new Locale("sv"));
          String ArrivalTime = "N/A";
          if (getArrivalTime() != null) {
            ArrivalTime = df.format(getArrivalTime());
@@ -299,8 +299,8 @@ public class Artist extends LogicItem {
            DepartureTime = df.format(getDepartureTime());
          }
 
-         html = "<TABLE BORDER=0>\n";
-         html = html + "<TR><TD><b>Name:</b></TD><TD>" + getName()+"</TD></TR>\n";
+         html = "<TABLE BORDER=1>\n";
+         html = html + "<TR><TD><b>Name:</b></TD><TD><b>" + getName()+"</b></TD></TR>\n";
          html = html + "<TR><TD><b>Contact Name:</b></TD><TD>" + getContactName()+"</TD></TR>\n";
          html = html + "<TR><TD><b>Telephone Number:</b></TD><TD>" + getTelephoneNo()+"</TD></TR>\n";
          html = html + "<TR><TD><b>Arrival:</b></TD><TD>" + getArrival()+"</TD></TR>\n";

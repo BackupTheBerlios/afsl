@@ -54,12 +54,12 @@ public class TransportHelper {
         return bytes;
     }
 
-    public String createHTMLFileFromTransport(Transport transport){
+    public static String createHTMLFileFromTransport(Transport transport){
       final File htmlFile = new File("transport" + transport.getId() + ".html");
       try {
         BufferedWriter bw = new BufferedWriter(new FileWriter(htmlFile));
         String line = null;
-        line = "<html>Transportfile<br>" + transport.getMiscInfo();
+        line = transport.toHTML();
         bw.write(line);
         bw.newLine();
         // Close the file

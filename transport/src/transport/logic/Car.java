@@ -116,9 +116,11 @@ public class Car extends LogicItem {
 
         public String toHTML() {
           String html;
-          html = "\n<b>Car:</b> " + getRegNo() +
-              " "+ getCarType() + "<i>(Number of seats: " + getNumberOfSeats() + ")</i>\n<br>"+
-              "Misc Info:"+getMiscInfo()+"<br>\n";
+          html = "\n<b>" + getRegNo() +
+               "</b> "+ getCarType() + " <i> (Number of seats: " + getNumberOfSeats() + ")</i>\n<br>";
+           if (getMiscInfo()!=null){
+             html=html+ "Misc Info:" + getMiscInfo() + "<br>\n";
+           }
           return html;
         }
 
