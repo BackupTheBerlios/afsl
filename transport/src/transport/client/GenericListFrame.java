@@ -28,6 +28,10 @@ public class GenericListFrame extends javax.swing.JInternalFrame {
 		jbInit();
 	}
 
+        public void setTitle(String title){
+          super.setTitle(title);
+          this.artistTable.setToolTipText(title);
+        }
 	private void editCurrent() {
 	}
 
@@ -53,10 +57,10 @@ public class GenericListFrame extends javax.swing.JInternalFrame {
 
 		setClosable(true);
 		setResizable(true);
-		setTitle("Listing of artists");
+
 		setAutoscrolls(true);
 		artistTable.setModel(tableModel);
-		artistTable.setToolTipText("Artists");
+
 		artistTable.setCellSelectionEnabled(true);
 		artistTable.addMouseListener(new java.awt.event.MouseAdapter() {
 			public void mouseClicked(java.awt.event.MouseEvent evt) {
