@@ -1,4 +1,5 @@
-<project name="transport" default="compile" basedir=".">
+<?xml version="1.0" encoding="UTF-8"?>
+<project basedir="." default="compile" name="transport">
 	<property name="dest" value="classes"/>
 	<property name="jars" value="jars"/>
 	<property name="build.compiler" value="jikes"/>
@@ -7,8 +8,8 @@
 	<property name="postgresql.jar" value="/usr/share/java/pg74.1jdbc3.jar"/>
 
 	<target name="compile">
-		<javac srcdir="src" destdir="classes" classpath="${postgresql.jar}:${basedir}/src"/>
-		<rmic base="${basedir}/classes" classpath="${java.class.path}:${basedir}/src" includes="**/*_Impl.class"/>
+		<javac classpath="${postgresql.jar}:${basedir}/src" destdir="classes" srcdir="src"/>
+		
 	</target>
 
 	<target name="clean">
@@ -21,14 +22,7 @@
 		<delete verbose="true">
 			<fileset dir="${basedir}/docs/" includes="**"/>
 		</delete>
-		<javadoc packagenames="*"
-			sourcepath="${basedir}/src"
-			destdir="${basedir}/docs"
-			author="true"
-			version="true"
-			use="true"
-			windowtitle="Arvikafestivalen transport booking system."
-			classpath="${java.class.path}:${postgresql.jar}">
+		<javadoc author="true" classpath="${java.class.path}:${postgresql.jar}" destdir="${basedir}/docs" packagenames="*" sourcepath="${basedir}/src" use="true" version="true" windowtitle="Arvikafestivalen transport booking system.">
 		</javadoc>
 	</target>
 
