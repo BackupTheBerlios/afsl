@@ -169,13 +169,18 @@ create table transports (
 	return_time timestamp not null,
 	actual_return_time timestamp,
 	internal integer not null,
-	mobile_phone_id integer,
 	misc_info varchar(400),
-	foreign key (mobile_phone_id) references mobile_phones on delete set null,
 	primary key (id)
 );
 
 insert into transports (start_time, return_time, internal) values ('2004-07-16 20:00','2004-07-16 23:00', 0);
+
+create table mobile_phone_transport (
+	mobile_phone_id integer,
+	transport_id integer,
+	foreign key (mobile_phone_id) references mobile_phones on delete cascade,
+	foreign key (transport_id) references transports on delete cascade
+);
 
 create table transport_waypoints (
 	id serial,
