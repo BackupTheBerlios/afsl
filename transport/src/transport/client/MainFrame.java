@@ -232,56 +232,81 @@ public class MainFrame extends javax.swing.JFrame {
         }//GEN-END:initComponents
 
 	private void TransportEditMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TransportEditMenuItemActionPerformed
-		desktopPane.add(new TransportFrame());
+		TransportFrame tf=new TransportFrame();
+		desktopPane.add(tf);
+		tf.show();
 	}//GEN-LAST:event_TransportEditMenuItemActionPerformed
 
 	private void RoleEditMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RoleEditMenuItemActionPerformed
-		desktopPane.add(new RoleFrame());
+		RoleFrame rf=new RoleFrame();
+		desktopPane.add(rf);
+		rf.show();
 	}//GEN-LAST:event_RoleEditMenuItemActionPerformed
 
 	private void PlaceEditMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PlaceEditMenuItemActionPerformed
-		desktopPane.add(new PlaceFrame());
+		PlaceFrame pf=new PlaceFrame();
+		desktopPane.add(pf);
+		pf.show();
 	}//GEN-LAST:event_PlaceEditMenuItemActionPerformed
 
 	private void MobilePhoneEditMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MobilePhoneEditMenuItemActionPerformed
-		desktopPane.add(new MobilePhoneFrame());
+		MobilePhoneFrame mpf=new MobilePhoneFrame();
+		desktopPane.add(mpf);
+		mpf.show();
 	}//GEN-LAST:event_MobilePhoneEditMenuItemActionPerformed
 
 	private void FunctionaryEditMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FunctionaryEditMenuItemActionPerformed
-		desktopPane.add(new FunctionaryFrame());
+		FunctionaryFrame ff=new FunctionaryFrame();
+		desktopPane.add(ff);
+		ff.show();
 	}//GEN-LAST:event_FunctionaryEditMenuItemActionPerformed
 
 	private void CarEditMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CarEditMenuItemActionPerformed
-		desktopPane.add(new CarFrame());
+		CarFrame cf=new CarFrame();
+		desktopPane.add(cf);
+		cf.show();
 	}//GEN-LAST:event_CarEditMenuItemActionPerformed
 
 	private void TransportAddMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TransportAddMenuItemActionPerformed
-		desktopPane.add(new TransportEditor());
+		TransportEditor te=new TransportEditor();
+		desktopPane.add(te);
+		te.show();
 	}//GEN-LAST:event_TransportAddMenuItemActionPerformed
 
 	private void RoleAddMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RoleAddMenuItemActionPerformed
-		desktopPane.add(new RoleEditor());
+		RoleEditor re=new RoleEditor();
+		desktopPane.add(re);
+		re.show();
 	}//GEN-LAST:event_RoleAddMenuItemActionPerformed
 
 	private void PlaceAddMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PlaceAddMenuItemActionPerformed
-		desktopPane.add(new PlaceEditor());
+		PlaceEditor pe=new PlaceEditor();
+		desktopPane.add(pe);
+		pe.show();
 	}//GEN-LAST:event_PlaceAddMenuItemActionPerformed
 
 	private void MobilePhoneAddMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MobilePhoneAddMenuItemActionPerformed
-		desktopPane.add(new MobilePhoneEditor());
+		MobilePhoneEditor mpe=new MobilePhoneEditor();
+		desktopPane.add(mpe);
+		mpe.show();
 	}//GEN-LAST:event_MobilePhoneAddMenuItemActionPerformed
 
 	private void FunctionaryAddMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FunctionaryAddMenuItemActionPerformed
-		desktopPane.add(new FunctionaryEditor());
+		FunctionaryEditor fe=new FunctionaryEditor();
+		desktopPane.add(fe);
+		fe.show();
 	}//GEN-LAST:event_FunctionaryAddMenuItemActionPerformed
 
 	private void CarAddMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CarAddMenuItemActionPerformed
-		desktopPane.add(new CarEditor());
+		CarEditor ce=new CarEditor();
+		desktopPane.add(ce);
+		ce.show();
 	}//GEN-LAST:event_CarAddMenuItemActionPerformed
 
 	private void ArtistEditMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ArtistEditMenuItemActionPerformed
-		// TODO add your handling code here:
-		desktopPane.add(new ArtistFrame());
+		ArtistFrame af=new ArtistFrame();
+		desktopPane.add(af);
+		af.show();
 	}//GEN-LAST:event_ArtistEditMenuItemActionPerformed
 
 	private void menuExitHandler(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuExitHandler

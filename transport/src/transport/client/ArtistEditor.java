@@ -26,9 +26,11 @@ public class ArtistEditor extends javax.swing.JInternalFrame {
 		initComponents();
 		
 		if (artist.getId()==-1) {
+			this.setTitle("Add an artist");
 			okButton.setText("New");
 			okButton.setMnemonic('N');
 		} else {
+			this.setTitle("Update an artist");
 			okButton.setText("Update");
 			okButton.setMnemonic('U');
 		}
