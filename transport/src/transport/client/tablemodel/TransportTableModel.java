@@ -63,9 +63,11 @@ public class TransportTableModel extends GenericTableModel {
 	private String fixString(Object[] o) {
 		String s=new String();
 		for (int i=0; i < o.length - 1; i++) {
-			s=s + o.toString() + ", ";
+			s=s + o[i].toString() + ", ";
 		}
-		s=s + o[o.length - 1];
+		if (o.length > 0) {
+			s=s + o[o.length - 1].toString();
+		}
 
 		return s;
 	}
@@ -89,11 +91,17 @@ public class TransportTableModel extends GenericTableModel {
 			case 5:
 				return fixString(rowData[row].getMobilePhones());
 			case 6:
+				return rowData[row].getStartTime();
 			case 7:
+				return rowData[row].getReturnTime();
 			case 8:
+				return rowData[row].getActualReturnTime();
 			case 9:
+				return new Integer(0);
 			case 10:
+				return rowData[row].getActualReturnTime();
 			case 11:
+				return rowData[row].getMiscInfo();
 			}
 
 		// FIXME: should not happen. Log error if it does.
@@ -116,6 +124,20 @@ public class TransportTableModel extends GenericTableModel {
 	 */
 	public void remove(int row) {
 		(new TransportFactory()).deleteTransport((Transport)getRowData(row));
+		Transport[] ar=new Transport[rowData.length - 1];
+
+		int mod=0;
+		for (int i=0; i < rowData.length; i++) {
+			if (i != row) {
+				ar[i + mod]=rowData[i];
+
+			} else {
+				mod= -1;
+			}
+		}
+
+		rowData=ar;
+
 		fireTableDataChanged();
 	}
 }

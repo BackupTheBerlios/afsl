@@ -30,7 +30,10 @@ public class CarFactory {
 			a.add(new CarFactory().getCar(rs.getInt("car_id")));
 		}
 
-		return (Car[])a.toArray();
+		Car[] c=new Car[a.size()];
+		a.toArray(c);
+
+		return c;
 	}
 
 	public Car[] getCarsFreeBetween(java.util.Date from, java.util.Date to) {

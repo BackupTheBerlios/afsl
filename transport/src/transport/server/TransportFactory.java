@@ -37,7 +37,7 @@ public class TransportFactory {
 						actualReturnTime,
 						internal,
 						MobilePhoneFactory.getMobilePhonesForTransport(id),
-						TransportWaypointFactory.getDropoffs(id),
+						TransportWaypointFactory.getWaypoints(id),
 						CarFactory.getCarsForTransport(id),
 						ArtistFactory.getArtistsForTransport(id),
 						FunctionaryFactory.getFunctionariesForTransport(id),
@@ -94,16 +94,19 @@ public class TransportFactory {
 				"select * from transports");
 			ResultSet rs=st.executeQuery();
 			while (rs.next()) {
-				newTransport(rs.getInt(1), rs.getDate(2), rs.getDate(3),
+				a.add(newTransport(rs.getInt(1), rs.getDate(2), rs.getDate(3),
 							 rs.getDate(4),
 							 rs.getBoolean(5), rs.getString(6),
-							 conn);
+							 conn));
 			}
 		} catch (SQLException e) {
 			logger.log(Level.SEVERE, e.getMessage(), e);
 		}
 
-		return (Transport[])a.toArray();
+		Transport[] t=new Transport[a.size()];
+		a.toArray(t);
+
+		return t;
 	}
 
 	private void insertCars(Transport newTransport, Connection conn) throws
@@ -144,17 +147,36 @@ public class TransportFactory {
 		}
 	}
 
-	private void insertTransportDropoffs(Transport newTransport,
+	private void insertTransportWaypoints(Transport newTransport,
 										 Connection conn) throws SQLException {
-		TransportWaypoint[] dropoffs=newTransport.getWaypoints();
-		PreparedStatement st=conn.prepareStatement("insert into transport_dropoffs (transport_id, place_id, dropoff_time) values ( ? , ? )");
+		TransportWaypoint[] waypoints=newTransport.getWaypoints();
+		PreparedStatement st=conn.prepareStatement("insert into transport_waypoints (transport_id, place_id, waypoint_time) values ( ? , ? )");
 
-		for (int i=0; i < dropoffs.length; i++) {
+		for (int i=0; i < waypoints.length; i++) {
 			st.setInt(1, newTransport.getId());
-			st.setInt(2, dropoffs[i].getPlace().getId());
-			st.setDate(3, new java.sql.Date(dropoffs[i].getTime().getTime()));
+			st.setInt(2, waypoints[i].getPlace().getId());
+			st.setDate(3, new java.sql.Date(waypoints[i].getTime().getTime()));
 			st.executeUpdate();
 		}
+	}
+
+	/**
+	 * insertMobilePhones
+	 *
+	 * @param newTransport Transport
+	 * @param conn Connection
+	 */
+	private void insertMobilePhones(Transport newTransport, Connection conn) throws
+		SQLException {
+		MobilePhone[] mobilePhones=newTransport.getMobilePhones();
+		PreparedStatement st=conn.prepareStatement("insert into mobile_phone_transport (mobile_phone_id, transport_id) values ( ? , ? )");
+
+		for (int i=0; i < mobilePhones.length; i++) {
+			st.setInt(1, mobilePhones[i].getId());
+			st.setInt(2, newTransport.getId());
+			st.executeUpdate();
+		}
+
 	}
 
 	/**
@@ -165,6 +187,7 @@ public class TransportFactory {
 	public Transport newTransport(Transport newTransport) {
 		try {
 			Connection conn=ConnectionFactory.getConnection();
+			conn.setAutoCommit(false);
 
 			PreparedStatement st=conn.prepareStatement("insert into transports (start_time, return_time, internal, misc_info ) values ( ? , ? , ? , ? )");
 
@@ -178,7 +201,7 @@ public class TransportFactory {
 			st.executeUpdate();
 
 			Statement st2=conn.createStatement();
-			ResultSet rs=st2.executeQuery("select currval('roles_id_seq')");
+			ResultSet rs=st2.executeQuery("select currval('transports_id_seq')");
 			rs.next();
 
 			newTransport.setId(rs.getInt(1));
@@ -186,7 +209,10 @@ public class TransportFactory {
 			insertCars(newTransport, conn);
 			insertArtists(newTransport, conn);
 			insertFunctionaries(newTransport, conn);
-			insertTransportDropoffs(newTransport, conn);
+			insertTransportWaypoints(newTransport, conn);
+			insertMobilePhones(newTransport, conn);
+
+			conn.commit();
 
 			conn.close();
 		} catch (SQLException e) {
@@ -196,18 +222,60 @@ public class TransportFactory {
 		return newTransport;
 	}
 
-	private void updateCars(Transport updatedTransport, Connection conn) {
+//TODO: optimise these method. We are currently fulhacking.
+
+	private void updateCars(Transport updatedTransport, Connection conn) throws SQLException {
+		PreparedStatement st=conn.prepareStatement("delete from car_transport where transport_id = ?");
+		st.setInt(1,updatedTransport.getId());
+		st.executeUpdate();
+
+		insertCars(updatedTransport, conn);
 	}
 
-	private void updateArtists(Transport updatedTransport, Connection conn) {
+	private void updateArtists(Transport updatedTransport, Connection conn) throws SQLException {
+		PreparedStatement st=conn.prepareStatement(
+			"delete from artist_transport where transport_id = ?");
+		st.setInt(1, updatedTransport.getId());
+		st.executeUpdate();
+
+		insertArtists(updatedTransport, conn);
+
 	}
 
 	private void updateFunctionaries(Transport updatedTransport,
-									 Connection conn) {
+									 Connection conn) throws SQLException {
+		PreparedStatement st=conn.prepareStatement(
+			"delete from functionary_transport where transport_id = ?");
+		st.setInt(1, updatedTransport.getId());
+		st.executeUpdate();
+
+		insertFunctionaries(updatedTransport, conn);
 	}
 
-	private void updateTransportDropoffs(Transport updatedTransport,
-										 Connection conn) {
+	private void updateTransportWaypoints(Transport updatedTransport,
+										 Connection conn) throws SQLException {
+
+	   PreparedStatement st=conn.prepareStatement("delete from transport_waypoints where transport_id = ?");
+	   st.setInt(1,updatedTransport.getId());
+	   st.executeUpdate();
+
+	   insertTransportWaypoints(updatedTransport, conn);
+
+	}
+
+	/**
+	 * updateMobilePhones
+	 *
+	 * @param updatedTransport Transport
+	 * @param conn Connection
+	 */
+	private void updateMobilePhones(Transport updatedTransport, Connection conn) throws SQLException {
+		PreparedStatement st=conn.prepareStatement(
+			"delete from mobile_phone_transport where transport_id = ?");
+		st.setInt(1, updatedTransport.getId());
+		st.executeUpdate();
+
+		insertMobilePhones(updatedTransport, conn);
 	}
 
 	public void updateTransport(Transport updatedTransport) {
@@ -231,7 +299,8 @@ public class TransportFactory {
 			updateCars(updatedTransport, conn);
 			updateArtists(updatedTransport, conn);
 			updateFunctionaries(updatedTransport, conn);
-			updateTransportDropoffs(updatedTransport, conn);
+			updateTransportWaypoints(updatedTransport, conn);
+			updateMobilePhones(updatedTransport, conn);
 
 			conn.commit();
 
@@ -246,6 +315,8 @@ public class TransportFactory {
 			Connection conn=ConnectionFactory.getConnection();
 			PreparedStatement st=conn.prepareStatement(
 						 "delete from transports where id = ?");
+
+			st.setInt(1, id);
 			st.executeUpdate();
 			conn.close();
 		} catch (SQLException e) {

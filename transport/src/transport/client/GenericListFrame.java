@@ -64,6 +64,7 @@ public class GenericListFrame extends javax.swing.JInternalFrame {
 		objectTable.setColumnSelectionAllowed(false);
 
 		setClosable(true);
+    this.setMaximizable(true);
 		setResizable(true);
 
 		setAutoscrolls(true);

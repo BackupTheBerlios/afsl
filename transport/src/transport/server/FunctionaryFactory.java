@@ -29,7 +29,10 @@ public class FunctionaryFactory {
 				"functionary_id")));
 		}
 
-		return (Functionary[])a.toArray();
+		Functionary[] f=new Functionary[a.size()];
+		a.toArray(f);
+
+		return f;
 	}
 
 	public Functionary[] getFunctionariesFreeBetween(java.util.Date from,

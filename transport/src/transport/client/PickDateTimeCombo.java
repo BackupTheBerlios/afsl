@@ -34,8 +34,7 @@ public class PickDateTimeCombo extends javax.swing.JPanel {
 	 */
 	private void jbInit() { //GEN-BEGIN:jbInit
 		launchPickDateTime=new javax.swing.JButton();
-		dateField=new javax.swing.JFormattedTextField();
-
+		dateField=new javax.swing.JFormattedTextField(DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT, new Locale("sv")));
 		dateField.setValue(new Date());
 
 		setLayout(new java.awt.BorderLayout());
@@ -104,7 +103,11 @@ public class PickDateTimeCombo extends javax.swing.JPanel {
 	}
 
 	public void setDate(Date newDate) {
-		dateField.setText(DateFormat.getInstance().format(newDate));
+		if (newDate==null) {
+			dateField.setText("");
+		} else {
+			dateField.setText(DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT, new Locale("sv")).format(newDate));
+		}
 	}
 
 	// End of variables declaration//GEN-END:variables

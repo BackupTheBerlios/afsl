@@ -33,7 +33,10 @@ public class ArtistFactory {
 
 		conn.close();
 
-		return (Artist[])a.toArray();
+		Artist[] ar=new Artist[a.size()];
+		a.toArray(ar);
+
+		return ar;
 	}
 
 	private Artist createArtist(ResultSet rs) throws SQLException {

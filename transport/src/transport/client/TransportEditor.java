@@ -10,6 +10,7 @@ import transport.logic.*;
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
+import transport.server.TransportFactory;
 
 /**
  *
@@ -67,6 +68,7 @@ public class TransportEditor extends GenericEditor {
 		this.setClosable(true);
 		this.setResizable(true);
 		cancelButton.addActionListener(new TransportEditor_cancelButton_actionAdapter(this));
+    waypointsChooser.setEnabled(false);
     jPanel2.add(okButton);
 
 		cancelButton.setMnemonic('C');
@@ -201,16 +203,62 @@ public class TransportEditor extends GenericEditor {
   }
 
   void okButton_actionPerformed(ActionEvent e) {
-	  transport.setArtists((Artist[])artistsChooser.getObjects());
-	  transport.setCars((Car[])carsChooser.getObjects());
-	  transport.setFunctionaries((Functionary[])functionariesChooser.getObjects());
+	  Object[] o;
+	  int i;
+
+	  o=artistsChooser.getObjects();
+
+	  Artist[] artists=new Artist[o.length];
+	  for (i=0; i < o.length; i++) {
+		  artists[i]=(Artist)o[i];
+	  }
+	  transport.setArtists(artists);
+
+	  o=carsChooser.getObjects();
+
+	  Car[] cars=new Car[o.length];
+	  for (i=0; i < o.length; i++) {
+		  cars[i]=(Car)o[i];
+	  }
+
+	  transport.setCars(cars);
+
+	  o=functionariesChooser.getObjects();
+
+	  Functionary[] func=new Functionary[o.length];
+	  for (i=0; i < o.length; i++) {
+		  func[i]=(Functionary)o[i];
+	  }
+
+	  transport.setFunctionaries(func);
 	  transport.setInternal(internalBox.isSelected());
-	  transport.setWaypoints((TransportWaypoint[])waypointsChooser.getObjects());
-	  transport.setMobilePhones((MobilePhone[])mobilePhonesChooser.getObjects());
+
+	// TODO: fix fscking waypoints.
+
+	transport.setWaypoints(new TransportWaypoint[0]);
+
+//	  transport.setWaypoints((TransportWaypoint[])waypointsChooser.getObjects());
+
+	  o=mobilePhonesChooser.getObjects();
+
+	  MobilePhone[] phones=new MobilePhone[o.length];
+	  for (i=0; i < o.length; i++) {
+		  phones[i]=(MobilePhone)o[i];
+	  }
+
+	  transport.setMobilePhones(phones);
 	  transport.setStartTime(startTimeCombo.getDate());
 	  transport.setReturnTime(returnTimeCombo.getDate());
 	  transport.setActualReturnTime(actualReturnTimeCombo.getDate());
 	  transport.setMiscInfo(miscInfoText.getText());
+
+	  TransportFactory tf=new TransportFactory();
+
+	  if (transport.getId() == -1) {
+		  tf.newTransport(transport);
+	  } else {
+		  tf.updateTransport(transport);
+	  }
 
 	  this.dispose();
   }
