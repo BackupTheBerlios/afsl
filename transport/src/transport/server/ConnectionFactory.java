@@ -16,7 +16,7 @@ public class ConnectionFactory {
 
 	private static void initFactory() {
 		try {
-			Class.forName("org.postgresql.Driver");
+		Class.forName("org.postgresql.Driver");
 		} catch (Exception e) {
 			logger.log(Level.SEVERE, e.getMessage(), e);
 		}
@@ -38,6 +38,6 @@ public class ConnectionFactory {
 
                 String afslPassWord = System.getProperty(PASSWD_PROPERTY);*/
 
-		return DriverManager.getConnection("jdbc:postgresql://localhost/transport","ola","passwd");
+		return DriverManager.getConnection("jdbc:postgresql://192.168.0.157/transport","ola","passwd");
 	}
 }

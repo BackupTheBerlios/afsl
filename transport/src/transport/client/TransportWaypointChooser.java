@@ -186,6 +186,12 @@ public class TransportWaypointChooser extends javax.swing.JPanel {
 		  return;
 	  }
 
+          if (waypointList.getSelectedIndex()==-1) {
+            JOptionPane.showMessageDialog(this.getTopLevelAncestor(),
+                                          "No row selected!");
+            return;
+          }
+
 	  timeCombo.setDate(((TransportWaypoint)listModel.get(waypointList.getSelectedIndex())).getTime());
 	  updateButton.setEnabled(true);
   }
