@@ -49,6 +49,7 @@ create table artists (
 	primary key(id)
 );
 
+
 create table mobile_phones (
 	id serial,
 	phone_no varchar(15) not null,
@@ -135,3 +136,7 @@ create table distance_reference (
 );
 
 alter table roles add initial varchar(5);
+alter table artists add flightno_arrival varchar(10);
+alter table artists add flightno_departure varchar(10);
+alter table artists add stage varchar(15);
+alter table artists add bookedBy varchar(30);
