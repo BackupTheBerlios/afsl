@@ -46,7 +46,7 @@ public class PlaceFactory {
 
 		try {
 			Connection conn=ConnectionFactory.getConnection();
-			PreparedStatement st=conn.prepareStatement("select * from places");
+			PreparedStatement st=conn.prepareStatement("select * from places order by name");
 			ResultSet rs=st.executeQuery();
 			while (rs.next()) {
 				a.add(new Place(rs.getInt(1), rs.getString(2)));
