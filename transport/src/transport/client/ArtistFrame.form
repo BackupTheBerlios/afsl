@@ -16,7 +16,7 @@
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
-          <BorderConstraints direction="North"/>
+          <BorderConstraints direction="Center"/>
         </Constraint>
       </Constraints>
 
@@ -28,6 +28,7 @@
               <Connection code="newTableModel()" type="code"/>
             </Property>
             <Property name="toolTipText" type="java.lang.String" value="Artists"/>
+            <Property name="cellSelectionEnabled" type="boolean" value="true"/>
           </Properties>
         </Component>
       </SubComponents>

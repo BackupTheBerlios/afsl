@@ -30,27 +30,27 @@ public class ArtistFrame extends javax.swing.JInternalFrame {
 			
 			public String getColumnName(int col) {
 				switch (col) {
-				case 1:
+				case 0:
 					return "Name";
-				case 2:
+				case 1:
 					return "Contact name";
-				case 3:
+				case 2:
 					return "Telephone number";
-				case 4:
+				case 3:
 					return "Arrival";
-				case 5:
+				case 4:
 					return "Arrival time";
-				case 6:
+				case 5:
 					return "Hotel";
-				case 7:
+				case 6:
 					return "Departure";
-				case 8:
+				case 7:
 					return "Departure Time";
-				case 9:
+				case 8:
 					return "No of Artists";
-				case 10:
+				case 9:
 					return "No of Crew";
-				case 11:
+				case 10:
 					return "No of Guests";
 				}
 				
@@ -61,27 +61,27 @@ public class ArtistFrame extends javax.swing.JInternalFrame {
 			public int getColumnCount() { return 11; }
 			public Object getValueAt(int row, int col) {
 				switch (col) {
-				case 1:
+				case 0:
 					return rowData[row].getName();
-				case 2:
+				case 1:
 					return rowData[row].getContactName();
-				case 3:
+				case 2:
 					return rowData[row].getTelephoneNo();
-				case 4:
+				case 3:
 					return rowData[row].getArrival();
-				case 5:
+				case 4:
 					return rowData[row].getArrivalTime();
-				case 6:
+				case 5:
 					return rowData[row].getHotel();
-				case 7:
+				case 6:
 					return rowData[row].getDeparture();
-				case 8:
+				case 7:
 					return rowData[row].getDepartureTime();
-				case 9:
+				case 8:
 					return new Integer(rowData[row].getNoOfArtists());
-				case 10:
+				case 9:
 					return new Integer(rowData[row].getNoOfCrew());
-				case 11:
+				case 10:
 					return new Integer(rowData[row].getNoOfGuests());
 				}
 				
@@ -90,7 +90,8 @@ public class ArtistFrame extends javax.swing.JInternalFrame {
 				return null;
 			}
 
-			public boolean isCellEditable(int row, int col) { return true; }
+			public boolean isCellEditable(int row, int col) { return false; }
+			
 			public void setValueAt(Object value, int row, int col) {
 				fireTableCellUpdated(row, col);
 			}
@@ -112,9 +113,10 @@ public class ArtistFrame extends javax.swing.JInternalFrame {
                 setAutoscrolls(true);
                 ArtistTable.setModel(newTableModel());
                 ArtistTable.setToolTipText("Artists");
+                ArtistTable.setCellSelectionEnabled(true);
                 jScrollPane1.setViewportView(ArtistTable);
 
-                getContentPane().add(jScrollPane1, java.awt.BorderLayout.NORTH);
+                getContentPane().add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
                 pack();
         }//GEN-END:initComponents
