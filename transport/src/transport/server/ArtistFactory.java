@@ -97,7 +97,7 @@ public class ArtistFactory {
 		return ar;
 	}
 
-	public void newArtist(Artist newArtist) {
+	public Artist newArtist(Artist newArtist) {
 		try {
 			Connection conn=ConnectionFactory.getConnection();
 			PreparedStatement st=conn.prepareStatement(
@@ -120,10 +120,18 @@ public class ArtistFactory {
 			st.setInt(11,newArtist.getNoOfGuests());
 			st.setString(12,newArtist.getExtraInfo());
 			st.executeUpdate();
+
+			ResultSet rs=st.getGeneratedKeys();
+			rs.next();
+
+			newArtist.setId(rs.getInt(1));
+			
 			conn.close();
 		} catch (SQLException e) {
 			logger.log(Level.SEVERE, e.getMessage(), e);
 		}
+
+		return newArtist;
 	}
 
 	public void updateArtist(Artist updatedArtist) {

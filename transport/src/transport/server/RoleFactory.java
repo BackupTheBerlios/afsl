@@ -52,7 +52,7 @@ public class RoleFactory {
 		return (Role[])a.toArray();
 	}
 
-	public void newRole(Role newRole) {
+	public Role newRole(Role newRole) {
 		try {
 			Connection conn=ConnectionFactory.getConnection();
 			PreparedStatement st=conn.prepareStatement("insert into roles (short_descr, long_descr) values ( ? , ? )");
@@ -60,11 +60,17 @@ public class RoleFactory {
 			st.setString(2,newRole.getLongDescr());
 			// FIXME: error checking, damnit!
 			st.executeUpdate();
+
+			ResultSet rs=st.getGeneratedKeys();
+			rs.next();
+
+			newRole.setId(rs.getInt(1));
 			
 			conn.close();
 		} catch (SQLException e) {
 			logger.log(Level.SEVERE, e.getMessage(), e);
 		}
+		return newRole;
 	}
 
 	public void updateRole(Role updatedRole) {

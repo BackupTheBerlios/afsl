@@ -154,7 +154,7 @@ public class TransportFactory {
 	 * @param newTransport the corresponging transport to create.
 	 */
 	
-	public void newTransport(Transport newTransport) {
+	public Transport newTransport(Transport newTransport) {
 		try {
 			Connection conn=ConnectionFactory.getConnection();
 			
@@ -167,6 +167,12 @@ public class TransportFactory {
 
 			// FIXME: error checking, damnit!
 			st.executeUpdate();
+
+			ResultSet rs=st.getGeneratedKeys();
+			rs.next();
+
+			newTransport.setId(rs.getInt(1));
+
 			insertCars(newTransport, conn);
 			insertArtists(newTransport, conn);
 			insertFunctionaries(newTransport, conn);
@@ -176,6 +182,8 @@ public class TransportFactory {
 		} catch (SQLException e) {
 			logger.log(Level.SEVERE, e.getMessage(), e);
 		}
+
+		return newTransport;
 	}
 
 	private void updateCars(Transport updatedTransport, Connection conn) {

@@ -17,8 +17,11 @@ import transport.logic.*;
  *
  * @author ola
  */
+
+
 public class ArtistFactoryTest extends TestCase {
 	ArtistFactory af=new ArtistFactory();
+	PlaceFactory pf=new PlaceFactory();
 	
 	public ArtistFactoryTest(java.lang.String testName) {
 		super(testName);
@@ -45,8 +48,6 @@ public class ArtistFactoryTest extends TestCase {
 	public void testGetArtist() {
 		System.out.println("testGetArtist");
 		
-		// TODO add your test code below by replacing the default call to fail.
-		
 		Artist a=af.getArtist(1);
 		
 		System.out.println(a);
@@ -69,26 +70,72 @@ public class ArtistFactoryTest extends TestCase {
 	/**
 	 * Test of newArtist method, of class transport.server.ArtistFactory.
 	 */
+	/*
 	public void testNewArtist() {
 		System.out.println("testNewArtist");
 		
-		// TODO add your test code below by replacing the default call to fail.
-		/*
-		Artist a=new Artist(0,"Moofoo","Boofoo",);
+		Artist a=new Artist();
+
+		a.setName("Nishrakt");
+		a.setContactName("Forslay");
+		a.setTelephoneNumber("123-456-7890");
+		a.setArrivalTime(new java.util.Date("2004-07-15 12:34"));
+		a.setArrival(pf.getPlace(1));
+		a.setDepartureTime(new java.util.Date("2004-07-17 23:12"));
+		a.setDeparture(pf.getPlace(2));
+		a.setNoOfArtists(2);
+		a.setNoOfCrew(4);
+		a.setNoOfGuests(7);
+		a.setExtraInfo("Meep!");
 		af.newArtist(a);
-		Artist b=af.getArtist();
-		*/
+
+		Artist b=af.getArtist(a.getId());
+
+		// check that a=b
+		if (!a.equals(b)) {
+			System.err.println(a);
+			System.err.println(b);
+			fail("testNewArtist: artist mismatch.");
+		}
 	}
+	*/
 	
 	/**
 	 * Test of updateArtist method, of class transport.server.ArtistFactory.
 	 */
+	/*
 	public void testUpdateArtist() {
 		System.out.println("testUpdateArtist");
+
+		Artist a=new Artist(0,"Farclas","Wayborne");
+
+		a=af.newArtist(a);
+
+		Artist b=a.clone();
+
+		b.setName("Nishrakt");
+		b.setContactName("Forslay");
+		b.setTelephoneNumber("123-456-7890");
+		b.setArrivalTime(new Date("2004-07-15 12:34"));
+		b.setArrival(pf.getPlace(1));
+		b.setDepartureTime(new Date("2004-07-17 23:12"));
+		b.setDeparture(pf.getPlace(2));
+		b.setNoOfArtists(2);
+		b.setNoOfCrew(4);
+		b.setNoOfGuests(7);
+		b.setExtraInfo("Meep!");
+
+		af.updateArtist(a);
+		a=af.getArtist(a.getId());
 		
-		// TODO add your test code below by replacing the default call to fail.
-		fail("The test case is empty.");
+		if (!a.equals(b)) {
+			System.err.println(a);
+			System.err.println(b);
+			fail("testNewArtist: artist mismatch.");
+		}
+		
 	}
+	*/
 	
 	// TODO add test methods here, they have to start with 'test' name.
 	// for example:

@@ -57,7 +57,7 @@ public class PlaceFactory {
 		return (Place[])a.toArray();
 	}
 
-	public void newPlace(Place newPlace) {
+	public Place newPlace(Place newPlace) {
 		try {
 			Connection conn=ConnectionFactory.getConnection();
 			PreparedStatement st=conn.prepareStatement("insert into places (name) values ( ? )");
@@ -65,10 +65,17 @@ public class PlaceFactory {
 			// FIXME: error checking, damnit!
 			st.executeUpdate();
 			
+			ResultSet rs=st.getGeneratedKeys();
+			rs.next();
+
+			newPlace.setId(rs.getInt(1));
+
 			conn.close();
 		} catch (SQLException e) {
 			logger.log(Level.SEVERE, e.getMessage(), e);
 		}
+
+		return newPlace;
 	}
 
 	public void updatePlace(Place updatedPlace) {

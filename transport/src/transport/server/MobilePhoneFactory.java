@@ -78,18 +78,24 @@ public class MobilePhoneFactory {
 		return (MobilePhone[])a.toArray();
 	}
 
-	public void newMobilePhone(MobilePhone newPhone) {
+	public MobilePhone newMobilePhone(MobilePhone newPhone) {
 		try {
 			Connection conn=ConnectionFactory.getConnection();
 			PreparedStatement st=conn.prepareStatement("insert into mobile_phones (phone_no) values ( ? )");
 			st.setString(1,newPhone.getNumber());
 			// FIXME: error checking, damnit!
 			st.executeUpdate();
+
+			ResultSet rs=st.getGeneratedKeys();
+			rs.next();
+
+			newPhone.setId(rs.getInt(1));
 			
 			conn.close();
 		} catch (SQLException e) {
 			logger.log(Level.SEVERE, e.getMessage(), e);
 		}
+		return newPhone;
 	}
 
 	public void updateMobilePhone(MobilePhone updatedPhone) {

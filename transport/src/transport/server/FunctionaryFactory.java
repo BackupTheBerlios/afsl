@@ -93,7 +93,7 @@ public class FunctionaryFactory {
 		return (Functionary[])a.toArray();
 	}
 
-	public void newFunctionary(Functionary newFunctionary) {
+	public Functionary newFunctionary(Functionary newFunctionary) {
 		try {
 			Connection conn=ConnectionFactory.getConnection();
 			PreparedStatement st=conn.prepareStatement("insert into functionaries (name, begins_work, stops_work, role_id) values ( ? , ? , ? , ? )");
@@ -104,11 +104,18 @@ public class FunctionaryFactory {
 
 			// FIXME: error checking, damnit!
 			st.executeUpdate();
+
+			ResultSet rs=st.getGeneratedKeys();
+			rs.next();
+
+			newFunctionary.setId(rs.getInt(1));
 			
 			conn.close();
 		} catch (SQLException e) {
 			logger.log(Level.SEVERE, e.getMessage(), e);
 		}
+
+		return newFunctionary;
 	}
 
 	public void updateFunctionary(Functionary updatedFunctionary) {

@@ -6,9 +6,10 @@
 	<property name="build.compiler.emacs" value="true"/>
 	<property name="build.compiler.pedantic" value="true"/>
 	<property name="postgresql.jar" value="/usr/share/java/pg74.1jdbc3.jar"/>
+	<property name="junit.jar" value="/usr/share/java/junit-3.8.1.jar"/>
 
 	<target name="compile">
-		<javac classpath="${postgresql.jar}:${basedir}/src" destdir="classes" srcdir="src"/>
+		<javac classpath="${junit.jar}:${postgresql.jar}:${basedir}/src" destdir="classes" srcdir="src"/>
 		
 	</target>
 
@@ -22,7 +23,7 @@
 		<delete verbose="true">
 			<fileset dir="${basedir}/docs/" includes="**"/>
 		</delete>
-		<javadoc author="true" classpath="${java.class.path}:${postgresql.jar}" destdir="${basedir}/docs" packagenames="*" sourcepath="${basedir}/src" use="true" version="true" windowtitle="Arvikafestivalen transport booking system.">
+		<javadoc author="true" classpath="${junit.jar}:${java.class.path}:${postgresql.jar}" destdir="${basedir}/docs" packagenames="*" sourcepath="${basedir}/src" use="true" version="true" windowtitle="Arvikafestivalen transport booking system.">
 		</javadoc>
 	</target>
 

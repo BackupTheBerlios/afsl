@@ -93,7 +93,7 @@ public class CarFactory {
 		return r;
 	}
 
-	public void newCar(Car newCar) {
+	public Car newCar(Car newCar) {
 		try {
 			Connection conn=ConnectionFactory.getConnection();
 			PreparedStatement st=conn.prepareStatement("insert into cars (reg_no, car_type, no_of_seats, misc_info ) values ( ? , ? , ? , ? )");
@@ -104,11 +104,18 @@ public class CarFactory {
 
 			// FIXME: error checking, damnit!
 			st.executeUpdate();
+
+			ResultSet rs=st.getGeneratedKeys();
+			rs.next();
+
+			newCar.setId(rs.getInt(1));
 			
 			conn.close();
 		} catch (SQLException e) {
 			logger.log(Level.SEVERE, e.getMessage(), e);
 		}
+
+		return newCar;
 	}
 
 	public void updateCars(Car[] cars, Connection conn) throws SQLException {
