@@ -153,7 +153,7 @@ public class TransportFactory {
   private void insertTransportWaypoints(Transport newTransport,
                                         Connection conn) throws SQLException {
     TransportWaypoint[] waypoints = newTransport.getWaypoints();
-    PreparedStatement st = conn.prepareStatement("insert into transport_waypoints (transport_id, place_id, waypoint_time) values ( ? , ? )");
+    PreparedStatement st = conn.prepareStatement("insert into transport_waypoints (transport_id, place_id, waypoint_time) values ( ? , ?, ? )");
 
     for (int i = 0; i < waypoints.length; i++) {
       st.setInt(1, newTransport.getId());

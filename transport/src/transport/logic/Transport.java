@@ -45,6 +45,11 @@ public class Transport extends LogicItem {
 
 	public Transport() {
 		id= -1;
+		waypoints=new TransportWaypoint[0];
+		cars=new Car[0];
+		mobilePhones=new MobilePhone[0];
+		artists=new Artist[0];
+		functionaries=new Functionary[0];
 	}
 
 	/**

@@ -36,12 +36,27 @@ public class PickDateTimeCombo extends javax.swing.JPanel {
 		dateField=new javax.swing.JFormattedTextField(DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT, new Locale("sv")));
 		dateField.setValue(new Date());
 
-		setLayout(new java.awt.BorderLayout());
+		setLayout(borderLayout1);
 
 
 
 		dateField.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
-		add(dateField, java.awt.BorderLayout.CENTER);
+		nowButton.setToolTipText("");
+    nowButton.setActionCommand("jButton1");
+    nowButton.setMnemonic('N');
+    nowButton.setText("N");
+    nowButton.addActionListener(new PickDateTimeCombo_nowButton_actionAdapter(this));
+    this.setDebugGraphicsOptions(0);
+    emptyButton.setMnemonic('E');
+    emptyButton.setText("E");
+    emptyButton.addActionListener(new PickDateTimeCombo_emptyButton_actionAdapter(this));
+    jPanel1.setLayout(gridBagLayout1);
+    add(dateField,  BorderLayout.CENTER);
+    this.add(jPanel1,  BorderLayout.EAST);
+    jPanel1.add(nowButton,    new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0
+            ,GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(2, 5, 1, 0), 0, -4));
+    jPanel1.add(emptyButton,    new GridBagConstraints(1, 0, 1, 1, 0.0, 0.0
+            ,GridBagConstraints.CENTER, GridBagConstraints.NONE, new Insets(2, 0, 1, 5), 0, -4));
 
 	} //GEN-END:jbInit
 
@@ -70,6 +85,11 @@ public class PickDateTimeCombo extends javax.swing.JPanel {
 
 	// Variables declaration - do not modify//GEN-BEGIN:variables
 	private javax.swing.JFormattedTextField dateField;
+  JButton nowButton = new JButton();
+  BorderLayout borderLayout1 = new BorderLayout();
+  JButton emptyButton = new JButton();
+  JPanel jPanel1 = new JPanel();
+  GridBagLayout gridBagLayout1 = new GridBagLayout();
 
 	void launchPickDateTime_mouseClicked(MouseEvent e) {
 		Window anc=(Window)this.getTopLevelAncestor();
@@ -100,5 +120,35 @@ public class PickDateTimeCombo extends javax.swing.JPanel {
 		}
 	}
 
+  void nowButton_actionPerformed(ActionEvent e) {
+	  dateField.setText(DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT, new Locale("sv")).format(new Date()));
+  }
+
+  void emptyButton_actionPerformed(ActionEvent e) {
+	  dateField.setText("");
+  }
+
 	// End of variables declaration//GEN-END:variables
+}
+
+class PickDateTimeCombo_nowButton_actionAdapter implements java.awt.event.ActionListener {
+  PickDateTimeCombo adaptee;
+
+  PickDateTimeCombo_nowButton_actionAdapter(PickDateTimeCombo adaptee) {
+    this.adaptee = adaptee;
+  }
+  public void actionPerformed(ActionEvent e) {
+    adaptee.nowButton_actionPerformed(e);
+  }
+}
+
+class PickDateTimeCombo_emptyButton_actionAdapter implements java.awt.event.ActionListener {
+  PickDateTimeCombo adaptee;
+
+  PickDateTimeCombo_emptyButton_actionAdapter(PickDateTimeCombo adaptee) {
+    this.adaptee = adaptee;
+  }
+  public void actionPerformed(ActionEvent e) {
+    adaptee.emptyButton_actionPerformed(e);
+  }
 }

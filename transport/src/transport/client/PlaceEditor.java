@@ -72,7 +72,6 @@ public class PlaceEditor extends GenericEditor {
 
 		pack();
 	} //GEN-END:jbInit
-
 	// Variables declaration - do not modify//GEN-BEGIN:variables
 	private javax.swing.JButton cancelButton;
 	private javax.swing.JLabel jLabel1;
