@@ -50,6 +50,7 @@ create table artists (
 	arrival_time timestamp,
 	arrival_place_id integer,
 	hotel_id integer,
+	departure_time integer,
 	departure_place_id integer,
 	no_of_artists integer,
 	no_of_crew integer,

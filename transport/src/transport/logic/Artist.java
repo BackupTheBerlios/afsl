@@ -10,6 +10,7 @@ public class Artist {
 	private Date arrivalTime;
 	private Place arrival;
 	private Place hotel;
+	private Date departureTime;
 	private Place departure;
 	private int noOfArtists;
 	private int noOfCrew;
@@ -23,6 +24,7 @@ public class Artist {
 				  Date arrivalTime, 
 				  Place arrival, 
 				  Place hotel, 
+				  Date departureTime,
 				  Place departure, 
 				  int noOfArtists, 
 				  int noOfCrew, 
@@ -40,6 +42,7 @@ public class Artist {
 		this.noOfCrew=noOfCrew;
 		this.noOfGuests=noOfGuests;
 		this.extraInfo=extraInfo;
+		this.departureTime=departureTime;
 	}
 	
 	/**
@@ -256,6 +259,24 @@ public class Artist {
 	 */
 	public void setExtraInfo(String extraInfo) {
 		this.extraInfo = extraInfo;
+	}
+	
+	/**
+	 * Get departureTime.
+	 *
+	 * @return departureTime as Date.
+	 */
+	public Date getDepartureTime() {
+		return departureTime;
+	}
+	
+	/**
+	 * Set departureTime.
+	 *
+	 * @param departureTime the value to set.
+	 */
+	public void setDepartureTime(Date departureTime) {
+		this.departureTime = departureTime;
 	}
 }
 

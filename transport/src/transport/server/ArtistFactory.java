@@ -35,11 +35,12 @@ public class ArtistFactory {
 					rs.getDate(5),
 					pf.getPlace(rs.getInt(6)),
 					pf.getPlace(rs.getInt(7)),
-					pf.getPlace(rs.getInt(8)),
-					rs.getInt(9),
+					rs.getDate(8),
+					pf.getPlace(rs.getInt(9)),
 					rs.getInt(10),
 					rs.getInt(11),
-					rs.getString(12));
+					rs.getInt(12),
+					rs.getString(13));
 
 		return a;
 	}
@@ -99,11 +100,12 @@ public class ArtistFactory {
 			st.setDate(4,new java.sql.Date(newArtist.getArrivalTime().getTime()));
 			st.setInt(5,newArtist.getArrival().getId());
 			st.setInt(6,newArtist.getHotel().getId());
-			st.setInt(7,newArtist.getDeparture().getId());
-			st.setInt(8,newArtist.getNoOfArtists());
-			st.setInt(9,newArtist.getNoOfCrew());
-			st.setInt(10,newArtist.getNoOfGuests());
-			st.setString(11,newArtist.getExtraInfo());
+			st.setDate(7,new java.sql.Date(newArtist.getDepartureTime().getTime()));
+			st.setInt(8,newArtist.getDeparture().getId());
+			st.setInt(9,newArtist.getNoOfArtists());
+			st.setInt(10,newArtist.getNoOfCrew());
+			st.setInt(11,newArtist.getNoOfGuests());
+			st.setString(12,newArtist.getExtraInfo());
 			st.executeUpdate();
 			conn.close();
 		} catch (SQLException e) {
@@ -126,12 +128,13 @@ public class ArtistFactory {
 			st.setDate(4,new java.sql.Date(updatedArtist.getArrivalTime().getTime()));
 			st.setInt(5,updatedArtist.getArrival().getId());
 			st.setInt(6,updatedArtist.getHotel().getId());
-			st.setInt(7,updatedArtist.getDeparture().getId());
-			st.setInt(8,updatedArtist.getNoOfArtists());
-			st.setInt(9,updatedArtist.getNoOfCrew());
-			st.setInt(10,updatedArtist.getNoOfGuests());
-			st.setString(11,updatedArtist.getExtraInfo());
-			st.setInt(12,updatedArtist.getId());
+			st.setDate(7,new java.sql.Date(updatedArtist.getDepartureTime().getTime()));
+			st.setInt(8,updatedArtist.getDeparture().getId());
+			st.setInt(9,updatedArtist.getNoOfArtists());
+			st.setInt(10,updatedArtist.getNoOfCrew());
+			st.setInt(11,updatedArtist.getNoOfGuests());
+			st.setString(12,updatedArtist.getExtraInfo());
+			st.setInt(13,updatedArtist.getId());
 
 			st.executeUpdate();
 			conn.close();
