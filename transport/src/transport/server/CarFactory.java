@@ -45,11 +45,11 @@ public class CarFactory {
 			Connection conn=ConnectionFactory.getConnection();
 			PreparedStatement st=conn.prepareStatement("select * from cars where cars.id not in (select car_id from car_transport, transports where transports.return_time <= ? and transports.start_time>= ? and car_transport.transport_id=transports.id)");
 
-			java.sql.Date d1=new java.sql.Date(from.getTime());
-			java.sql.Date d2=new java.sql.Date(to.getTime());
+			java.sql.Timestamp d1=new java.sql.Timestamp(from.getTime());
+			java.sql.Timestamp d2=new java.sql.Timestamp(to.getTime());
 
-			st.setDate(1, d1);
-			st.setDate(2, d2);
+			st.setTimestamp(1, d1);
+			st.setTimestamp(2, d2);
 
 			ResultSet rs=st.executeQuery();
 			while (rs.next()) {

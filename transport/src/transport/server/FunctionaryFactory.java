@@ -44,18 +44,18 @@ public class FunctionaryFactory {
 			Connection conn=ConnectionFactory.getConnection();
 			PreparedStatement st=conn.prepareStatement("select * from functionaries where functionaries.id not in (select functionary_id from functionary_transport, transports where transports.return_time <= ? and (transports.start_time>= ? or transports.actual_return_time >= ? ) and functionary_transport.transport_id=transports.id)");
 
-			java.sql.Date d1=new java.sql.Date(from.getTime());
-			java.sql.Date d2=new java.sql.Date(to.getTime());
+			java.sql.Timestamp d1=new java.sql.Timestamp(from.getTime());
+			java.sql.Timestamp d2=new java.sql.Timestamp(to.getTime());
 
-			st.setDate(1, d1);
-			st.setDate(2, d2);
-			st.setDate(3, d2);
+			st.setTimestamp(1, d1);
+			st.setTimestamp(2, d2);
+			st.setTimestamp(3, d2);
 
 			ResultSet rs=st.executeQuery();
 			while (rs.next()) {
 				a.add(new Functionary(rs.getInt(1), rs.getString(2),
-									  rs.getDate(3),
-									  rs.getDate(4),
+									  rs.getTimestamp(3),
+									  rs.getTimestamp(4),
 									  new RoleFactory().getRole(rs.getInt(5))));
 			}
                         conn.close();
@@ -77,8 +77,8 @@ public class FunctionaryFactory {
 			st.setInt(1, id);
 			ResultSet rs=st.executeQuery();
 			rs.first();
-			f=new Functionary(rs.getInt(1), rs.getString(2), rs.getDate(3),
-							  rs.getDate(4),
+			f=new Functionary(rs.getInt(1), rs.getString(2), rs.getTimestamp(3),
+							  rs.getTimestamp(4),
 							  new RoleFactory().getRole(rs.getInt(5)));
                         conn.close();
 		} catch (SQLException e) {
@@ -98,8 +98,8 @@ public class FunctionaryFactory {
 			ResultSet rs=st.executeQuery();
 			while (rs.next()) {
 				a.add(new Functionary(rs.getInt(1), rs.getString(2),
-									  rs.getDate(3),
-									  rs.getDate(4),
+									  rs.getTimestamp(3),
+									  rs.getTimestamp(4),
 									  new RoleFactory().getRole(rs.getInt(5))));
 			}
 
@@ -119,10 +119,10 @@ public class FunctionaryFactory {
 			Connection conn=ConnectionFactory.getConnection();
 			PreparedStatement st=conn.prepareStatement("insert into functionaries (name, begins_work, stops_work, role_id) values ( ? , ? , ? , ? )");
 			st.setString(1, newFunctionary.getName());
-			st.setDate(2,
-					   new java.sql.Date(newFunctionary.getBeginsWork().getTime()));
-			st.setDate(3,
-					   new java.sql.Date(newFunctionary.getStopsWork().getTime()));
+			st.setTimestamp(2,
+					   new java.sql.Timestamp(newFunctionary.getBeginsWork().getTime()));
+			st.setTimestamp(3,
+					   new java.sql.Timestamp(newFunctionary.getStopsWork().getTime()));
 			st.setInt(4, newFunctionary.getRole().getId());
 
 			// FIXME: error checking, damnit!
@@ -148,10 +148,10 @@ public class FunctionaryFactory {
 			Connection conn=ConnectionFactory.getConnection();
 			PreparedStatement st=conn.prepareStatement("update functionaries set name = ? , begins_work = ? , stops_work = ? , role_id = ? where id = ?");
 			st.setString(1, updatedFunctionary.getName());
-			st.setDate(2,
-					   new java.sql.Date(updatedFunctionary.getBeginsWork().getTime()));
-			st.setDate(3,
-					   new java.sql.Date(updatedFunctionary.getStopsWork().getTime()));
+			st.setTimestamp(2,
+					   new java.sql.Timestamp(updatedFunctionary.getBeginsWork().getTime()));
+			st.setTimestamp(3,
+					   new java.sql.Timestamp(updatedFunctionary.getStopsWork().getTime()));
 			st.setInt(4, updatedFunctionary.getRole().getId());
 			st.setInt(5, updatedFunctionary.getId());
 
