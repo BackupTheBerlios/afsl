@@ -242,9 +242,23 @@ public class MainFrame extends javax.swing.JFrame {
 		ViewMenu.setMnemonic('V');
 		ViewMenu.setText("View");
 		ViewFunctionaryScheduleMenuItem.setText("Functionary schedule");
+                ViewFunctionaryScheduleMenuItem.addActionListener(new java.awt.event.
+                                                                                           ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                ViewFunctionaryScheduleMenuItemActionPerformed(evt);
+                        }
+                });
+
 		ViewMenu.add(ViewFunctionaryScheduleMenuItem);
 
 		ViewCarScheduleMenuItem.setText("Car schedule");
+                ViewCarScheduleMenuItem.addActionListener(new java.awt.event.
+                                                                                           ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                ViewCarScheduleMenuItemActionPerformed(evt);
+                        }
+                });
+
 		ViewMenu.add(ViewCarScheduleMenuItem);
 
 		MenuBar.add(ViewMenu);
@@ -369,6 +383,25 @@ public class MainFrame extends javax.swing.JFrame {
 	private void exitForm(java.awt.event.WindowEvent evt) { //GEN-FIRST:event_exitForm
 		System.exit(0);
 	} //GEN-LAST:event_exitForm
+
+
+
+        private void ViewFunctionaryScheduleMenuItemActionPerformed(java.awt.event.ActionEvent
+                evt) { //GEN-FIRST:event_TransportAddMenuItemActionPerformed
+                ViewFunctionarySchedule vfs=new ViewFunctionarySchedule();
+
+                desktopPane.add(vfs);
+                vfs.show();
+        } //GEN-LAST:ViewFunctionaryScheduleMenuItemActionPerformed
+
+
+        private void ViewCarScheduleMenuItemActionPerformed(java.awt.event.ActionEvent
+                evt) { //GEN-FIRST:event_TransportAddMenuItemActionPerformed
+                ViewCarSchedule vcs=new ViewCarSchedule();
+
+                desktopPane.add(vcs);
+                vcs.show();
+        } //GEN-LAST:ViewCarScheduleMenuItemActionPerformed
 
 	/**
 	 * @param args the command line arguments

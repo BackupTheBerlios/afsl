@@ -47,8 +47,8 @@ public class ArtistEditor extends GenericEditor {
 	 */
 	private void jbInit() { //GEN-BEGIN:jbInit
           ImageIcon frameIcon = new ImageIcon(this.getClass().getResource(
-          "../pics/miniAF.png"));
-      this.setFrameIcon(frameIcon);
+              "../pics/miniAF.png"));
+          this.setFrameIcon(frameIcon);
 
 		infoPanel=new javax.swing.JPanel();
 		jLabel1=new javax.swing.JLabel();

@@ -6,17 +6,31 @@
 
 package transport.client;
 
-import javax.swing.ImageIcon;
+import transport.logic.Functionary;
+import transport.server.FunctionaryFactory;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
 
 /**
  *
  * @author  ola
  */
 public class ViewFunctionarySchedule extends javax.swing.JInternalFrame {
+  private Functionary[] rowData;
+  private FunctionaryFactory af;
+  JPanel jPanel1 = new JPanel();
+  afslComboBox comboSelectFunctionary = new afslComboBox();
+  JButton buttonClose = new JButton();
+  GridLayout gridLayout1 = new GridLayout();
+
 
 	/** Creates new form ViewFunctionarySchedule */
 	public ViewFunctionarySchedule() {
-		jbInit();
+          af = new FunctionaryFactory();
+          rowData = af.getAllFunctionaries();
+          System.out.print("Number of Functionaries:" + rowData.length);
+          jbInit();
 	}
 
 	/** This method is called from within the constructor to
@@ -28,11 +42,35 @@ public class ViewFunctionarySchedule extends javax.swing.JInternalFrame {
           ImageIcon frameIcon = new ImageIcon(this.getClass().getResource(
               "../pics/miniAF.png"));
           this.setFrameIcon(frameIcon);
+    this.setResizable(true);
+    this.setPreferredSize(new Dimension(400, 400));
 
 		pack();
-	} //GEN-END:jbInit
+    buttonClose.setText("Close");
+    buttonClose.addActionListener(new ViewFunctionarySchedule_buttonClose_actionAdapter(this));
+    jPanel1.setLayout(gridLayout1);
+    this.getContentPane().add(jPanel1, BorderLayout.NORTH);
+    jPanel1.add(comboSelectFunctionary, null);
+    this.getContentPane().add(buttonClose, BorderLayout.SOUTH);
+    comboSelectFunctionary.fillCombo(rowData);
+	}
+
+  void buttonClose_actionPerformed(ActionEvent e) {
+    this.dispose();
+  } //GEN-END:jbInit
 
 	// Variables declaration - do not modify//GEN-BEGIN:variables
 	// End of variables declaration//GEN-END:variables
 
+}
+
+class ViewFunctionarySchedule_buttonClose_actionAdapter implements java.awt.event.ActionListener {
+  ViewFunctionarySchedule adaptee;
+
+  ViewFunctionarySchedule_buttonClose_actionAdapter(ViewFunctionarySchedule adaptee) {
+    this.adaptee = adaptee;
+  }
+  public void actionPerformed(ActionEvent e) {
+    adaptee.buttonClose_actionPerformed(e);
+  }
 }

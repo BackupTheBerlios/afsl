@@ -6,17 +6,32 @@
 
 package transport.client;
 
-import javax.swing.ImageIcon;
+import javax.swing.*;
+import java.awt.*;
+import transport.logic.Car;
+import transport.server.CarFactory;
+import java.awt.event.*;
+
 
 /**
  *
  * @author  ola
  */
 public class ViewCarSchedule extends javax.swing.JInternalFrame {
+  private Car[] rowData;
+  private CarFactory cf;
+  JPanel jPanel1 = new JPanel();
+  afslComboBox comboSelectCar = new afslComboBox();
+  JButton buttonClose = new JButton();
+  GridLayout gridLayout1 = new GridLayout();
+
 
 	/** Creates new form ViewCarSchedule */
 	public ViewCarSchedule() {
-		jbInit();
+          cf = new CarFactory();
+          rowData = cf.getAllCars();
+          jbInit();
+
 	}
 
 	/** This method is called from within the constructor to
@@ -28,11 +43,36 @@ public class ViewCarSchedule extends javax.swing.JInternalFrame {
           ImageIcon frameIcon = new ImageIcon(this.getClass().getResource(
               "../pics/miniAF.png"));
           this.setFrameIcon(frameIcon);
+    this.setResizable(true);
+    this.setMinimumSize(new Dimension(30, 26));
+    this.setPreferredSize(new Dimension(400, 400));
 
 		pack();
-	} //GEN-END:jbInit
+    buttonClose.setText("Close");
+    buttonClose.addActionListener(new ViewCarSchedule_buttonClose_actionAdapter(this));
+    jPanel1.setLayout(gridLayout1);
+    this.getContentPane().add(jPanel1, BorderLayout.NORTH);
+    jPanel1.add(comboSelectCar, null);
+    this.getContentPane().add(buttonClose, BorderLayout.SOUTH);
+    comboSelectCar.fillCombo(rowData);
+	}
+
+  void buttonClose_actionPerformed(ActionEvent e) {
+    this.dispose();
+  } //GEN-END:jbInit
 
 	// Variables declaration - do not modify//GEN-BEGIN:variables
 	// End of variables declaration//GEN-END:variables
 
+}
+
+class ViewCarSchedule_buttonClose_actionAdapter implements java.awt.event.ActionListener {
+  ViewCarSchedule adaptee;
+
+  ViewCarSchedule_buttonClose_actionAdapter(ViewCarSchedule adaptee) {
+    this.adaptee = adaptee;
+  }
+  public void actionPerformed(ActionEvent e) {
+    adaptee.buttonClose_actionPerformed(e);
+  }
 }
