@@ -7,7 +7,7 @@ create database transport;
 
 create table cars (
 	id serial,
-	reg_no char(12) not null,
+	reg_no varchar(12) not null,
 	car_type varchar(60) not null,
 	no_of_seats integer not null,
 	misc_info varchar(2500),
