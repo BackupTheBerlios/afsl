@@ -1,0 +1,15 @@
+package transport.server;
+
+import java.rmi.Remote;
+import java.rmi.RemoteException;
+import java.util.Date;
+import transport.logic.*;
+
+public interface FunctionaryFactory extends Remote {
+	public Functionary getFunctionary(int id) throws RemoteException;
+	public Functionary[] getAllFunctionaries() throws RemoteException;
+	public Functionary[] getFunctionariesFreeBetween(Date from, Date to) throws RemoteException;
+	public void updateFunctionary(Functionary c) throws RemoteException;
+	public void newFunctionary(Functionary c) throws RemoteException;
+}
+

@@ -1,0 +1,36 @@
+<project name="transport" default="compile" basedir=".">
+	<property name="dest" value="classes"/>
+	<property name="jars" value="jars"/>
+	<property name="build.compiler" value="jikes"/>
+	<property name="build.compiler.emacs" value="true"/>
+	<property name="build.compiler.pedantic" value="true"/>
+	<property name="postgresql.jar" value="/usr/share/java/pg74.1jdbc3.jar"/>
+
+	<target name="compile">
+		<javac srcdir="src" destdir="classes" classpath="${postgresql.jar}:${basedir}/src"/>
+		<rmic base="${basedir}/classes" classpath="${java.class.path}:${basedir}/src" includes="**/*_Impl.class"/>
+	</target>
+
+	<target name="clean">
+		<delete verbose="true">
+			<fileset dir="${basedir}/classes/" includes="**"/>
+		</delete>
+	</target>
+
+	<target name="javadoc">
+		<delete verbose="true">
+			<fileset dir="${basedir}/docs/" includes="**"/>
+		</delete>
+		<javadoc packagenames="*"
+			sourcepath="${basedir}/src"
+			destdir="${basedir}/docs"
+			author="true"
+			version="true"
+			use="true"
+			windowtitle="Arvikafestivalen transport booking system."
+			classpath="${java.class.path}:${postgresql.jar}">
+		</javadoc>
+	</target>
+
+
+</project>

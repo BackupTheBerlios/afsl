@@ -1,0 +1,15 @@
+package transport.server;
+
+import java.rmi.Remote;
+import java.rmi.RemoteException;
+import java.util.Date;
+import transport.logic.*;
+
+public interface MobilePhoneFactory extends Remote {
+	public MobilePhone getMobilePhone(int id) throws RemoteException;
+	public MobilePhone[] getAllMobilePhones() throws RemoteException;
+	public MobilePhone[] getMobilePhonesFreeBetween(Date from, Date to) throws RemoteException;
+	public void newMobilePhone(MobilePhone mp) throws RemoteException;
+	public void updateMobilePhone(MobilePhone mp) throws RemoteException;
+}
+

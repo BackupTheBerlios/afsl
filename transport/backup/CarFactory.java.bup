@@ -1,0 +1,15 @@
+package transport.server;
+
+import java.rmi.Remote;
+import java.rmi.RemoteException;
+import java.util.Date;
+import transport.logic.*;
+
+public interface CarFactory extends Remote {
+	public Car getCar(int id) throws RemoteException;
+	public Car[] getAllCars() throws RemoteException;
+	public Car[] getCarsFreeBetween(Date from, Date to) throws RemoteException;
+	public void updateCar(Car c) throws RemoteException;
+	public void newCar(Car c) throws RemoteException;
+}
+

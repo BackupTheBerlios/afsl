@@ -1,0 +1,13 @@
+package transport.server;
+
+import java.rmi.Remote;
+import java.rmi.RemoteException;
+import transport.logic.*;
+
+public interface ArtistFactory extends Remote {
+	public Artist getArtist(int id) throws RemoteException;
+	public Artist[] getAllArtists() throws RemoteException;
+	public void updateArtist(Artist a) throws RemoteException;
+	public void newArtist(Artist a) throws RemoteException;
+}
+

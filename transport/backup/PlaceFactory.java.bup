@@ -1,0 +1,13 @@
+package transport.server;
+
+import java.rmi.Remote;
+import java.rmi.RemoteException;
+import transport.logic.*;
+
+public interface PlaceFactory extends Remote {
+	public Place getPlace(int id) throws RemoteException;
+	public Place[] getAllPlaces() throws RemoteException;
+	public void newPlace(Place p) throws RemoteException;
+	public void updatePlace(Place p) throws RemoteException;
+}
+

@@ -1,0 +1,13 @@
+package transport.server;
+
+import java.rmi.Remote;
+import java.rmi.RemoteException;
+import transport.logic.*;
+
+public interface RoleFactory extends Remote {
+	public Role getRole(int id) throws RemoteException;
+	public Role[] getAllRoles() throws RemoteException;
+	public void newRole(Role p) throws RemoteException;
+	public void updateRole(Role p) throws RemoteException;
+}
+

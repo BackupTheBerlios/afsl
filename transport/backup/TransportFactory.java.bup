@@ -1,0 +1,14 @@
+package transport.server;
+
+import java.rmi.Remote;
+import java.rmi.RemoteException;
+import java.util.Date;
+import transport.logic.*;
+
+public interface TransportFactory extends Remote {
+	public Transport getTransport(int id) throws RemoteException;
+	public Transport[] getAllTransports() throws RemoteException;
+	public void updateTransport(Transport c) throws RemoteException;
+	public void newTransport(Transport c) throws RemoteException;
+}
+
